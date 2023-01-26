@@ -1,0 +1,7 @@
+kind: pipeline
+type: docker
+name: Pathfinder
+
+trigger:
+  event:
+    - push
