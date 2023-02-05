@@ -1,7 +1,8 @@
+import 'package:code/classes/test.dart';
 import 'package:flutter/material.dart';
 import 'home.dart';
 
-void main() {
+void main() async {
   runApp(const MyApp());
 }
 
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Pathfinder  ',
       debugShowCheckedModeBanner: false,
-      home: Home(),
+      home: SpellListPage(),
     );
   }
 }
