@@ -14,12 +14,8 @@ class SQLiteDataStrategy implements IDataStrategy {
   }
 
   @override
-  List loadSpells() {
-    // TODO: implement loadSpells
-    throw UnimplementedError();
-  }
+  List loadSpells() {}
 
-  @override
   static SQLiteDataStrategy getInstance() {
     _instance ??= SQLiteDataStrategy._();
     return _instance!;

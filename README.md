@@ -1,10 +1,94 @@
-# Pathfinder
+# **SPELLTASTIC**
 
-## Equipe: 
-* BRODA Lou
-* FERREIRA Pierre
-* FRANCO Nicolas
-* RICHARD Corentin
+## Bonjour et bienvenue sur le dépôt du projet SpellTastic ! 👋
+
+*******
+
+Sommaire 
+ 1. [Accessibilité](#acces)
+ 2. [Progression](#progression)
+ 3. [Présentation du projet](#presentation)
+ 4. [Contenu](#contenu)
+ 5. [Conception](#conception)
+ 6. [Auteurs](#auteurs)
+
+*******
+
+<div id='acces'/>
+
+### Profiter dès maintenant d'un accès anticipé à SpellTastic
+
+Disponible sur : ![](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black) / ![](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white) / ![](https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=apple&logoColor=white) / ![](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)   
+
+> **Warning**: Le déploiement n'a pas encore été fait. 
+
+*******
+<div id='progression'/>
+
+🚧  __EN PROGRESSION__
+
+📆  _Fin du projet prévue :_ 03 Avril 2023
+
+Retrouver notre avancée journalière dans la partie `wiki` de notre dépôt.   
+
+*******
+
+<div id='presentation'/>
+
+### **Présentation**
+
+SpellTastic : votre compagnon de gestion de sorts pour le jeu de rôle Pathfinder !      
+ 
+Application multi-plateforme vous assistant durant vos parties.
+
+*******
+
+<div id='contenu'/>
+
+## Fonctionnalités
+
+
+- Lire des données réelles (liste de sort). Plusieurs solutions sont possibles.   
+- Faire des recherches multicritères dans les listes de sort (Par classe, niveau, école, description...).   
+- Gérer la progression du personnage. Chaque personnage a un niveau courant. Chaque niveau de classe donne accès à un certain nombre de sorts quotidien par niveau de sort.   
+- Prévoir l'anticipation du changement de niveau et préparant ses listes à l'avance.   
+- Gérer de multiples personnages.   
+
+- D'autres fonctionnalités supplémentaires sont aussi envisagées
+
+*******
+
+## Ressources
+
+- Temps
+    - 23 Janvier au 03 Avril    
+- Matériel
+    - Ordinateurs portables sous Linux ou Windows   
+    - Visual Studio Code    
+- Langages utilisés
+    - FLUTTER ![](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)
+    - DART ![](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)
+    - SQLITE ![](https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white)
+
+- Personnes 
+    - 4 étudiants en BUT Informatique
+
+*******
+
+<div id='conception'/>
+
+## Détails de conception
+
+> **Warning**: Pas encore disponibles.
+
+*******
+
+<div id='auteurs'/>
+
+## Auteurs
+
+Étudiant 2ème Annnée - BUT Informatique - IUT Clermont Auvergne - 2022-2023   
+`BRODA Lou` - `FERREIRA Pierre` - `FRANCO Nicolas` - `RICHARD Corentin`
 
 
 ## Instalation Flutter 
