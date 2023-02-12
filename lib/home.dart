@@ -6,7 +6,7 @@ class Home extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: Text('PATHFINDER',
+        title: Text('SPELLTASTIC',
             style: TextStyle(color: Colors.black, fontSize: 50)),
         centerTitle: true,
         backgroundColor: Colors.transparent,
