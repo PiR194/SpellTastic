@@ -1,3 +1,4 @@
+import 'package:code/detailsCharacter.dart';
 import 'package:flutter/material.dart';
 import 'home.dart';
 import 'set.dart';
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Pathfinder  ',
       debugShowCheckedModeBanner: false,
-      home: Set(),
+      home: Details_character(),
     );
   }
 }
