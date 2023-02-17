@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 class CreateSetButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    double quarterWidth = MediaQuery.of(context).size.width / 6;
+    double sixWidth = MediaQuery.of(context).size.width / 6;
     return SizedBox(
       height: 70,
-      width: quarterWidth,
+      width: sixWidth,
       child: ElevatedButton(
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all<Color>(
