@@ -1,6 +1,6 @@
-import 'package:code/levelCounterWidget.dart';
-import 'package:code/displaySetButtonWidget.dart';
-import 'package:code/playButtonWidget.dart';
+import 'levelCounterWidget.dart';
+import 'displaySetButtonWidget.dart';
+import 'playButtonWidget.dart';
 import 'package:flutter/material.dart';
 import 'createSetButtonWidget.dart';
 import 'selectSetButtonWidget.dart';
