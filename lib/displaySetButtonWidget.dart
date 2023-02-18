@@ -9,14 +9,23 @@ class DisplaySetButton extends StatelessWidget {
       height: 70,
       width: halfWidth,
       child: ElevatedButton(
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(
-              Color.fromARGB(255, 165, 120, 104)),
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(32.0),
-              side: BorderSide(width: 2.0, color: Colors.red),
-            ),
+        style: ElevatedButton.styleFrom(
+          primary: Colors.brown[800],
+          padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30.0),
+          ),
+          elevation: 6.0,
+          textStyle: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            shadows: [
+              Shadow(
+                color: Colors.grey,
+                offset: Offset(1, 1),
+                blurRadius: 2,
+              ),
+            ],
           ),
         ),
         onPressed: () {
@@ -38,12 +47,21 @@ class DisplaySetButton extends StatelessWidget {
                     // Modifier le set (à implémenter)
                   },
                   child: Text('Modify'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color.fromARGB(255, 180, 122, 101),
+                  ),
+                ),
+                const SizedBox(
+                  width: 5,
                 ),
                 ElevatedButton(
                   onPressed: () {
                     // Supprimer le set (à implémenter)
                   },
                   child: Text('Delete'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color.fromARGB(255, 180, 122, 101),
+                  ),
                 ),
               ],
             ),

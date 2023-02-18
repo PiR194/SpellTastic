@@ -9,9 +9,21 @@ class CreateSetButton extends StatelessWidget {
       height: 70,
       width: sixWidth,
       child: ElevatedButton(
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(
-              Color.fromARGB(255, 139, 134, 132)),
+        style: ElevatedButton.styleFrom(
+          primary: Colors.grey,
+          padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+          elevation: 4.0,
+          textStyle: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+            shadows: [
+              Shadow(
+                color: Colors.black,
+                offset: Offset(1, 1),
+                blurRadius: 2,
+              ),
+            ],
+          ),
         ),
         onPressed: () {
           Navigator.push(

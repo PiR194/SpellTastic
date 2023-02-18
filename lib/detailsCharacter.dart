@@ -1,7 +1,9 @@
 import 'package:code/levelCounterWidget.dart';
 import 'package:code/displaySetButtonWidget.dart';
+import 'package:code/playButtonWidget.dart';
 import 'package:flutter/material.dart';
 import 'createSetButtonWidget.dart';
+import 'selectSetButtonWidget.dart';
 import 'home.dart';
 
 class DetailsCharacter extends StatelessWidget {
@@ -110,15 +112,39 @@ class DetailsCharacter extends StatelessWidget {
                 ],
               ),
             ),
-
+            Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  PlayButtonWidget(),
+                  const SizedBox(
+                    width: 15,
+                  ),
+                  SelectSetButtonWidget(),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 15,
+            ),
             Center(
               child: CreateSetButton(),
             ),
-            Center(
-              child: DisplaySetButton(),
+            const SizedBox(
+              height: 15,
             ),
             Center(
               child: DisplaySetButton(),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Center(
+              child: DisplaySetButton(),
+            ),
+            const SizedBox(
+              height: 10,
             ),
             Center(
               child: DisplaySetButton(),
