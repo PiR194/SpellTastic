@@ -1,4 +1,4 @@
-import 'package:code/detailsCharacter.dart';
+import 'detailsCharacter.dart';
 import 'package:flutter/material.dart';
 import 'home.dart';
 import 'set.dart';
