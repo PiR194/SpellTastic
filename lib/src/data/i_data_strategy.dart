@@ -1,3 +1,5 @@
+import '../models/spell.dart';
+
 abstract class IDataStrategy {
-  List loadSpells();
+  List<Spell> loadSpells();
 }
