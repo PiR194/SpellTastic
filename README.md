@@ -1,3 +1,6 @@
+![](images_readme/Banniere_Pathfinder.png)   
+
+
 # **SPELLTASTIC**
 
 ## Bonjour et bienvenue sur le dépôt du projet SpellTastic ! 👋
