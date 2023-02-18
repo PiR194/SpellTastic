@@ -1,4 +1,4 @@
-import 'package:code/classes/test.dart';
+import 'package:code/classes/spell_list_page.dart';
 import 'package:flutter/material.dart';
 import 'home.dart';
 
