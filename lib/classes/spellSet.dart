@@ -14,4 +14,17 @@ class SpellSet {
 
     List<Spell> get spells => _spells;
     set spells(List<Spell> l)  => _spells = l;
+
+    // Methods
+    void addSpell(Spell s) {
+        _spells.add(s);
+    }
+
+    void removeSpell(Spell s) {
+        _spells.remove(s);
+    }
+
+    Spell getSpellByName(String name) {
+        return _spells.firstWhere((s) => s.name == name);
+    }
 }

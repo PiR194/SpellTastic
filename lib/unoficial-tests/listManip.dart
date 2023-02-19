@@ -1,3 +1,7 @@
+/* 
+The purpose of this file is to manually test Character and SpellSet classes.
+*/
+
 import 'dart:io';
 import 'package:code/classes/character.dart';
 import 'package:code/classes/spellSet.dart';
@@ -13,19 +17,20 @@ void main(List<String> args) async {
     var set1 = SpellSet("set1");
     var set2 = SpellSet("set2");
 
-    /*set1.spells.add(spells[27]);
-    set1.spells.add(spells[1220]);
-    set1.spells.add(spells[130]);
-    set1.spells.add(spells[468]);
+    set1.addSpell(spells[27]);
+    set1.addSpell(spells[1220]);
+    set1.addSpell(spells[130]);
+    set1.addSpell(spells[468]);
 
-    set2.spells.add(spells[14]);
-    set2.spells.add(spells[1620]);
-    set2.spells.add(spells[132]);
-    set2.spells.add(spells[469]);*/
+    set2.addSpell(spells[14]);
+    set2.addSpell(spells[1620]);
+    set2.addSpell(spells[132]);
+    set2.addSpell(spells[469]);
 
     var charac = Character("myChar", "Wizard", 1);
-    charac.sets.add(set1);
-    charac.sets.add(set2);
+    charac.addSet(set1);
+    charac.addSet(set2);
+
 }
 
 List<Spell> getAllSpells() {

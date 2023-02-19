@@ -22,5 +22,19 @@ class Character {
 
     List<SpellSet> get sets => _sets;
     set sets(List<SpellSet> sets)  => _sets = sets;
+    
 
+    // Methods
+    void addSet(SpellSet ss) {
+        _sets.add(ss);
+    }
+
+    void removeSet(SpellSet ss) {
+        _sets.remove(ss);
+    }
+
+    SpellSet getSetByName(String name) {
+        return _sets.firstWhere((s) => s.name == name);
+     }
+    
 }
