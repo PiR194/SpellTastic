@@ -26,6 +26,52 @@ class _SpellListPageState extends State<SpellListPage> {
     });
   }
 
+@override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+      title: const Text('Liste de sorts'),
+      actions: <Widget>[
+        IconButton(
+          icon: const Icon(Icons.search),
+          onPressed: () {
+            showSearch(context: context, delegate: SpellSearchDelegate(spells));
+          },
+        ),
+      ],
+    ),
+
+      body: ListView.builder(
+        itemCount: spells_list.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            //leading: Image.file(File('./src/LuvLimule.png')),
+            leading: const Image(
+              image: AssetImage('lib/src/Sprite-SlimeGHallow.png'),
+              height: 150,
+            ),
+            title: Text("Spell List"),
+            trailing: const Icon(
+              Icons.arrow_forward,
+              color: Colors.blueGrey,
+              size: 24.0,
+            ),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SpellDetailsPage(spell: spells_list[index]),
+                ),
+              );
+            },
+          );
+        },
+      ),
+    );
+  }
+
+
+/* OLD WIDGET VIEW LIST 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,5 +93,5 @@ class _SpellListPageState extends State<SpellListPage> {
                 );
               })),
     );
-  }
+  } */
 }
