@@ -1,10 +1,8 @@
 class Spell {
   late int _id;
   late String _name;
-
-  String getName() {
-    return _name.toString();
-  }
+    
+    String get name => _name;
 
   late String _description;
   late String _link;

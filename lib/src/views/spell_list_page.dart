@@ -42,7 +42,7 @@ class _SpellListPageState extends State<SpellListPage> {
                 return Container(
                   padding: const EdgeInsets.all(15),
                   child: Text(
-                      '${spells_list[index].getName.toString()} ${spells_list[index].getSchool.toString()}'),
+                      '${spells_list[index].name} ${spells_list[index].getSchool.toString()}'),
                 );
               })),
     );
