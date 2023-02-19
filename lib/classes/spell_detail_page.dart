@@ -1,8 +1,9 @@
+import 'package:code/classes/spell.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SpellDetailsPage extends StatelessWidget {
-  final Map<String, dynamic> spell;
+  final Spell spell;
 
   SpellDetailsPage({required this.spell});
 
@@ -10,11 +11,11 @@ class SpellDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(spell["name"]),
+        title: Text(spell.name),
         backgroundColor: Color.fromARGB(255, 241, 117, 15),
       ),
       body: Center(
-        child: Text(spell["description"]),
+        child: Text(spell.description),
       ),
     );
   }

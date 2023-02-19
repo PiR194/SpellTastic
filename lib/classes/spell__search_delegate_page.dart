@@ -1,7 +1,9 @@
+import 'package:code/classes/spell.dart';
+import 'package:code/classes/spell_list_widget.dart';
 import 'package:flutter/material.dart';
 
 class SpellSearchDelegate extends SearchDelegate<Map<String, dynamic>> {
-  final List<Map<String, dynamic>> spells;
+  final List<Spell> spells;
 
   SpellSearchDelegate(this.spells);
 
@@ -29,13 +31,13 @@ class SpellSearchDelegate extends SearchDelegate<Map<String, dynamic>> {
 
   @override
   Widget buildResults(BuildContext context) {
-    final filteredSpells = spells.where((spell) => spell['name'].toLowerCase().contains(query.toLowerCase())).toList();
+    final filteredSpells = spells.where((spell) => spell.name.toLowerCase().contains(query.toLowerCase())).toList();
     return SpellList(spells: filteredSpells);
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    final filteredSpells = spells.where((spell) => spell['name'].toLowerCase().contains(query.toLowerCase())).toList();
+    final filteredSpells = spells.where((spell) => spell.name.toLowerCase().contains(query.toLowerCase())).toList();
     return SpellList(spells: filteredSpells);
   }
 }

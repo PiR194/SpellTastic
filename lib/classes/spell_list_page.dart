@@ -1,5 +1,7 @@
 import 'package:code/classes/dbhelper.dart';
 import 'package:code/classes/spell.dart';
+import 'package:code/classes/spell__search_delegate_page.dart';
+import 'package:code/classes/spell_detail_page.dart';
 import 'package:code/data/sqlite_data_strategy.dart';
 import 'package:flutter/material.dart';
 import '../data/i_data_strategy.dart';
@@ -35,7 +37,7 @@ class _SpellListPageState extends State<SpellListPage> {
         IconButton(
           icon: const Icon(Icons.search),
           onPressed: () {
-            showSearch(context: context, delegate: SpellSearchDelegate(spells));
+            showSearch(context: context, delegate: SpellSearchDelegate(spells_list));
           },
         ),
       ],
@@ -50,7 +52,7 @@ class _SpellListPageState extends State<SpellListPage> {
               image: AssetImage('lib/src/Sprite-SlimeGHallow.png'),
               height: 150,
             ),
-            title: Text("Spell List"),
+            title: Text(spells_list[index].name),
             trailing: const Icon(
               Icons.arrow_forward,
               color: Colors.blueGrey,
