@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:code/classes/character.dart';
 import 'package:code/classes/spellSet.dart';
+import 'package:code/data/sqlite_data_strategy.dart';
 import 'package:sqlite3/sqlite3.dart';
 import '../classes/spell.dart';
 import 'package:path/path.dart' as p;
@@ -12,24 +13,27 @@ void main(List<String> args) async {
     var set1 = SpellSet("set1");
     var set2 = SpellSet("set2");
 
+    /*set1.spells.add(spells[27]);
+    set1.spells.add(spells[1220]);
+    set1.spells.add(spells[130]);
+    set1.spells.add(spells[468]);
+
+    set2.spells.add(spells[14]);
+    set2.spells.add(spells[1620]);
+    set2.spells.add(spells[132]);
+    set2.spells.add(spells[469]);*/
+
     var charac = Character("myChar", "Wizard", 1);
     charac.sets.add(set1);
-    
-
+    charac.sets.add(set2);
 }
 
-
-
 List<Spell> getAllSpells() {
-    List<Spell> spells = [];
-
-    // new connexion to database because path here differs
-    Database db = sqlite3.open(p.join(Directory.current.path, "../../assets/pathfinderfr-data.db"));
-
-    List list = db.select('SELECT name, school, description FROM SPELLS WHERE name is not null and school is not null');
-
-    for(int i = 0; i < list.length; i++) {
-        spells.add(Spell(list[i]['name'], list[i]['school'], list[i]['description']));
-    }
-    return spells;
+  try {
+    return SQLiteDataStrategy.getInstance().loadSpells();
+  } on SqliteException catch (e) {
+    print("Error loading spells: ${e.message}");
+    print("Nicolas: You need to execute this file from the root of the project");
+    return [];
+  }
 }
