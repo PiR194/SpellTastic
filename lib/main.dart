@@ -1,9 +1,10 @@
 import 'package:code/detailsCharacter.dart';
+import 'package:code/classes/spell_list_page.dart';
 import 'package:flutter/material.dart';
 import 'home.dart';
 import 'set.dart';
 
-void main() {
+void main() async {
   runApp(const MyApp());
 }
 
@@ -16,7 +17,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Pathfinder  ',
       debugShowCheckedModeBanner: false,
-      home: DetailsCharacter(),
+//      home: DetailsCharacter(),
+      home: SpellListPage(),
     );
   }
 }
