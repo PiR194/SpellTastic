@@ -49,7 +49,7 @@ class _SpellListPageState extends State<SpellListPage> {
           return ListTile(
             //leading: Image.file(File('./src/LuvLimule.png')),
             leading: const Image(
-              image: AssetImage('lib/src/Sprite-SlimeGHallow.png'),
+              image: AssetImage('assets/src/Sprite-SlimeGHallow.png'),
               height: 150,
             ),
             title: Text(spells_list[index].name),
