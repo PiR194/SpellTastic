@@ -6,7 +6,15 @@ import 'package:code/data/sqlite_data_strategy.dart';
 import 'package:flutter/material.dart';
 import '../data/i_data_strategy.dart';
 
+
 List<Spell> spells_list = [];
+enum OrderOption {
+  asc,
+  desc,
+  _default,
+}
+OrderOption currentOrder = OrderOption.asc;
+
 
 class SpellListPage extends StatefulWidget {
   @override
@@ -40,8 +48,32 @@ class _SpellListPageState extends State<SpellListPage> {
             showSearch(context: context, delegate: SpellSearchDelegate(spells_list));
           },
         ),
-      ],
-    ),
+        PopupMenuButton<OrderOption>(
+            onSelected: (value) {
+              setState(() {
+                currentOrder = value;
+                if (currentOrder == OrderOption.asc) {
+                  spells_list.sort((toto, tata) => toto.name.compareTo(tata.name));
+                } else {
+                  spells_list.sort((toto, tata) => tata.name.compareTo(toto.name));
+                }
+              });
+            },
+            icon: const Icon(Icons.filter_alt),
+
+            itemBuilder: (context) => [
+              const PopupMenuItem(
+                value: OrderOption.asc,
+                child: Text('Croissant'),
+              ),
+              const PopupMenuItem(
+                value: OrderOption.desc,
+                child: Text('Décroissant'),
+              ),
+            ],
+          ),
+        ],
+      ),
 
       body: ListView.builder(
         itemCount: spells_list.length,
