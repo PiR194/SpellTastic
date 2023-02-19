@@ -1,4 +1,4 @@
-import 'dart:ffi';
+/* import 'dart:ffi';
 import 'dart:typed_data';
 import 'package:code/classes/spell.dart';
 import 'package:flutter/services.dart';
@@ -48,4 +48,4 @@ class DbHelper {
 
     return spells;
   }
-}
+}*/
