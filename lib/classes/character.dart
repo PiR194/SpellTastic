@@ -5,11 +5,11 @@ class Character {
     String _name;
     final String _cclass; // change into actual cclass Class 
     int _level;
-    List<SpellSet> _sets;
-    List<Spell> _knownSpells;
+    List<SpellSet> _sets = [];
+    List<Spell> _knownSpells = [];
 
     // Constructor
-    Character(this._name, this._cclass, this._level, [this._sets = const [], this._knownSpells = const []]);
+    Character(this._name, this._cclass, this._level);
     
     // Getters and Setters
     String get name => _name;
