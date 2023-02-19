@@ -1,6 +1,5 @@
-import 'package:code/classes/dbhelper.dart';
-import 'package:code/classes/spell.dart';
-import 'package:code/data/sqlite_data_strategy.dart';
+import '../models/spell.dart';
+import '../data/sqlite_data_strategy.dart';
 import 'package:flutter/material.dart';
 import '../data/i_data_strategy.dart';
 
@@ -43,7 +42,7 @@ class _SpellListPageState extends State<SpellListPage> {
                 return Container(
                   padding: const EdgeInsets.all(15),
                   child: Text(
-                      '${spells_list[index].name} ${spells_list[index].school}'),
+                      '${spells_list[index].getName.toString()} ${spells_list[index].getSchool.toString()}'),
                 );
               })),
     );

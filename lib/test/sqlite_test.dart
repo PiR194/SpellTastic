@@ -14,5 +14,5 @@ void main() {
   }
   */
   var i = null;
-  print("Fin du test : $i");
+  print(int.parse("15"));
 }
