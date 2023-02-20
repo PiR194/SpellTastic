@@ -3,8 +3,8 @@ The purpose of this file is to manually test Character and SpellSet classes.
 */
 
 import 'dart:io';
-import 'package:code/classes/character.dart';
-import 'package:code/classes/spellSet.dart';
+import '../src/models/character.dart';
+import '../src/models/spell_set.dart';
 import '../src/data/sqlite_data_strategy.dart';
 import 'package:sqlite3/sqlite3.dart';
 import '../src/models/spell.dart';

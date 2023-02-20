@@ -23,4 +23,8 @@ class Character {
 
   List<SpellSet> get sets => _sets;
   set sets(List<SpellSet> sets) => _sets = sets;
+
+  void addSet(SpellSet set) {
+    _sets.add(set);
+  }
 }

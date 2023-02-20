@@ -15,4 +15,8 @@ class SpellSet {
 
   List<Spell> get spells => _spells;
   set spells(List<Spell> l) => _spells = l;
+
+  void addSpell(Spell spell) {
+    spells.add(spell);
+  }
 }
