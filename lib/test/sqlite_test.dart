@@ -4,15 +4,7 @@ import 'package:code/src/data/i_data_strategy.dart';
 import 'package:code/src/data/sqlite_data_strategy.dart';
 
 void main() {
-  /*
   IDataStrategy data = SQLiteDataStrategy.getInstance();
 
   var list = data.loadSpells();
-
-  for (var spell in list) {
-    print(spell);
-  }
-  */
-  var i = null;
-  print(int.parse("15"));
 }
