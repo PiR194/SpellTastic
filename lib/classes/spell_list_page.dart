@@ -80,10 +80,10 @@ class _SpellListPageState extends State<SpellListPage> {
         itemBuilder: (context, index) {
           return ListTile(
             //leading: Image.file(File('./src/LuvLimule.png')),
-            leading: const Image(
+            /*leading: const Image(
               image: AssetImage('assets/src/Sprite-SlimeGHallow.png'),
               height: 150,
-            ),
+            ),*/
             title: Text(spells_list[index].name),
             trailing: const Icon(
               Icons.arrow_forward,
