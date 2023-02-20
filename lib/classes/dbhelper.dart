@@ -1,4 +1,4 @@
-/* import 'dart:ffi';
+import 'dart:ffi';
 import 'dart:typed_data';
 import 'package:code/classes/spell.dart';
 import 'package:flutter/services.dart';
@@ -39,13 +39,13 @@ class DbHelper {
   Future<List<Spell>> getSpells() async {
     var dbClient = await db;
     List<Map> list =
-        await dbClient!.rawQuery('SELECT name, school FROM SPELLS');
+        await dbClient!.rawQuery('SELECT name, school, description FROM SPELLS WHERE name is not null and school is not null and description is not null');
 
     List<Spell> spells = [];
     for (int i = 0; i < list.length; i++) {
-      spells.add(Spell(list[i]['name'], list[i]['school']));
+      spells.add(Spell(list[i]['name'], list[i]['school'], list[i]['description']));
     }
 
     return spells;
   }
-}*/
+}

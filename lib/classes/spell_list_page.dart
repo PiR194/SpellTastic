@@ -29,8 +29,9 @@ class _SpellListPageState extends State<SpellListPage> {
   }
 
   void getData() async {
-    //List<Spell> spells = await dbHelper.getSpells();
-    var spells = SQLiteDataStrategy.getInstance().loadSpells();
+    var dbHelper = DbHelper();
+    List<Spell> spells = await dbHelper.getSpells();
+/*    var spells = SQLiteDataStrategy.getInstance().loadSpells(); */
     setState(() {
       spells_list = spells;
     });
