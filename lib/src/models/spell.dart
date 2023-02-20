@@ -6,6 +6,7 @@ class Spell {
   String get name => _name;
 
   String _description;
+  String get description => _description;
   String _reference;
   // Setting source
   String _source;
