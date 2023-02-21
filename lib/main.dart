@@ -18,8 +18,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Pathfinder  ',
       debugShowCheckedModeBanner: false,
-//      home: DetailsCharacter(),
-      home: SpellListPage(),
+      //home: DetailsCharacter(),
+      home: Home(),
     );
   }
 }
