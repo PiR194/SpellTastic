@@ -1,4 +1,4 @@
-import '../models/spell.dart';
+import '../model/spell.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

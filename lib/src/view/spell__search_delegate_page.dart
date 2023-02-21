@@ -1,5 +1,5 @@
-import '../models/spell.dart';
-import '../views/spell_list_widget.dart';
+import '../model/spell.dart';
+import '../view/widgets/spell_list_widget.dart';
 import 'package:flutter/material.dart';
 
 class SpellSearchDelegate extends SearchDelegate<Map<String, dynamic>> {

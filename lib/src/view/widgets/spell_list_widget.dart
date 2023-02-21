@@ -1,5 +1,5 @@
-import '../models/spell.dart';
-import './spell_detail_page.dart';
+import '../../model/spell.dart';
+import '../spell_detail_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

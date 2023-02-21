@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'src/views/characterFormWidget.dart';
-import 'src/views/home.dart';
-import 'src/models/spell_set.dart';
-import 'src/views/spell_list_page.dart';
+import 'src/view/spell_list_page.dart';
 
 void main() async {
   runApp(const MyApp());

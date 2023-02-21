@@ -1,4 +1,4 @@
-import '../models/spell.dart';
+import '../model/spell.dart';
 import './spell__search_delegate_page.dart';
 import './spell_detail_page.dart';
 import '../data/sqlite_data_strategy.dart';

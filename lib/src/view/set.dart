@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'spellSetWidget.dart';
+import 'widgets/spellSetWidget.dart';
 import 'home.dart';
 
 class Set extends StatelessWidget {
