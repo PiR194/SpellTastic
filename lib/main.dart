@@ -1,9 +1,5 @@
-import 'package:code/detailsCharacter.dart';
-import 'package:code/classes/spell_list_page.dart';
 import 'package:flutter/material.dart';
-import 'characterFormWidget.dart';
-import 'home.dart';
-import 'set.dart';
+import 'src/view/spell_list_page.dart';
 
 void main() async {
   runApp(const MyApp());

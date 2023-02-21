@@ -1,10 +1,9 @@
-import 'package:code/levelCounterWidget.dart';
-import 'package:code/displaySetButtonWidget.dart';
-import 'package:code/playButtonWidget.dart';
+import 'widgets/levelCounterWidget.dart';
+import 'widgets/displaySetButtonWidget.dart';
+import 'widgets/playButtonWidget.dart';
 import 'package:flutter/material.dart';
-import 'createSetButtonWidget.dart';
-import 'selectSetButtonWidget.dart';
-import 'home.dart';
+import 'widgets/createSetButtonWidget.dart';
+import 'widgets/selectSetButtonWidget.dart';
 
 class DetailsCharacter extends StatelessWidget {
   @override
