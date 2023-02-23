@@ -1,7 +1,5 @@
-import 'package:code/characterFormWidget.dart';
 import 'package:flutter/material.dart';
-
-import 'characterButtonWidget.dart';
+import 'widgets/characterButtonWidget.dart';
 
 class Home extends StatelessWidget {
   @override

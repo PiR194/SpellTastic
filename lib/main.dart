@@ -1,3 +1,4 @@
+import 'package:code/src/view/home.dart';
 import 'package:flutter/material.dart';
 import 'src/view/spell_list_page.dart';
 
