@@ -1,13 +1,18 @@
+import 'package:code/src/view/detailsCharacter.dart';
 import 'package:code/src/view/home.dart';
+import 'package:code/src/view/setDisplay.dart';
+import 'package:code/src/view/spell_list_page.dart';
+import 'package:code/src/view/widgets/characterFormWidget.dart';
 import 'package:flutter/material.dart';
-import 'src/view/spell_list_page.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
 
 void main() async {
+  setUrlStrategy(PathUrlStrategy());
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -15,8 +20,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Pathfinder  ',
       debugShowCheckedModeBanner: false,
-      //home: DetailsCharacter(),
-      home: Home(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => Home(),
+        '/characterform': (context) => CharacterFormWidget(),
+        '/characterdetails': (context) => DetailsCharacter(),
+        '/setdisplay': (context) => SetDisplay(),
+        '/displayallspell': (context) => SpellListPage(),
+      },
     );
   }
 }

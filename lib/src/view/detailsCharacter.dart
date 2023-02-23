@@ -21,10 +21,10 @@ class DetailsCharacter extends StatelessWidget {
               height: 200,
               width: double.infinity,
               decoration: BoxDecoration(
-                color: Colors.grey,
-                image: DecorationImage(
-                  image: AssetImage('assets/images/background_home.png'),
-                  fit: BoxFit.cover,
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [Colors.black, Colors.white],
                 ),
               ),
               child: Column(
@@ -33,7 +33,7 @@ class DetailsCharacter extends StatelessWidget {
                   CircleAvatar(
                     radius: 50,
                     backgroundImage:
-                        AssetImage('assets/images/background_home.png'),
+                        AssetImage('assets/class_icons/Goblins_Fight.png'),
                   ),
                   SizedBox(height: 16),
                   Text(
@@ -41,7 +41,7 @@ class DetailsCharacter extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      color: Colors.black,
                     ),
                   ),
                 ],

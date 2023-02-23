@@ -29,12 +29,7 @@ class DisplaySetButton extends StatelessWidget {
           ),
         ),
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => Home(),
-            ),
-          );
+          Navigator.pushNamed(context, '/setdisplay');
         },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
