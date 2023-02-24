@@ -5,12 +5,14 @@ class DisplaySetButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double halfWidth = MediaQuery.of(context).size.width / 2;
+    const Color accentColor = Color(0xFF9C27B0);
+    const Color primaryColor = Color(0xFFC2185B);
     return SizedBox(
       height: 70,
       width: halfWidth,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          primary: Colors.brown[800],
+          primary: accentColor,
           padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30.0),
@@ -43,7 +45,7 @@ class DisplaySetButton extends StatelessWidget {
                   },
                   child: Text('Modify'),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color.fromARGB(255, 180, 122, 101),
+                    backgroundColor: primaryColor,
                   ),
                 ),
                 const SizedBox(
@@ -55,7 +57,7 @@ class DisplaySetButton extends StatelessWidget {
                   },
                   child: Text('Delete'),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color.fromARGB(255, 180, 122, 101),
+                    backgroundColor: primaryColor,
                   ),
                 ),
               ],

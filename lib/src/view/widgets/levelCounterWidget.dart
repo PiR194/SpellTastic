@@ -18,7 +18,7 @@ class _LevelCounter extends State<LevelCounterWidget> {
 
   void _decrementCount() {
     setState(() {
-      if (_count > 0) {
+      if (_count > 1) {
         _count--;
       }
     });
