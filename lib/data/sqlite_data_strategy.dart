@@ -14,7 +14,8 @@ class SQLiteDataStrategy implements IDataStrategy {
   SQLiteDataStrategy._();
 
   static Future<void> init() async {
-      final dbPath = p.join(await io.Directory.current.path, 'assets', 'pathfinderfr-data.db');
+    final dbPath = p.join(
+        await io.Directory.current.path, 'assets', 'pathfinderfr-data.db');
     /*} else if (Platform.isAndroid || Platform.isWindows) {
       final appDirectory = await getApplicationSupportDirectory();
       dbPath = p.join(appDirectory.path, 'pathfinderfr-data.db');
@@ -34,7 +35,8 @@ class SQLiteDataStrategy implements IDataStrategy {
 
     List<Spell> spells = [];
     for (int i = 0; i < list.length; i++) {
-      spells.add(Spell(list[i]['name'], list[i]['school'], list[i]['description']));
+      spells.add(
+          Spell(list[i]['name'], list[i]['school'], list[i]['description']));
     }
 
     return spells;

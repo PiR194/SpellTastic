@@ -31,12 +31,12 @@ class _SpellListPageState extends State<SpellListPage> {
 
   void getData() async {
     List<Spell> spells;
-    if(Platform.isAndroid) {
+    if (Platform.isAndroid) {
       var dbHelper = DbHelper();
       spells = await dbHelper.getSpells();
     } else {
       await SQLiteDataStrategy.init();
-      spells =  SQLiteDataStrategy.getInstance().loadSpells();
+      spells = SQLiteDataStrategy.getInstance().loadSpells();
     }
     setState(() {
       spells_list = spells;
