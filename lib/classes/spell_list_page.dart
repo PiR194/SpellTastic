@@ -6,15 +6,15 @@ import 'package:code/data/sqlite_data_strategy.dart';
 import 'package:flutter/material.dart';
 import '../data/i_data_strategy.dart';
 
-
 List<Spell> spells_list = [];
+
 enum OrderOption {
   asc,
   desc,
   _default,
 }
-OrderOption currentOrder = OrderOption.asc;
 
+OrderOption currentOrder = OrderOption.asc;
 
 class SpellListPage extends StatefulWidget {
   @override
@@ -29,39 +29,41 @@ class _SpellListPageState extends State<SpellListPage> {
   }
 
   void getData() async {
-    var dbHelper = DbHelper();
-    List<Spell> spells = await dbHelper.getSpells();
-/*    var spells = SQLiteDataStrategy.getInstance().loadSpells(); */
+//    var dbHelper = DbHelper();
+//    List<Spell> spells = await dbHelper.getSpells();
+    var spells = SQLiteDataStrategy.getInstance().loadSpells();
     setState(() {
       spells_list = spells;
     });
   }
 
-@override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-      title: const Text('Liste de sorts'),
-      actions: <Widget>[
-        IconButton(
-          icon: const Icon(Icons.search),
-          onPressed: () {
-            showSearch(context: context, delegate: SpellSearchDelegate(spells_list));
-          },
-        ),
-        PopupMenuButton<OrderOption>(
+        title: const Text('Liste de sorts'),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.search),
+            onPressed: () {
+              showSearch(
+                  context: context, delegate: SpellSearchDelegate(spells_list));
+            },
+          ),
+          PopupMenuButton<OrderOption>(
             onSelected: (value) {
               setState(() {
                 currentOrder = value;
                 if (currentOrder == OrderOption.asc) {
-                  spells_list.sort((toto, tata) => toto.name.compareTo(tata.name));
+                  spells_list
+                      .sort((toto, tata) => toto.name.compareTo(tata.name));
                 } else {
-                  spells_list.sort((toto, tata) => tata.name.compareTo(toto.name));
+                  spells_list
+                      .sort((toto, tata) => tata.name.compareTo(toto.name));
                 }
               });
             },
             icon: const Icon(Icons.filter_alt),
-
             itemBuilder: (context) => [
               const PopupMenuItem(
                 value: OrderOption.asc,
@@ -75,7 +77,6 @@ class _SpellListPageState extends State<SpellListPage> {
           ),
         ],
       ),
-
       body: ListView.builder(
         itemCount: spells_list.length,
         itemBuilder: (context, index) {
@@ -95,7 +96,8 @@ class _SpellListPageState extends State<SpellListPage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => SpellDetailsPage(spell: spells_list[index]),
+                  builder: (context) =>
+                      SpellDetailsPage(spell: spells_list[index]),
                 ),
               );
             },
@@ -104,7 +106,6 @@ class _SpellListPageState extends State<SpellListPage> {
       ),
     );
   }
-
 
 /* OLD WIDGET VIEW LIST 
   @override
