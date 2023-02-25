@@ -5,6 +5,7 @@ import 'package:code/classes/spell_detail_page.dart';
 import 'package:code/data/sqlite_data_strategy.dart';
 import 'package:flutter/material.dart';
 import '../data/i_data_strategy.dart';
+import 'dart:io' show Platform;
 
 List<Spell> spells_list = [];
 
@@ -29,9 +30,14 @@ class _SpellListPageState extends State<SpellListPage> {
   }
 
   void getData() async {
-//    var dbHelper = DbHelper();
-//    List<Spell> spells = await dbHelper.getSpells();
-    var spells = SQLiteDataStrategy.getInstance().loadSpells();
+    List<Spell> spells;
+    if(Platform.isAndroid) {
+      var dbHelper = DbHelper();
+      spells = await dbHelper.getSpells();
+    } else {
+      await SQLiteDataStrategy.init();
+      spells =  SQLiteDataStrategy.getInstance().loadSpells();
+    }
     setState(() {
       spells_list = spells;
     });
