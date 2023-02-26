@@ -1,0 +1,3486 @@
+Multiple devices found:
+Linux (desktop) • linux  • linux-x64      • Arch Linux 6.1.8-arch1-1
+Chrome (web)    • chrome • web-javascript • Google Chrome 108.0.5359.124
+[1]: Linux (linux)
+[2]: Chrome (chrome)
+Please choose one (To quit, press "q/Q"): 1
+Launching lib/test/sqlite_test.dart on Linux in debug mode...
+Building Linux application...                                   
+flutter: name: Abondance de munitions 
+school: Invocation
+flutter: name: Abri 
+school: Évocation
+flutter: name: Abri de toile 
+school: Invocation
+flutter: name: Absorption d'énergie 
+school: Nécromancie
+flutter: name: Absorption de toxine 
+school: Nécromancie
+flutter: name: Accélération du poison 
+school: Transmutation
+flutter: name: Accompagnement exquis 
+school: Illusion
+flutter: name: Accorder la grâce 
+school: Abjuration
+flutter: name: Accorder la grâce du champion 
+school: Transmutation
+flutter: name: Action conditionnée 
+school: Évocation
+flutter: name: Action interdite 
+school: Enchantement
+flutter: name: Action interdite supérieure 
+school: Enchantement
+flutter: name: Adaptation planaire 
+school: Transmutation
+flutter: name: Adaptation planaire de groupe 
+school: Transmutation
+flutter: name: Adoration 
+school: Enchantement
+flutter: name: Affûtage 
+school: Transmutation
+flutter: name: Agonie 
+school: Évocation
+flutter: name: Agrandissement 
+school: Transmutation
+flutter: name: Agrandissement de groupe 
+school: Transmutation
+flutter: name: Aide 
+school: Enchantement
+flutter: name: Aiguillon persuasif 
+school: Nécromancie
+flutter: name: Aire de l'aigle 
+school: Invocation
+flutter: name: Alarme 
+school: Abjuration
+flutter: name: Alarme d'invisibilité 
+school: Abjuration
+flutter: name: Aliénation mentale 
+school: Enchantement
+flutter: name: Alignement indétectable 
+school: Abjuration
+flutter: name: Allegro 
+school: Transmutation
+flutter: name: Allié compatissant 
+school: Enchantement
+flutter: name: Allié d'outreplan 
+school: Invocation
+flutter: name: Allié majeur d'outreplan 
+school: Invocation
+flutter: name: Allié suprême d'outreplan 
+school: Invocation
+flutter: name: Allié involontaire 
+school: Enchantement
+flutter: name: Allié spirituel 
+school: Évocation
+flutter: name: Altération vocale 
+school: Transmutation
+flutter: name: Amélioration de piège 
+school: Transmutation
+flutter: name: Ami de la forêt 
+school: Abjuration
+flutter: name: Amplification d'élixir 
+school: Transmutation
+flutter: name: Analyse d'enchantement 
+school: Divination
+flutter: name: Anathème 
+school: Nécromancie
+flutter: name: Anatomie morte-vivante I 
+school: Transmutation
+flutter: name: Anatomie morte-vivante II 
+school: Transmutation
+flutter: name: Anatomie morte-vivante III 
+school: Transmutation
+flutter: name: Anatomie morte-vivante IV 
+school: Transmutation
+flutter: name: Ancre dimensionnelle 
+school: Abjuration
+flutter: name: Ancre d'ombre 
+school: Illusion
+flutter: name: Animal anthropomorphe 
+school: Transmutation
+flutter: name: Animation des morts mineure 
+school: Nécromancie
+flutter: name: Animation des morts 
+school: Nécromancie
+flutter: name: Animation des plantes 
+school: Transmutation
+flutter: name: Animation d'objets 
+school: Transmutation
+flutter: name: Animation suspendue 
+school: Transmutation
+flutter: name: Annihilation de mort-vivant 
+school: Nécromancie
+flutter: name: Annulation d'enchantement 
+school: Abjuration
+flutter: name: Anticipation du danger 
+school: Divination
+flutter: name: Antidétection 
+school: Abjuration
+flutter: name: Antidétection (partagé) 
+school: Abjuration
+flutter: name: Apaisement de créatures artificielles 
+school: Abjuration
+flutter: name: Apaisement des animaux 
+school: Enchantement
+flutter: name: Apaisement des émotions 
+school: Enchantement
+flutter: name: Appel cacophonique 
+school: Enchantement
+flutter: name: Appel cacophonique de groupe 
+school: Enchantement
+flutter: name: Appel de créature artificielle 
+school: Invocation
+flutter: name: Appel de la foudre 
+school: Évocation
+flutter: name: Appel de la tempête 
+school: Évocation
+flutter: name: Appel des pierres 
+school: Invocation
+flutter: name: Appel du chevalier 
+school: Enchantement
+flutter: name: Appel d'un animal 
+school: Enchantement
+flutter: name: Appel du néant 
+school: Évocation
+flutter: name: Appel du tueur planaire 
+school: Enchantement
+flutter: name: Appel purifié 
+school: Invocation
+flutter: name: Apprentissage par le sang 
+school: Divination
+flutter: name: Arbres de siège 
+school: Transmutation
+flutter: name: Arbres de siège supérieur 
+school: Transmutation
+flutter: name: Arc de gravité 
+school: Transmutation
+flutter: name: Arc électrique 
+school: Évocation
+flutter: name: Arc-bâton 
+school: Transmutation
+flutter: name: Arme alignée 
+school: Transmutation
+flutter: name: Arme alignée commune 
+school: Transmutation
+flutter: name: Arme boomerang 
+school: Invocation
+flutter: name: Arme boomerang (partagé) 
+school: Invocation
+flutter: name: Arme de glace bénie 
+school: Transmutation
+flutter: name: Arme de glace maudite 
+school: Transmutation
+flutter: name: Arme destructrice 
+school: Transmutation
+flutter: name: Arme d'ombre 
+school: Illusion
+flutter: name: Arme improvisée raffinée 
+school: Transmutation
+flutter: name: Arme infaillible 
+school: Transmutation
+flutter: name: Arme magique 
+school: Transmutation
+flutter: name: Arme magique suprême 
+school: Transmutation
+flutter: name: Arme merveilleuse 
+school: Transmutation
+flutter: name: Arme polyvalente 
+school: Transmutation
+flutter: name: Arme protectrice 
+school: Abjuration
+flutter: name: Arme spirituelle 
+school: Évocation
+flutter: name: Armure de mage 
+school: Invocation
+flutter: name: Armure impie 
+school: Abjuration
+flutter: name: Armure instantanée 
+school: Invocation
+flutter: name: Armure sainte 
+school: Abjuration
+flutter: name: Armure sans effort 
+school: Transmutation
+flutter: name: Arrêt du temps 
+school: Transmutation
+flutter: name: Aspect animal 
+school: Transmutation
+flutter: name: Aspect animal supérieur 
+school: Transmutation
+flutter: name: Aspect de fée hantée 
+school: Illusion
+flutter: name: Aspect de l'ours 
+school: Transmutation
+flutter: name: Aspect du cerf 
+school: Transmutation
+flutter: name: Aspect du faucon 
+school: Transmutation
+flutter: name: Aspect du loup 
+school: Transmutation
+flutter: name: Aspect terrifiant 
+school: Transmutation
+flutter: name: Aspersion acide 
+school: Invocation
+flutter: name: Assassin imaginaire 
+school: Illusion
+flutter: name: Assemblage par télékinésie 
+school: Transmutation
+flutter: name: Assimilation retardée 
+school: Transmutation
+flutter: name: Assistance divine 
+school: Divination
+flutter: name: Assistant de chargement 
+school: Invocation
+flutter: name: Atavisme 
+school: Transmutation
+flutter: name: Atavisme de groupe 
+school: Transmutation
+flutter: name: Attirance 
+school: Enchantement
+flutter: name: Augure 
+school: Divination
+flutter: name: Aura d'archon 
+school: Évocation
+flutter: name: Aura de bravoure supérieure 
+school: Abjuration
+flutter: name: Aura de funeste destin 
+school: Nécromancie
+flutter: name: Aura élémentaire 
+school: Évocation
+flutter: name: Aura magique 
+school: Illusion
+flutter: name: Aura maudite 
+school: Abjuration
+flutter: name: Aura sacrée 
+school: Abjuration
+flutter: name: Avancée assurée 
+school: Abjuration
+flutter: name: Aversion 
+school: Enchantement
+flutter: name: Bafouiller 
+school: Enchantement
+flutter: name: Bagou 
+school: Transmutation
+flutter: name: Baie nourricière 
+school: Transmutation
+flutter: name: Baiser de la goule 
+school: Nécromancie
+flutter: name: Baiser du vampire 
+school: Nécromancie
+flutter: name: Balle dédiée supérieure 
+school: Divination
+flutter: name: Balle dédiée 
+school: Divination
+flutter: name: Bandes de protection 
+school: Invocation
+flutter: name: Bannir les faux-semblants 
+school: Abjuration
+flutter: name: Bannissement 
+school: Abjuration
+flutter: name: Barde d'ombre 
+school: Illusion
+flutter: name: Barrière de lames 
+school: Évocation
+flutter: name: Barrière étourdissante 
+school: Abjuration
+flutter: name: Barrière étourdissante suprême 
+school: Abjuration
+flutter: name: Barrière protectrice 
+school: Invocation
+flutter: name: Bâton à sort 
+school: Transmutation
+flutter: name: Bâton serpent 
+school: Transmutation
+flutter: name: Bâton sylvanien 
+school: Transmutation
+flutter: name: Bénédiction 
+school: Enchantement
+flutter: name: Bénédiction d'arme 
+school: Transmutation
+flutter: name: Bénédiction de ferveur 
+school: Transmutation
+flutter: name: Bénédiction de la salamandre 
+school: Transmutation
+flutter: name: Bénédiction de la taupe 
+school: Transmutation
+flutter: name: Bénédiction de l'eau 
+school: Transmutation
+flutter: name: Bénédiction de vie et de courage 
+school: Invocation
+flutter: name: Bénédiction karmique 
+school: Divination
+flutter: name: Berceuse 
+school: Enchantement
+flutter: name: Biographie du sang 
+school: Divination
+flutter: name: Blasphème 
+school: Évocation
+flutter: name: Blessure critique de groupe 
+school: Nécromancie
+flutter: name: Blessure critique 
+school: Nécromancie
+flutter: name: Blessure grave 
+school: Nécromancie
+flutter: name: Blessure importante de groupe 
+school: Nécromancie
+flutter: name: Blessure légère de groupe 
+school: Nécromancie
+flutter: name: Blessure légère 
+school: Nécromancie
+flutter: name: Blessure modérée de groupe 
+school: Nécromancie
+flutter: name: Blessure modérée 
+school: Nécromancie
+flutter: name: Bois de fer 
+school: Transmutation
+flutter: name: Bombe boursouflée 
+school: Nécromancie
+flutter: name: Bosquet reposant 
+school: Invocation
+flutter: name: Bouche magique 
+school: Illusion
+flutter: name: Bouclier d'onde 
+school: Abjuration
+flutter: name: Bouclier de défense 
+school: Abjuration
+flutter: name: Bouclier de défense suprême 
+school: Abjuration
+flutter: name: Bouclier de feu 
+school: Évocation
+flutter: name: Bouclier de foudre 
+school: Abjuration
+flutter: name: Bouclier de la foi 
+school: Abjuration
+flutter: name: Bouclier de la Loi 
+school: Abjuration
+flutter: name: Bouclier de pierre 
+school: Invocation
+flutter: name: Bouclier entropique 
+school: Abjuration
+flutter: name: Bouclier involontaire 
+school: Nécromancie
+flutter: name: Bouclier pare-balles 
+school: Abjuration
+flutter: name: Bouclier sacré 
+school: Abjuration
+flutter: name: Bouclier 
+school: Abjuration
+flutter: name: Boule de feu à retardement 
+school: Évocation
+flutter: name: Boule de feu 
+school: Évocation
+flutter: name: Boule de foudre 
+school: Évocation
+flutter: name: Boule de goudron 
+school: Transmutation
+flutter: name: Boulette 
+school: Enchantement
+flutter: name: Bourrasque 
+school: Évocation
+flutter: name: Brandon 
+school: Transmutation
+flutter: name: Brise 
+school: Évocation
+flutter: name: Briser les liens 
+school: Évocation
+flutter: name: Brise-magie mineur 
+school: Abjuration
+flutter: name: Brise-magie 
+school: Abjuration
+flutter: name: Brise-magie suprême 
+school: Abjuration
+flutter: name: Broderie 
+school: Transmutation
+flutter: name: Brouillard dense 
+school: Invocation
+flutter: name: Bruit pénible 
+school: Évocation
+flutter: name: Brume acide 
+school: Invocation
+flutter: name: Brume de dissimulation 
+school: Invocation
+flutter: name: Brume de vitriol 
+school: Évocation
+flutter: name: Brume hantée 
+school: Illusion
+flutter: name: Brume mentale 
+school: Enchantement
+flutter: name: Brume mortelle 
+school: Invocation
+flutter: name: Brume sanglante 
+school: Invocation
+flutter: name: Bulle d'air 
+school: Invocation
+flutter: name: Bulle de vie 
+school: Abjuration
+flutter: name: Cacher le camp 
+school: Illusion
+flutter: name: Cacophonie distrayante 
+school: Évocation
+flutter: name: Cacophonie 
+school: Évocation
+flutter: name: Cadeau empoisonné 
+school: Nécromancie
+flutter: name: Cage de force 
+school: Évocation
+flutter: name: Calme illusoire 
+school: Illusion
+flutter: name: Canalisation de vie 
+school: Transmutation
+flutter: name: Canon arcanique 
+school: Transmutation
+flutter: name: Capture d'âme 
+school: Nécromancie
+flutter: name: Caresse de la mer 
+school: Transmutation
+flutter: name: Caresse élémentaire 
+school: Évocation
+flutter: name: Caresse vaseuse 
+school: Invocation
+flutter: name: Carreau de peur 
+school: Évocation
+flutter: name: Cassé 
+school: Transmutation
+flutter: name: Cauchemar 
+school: Illusion
+flutter: name: Cécité/surdité 
+school: Nécromancie
+flutter: name: Cercle de clarté 
+school: Abjuration
+flutter: name: Cercle de mort 
+school: Nécromancie
+flutter: name: Cercle de téléportation 
+school: Invocation
+flutter: name: Cercle magique contre la Loi 
+school: Abjuration
+flutter: name: Cercle magique contre le Bien 
+school: Abjuration
+flutter: name: Cercle magique contre le Chaos 
+school: Abjuration
+flutter: name: Cercle magique contre le Mal 
+school: Abjuration
+flutter: name: Chagrin écrasant 
+school: Enchantement
+flutter: name: Chaîne de perdition 
+school: Évocation
+flutter: name: Champ de force 
+school: Abjuration
+flutter: name: Chance de l'artisan 
+school: Transmutation
+flutter: name: Changement de forme 
+school: Transmutation
+flutter: name: Changement de plan 
+school: Invocation
+flutter: name: Chant assourdissant 
+school: Évocation
+flutter: name: Chant de discorde 
+school: Enchantement
+flutter: name: Chant de footing 
+school: Transmutation
+flutter: name: Char fantôme 
+school: Invocation
+flutter: name: Charge de fourmi (partagé) 
+school: Transmutation
+flutter: name: Charge de fourmi 
+school: Transmutation
+flutter: name: Charge télékinétique 
+school: Évocation
+flutter: name: Charmant cadeau 
+school: Enchantement
+flutter: name: Charme-animal 
+school: Enchantement
+flutter: name: Charme-monstre de groupe 
+school: Enchantement
+flutter: name: Charme-monstre 
+school: Enchantement
+flutter: name: Charme-personne 
+school: Enchantement
+flutter: name: Châtiment sacré 
+school: Évocation
+flutter: name: Chêne animé 
+school: Transmutation
+flutter: name: Chevaucher la foudre 
+school: Évocation
+flutter: name: Chevaucher les vagues 
+school: Transmutation
+flutter: name: Cheveux étrangleurs 
+school: Transmutation
+flutter: name: Chien de chasse 
+school: Transmutation
+flutter: name: Chien de garde 
+school: Invocation
+flutter: name: Choc 
+school: Transmutation
+flutter: name: Chœur hanté 
+school: Nécromancie
+flutter: name: Chute de température 
+school: Évocation
+flutter: name: Clairaudience/clairvoyance 
+school: Divination
+flutter: name: Clignotement 
+school: Transmutation
+flutter: name: Clone 
+school: Nécromancie
+flutter: name: Coffre secret 
+school: Invocation
+flutter: name: Colère partagée 
+school: Enchantement
+flutter: name: Colère 
+school: Enchantement
+flutter: name: Collet 
+school: Transmutation
+flutter: name: Colonne de feu 
+school: Évocation
+flutter: name: Combattant pris au dépourvu 
+school: Enchantement
+flutter: name: Communication à distance 
+school: Évocation
+flutter: name: Communication avec les animaux 
+school: Divination
+flutter: name: Communication avec les apparitions 
+school: Nécromancie
+flutter: name: Communication avec les morts 
+school: Nécromancie
+flutter: name: Communication avec les plantes 
+school: Divination
+flutter: name: Communion avec la nature 
+school: Divination
+flutter: name: Communion 
+school: Divination
+flutter: name: Compréhension des langages 
+school: Divination
+flutter: name: Conducteur fantôme 
+school: Invocation
+flutter: name: Cône de froid 
+school: Évocation
+flutter: name: Confession 
+school: Enchantement
+flutter: name: Confusion mineure 
+school: Enchantement
+flutter: name: Confusion 
+school: Enchantement
+flutter: name: Connaissances du Borgne 
+school: Divination
+flutter: name: Connaître son ennemi 
+school: Divination
+flutter: name: Consécration 
+school: Évocation
+flutter: name: Contact absorbant 
+school: Transmutation
+flutter: name: Contact avec les plans 
+school: Divination
+flutter: name: Contact calcificateur 
+school: Transmutation
+flutter: name: Contact corrosif 
+school: Invocation
+flutter: name: Contact défigurant 
+school: Transmutation
+flutter: name: Contact gelé 
+school: Évocation
+flutter: name: Contact glacial 
+school: Nécromancie
+flutter: name: Contact mutagène 
+school: Transmutation
+flutter: name: Contagion supérieure 
+school: Nécromancie
+flutter: name: Contagion 
+school: Nécromancie
+flutter: name: Contrat intermédiaire 
+school: Invocation
+flutter: name: Contrat suprême 
+school: Invocation
+flutter: name: Contrat 
+school: Invocation
+flutter: name: Contrôle de créature artificielle 
+school: Transmutation
+flutter: name: Contrôle de l'eau 
+school: Transmutation
+flutter: name: Contrôle des créatures convoquées 
+school: Enchantement
+flutter: name: Contrôle des morts-vivants 
+school: Nécromancie
+flutter: name: Contrôle des plantes 
+school: Transmutation
+flutter: name: Contrôle des vents 
+school: Transmutation
+flutter: name: Contrôle du climat 
+school: Transmutation
+flutter: name: Contrôle mineur des morts-vivants 
+school: Nécromancie
+flutter: name: Convocation d'alliés mineur 
+school: Invocation
+flutter: name: Convocation d'alliés naturels I 
+school: Invocation
+flutter: name: Convocation d'alliés naturels II 
+school: Invocation
+flutter: name: Convocation d'alliés naturels III 
+school: Invocation
+flutter: name: Convocation d'alliés naturels IV 
+school: Invocation
+flutter: name: Convocation d'alliés naturels IX 
+school: Invocation
+flutter: name: Convocation d'alliés naturels V 
+school: Invocation
+flutter: name: Convocation d'alliés naturels VI 
+school: Invocation
+flutter: name: Convocation d'alliés naturels VII 
+school: Invocation
+flutter: name: Convocation d'alliés naturels VIII 
+school: Invocation
+flutter: name: Convocation de froghémoth 
+school: Invocation
+flutter: name: Convocation de monstres mineure 
+school: Invocation
+flutter: name: Convocation de monstres I 
+school: Invocation
+flutter: name: Convocation de monstres II 
+school: Invocation
+flutter: name: Convocation de monstres III 
+school: Invocation
+flutter: name: Convocation de monstres IV 
+school: Invocation
+flutter: name: Convocation de monstres IX 
+school: Invocation
+flutter: name: Convocation de monstres V 
+school: Invocation
+flutter: name: Convocation de monstres VI 
+school: Invocation
+flutter: name: Convocation de monstres VII 
+school: Invocation
+flutter: name: Convocation de monstres VIII 
+school: Invocation
+flutter: name: Convocation de pudding noir 
+school: Invocation
+flutter: name: Convocation de ver vénérable 
+school: Invocation
+flutter: name: Convocation d'eidolon 
+school: Invocation
+flutter: name: Convocation d'instrument 
+school: Invocation
+flutter: name: Convocation d'ombres suprême 
+school: Illusion
+flutter: name: Convocation d'ombres 
+school: Illusion
+flutter: name: Coquille antiplantes 
+school: Abjuration
+flutter: name: Coquille antivie 
+school: Abjuration
+flutter: name: Coquille anti-créatures intangibles 
+school: Abjuration
+flutter: name: Cor de poursuite 
+school: Évocation
+flutter: name: Corde animée 
+school: Transmutation
+flutter: name: Corde d'échardes 
+school: Évocation
+flutter: name: Corde enchantée 
+school: Transmutation
+flutter: name: Corps de fer 
+school: Transmutation
+flutter: name: Corps de glace 
+school: Transmutation
+flutter: name: Corps élémentaire I 
+school: Transmutation
+flutter: name: Corps élémentaire II 
+school: Transmutation
+flutter: name: Corps élémentaire III 
+school: Transmutation
+flutter: name: Corps élémentaire IV 
+school: Transmutation
+flutter: name: Corps enflammé 
+school: Transmutation
+flutter: name: Corps épineux 
+school: Transmutation
+flutter: name: Corrosion 
+school: Invocation
+flutter: name: Couleurs dansantes 
+school: Illusion
+flutter: name: Coup au but 
+school: Divination
+flutter: name: Coup retentissant 
+school: Évocation
+flutter: name: Coup tonitruant 
+school: Transmutation
+flutter: name: Coupe de poussière 
+school: Transmutation
+flutter: name: Couronne de lames 
+school: Abjuration
+flutter: name: Courroux de l'ordre 
+school: Évocation
+flutter: name: Coursier fantôme (partagé) 
+school: Invocation
+flutter: name: Coursier fantôme 
+school: Invocation
+flutter: name: Crachat venimeux 
+school: Transmutation
+flutter: name: Crâne ricanant 
+school: Illusion
+flutter: name: Création de carte au trésor 
+school: Divination
+flutter: name: Création de demi-plan mineure 
+school: Invocation
+flutter: name: Création de demi-plan supérieure 
+school: Invocation
+flutter: name: Création de demi-plan 
+school: Invocation
+flutter: name: Création de fosse 
+school: Invocation
+flutter: name: Création de mort-vivant dominant 
+school: Nécromancie
+flutter: name: Création de mort-vivant 
+school: Nécromancie
+flutter: name: Création de nourriture et d'eau 
+school: Invocation
+flutter: name: Création d'eau 
+school: Invocation
+flutter: name: Création majeure 
+school: Invocation
+flutter: name: Création mineure 
+school: Invocation
+flutter: name: Créature artificielle incassable 
+school: Abjuration
+flutter: name: Creusement 
+school: Transmutation
+flutter: name: Cri ki 
+school: Évocation
+flutter: name: Cri perçant 
+school: Évocation
+flutter: name: Cri strident 
+school: Évocation
+flutter: name: Cri suprême 
+school: Évocation
+flutter: name: Cri 
+school: Évocation
+flutter: name: Crochet de force 
+school: Évocation
+flutter: name: Croissance animale 
+school: Transmutation
+flutter: name: Croissance d'épines 
+school: Transmutation
+flutter: name: Croissance végétale 
+school: Transmutation
+flutter: name: Cyclone 
+school: Évocation
+flutter: name: Dague de stalactite 
+school: Invocation
+flutter: name: Dangereux final 
+school: Évocation
+flutter: name: Danse des cent coupures 
+school: Transmutation
+flutter: name: Danse des mille coupures 
+school: Transmutation
+flutter: name: Danse irrésistible 
+school: Enchantement
+flutter: name: De la soie à l'acier 
+school: Transmutation
+flutter: name: Débilité 
+school: Enchantement
+flutter: name: Déblocage 
+school: Transmutation
+flutter: name: Décharge défensive 
+school: Évocation
+flutter: name: Décharge électrique 
+school: Évocation
+flutter: name: Décomposition de cadavre 
+school: Nécromancie
+flutter: name: Décret 
+school: Évocation
+flutter: name: Dédale 
+school: Invocation
+flutter: name: Défi du héros 
+school: Invocation
+flutter: name: Défier le mal 
+school: Enchantement
+flutter: name: Défoliant 
+school: Nécromancie
+flutter: name: Déformation douloureuse 
+school: Transmutation
+flutter: name: Déguisement 
+school: Illusion
+flutter: name: Déguisement fantomatique 
+school: Illusion
+flutter: name: Déguiser autrui 
+school: Illusion
+flutter: name: Délivrance 
+school: Abjuration
+flutter: name: Délivrance de la paralysie 
+school: Invocation
+flutter: name: Délivrance des malédictions 
+school: Abjuration
+flutter: name: Démarche aérienne 
+school: Transmutation
+flutter: name: Démarche aérienne de groupe 
+school: Transmutation
+flutter: name: Démarche du caméléon 
+school: Illusion
+flutter: name: Dénonciation 
+school: Enchantement
+flutter: name: Dépense 
+school: Abjuration
+flutter: name: Déplacement 
+school: Illusion
+flutter: name: Désespoir foudroyant 
+school: Enchantement
+flutter: name: Désintégration 
+school: Transmutation
+flutter: name: Désir anormal 
+school: Enchantement
+flutter: name: Destruction 
+school: Nécromancie
+flutter: name: Destruction de mort-vivant 
+school: Nécromancie
+flutter: name: Détection de la faune ou de la flore 
+school: Divination
+flutter: name: Détection de la Loi 
+school: Divination
+flutter: name: Détection de la magie 
+school: Divination
+flutter: name: Détection de la scrutation 
+school: Divination
+flutter: name: Détection de l'invisibilité 
+school: Divination
+flutter: name: Détection de pensées 
+school: Divination
+flutter: name: Détection des aberrations 
+school: Divination
+flutter: name: Détection des collets et des fosses 
+school: Divination
+flutter: name: Détection des morts-vivants 
+school: Divination
+flutter: name: Détection des passages secrets 
+school: Divination
+flutter: name: Détection des pièges 
+school: Divination
+flutter: name: Détection du Bien 
+school: Divination
+flutter: name: Détection du Chaos 
+school: Divination
+flutter: name: Détection du Mal 
+school: Divination
+flutter: name: Détection du mensonge 
+school: Divination
+flutter: name: Détection du poison 
+school: Divination
+flutter: name: Détection faussée 
+school: Illusion
+flutter: name: Détonation 
+school: Évocation
+flutter: name: Détonation discordante 
+school: Évocation
+flutter: name: Détremper 
+school: Invocation
+flutter: name: Déviation 
+school: Abjuration
+flutter: name: Diagnostic 
+school: Divination
+flutter: name: Discours captivant 
+school: Enchantement
+flutter: name: Disjonction 
+school: Abjuration
+flutter: name: Disparition 
+school: Illusion
+flutter: name: Disque flottant 
+school: Évocation
+flutter: name: Dissimulation d'objet 
+school: Abjuration
+flutter: name: Dissimulation suprême 
+school: Abjuration
+flutter: name: Dissimuler la magie 
+school: Illusion
+flutter: name: Dissimuler la magie (partagé) 
+school: Illusion
+flutter: name: Dissipation de la fièvre 
+school: Invocation
+flutter: name: Dissipation de la magie 
+school: Abjuration
+flutter: name: Dissipation suprême 
+school: Abjuration
+flutter: name: Distorsion du bois 
+school: Transmutation
+flutter: name: Distorsion spatiale 
+school: Transmutation
+flutter: name: Divination 
+school: Divination
+flutter: name: Doigt de mort 
+school: Nécromancie
+flutter: name: Domination 
+school: Enchantement
+flutter: name: Domination d'animal 
+school: Enchantement
+flutter: name: Domination universelle 
+school: Enchantement
+flutter: name: Don des langues 
+school: Divination
+flutter: name: Don des langues (partagé) 
+school: Divination
+flutter: name: Double illusoire 
+school: Illusion
+flutter: name: Dragon d'artifice 
+school: Transmutation
+flutter: name: Dysfonctionnement 
+school: Transmutation
+flutter: name: Échapper au temps 
+school: Transmutation
+flutter: name: Échec annoncé 
+school: Divination
+flutter: name: Écholocalisation 
+school: Transmutation
+flutter: name: Éclair multiple 
+school: Évocation
+flutter: name: Éclair 
+school: Évocation
+flutter: name: Éclat du chaos 
+school: Évocation
+flutter: name: Écran 
+school: Illusion
+flutter: name: Effacement 
+school: Transmutation
+flutter: name: Efforts coordonnés 
+school: Divination
+flutter: name: Effroi 
+school: Nécromancie
+flutter: name: Élan de rapidité 
+school: Transmutation
+flutter: name: Éloignement du bois 
+school: Transmutation
+flutter: name: Éloignement du métal et de la pierre 
+school: Abjuration
+flutter: name: Empire végétal 
+school: Transmutation
+flutter: name: Empoisonnement 
+school: Nécromancie
+flutter: name: Emprisonnement 
+school: Abjuration
+flutter: name: Emprunt de chance 
+school: Évocation
+flutter: name: Emprunt de compétence 
+school: Transmutation
+flutter: name: Enchevêtrement flamboyant 
+school: Évocation
+flutter: name: Enchevêtrement 
+school: Transmutation
+flutter: name: Endurance aux énergies destructives (partagé) 
+school: Abjuration
+flutter: name: Endurance aux énergies destructives 
+school: Abjuration
+flutter: name: Endurance de l'ours de groupe 
+school: Transmutation
+flutter: name: Endurance de l'ours 
+school: Transmutation
+flutter: name: Énergie négative 
+school: Nécromancie
+flutter: name: Engin de siège magique supérieur 
+school: Transmutation
+flutter: name: Engin de siège magique 
+school: Transmutation
+flutter: name: Engouement téméraire 
+school: Enchantement
+flutter: name: Ennemi amical 
+school: Enchantement
+flutter: name: Ennemi contondant 
+school: Transmutation
+flutter: name: Ennemi des enchantements 
+school: Abjuration
+flutter: name: Ennemi du moment 
+school: Enchantement
+flutter: name: Ennemi subconscient 
+school: Illusion
+flutter: name: Ennui oppressant 
+school: Enchantement
+flutter: name: Entrave 
+school: Enchantement
+flutter: name: Entrer dans une image 
+school: Transmutation
+flutter: name: Épée de force 
+school: Évocation
+flutter: name: Épée impie 
+school: Évocation
+flutter: name: Épée sainte 
+school: Évocation
+flutter: name: Épidémie 
+school: Nécromancie
+flutter: name: Éruption caustique 
+school: Invocation
+flutter: name: Éruption de flèches 
+school: Invocation
+flutter: name: Éruption de pustules 
+school: Transmutation
+flutter: name: Espace sacré 
+school: Évocation
+flutter: name: Espoir 
+school: Enchantement
+flutter: name: Esprit de l'arc 
+school: Invocation
+flutter: name: Esprit impénétrable (partagé) 
+school: Abjuration
+flutter: name: Esprit impénétrable 
+school: Abjuration
+flutter: name: Esprit malveillant 
+school: Enchantement
+flutter: name: Esprit protecteur 
+school: Invocation
+flutter: name: Estoc sonore 
+school: Évocation
+flutter: name: État gazeux 
+school: Transmutation
+flutter: name: Étincelles 
+school: Évocation
+flutter: name: Étrange fièvre 
+school: Nécromancie
+flutter: name: Éveil 
+school: Transmutation
+flutter: name: Évolution mineure 
+school: Transmutation
+flutter: name: Évolution supérieure 
+school: Transmutation
+flutter: name: Évolution 
+school: Transmutation
+flutter: name: Excavation expéditive 
+school: Transmutation
+flutter: name: Exécution 
+school: Nécromancie
+flutter: name: Exigence 
+school: Enchantement
+flutter: name: Exilé par la nature 
+school: Transmutation
+flutter: name: Explosion de lumière 
+school: Évocation
+flutter: name: Extase 
+school: Invocation
+flutter: name: Extinction des feux 
+school: Transmutation
+flutter: name: Fabrication de balles 
+school: Transmutation
+flutter: name: Fabrication 
+school: Transmutation
+flutter: name: Façonnage de cadavre 
+school: Nécromancie
+flutter: name: Façonnage de la pierre 
+school: Transmutation
+flutter: name: Façonnage du bois 
+school: Transmutation
+flutter: name: Fardeau de l'oracle 
+school: Nécromancie
+flutter: name: Fatigue 
+school: Nécromancie
+flutter: name: Faux-semblant 
+school: Illusion
+flutter: name: Faveur divine 
+school: Évocation
+flutter: name: Férocité du blaireau 
+school: Transmutation
+flutter: name: Festin de cendres 
+school: Transmutation
+flutter: name: Festin des héros 
+school: Invocation
+flutter: name: Feu de camp abrité 
+school: Évocation
+flutter: name: Feu du jugement 
+school: Évocation
+flutter: name: Feuille morte 
+school: Transmutation
+flutter: name: Fierté illusoire 
+school: Enchantement
+flutter: name: Final étourdissant 
+school: Enchantement
+flutter: name: Final héroïque 
+school: Enchantement
+flutter: name: Final purificateur 
+school: Invocation
+flutter: name: Final revigorant 
+school: Évocation
+flutter: name: Final salvateur 
+school: Évocation
+flutter: name: Flamme contagieuse 
+school: Évocation
+flutter: name: Flamme éternelle 
+school: Évocation
+flutter: name: Flammes de la vengeance 
+school: Évocation
+flutter: name: Flammes du fidèle 
+school: Transmutation
+flutter: name: Flammes 
+school: Évocation
+flutter: name: Fléau d'insectes 
+school: Invocation
+flutter: name: Flèche acide 
+school: Invocation
+flutter: name: Flèche de ki 
+school: Invocation
+flutter: name: Flèche de l'aube 
+school: Évocation
+flutter: name: Flèche de loi 
+school: Évocation
+flutter: name: Flèche sacrée 
+school: Transmutation
+flutter: name: Flèches enflammées 
+school: Transmutation
+flutter: name: Flétrissement végétal 
+school: Nécromancie
+flutter: name: Flétrissure 
+school: Nécromancie
+flutter: name: Flot obsidien 
+school: Transmutation
+flutter: name: Flou 
+school: Illusion
+flutter: name: Folle hallucination 
+school: Illusion
+flutter: name: Force de taureau de groupe 
+school: Transmutation
+flutter: name: Force de taureau 
+school: Transmutation
+flutter: name: Force du colosse 
+school: Transmutation
+flutter: name: Forme bestiale I 
+school: Transmutation
+flutter: name: Forme bestiale II 
+school: Transmutation
+flutter: name: Forme bestiale III 
+school: Transmutation
+flutter: name: Forme bestiale IV 
+school: Transmutation
+flutter: name: Forme d'arbre 
+school: Transmutation
+flutter: name: Forme de bébé 
+school: Transmutation
+flutter: name: Forme de géant I 
+school: Transmutation
+flutter: name: Forme de géant II 
+school: Transmutation
+flutter: name: Forme de poussière 
+school: Transmutation
+flutter: name: Forme de vase I 
+school: Transmutation
+flutter: name: Forme de vase II 
+school: Transmutation
+flutter: name: Forme de vase III 
+school: Transmutation
+flutter: name: Forme de vermine I 
+school: Transmutation
+flutter: name: Forme de vermine II 
+school: Transmutation
+flutter: name: Forme draconique I 
+school: Transmutation
+flutter: name: Forme draconique II 
+school: Transmutation
+flutter: name: Forme draconique III 
+school: Transmutation
+flutter: name: Forme éthérée 
+school: Transmutation
+flutter: name: Forme liquide 
+school: Transmutation
+flutter: name: Forme végétale I 
+school: Transmutation
+flutter: name: Forme végétale II 
+school: Transmutation
+flutter: name: Forme végétale III 
+school: Transmutation
+flutter: name: Forme véritable 
+school: Abjuration
+flutter: name: Formule universelle 
+school: Transmutation
+flutter: name: Fosse acide 
+school: Invocation
+flutter: name: Fosse affamée 
+school: Invocation
+flutter: name: Fosse hérissée de pieux 
+school: Invocation
+flutter: name: Fou rire 
+school: Enchantement
+flutter: name: Fracassement 
+school: Évocation
+flutter: name: Frappe de la corneille sanglante 
+school: Évocation
+flutter: name: Frappe douloureuse de groupe 
+school: Évocation
+flutter: name: Frappe douloureuse 
+school: Évocation
+flutter: name: Frappe miroir 
+school: Transmutation
+flutter: name: Frayeur 
+school: Nécromancie
+flutter: name: Froid pénétrant 
+school: Nécromancie
+flutter: name: Froide frappe de glace 
+school: Évocation
+flutter: name: Fuite du barde 
+school: Invocation
+flutter: name: Fusion avec le familier 
+school: Nécromancie
+flutter: name: Fusion dans la pierre 
+school: Transmutation
+flutter: name: Fustiger de groupe 
+school: Enchantement
+flutter: name: Fustiger 
+school: Enchantement
+flutter: name: Gardien de la foi 
+school: Abjuration
+flutter: name: Germes de feu 
+school: Invocation
+flutter: name: Geyser 
+school: Invocation
+flutter: name: Glace bénie 
+school: Transmutation
+flutter: name: Glace maudite 
+school: Transmutation
+flutter: name: Glissement de terrain 
+school: Transmutation
+flutter: name: Globe d'invulnérabilité partielle 
+school: Abjuration
+flutter: name: Globe d'invulnérabilité renforcée 
+school: Abjuration
+flutter: name: Glyphe de garde 
+school: Abjuration
+flutter: name: Glyphe de garde suprême 
+school: Abjuration
+flutter: name: Gourdin magique 
+school: Transmutation
+flutter: name: Grâce 
+school: Abjuration
+flutter: name: Grâce féline 
+school: Transmutation
+flutter: name: Grâce féline de groupe 
+school: Transmutation
+flutter: name: Graisse 
+school: Invocation
+flutter: name: Grand pas 
+school: Transmutation
+flutter: name: Grand tertre 
+school: Invocation
+flutter: name: Grandes illuminations 
+school: Évocation
+flutter: name: Griffes sanglantes 
+school: Nécromancie
+flutter: name: Guérison de destrier 
+school: Invocation
+flutter: name: Guérison de la cécité/surdité 
+school: Invocation
+flutter: name: Guérison des maladies 
+school: Invocation
+flutter: name: Guérison diabolique 
+school: Abjuration
+flutter: name: Guérison suprême 
+school: Invocation
+flutter: name: Guérison suprême de groupe 
+school: Invocation
+flutter: name: Guide 
+school: Divination
+flutter: name: Habileté en selle 
+school: Transmutation
+flutter: name: Halo de gloire 
+school: Invocation
+flutter: name: Harmonie profane 
+school: Évocation
+flutter: name: Havresombre 
+school: Transmutation
+flutter: name: Hébétement 
+school: Enchantement
+flutter: name: Hébétement de groupe 
+school: Enchantement
+flutter: name: Hébétement de monstre 
+school: Enchantement
+flutter: name: Héroïsme 
+school: Enchantement
+flutter: name: Héroïsme suprême 
+school: Enchantement
+flutter: name: Heurt de pierres 
+school: Invocation
+flutter: name: Hostilité forcée 
+school: Enchantement
+flutter: name: Hurlement d'agonie 
+school: Nécromancie
+flutter: name: Hurlement du chasseur 
+school: Nécromancie
+flutter: name: Hurlement perçant 
+school: Évocation
+flutter: name: Hypnose des animaux 
+school: Enchantement
+flutter: name: Hypnose 
+school: Enchantement
+flutter: name: Hurlement primitif 
+school: Abjuration
+flutter: name: Identification 
+school: Divination
+flutter: name: Idiotie 
+school: Enchantement
+flutter: name: Illumination 
+school: Évocation
+flutter: name: Image accomplie 
+school: Illusion
+flutter: name: Image de foudre 
+school: Illusion
+flutter: name: Image imparfaite 
+school: Illusion
+flutter: name: Image miroir 
+school: Illusion
+flutter: name: Image permanente 
+school: Illusion
+flutter: name: Image prédéterminée 
+school: Illusion
+flutter: name: Image programmée 
+school: Illusion
+flutter: name: Image silencieuse 
+school: Illusion
+flutter: name: Immobilisation d'animal 
+school: Enchantement
+flutter: name: Immobilisation de monstre de groupe 
+school: Enchantement
+flutter: name: Immobilisation de monstre 
+school: Enchantement
+flutter: name: Immobilisation de morts-vivants 
+school: Nécromancie
+flutter: name: Immobilisation de personne de groupe 
+school: Enchantement
+flutter: name: Immobilisation de personne 
+school: Enchantement
+flutter: name: Immolation spontanée 
+school: Évocation
+flutter: name: Immunité contre les sorts 
+school: Abjuration
+flutter: name: Immunité contre les sorts (partagé) 
+school: Abjuration
+flutter: name: Immunité contre les sorts suprême 
+school: Abjuration
+flutter: name: Immunité contre les sorts suprême (partagé) 
+school: Abjuration
+flutter: name: Implosion 
+school: Évocation
+flutter: name: Imprécation 
+school: Enchantement
+flutter: name: imprégner d'aura 
+school: Transmutation
+flutter: name: Infatigable poursuivant 
+school: Transmutation
+flutter: name: Infatigables poursuivants 
+school: Transmutation
+flutter: name: Infestation de vers 
+school: Invocation
+flutter: name: Infestation fongique 
+school: Nécromancie
+flutter: name: Injection 
+school: Transmutation
+flutter: name: Injonction suprême 
+school: Enchantement
+flutter: name: Injonction 
+school: Enchantement
+flutter: name: Innocence 
+school: Transmutation
+flutter: name: Innombrables yeux 
+school: Transmutation
+flutter: name: Inspection 
+school: Divination
+flutter: name: Inspiration brillante 
+school: Évocation
+flutter: name: Inspiration galante 
+school: Divination
+flutter: name: Inspiration opportune 
+school: Divination
+flutter: name: Instant de gloire 
+school: Enchantement
+flutter: name: Instrument d'agonie 
+school: Transmutation
+flutter: name: Interdiction du fou 
+school: Abjuration
+flutter: name: Interdiction 
+school: Abjuration
+flutter: name: Interrogatoire supérieur 
+school: Nécromancie
+flutter: name: Interrogatoire 
+school: Nécromancie
+flutter: name: Invasion d'orties 
+school: Invocation
+flutter: name: Invective cuisante 
+school: Évocation
+flutter: name: Inversion de la gravité 
+school: Transmutation
+flutter: name: Invisibilité de groupe 
+school: Illusion
+flutter: name: Invisibilité pour les animaux 
+school: Abjuration
+flutter: name: Invisibilité pour les morts-vivants 
+school: Abjuration
+flutter: name: Invisibilité suprême 
+school: Illusion
+flutter: name: Invisibilité 
+school: Illusion
+flutter: name: Invocation héroïque 
+school: Enchantement
+flutter: name: Invocation instantanée 
+school: Invocation
+flutter: name: Jet d'acide 
+school: Invocation
+flutter: name: Jet de flammes 
+school: Transmutation
+flutter: name: Jeunesse apparente 
+school: Transmutation
+flutter: name: Jouer d'un instrument 
+school: Divination
+flutter: name: Joueur de flûte 
+school: Enchantement
+flutter: name: Juggernaut mortel 
+school: Nécromancie
+flutter: name: Jumeau 
+school: Transmutation
+flutter: name: Juxtaposition hostile supérieure 
+school: Invocation
+flutter: name: Juxtaposition hostile 
+school: Invocation
+flutter: name: Lame de feu 
+school: Évocation
+flutter: name: Lame de sombre triomphe 
+school: Transmutation
+flutter: name: Lame de triomphe éclatant 
+school: Transmutation
+flutter: name: Lame du crépuscule 
+school: Évocation
+flutter: name: Lamentation du lâche 
+school: Enchantement
+flutter: name: Lames de plomb 
+school: Transmutation
+flutter: name: Lance de lumière 
+school: Évocation
+flutter: name: Lance de pureté 
+school: Évocation
+flutter: name: Langage caché 
+school: Transmutation
+flutter: name: Langue de miel 
+school: Transmutation
+flutter: name: Langue élémentaire 
+school: Divination
+flutter: name: Lanterne dansante 
+school: Transmutation
+flutter: name: Le roi et la tour 
+school: Invocation
+flutter: name: Lecture de la magie 
+school: Divination
+flutter: name: Lenteur 
+school: Transmutation
+flutter: name: Leurre 
+school: Illusion
+flutter: name: Lévitation hostile 
+school: Transmutation
+flutter: name: Lévitation 
+school: Transmutation
+flutter: name: Libération 
+school: Transmutation
+flutter: name: Liberté de mouvement 
+school: Abjuration
+flutter: name: Lien avec l'invocateur 
+school: Nécromancie
+flutter: name: Lien de vie supérieur 
+school: Invocation
+flutter: name: Lien de vie 
+school: Invocation
+flutter: name: Lien des esprits combatifs 
+school: Divination
+flutter: name: Lien mental avec le compagnon 
+school: Enchantement
+flutter: name: Lien sacré 
+school: Invocation
+flutter: name: Lien télépathique 
+school: Divination
+flutter: name: Litanie de défense 
+school: Transmutation
+flutter: name: Litanie de faiblesse 
+school: Nécromancie
+flutter: name: Litanie de folie 
+school: Enchantement
+flutter: name: Litanie de fuite 
+school: Invocation
+flutter: name: Litanie de paresse 
+school: Enchantement
+flutter: name: Litanie de prévention 
+school: Transmutation
+flutter: name: Litanie de tonnerre 
+school: Évocation
+flutter: name: Litanie de vengeance 
+school: Transmutation
+flutter: name: Litanie de vertu 
+school: Évocation
+flutter: name: Litanie de vision 
+school: Divination
+flutter: name: Litanie d'éloquence 
+school: Enchantement
+flutter: name: Litanie d'enchevêtrement 
+school: Invocation
+flutter: name: Localisation de créature 
+school: Divination
+flutter: name: Localisation d'objet 
+school: Divination
+flutter: name: Localisation suprême 
+school: Divination
+flutter: name: Lueur d'arc-en-ciel 
+school: Illusion
+flutter: name: Lueur féerique 
+school: Évocation
+flutter: name: Lueurs hypnotiques 
+school: Illusion
+flutter: name: Lumière brûlante 
+school: Évocation
+flutter: name: Lumière du jour 
+school: Évocation
+flutter: name: Lumière du jugement 
+school: Évocation
+flutter: name: Lumière 
+school: Évocation
+flutter: name: Lumières dansantes 
+school: Évocation
+flutter: name: Mâchoires d'acier 
+school: Transmutation
+flutter: name: Magie des ombres suprême 
+school: Illusion
+flutter: name: Magie des ombres 
+school: Illusion
+flutter: name: Main broyeuse 
+school: Évocation
+flutter: name: Main du berger 
+school: Évocation
+flutter: name: Main impérieuse 
+school: Évocation
+flutter: name: Main interposée 
+school: Évocation
+flutter: name: Main spectrale 
+school: Nécromancie
+flutter: name: Main vagabonde 
+school: Évocation
+flutter: name: Mains brûlantes 
+school: Évocation
+flutter: name: Maladresse 
+school: Transmutation
+flutter: name: Malchance de l'artisan 
+school: Transmutation
+flutter: name: Malédiction 
+school: Nécromancie
+flutter: name: Malédiction de dégoût 
+school: Enchantement
+flutter: name: Malédiction de l'eau 
+school: Nécromancie
+flutter: name: Malédiction de négation magique 
+school: Abjuration
+flutter: name: Malédiction majeure 
+school: Nécromancie
+flutter: name: Manipulation à distance 
+school: Transmutation
+flutter: name: Manipulation des sons 
+school: Transmutation
+flutter: name: Manoir somptueux 
+school: Invocation
+flutter: name: Manteau de calme 
+school: Enchantement
+flutter: name: Manteau de colère 
+school: Évocation
+flutter: name: Manteau de guêpes 
+school: Invocation
+flutter: name: Manteau de rêves 
+school: Enchantement
+flutter: name: Manteau de vent 
+school: Abjuration
+flutter: name: Manteau d'ombre 
+school: Abjuration
+flutter: name: Manteau du Chaos 
+school: Abjuration
+flutter: name: Manteau marin 
+school: Invocation
+flutter: name: Marche dans les airs (partagé) 
+school: Transmutation
+flutter: name: Marche dans les airs 
+school: Transmutation
+flutter: name: Marche sur l'onde (partagé) 
+school: Transmutation
+flutter: name: Marche sur l'onde 
+school: Transmutation
+flutter: name: Marionnette de peau 
+school: Nécromancie
+flutter: name: Marque de la justice 
+school: Nécromancie
+flutter: name: Marque supérieure 
+school: Transmutation
+flutter: name: Marque 
+school: Transmutation
+flutter: name: Marque d'évidente morale 
+school: Divination
+flutter: name: Marques d'interdiction 
+school: Abjuration
+flutter: name: Marteau arboricole 
+school: Transmutation
+flutter: name: Marteau du chaos 
+school: Évocation
+flutter: name: Mauvais œil 
+school: Nécromancie
+flutter: name: Mauvais présage 
+school: Enchantement
+flutter: name: Mémorisation 
+school: Transmutation
+flutter: name: Menottes scellées 
+school: Évocation
+flutter: name: Mépris absolu 
+school: Enchantement
+flutter: name: Message 
+school: Transmutation
+flutter: name: Messager animal 
+school: Enchantement
+flutter: name: Métal brûlant 
+school: Transmutation
+flutter: name: Métal gelé 
+school: Transmutation
+flutter: name: Métal solaire 
+school: Transmutation
+flutter: name: Métamorphose animale 
+school: Transmutation
+flutter: name: Métamorphose funeste 
+school: Transmutation
+flutter: name: Métamorphose suprême 
+school: Transmutation
+flutter: name: Métamorphose universelle 
+school: Transmutation
+flutter: name: Métamorphose 
+school: Transmutation
+flutter: name: Miracle 
+school: Évocation
+flutter: name: Mirage 
+school: Illusion
+flutter: name: Mise à mal 
+school: Nécromancie
+flutter: name: Mise à mort 
+school: Nécromancie
+flutter: name: Misérable pitié 
+school: Abjuration
+flutter: name: Mission 
+school: Enchantement
+flutter: name: Mixture pour bombe à décharge de foudre 
+school: Évocation
+flutter: name: Mixture pour bombe ciblée 
+school: Transmutation
+flutter: name: Mixture pour bombe de vipère 
+school: Invocation
+flutter: name: Mixture pour bombe d'emprisonnement 
+school: Évocation
+flutter: name: Mixture pour bombe d'ombre 
+school: Invocation
+flutter: name: Mixture pour bombe languide 
+school: Enchantement
+flutter: name: Modification d'apparence 
+school: Transmutation
+flutter: name: Modification de mémoire 
+school: Enchantement
+flutter: name: Modification des vents 
+school: Transmutation
+flutter: name: Moment de prescience 
+school: Divination
+flutter: name: Monture (partagé) 
+school: Invocation
+flutter: name: Monture de guerre 
+school: Enchantement
+flutter: name: Monture 
+school: Invocation
+flutter: name: Morsure du froid 
+school: Transmutation
+flutter: name: Morsure magique suprême 
+school: Transmutation
+flutter: name: Morsure magique 
+school: Transmutation
+flutter: name: Mort rampante 
+school: Invocation
+flutter: name: Mot de fermeté 
+school: Abjuration
+flutter: name: Mot de pouvoir aveuglant 
+school: Enchantement
+flutter: name: Mot de pouvoir étourdissant 
+school: Enchantement
+flutter: name: Mot de pouvoir mortel 
+school: Enchantement
+flutter: name: Mot de rappel 
+school: Invocation
+flutter: name: Motif scintillant 
+school: Illusion
+flutter: name: Mur de cécité/surdité 
+school: Nécromancie
+flutter: name: Mur de fer 
+school: Invocation
+flutter: name: Mur de feu 
+school: Évocation
+flutter: name: Mur de force 
+school: Évocation
+flutter: name: Mur de glace 
+school: Évocation
+flutter: name: Mur de lave 
+school: Invocation
+flutter: name: Mur de pierre 
+school: Invocation
+flutter: name: Mur de son 
+school: Évocation
+flutter: name: Mur de suppression 
+school: Abjuration
+flutter: name: Mur de vent 
+school: Évocation
+flutter: name: Mur d'épines 
+school: Invocation
+flutter: name: Mur illusoire 
+school: Illusion
+flutter: name: Mur prismatique 
+school: Abjuration
+flutter: name: Murmure sacré 
+school: Évocation
+flutter: name: Mythes et légendes 
+school: Divination
+flutter: name: Nappe de brouillard 
+school: Invocation
+flutter: name: Nappe de goudron 
+school: Transmutation
+flutter: name: Narcissisme suffisant 
+school: Enchantement
+flutter: name: Négation de l'arôme 
+school: Transmutation
+flutter: name: Négation de l'invisibilité 
+school: Évocation
+flutter: name: Neutralisation du poison 
+school: Invocation
+flutter: name: Note pétrifiante 
+school: Enchantement
+flutter: name: Note tangible 
+school: Invocation
+flutter: name: Nuage de toile 
+school: Invocation
+flutter: name: Nuage incendiaire 
+school: Invocation
+flutter: name: Nuage nauséabond 
+school: Invocation
+flutter: name: Nuée de météores 
+school: Évocation
+flutter: name: Nuée d'élémentaires 
+school: Invocation
+flutter: name: Nuée grouillante 
+school: Invocation
+flutter: name: Nuées d'orage 
+school: Évocation
+flutter: name: Nuit polaire 
+school: Transmutation
+flutter: name: Œil de faucon 
+school: Divination
+flutter: name: Œil du chasseur 
+school: Divination
+flutter: name: Œil du mage 
+school: Divination
+flutter: name: Œil du mitrailleur 
+school: Transmutation
+flutter: name: Œil indiscret 
+school: Divination
+flutter: name: Œil indiscret suprême 
+school: Divination
+flutter: name: Orbe aqueux 
+school: Invocation
+flutter: name: Orbe du néant 
+school: Nécromancie
+flutter: name: Ordre assassin 
+school: Enchantement
+flutter: name: Ordre libérateur 
+school: Transmutation
+flutter: name: Orientation 
+school: Divination
+flutter: name: Ouverture/fermeture 
+school: Transmutation
+flutter: name: Pacte avec la terre 
+school: Enchantement
+flutter: name: Pacte vital 
+school: Nécromancie
+flutter: name: Page secrète 
+school: Transmutation
+flutter: name: Paix forcée 
+school: Abjuration
+flutter: name: Panacée universelle 
+school: Transmutation
+flutter: name: Panoplie du champion 
+school: Abjuration
+flutter: name: Panoplie magique 
+school: Transmutation
+flutter: name: Paria 
+school: Abjuration
+flutter: name: Parole du Chaos 
+school: Évocation
+flutter: name: Parole résonnante 
+school: Transmutation
+flutter: name: Parole sacrée 
+school: Évocation
+flutter: name: Partage de la langue (partagé) 
+school: Divination
+flutter: name: Partage de la langue 
+school: Divination
+flutter: name: Partage des sens 
+school: Divination
+flutter: name: Partage des souvenirs 
+school: Divination
+flutter: name: Pas de l'ombre 
+school: Illusion
+flutter: name: Passage dans l'éther 
+school: Transmutation
+flutter: name: Passage sans trace 
+school: Transmutation
+flutter: name: Passe-muraille 
+school: Transmutation
+flutter: name: Pattes d'araignée (partagé) 
+school: Transmutation
+flutter: name: Pattes d'araignée 
+school: Transmutation
+flutter: name: Peau de nuée 
+school: Transmutation
+flutter: name: Peau de pierre (partagé) 
+school: Abjuration
+flutter: name: Peau de pierre 
+school: Abjuration
+flutter: name: Peau d'écorce 
+school: Transmutation
+flutter: name: Peau résineuse 
+school: Transmutation
+flutter: name: Pénitence 
+school: Abjuration
+flutter: name: Pénombre protectrice 
+school: Évocation
+flutter: name: Pénombre 
+school: Évocation
+flutter: name: Perception de la mort 
+school: Nécromancie
+flutter: name: Perception des indices 
+school: Transmutation
+flutter: name: Permanence 
+school: Universel
+flutter: name: Perspicacité tactique 
+school: Enchantement
+flutter: name: Pétrification 
+school: Transmutation
+flutter: name: Phalange de bois 
+school: Invocation
+flutter: name: Physique monstrueux I 
+school: Transmutation
+flutter: name: Physique monstrueux II 
+school: Transmutation
+flutter: name: Physique monstrueux III 
+school: Transmutation
+flutter: name: Physique monstrueux IV 
+school: Transmutation
+flutter: name: Pied aérien 
+school: Transmutation
+flutter: name: Piège à feu 
+school: Abjuration
+flutter: name: Piège de téléportation 
+school: Abjuration
+flutter: name: Piège illusoire 
+school: Illusion
+flutter: name: Pierre magique 
+school: Transmutation
+flutter: name: Pierres acérées 
+school: Transmutation
+flutter: name: Pierres commères 
+school: Divination
+flutter: name: Pilier de vie 
+school: Invocation
+flutter: name: Pistage des traces 
+school: Divination
+flutter: name: Piste olfactive 
+school: Transmutation
+flutter: name: Plaie au visage 
+school: Nécromancie
+flutter: name: Plainte d'outre-tombe 
+school: Nécromancie
+flutter: name: Planer 
+school: Transmutation
+flutter: name: Pleine lune 
+school: Enchantement
+flutter: name: Pluie de grenouilles 
+school: Invocation
+flutter: name: Pluie de plomb 
+school: Invocation
+flutter: name: Poigne agrippeuse 
+school: Évocation
+flutter: name: Poigne sûre 
+school: Transmutation
+flutter: name: Poing béni 
+school: Transmutation
+flutter: name: Poing de force 
+school: Évocation
+flutter: name: Poing de pierre 
+school: Transmutation
+flutter: name: Poing serré 
+school: Évocation
+flutter: name: Point de ralliement 
+school: Enchantement
+flutter: name: Poison pernicieux 
+school: Nécromancie
+flutter: name: Portail 
+school: Invocation
+flutter: name: Porte de phase 
+school: Invocation
+flutter: name: Porte dimensionnelle 
+school: Invocation
+flutter: name: Porte-peste 
+school: Nécromancie
+flutter: name: Possession de marionnette 
+school: Nécromancie
+flutter: name: Possession d'objet 
+school: Nécromancie
+flutter: name: Possession 
+school: Nécromancie
+flutter: name: Poudre affaiblie 
+school: Transmutation
+flutter: name: Poudre d'escampette 
+school: Invocation
+flutter: name: Poudre instable 
+school: Transmutation
+flutter: name: Poudre mouillée 
+school: Transmutation
+flutter: name: Poudre stable 
+school: Transmutation
+flutter: name: Poursuite divine 
+school: Transmutation
+flutter: name: Poussée hydraulique 
+school: Évocation
+flutter: name: Poussière d'étoile 
+school: Illusion
+flutter: name: Poussière du crépuscule 
+school: Invocation
+flutter: name: Poussière scintillante 
+school: Invocation
+flutter: name: Prémonition 
+school: Divination
+flutter: name: Présage débilitant 
+school: Enchantement
+flutter: name: Présage traumatisant 
+school: Évocation
+flutter: name: Présence écrasante 
+school: Enchantement
+flutter: name: Préservation des morts 
+school: Nécromancie
+flutter: name: Prestidigitation 
+school: Universel
+flutter: name: Prévoyance 
+school: Évocation
+flutter: name: Prière 
+school: Enchantement
+flutter: name: Prison de glace de groupe 
+school: Évocation
+flutter: name: Prison de glace 
+school: Évocation
+flutter: name: Profanation 
+school: Évocation
+flutter: name: Projectile de toile 
+school: Invocation
+flutter: name: Projectile empoisonné 
+school: Nécromancie
+flutter: name: Projectile magique 
+school: Évocation
+flutter: name: Projection astrale mineure 
+school: Nécromancie
+flutter: name: Projection astrale 
+school: Nécromancie
+flutter: name: Projection d'image 
+school: Illusion
+flutter: name: Projection d'ombre 
+school: Nécromancie
+flutter: name: Protection contre la Loi (partagé) 
+school: Abjuration
+flutter: name: Protection contre la Loi 
+school: Abjuration
+flutter: name: Protection contre la mort 
+school: Nécromancie
+flutter: name: Protection contre la mort-vivance 
+school: Nécromancie
+flutter: name: Protection contre le Bien (partagé) 
+school: Abjuration
+flutter: name: Protection contre le Bien 
+school: Abjuration
+flutter: name: Protection contre le Chaos (partagé) 
+school: Abjuration
+flutter: name: Protection contre le Chaos 
+school: Abjuration
+flutter: name: Protection contre le Mal (partagé) 
+school: Abjuration
+flutter: name: Protection contre le Mal 
+school: Abjuration
+flutter: name: Protection contre les énergies destructives (partagé) 
+school: Abjuration
+flutter: name: Protection contre les énergies destructives 
+school: Abjuration
+flutter: name: Protection contre les projectiles (partagé) 
+school: Abjuration
+flutter: name: Protection contre les projectiles 
+school: Abjuration
+flutter: name: Protection contre les sorts 
+school: Abjuration
+flutter: name: Protection d'autrui 
+school: Abjuration
+flutter: name: Protection des fidèles 
+school: Abjuration
+flutter: name: Puissance divine 
+school: Évocation
+flutter: name: Puissantes mâchoires 
+school: Transmutation
+flutter: name: Pulsion de jalousie 
+school: Enchantement
+flutter: name: Pur dégoût 
+school: Enchantement
+flutter: name: Purification de nourriture et d'eau 
+school: Transmutation
+flutter: name: Purification 
+school: Évocation
+flutter: name: Purulence de groupe 
+school: Nécromancie
+flutter: name: Purulence 
+school: Nécromancie
+flutter: name: Putréfaction de l'eau et de la nourriture 
+school: Transmutation
+flutter: name: Pyrotechnie 
+school: Transmutation
+flutter: name: Quête 
+school: Enchantement
+flutter: name: Rabougrissement des plantes 
+school: Transmutation
+flutter: name: Racine 
+school: Transmutation
+flutter: name: Rage 
+school: Enchantement
+flutter: name: Rage morte-vivante 
+school: Nécromancie
+flutter: name: Ralentissement du poison (partagé) 
+school: Invocation
+flutter: name: Ralentissement du poison 
+school: Invocation
+flutter: name: Ramollissement de la terre et de la pierre 
+school: Transmutation
+flutter: name: Rancune 
+school: Abjuration
+flutter: name: Rapetissement d'animal 
+school: Transmutation
+flutter: name: Rapetissement de groupe 
+school: Transmutation
+flutter: name: Rapetissement 
+school: Transmutation
+flutter: name: Rapidité 
+school: Transmutation
+flutter: name: Rappel à la vie 
+school: Invocation
+flutter: name: Rappel de compagnon animal 
+school: Invocation
+flutter: name: Rapport 
+school: Divination
+flutter: name: Rayon affaiblissant 
+school: Nécromancie
+flutter: name: Rayon ardent 
+school: Évocation
+flutter: name: Rayon aveuglant 
+school: Évocation
+flutter: name: Rayon de fièvre 
+school: Nécromancie
+flutter: name: Rayon de givre 
+school: Évocation
+flutter: name: Rayon de soleil 
+school: Évocation
+flutter: name: Rayon d'épuisement 
+school: Nécromancie
+flutter: name: Rayon polaire 
+school: Évocation
+flutter: name: Rayons prismatiques 
+school: Évocation
+flutter: name: Réaction négative 
+school: Illusion
+flutter: name: Réceptacle de l'oracle 
+school: Transmutation
+flutter: name: Réceptacle divin 
+school: Transmutation
+flutter: name: Recherche de pensées 
+school: Divination
+flutter: name: Recul excessif 
+school: Transmutation
+flutter: name: Réduction d'objet 
+school: Transmutation
+flutter: name: Reflets d'ombre 
+school: Illusion
+flutter: name: Refuge du mage 
+school: Invocation
+flutter: name: Refuge 
+school: Invocation
+flutter: name: Regain d'assurance 
+school: Abjuration
+flutter: name: Regard brûlant 
+school: Évocation
+flutter: name: Régénération d'eidolon mineure 
+school: Invocation
+flutter: name: Régénération d'eidolon supérieure 
+school: Invocation
+flutter: name: Régénération d'eidolon 
+school: Invocation
+flutter: name: Régénération 
+school: Invocation
+flutter: name: Régression 
+school: Transmutation
+flutter: name: Régression ancestrale 
+school: Transmutation
+flutter: name: Réincarnation 
+school: Transmutation
+flutter: name: Rejet de la Loi 
+school: Abjuration
+flutter: name: Rejet du Bien 
+school: Abjuration
+flutter: name: Rejet du Chaos 
+school: Abjuration
+flutter: name: Rejet du Mal 
+school: Abjuration
+flutter: name: Remémoration 
+school: Transmutation
+flutter: name: Rempart 
+school: Invocation
+flutter: name: Rendre un jugement supérieur 
+school: Divination
+flutter: name: Rendre un jugement 
+school: Divination
+flutter: name: Renforcer l'armement (partagé) 
+school: Transmutation
+flutter: name: Renforcer l'armement 
+school: Transmutation
+flutter: name: Renvoi des sorts 
+school: Abjuration
+flutter: name: Renvoi 
+school: Abjuration
+flutter: name: Réparation improvisée 
+school: Transmutation
+flutter: name: Réparation intégrale 
+school: Transmutation
+flutter: name: Réparation rapide 
+school: Transmutation
+flutter: name: Réparation 
+school: Transmutation
+flutter: name: Repentir forcé 
+school: Enchantement
+flutter: name: Repérage 
+school: Divination
+flutter: name: Repérer les faiblesses 
+school: Divination
+flutter: name: Repli expéditif 
+school: Transmutation
+flutter: name: Repos éternel 
+school: Nécromancie
+flutter: name: Représailles 
+school: Nécromancie
+flutter: name: Représentation de virtuose 
+school: Transmutation
+flutter: name: Réprimande 
+school: Évocation
+flutter: name: Réprobation 
+school: Transmutation
+flutter: name: Répulsif 
+school: Abjuration
+flutter: name: Requiem pour les fantômes de groupe 
+school: Transmutation
+flutter: name: Requiem pour les fantômes 
+school: Transmutation
+flutter: name: Réservoir draconique 
+school: Évocation
+flutter: name: Résistance 
+school: Abjuration
+flutter: name: Résistance à la corruption 
+school: Abjuration
+flutter: name: Résistance à l'âge mineure 
+school: Transmutation
+flutter: name: Résistance à l'âge supérieure 
+school: Transmutation
+flutter: name: Résistance à l'âge 
+school: Transmutation
+flutter: name: Résistance à la magie 
+school: Abjuration
+flutter: name: Résistance aux énergies destructives (partagé) 
+school: Abjuration
+flutter: name: Résistance aux énergies destructives 
+school: Abjuration
+flutter: name: Résonance 
+school: Évocation
+flutter: name: Respiration aquatique 
+school: Transmutation
+flutter: name: Restauration de cadavre 
+school: Nécromancie
+flutter: name: Restauration d'eidolon mineure 
+school: Invocation
+flutter: name: Restauration d'eidolon 
+school: Invocation
+flutter: name: Restauration partielle 
+school: Invocation
+flutter: name: Restauration suprême 
+school: Invocation
+flutter: name: Restauration 
+school: Invocation
+flutter: name: Résurrection suprême 
+school: Invocation
+flutter: name: Résurrection temporaire 
+school: Nécromancie
+flutter: name: Résurrection 
+school: Invocation
+flutter: name: Retardement de la douleur 
+school: Enchantement
+flutter: name: Retenir la main 
+school: Enchantement
+flutter: name: Réverbération cinétique 
+school: Transmutation
+flutter: name: Revigorer de groupe 
+school: Illusion
+flutter: name: Revigorer 
+school: Illusion
+flutter: name: River le regard 
+school: Enchantement
+flutter: name: Rivière de vent 
+school: Évocation
+flutter: name: Rouille 
+school: Transmutation
+flutter: name: Runes explosives 
+school: Abjuration
+flutter: name: Ruse du renard de groupe 
+school: Transmutation
+flutter: name: Ruse du renard 
+school: Transmutation
+flutter: name: Rythme naturel 
+school: Transmutation
+flutter: name: Sables changeants 
+school: Transmutation
+flutter: name: Sables du temps 
+school: Nécromancie
+flutter: name: Sacrifice du paladin 
+school: Abjuration
+flutter: name: Sagesse du hibou de groupe 
+school: Transmutation
+flutter: name: Sagesse du hibou 
+school: Transmutation
+flutter: name: Saignement 
+school: Nécromancie
+flutter: name: Sanctification de cadavre 
+school: Évocation
+flutter: name: Sanctification maléfique 
+school: Évocation
+flutter: name: Sanctification 
+school: Évocation
+flutter: name: Sanctuaire secret 
+school: Abjuration
+flutter: name: Sanctuaire 
+school: Abjuration
+flutter: name: Sang bouillant 
+school: Transmutation
+flutter: name: Sangsue de ki 
+school: Nécromancie
+flutter: name: Saut du bouffon 
+school: Invocation
+flutter: name: Saut 
+school: Transmutation
+flutter: name: Savoir manier une arme 
+school: Enchantement
+flutter: name: Sceau contre les maléfices 
+school: Abjuration
+flutter: name: Sceau du serpent 
+school: Invocation
+flutter: name: Science du lien de vie 
+school: Invocation
+flutter: name: Scoop 
+school: Évocation
+flutter: name: Scrupule 
+school: Enchantement
+flutter: name: Scrutation suprême 
+school: Divination
+flutter: name: Scrutation 
+school: Divination
+flutter: name: Sculpture de simulacre 
+school: Transmutation
+flutter: name: Se hérisser 
+school: Transmutation
+flutter: name: Sens aiguisés 
+school: Transmutation
+flutter: name: Sens surdéveloppés 
+school: Transmutation
+flutter: name: Sentier de la gloire 
+school: Invocation
+flutter: name: Sentier de la gloire suprême 
+school: Invocation
+flutter: name: Sentier de nénuphars 
+school: Transmutation
+flutter: name: Séquestration 
+school: Invocation
+flutter: name: Sérénité 
+school: Enchantement
+flutter: name: Serment de paix 
+school: Abjuration
+flutter: name: Serment de sacrifice 
+school: Abjuration
+flutter: name: Serpent de feu 
+school: Évocation
+flutter: name: Serviteur invisible 
+school: Invocation
+flutter: name: Shuriken de feu 
+school: Invocation
+flutter: name: Sieste 
+school: Nécromancie
+flutter: name: Signature magique 
+school: Universel
+flutter: name: Silence forcé 
+school: Transmutation
+flutter: name: Silence 
+school: Illusion
+flutter: name: Sillage de lumière 
+school: Évocation
+flutter: name: Simulacre de vie supérieur 
+school: Nécromancie
+flutter: name: Simulacre de vie 
+school: Nécromancie
+flutter: name: Simulacre mineur 
+school: Illusion
+flutter: name: Simulacre 
+school: Illusion
+flutter: name: Singes fous 
+school: Invocation
+flutter: name: Sirocco 
+school: Évocation
+flutter: name: Soins importants de groupe 
+school: Invocation
+flutter: name: Soins importants 
+school: Invocation
+flutter: name: Soins intensifs de groupe 
+school: Invocation
+flutter: name: Soins intensifs 
+school: Invocation
+flutter: name: Soins légers de groupe 
+school: Invocation
+flutter: name: Soins légers 
+school: Invocation
+flutter: name: Soins modérés de groupe 
+school: Invocation
+flutter: name: Soins modérés 
+school: Invocation
+flutter: name: Soldats de la nature 
+school: Transmutation
+flutter: name: Sommeil profond 
+school: Enchantement
+flutter: name: Sommeil réparateur 
+school: Nécromancie
+flutter: name: Sommeil 
+school: Enchantement
+flutter: name: Somnambulisme 
+school: Enchantement
+flutter: name: Son étouffé 
+school: Illusion
+flutter: name: Son imaginaire 
+school: Illusion
+flutter: name: Songe 
+school: Illusion
+flutter: name: Souffle de dragon 
+school: Évocation
+flutter: name: Souffle de feu 
+school: Évocation
+flutter: name: Souffle de vie 
+school: Invocation
+flutter: name: Souhait limité 
+school: Universel
+flutter: name: Souhait 
+school: Universel
+flutter: name: Sphère de feu 
+school: Évocation
+flutter: name: Sphère d'invisibilité 
+school: Illusion
+flutter: name: Sphère d'isolement 
+school: Évocation
+flutter: name: Sphère glaciale 
+school: Évocation
+flutter: name: Sphère prismatique 
+school: Abjuration
+flutter: name: Sphère téléguidée 
+school: Évocation
+flutter: name: Splendeur de l'aigle de groupe 
+school: Transmutation
+flutter: name: Splendeur de l'aigle 
+school: Transmutation
+flutter: name: Stabilisation 
+school: Invocation
+flutter: name: Statue 
+school: Transmutation
+flutter: name: Stimulant 
+school: Transmutation
+flutter: name: Suffocation de groupe 
+school: Nécromancie
+flutter: name: Suffocation 
+school: Nécromancie
+flutter: name: Suggestion de groupe 
+school: Enchantement
+flutter: name: Suggestion 
+school: Enchantement
+flutter: name: Surmonter l'affliction 
+school: Abjuration
+flutter: name: Symbole d'aliénation mentale 
+school: Enchantement
+flutter: name: Symbole de douleur 
+school: Nécromancie
+flutter: name: Symbole de faiblesse 
+school: Nécromancie
+flutter: name: Symbole de guérison 
+school: Invocation
+flutter: name: Symbole de lenteur 
+school: Transmutation
+flutter: name: Symbole de lutte 
+school: Enchantement
+flutter: name: Symbole de miroir 
+school: Illusion
+flutter: name: Symbole de mort 
+school: Nécromancie
+flutter: name: Symbole de persuasion 
+school: Enchantement
+flutter: name: Symbole de révélation 
+school: Divination
+flutter: name: Symbole de sceau 
+school: Abjuration
+flutter: name: Symbole de scrutation 
+school: Divination
+flutter: name: Symbole de sommeil 
+school: Enchantement
+flutter: name: Symbole de terreur 
+school: Nécromancie
+flutter: name: Symbole de vulnérabilité 
+school: Abjuration
+flutter: name: Symbole d'étourdissement 
+school: Enchantement
+flutter: name: Symbole fatal 
+school: Illusion
+flutter: name: Table silencieuse 
+school: Illusion
+flutter: name: Tambours tonnants 
+school: Évocation
+flutter: name: Télékinésie 
+school: Transmutation
+flutter: name: Téléportation d'objet 
+school: Invocation
+flutter: name: Téléportation interplanétaire 
+school: Invocation
+flutter: name: Téléportation par cristal de glace 
+school: Invocation
+flutter: name: Téléportation suprême 
+school: Invocation
+flutter: name: Téléportation 
+school: Invocation
+flutter: name: Témoin 
+school: Divination
+flutter: name: Tempête de cendres 
+school: Invocation
+flutter: name: Tempête de feu 
+school: Évocation
+flutter: name: Tempête de grêle 
+school: Évocation
+flutter: name: Tempête de neige 
+school: Invocation
+flutter: name: Tempête de peste 
+school: Nécromancie
+flutter: name: Tempête vengeresse 
+school: Invocation
+flutter: name: Tempête volcanique 
+school: Évocation
+flutter: name: Ténèbres maudites 
+school: Évocation
+flutter: name: Ténèbres profondes 
+school: Évocation
+flutter: name: Ténèbres 
+school: Évocation
+flutter: name: Tentacules noirs 
+school: Invocation
+flutter: name: Terrain hallucinatoire 
+school: Illusion
+flutter: name: Terre maudite 
+school: Nécromancie
+flutter: name: Terreur 
+school: Nécromancie
+flutter: name: Terrible remord 
+school: Enchantement
+flutter: name: Texte illusoire 
+school: Illusion
+flutter: name: Tir aveuglant 
+school: Transmutation
+flutter: name: Tir d'énergie à l'arme de siège supérieur 
+school: Transmutation
+flutter: name: Tir d'énergie à l'arme de siège 
+school: Transmutation
+flutter: name: Tir longue distance 
+school: Transmutation
+flutter: name: Tir par ricochet 
+school: Évocation
+flutter: name: Toile d'araignée 
+school: Invocation
+flutter: name: Toile fantasmagorique 
+school: Illusion
+flutter: name: Torche révélatrice 
+school: Évocation
+flutter: name: Torrent hydraulique 
+school: Évocation
+flutter: name: Tout se mange 
+school: Transmutation
+flutter: name: Tranquillité euphorique 
+school: Enchantement
+flutter: name: Transfert de sorts 
+school: Évocation
+flutter: name: Transfert divin 
+school: Nécromancie
+flutter: name: Transformation de maître 
+school: Transmutation
+flutter: name: Transformation martiale 
+school: Transmutation
+flutter: name: Transformation résurgente 
+school: Invocation
+flutter: name: Transformation 
+school: Transmutation
+flutter: name: Transmission alchimique 
+school: Transmutation
+flutter: name: Transmutation de la boue en pierre 
+school: Transmutation
+flutter: name: Transmutation de la pierre en boue 
+school: Transmutation
+flutter: name: Transmutation de la pierre en chair 
+school: Transmutation
+flutter: name: Transmutation de potion en poison 
+school: Transmutation
+flutter: name: Transmutation du métal en bois 
+school: Transmutation
+flutter: name: Transmutation du sang en acide 
+school: Transmutation
+flutter: name: Traquer l'aura 
+school: Divination
+flutter: name: Traversée des ombres 
+school: Illusion
+flutter: name: Traverser l'espace 
+school: Invocation
+flutter: name: Trébucher dans un trou 
+school: Invocation
+flutter: name: Tremblement de terre 
+school: Évocation
+flutter: name: Triple aspect 
+school: Transmutation
+flutter: name: Trou de mémoire 
+school: Enchantement
+flutter: name: Trouver la proie 
+school: Divination
+flutter: name: Tsunami 
+school: Invocation
+flutter: name: Vague mondiale 
+school: Transmutation
+flutter: name: Vague 
+school: Invocation
+flutter: name: Vagues de fatigue 
+school: Nécromancie
+flutter: name: Vagues d'épuisement 
+school: Nécromancie
+flutter: name: vagues d'extase 
+school: Enchantement
+flutter: name: Vengeance fantasmagorique 
+school: Illusion
+flutter: name: Vengeance pour outrage 
+school: Enchantement
+flutter: name: Vent de murmures 
+school: Transmutation
+flutter: name: Vent divin 
+school: Transmutation
+flutter: name: Ventriloquie 
+school: Illusion
+flutter: name: Vents capricieux 
+school: Transmutation
+flutter: name: Vents cinglants 
+school: Évocation
+flutter: name: Vents de la vengeance 
+school: Évocation
+flutter: name: Vermine géante 
+school: Transmutation
+flutter: name: Vérité 
+school: Divination
+flutter: name: Vérole 
+school: Nécromancie
+flutter: name: Verrou dimensionnel 
+school: Abjuration
+flutter: name: Verrou du mage 
+school: Abjuration
+flutter: name: Verrouillage 
+school: Abjuration
+flutter: name: Vigueur du juste 
+school: Enchantement
+flutter: name: Vigueur persistante 
+school: Transmutation
+flutter: name: Vision dans le noir 
+school: Transmutation
+flutter: name: Vision dans le noir (partagé) 
+school: Transmutation
+flutter: name: Vision dans le noir supérieure 
+school: Transmutation
+flutter: name: Vision des auras 
+school: Divination
+flutter: name: Vision infernale 
+school: Illusion
+flutter: name: Vision lucide 
+school: Divination
+flutter: name: Vision magique suprême 
+school: Divination
+flutter: name: Vision magique 
+school: Divination
+flutter: name: Vision mystique 
+school: Divination
+flutter: name: Voie végétale 
+school: Invocation
+flutter: name: Voile d'énergie positive 
+school: Abjuration
+flutter: name: Voile du paradis 
+school: Abjuration
+flutter: name: Voile lunaire 
+school: Illusion
+flutter: name: Voile répugnant 
+school: Illusion
+flutter: name: Voile 
+school: Illusion
+flutter: name: Voir l'alignement 
+school: Divination
+flutter: name: Vol 
+school: Transmutation
+flutter: name: Vol d'arcane 
+school: Abjuration
+flutter: name: Vol de groupe 
+school: Transmutation
+flutter: name: Vol de soins 
+school: Nécromancie
+flutter: name: Vol de voix 
+school: Nécromancie
+flutter: name: Vol supérieur 
+school: Transmutation
+flutter: name: Vomir une nuée 
+school: Invocation
+flutter: name: Vortex 
+school: Évocation
+flutter: name: Voyage par les arbres 
+school: Invocation
+flutter: name: Zone d'antimagie 
+school: Abjuration
+flutter: name: Zone de silence 
+school: Illusion
+flutter: name: Zone de vérité 
+school: Enchantement
+flutter: name: Caméléon 
+school: Illusion
+flutter: name: Conscience accrue 
+school: Divination
+flutter: name: Javeline épineuse 
+school: Invocation
+flutter: name: Lien mental 
+school: Divination
+flutter: name: Perception de la magie des esprits 
+school: Divination
+flutter: name: Perception des proches 
+school: Divination
+flutter: name: Petite brise 
+school: Évocation
+flutter: name: Poisson-singe 
+school: Transmutation
+flutter: name: Vulnérabilité aux maléfices 
+school: Nécromancie
+flutter: name: Apaisement des esprits 
+school: Nécromancie
+flutter: name: Changement de fonction 
+school: Enchantement
+flutter: name: Communion avec les oiseaux 
+school: Divination
+flutter: name: Enchevêtrement répugnant 
+school: Transmutation
+flutter: name: Enveloppement des pensées 
+school: Abjuration
+flutter: name: Examen approfondi 
+school: Divination
+flutter: name: Flottabilité 
+school: Transmutation
+flutter: name: Lien vital avec le compagnon 
+school: Nécromancie
+flutter: name: Parole animale 
+school: Divination
+flutter: name: Protection du compagnon 
+school: Abjuration
+flutter: name: Transfert de puissance élémentaire 
+school: Évocation
+flutter: name: Coeur dévasté 
+school: Nécromancie
+flutter: name: Déchirure du déguisement 
+school: Divination
+flutter: name: Enchevêtrement épineux 
+school: Transmutation
+flutter: name: Fonts de magie des esprits 
+school: Invocation
+flutter: name: Glyphe de maléfice 
+school: Abjuration
+flutter: name: Messager verrouillé 
+school: Enchantement
+flutter: name: Métamorphose du familier 
+school: Transmutation
+flutter: name: Petite sirène 
+school: Transmutation
+flutter: name: Pied ancré 
+school: Transmutation
+flutter: name: Piège ectoplasmique 
+school: Évocation
+flutter: name: Protégé de la saison 
+school: Abjuration
+flutter: name: Puanteur de la proie 
+school: Transmutation
+flutter: name: Sillage nauséabond 
+school: Invocation
+flutter: name: Embourbement 
+school: Invocation
+flutter: name: Esprit endormi 
+school: Nécromancie
+flutter: name: Geyser d'air 
+school: Évocation
+flutter: name: Lame spirituelle (sort) 
+school: Évocation
+flutter: name: Malédiction du sommeil brûlant 
+school: Transmutation
+flutter: name: Métamorphe ajustable 
+school: Transmutation
+flutter: name: Nage dans la terre 
+school: Transmutation
+flutter: name: Appel d'un esprit 
+school: Invocation
+flutter: name: Festin de terreur 
+school: Nécromancie
+flutter: name: Glyphe de maléfice suprême 
+school: Abjuration
+flutter: name: Éveil de créature artificielle 
+school: Transmutation
+flutter: name: Régression primale 
+school: Enchantement
+flutter: name: Transfert daffliction 
+school: Nécromancie
+flutter: name: Anneau de repli féérique 
+school: Invocation
+flutter: name: Bras long 
+school: Transmutation
+flutter: name: Capacitance corporelle 
+school: Transmutation
+flutter: name: Crachat adhésif 
+school: Invocation
+flutter: name: Mouvement flou 
+school: Illusion
+flutter: name: Sang fantôme 
+school: Nécromancie
+flutter: name: Armure de sang 
+school: Transmutation
+flutter: name: Catatonie 
+school: Nécromancie
+flutter: name: Esprit investigateur 
+school: Enchantement
+flutter: name: Flexibilité extrême 
+school: Transmutation
+flutter: name: Sang adhésif 
+school: Transmutation
+flutter: name: Déguisement ajustable 
+school: Illusion
+flutter: name: Hypercognition 
+school: Divination
+flutter: name: Sabotage de créature artificielle 
+school: Transmutation
+flutter: name: Sentinelle de sang 
+school: Transmutation
+flutter: name: Éclat intenable 
+school: Évocation
+flutter: name: Forme miasmatique 
+school: Transmutation
+flutter: name: Inhalation absorbante 
+school: Transmutation
+flutter: name: Regard du vide 
+school: Transmutation
+flutter: name: Forme sonique 
+school: Transmutation
+flutter: name: Offrande exigée 
+school: Enchantement
+flutter: name: Auras élargies 
+school: Transmutation
+flutter: name: Bouclier de balles 
+school: Abjuration
+flutter: name: Infliger des souffrances 
+school: Enchantement
+flutter: name: Transfert d'auras 
+school: Abjuration
+flutter: name: Infliger des souffrances de groupe 
+school: Enchantement
+flutter: name: Nourrir la haine 
+school: Enchantement
+flutter: name: Altération d'instrument de musique 
+school: Illusion
+flutter: name: Arme déguisée 
+school: Illusion
+flutter: name: Déguisement décrépi 
+school: Illusion
+flutter: name: Déjà vu 
+school: Enchantement
+flutter: name: Fuite aérienne 
+school: Transmutation
+flutter: name: Mémorisation de page 
+school: Enchantement
+flutter: name: Quintessence 
+school: Illusion
+flutter: name: Sceau de colle 
+school: Invocation
+flutter: name: Anticipation des pensées 
+school: Divination
+flutter: name: Blocage mental 
+school: Divination
+flutter: name: Bredouillement 
+school: Enchantement
+flutter: name: Cri sonique 
+school: Évocation
+flutter: name: Dégoût 
+school: Enchantement
+flutter: name: Fouet d'araignées 
+school: Invocation
+flutter: name: Horreur onirique 
+school: Illusion
+flutter: name: Interaction anonyme 
+school: Enchantement
+flutter: name: Lecture psychique 
+school: Divination
+flutter: name: Paranoïa 
+school: Illusion
+flutter: name: Réflexes accrus 
+school: Transmutation
+flutter: name: Transport d'objet 
+school: Invocation
+flutter: name: Zèle contagieux 
+school: Enchantement
+flutter: name: Furie flexible 
+school: Transmutation
+flutter: name: Mur de nausées 
+school: Illusion
+flutter: name: Suggestion programmée 
+school: Enchantement
+flutter: name: Horreur onirique suprême 
+school: Illusion
+flutter: name: Parchemin de prévoyance 
+school: Évocation
+flutter: name: Fouet de mille-pattes 
+school: Invocation
+flutter: name: Refouler un souvenir 
+school: Enchantement
+flutter: name: Zèle inébranlable 
+school: Enchantement
+flutter: name: Carillon d'amplification 
+school: Transmutation
+flutter: name: Conseil onirique 
+school: Illusion
+flutter: name: Examen des rêves 
+school: Divination
+flutter: name: Fouet de fourmis 
+school: Invocation
+flutter: name: Frissonnement du temps 
+school: Transmutation
+flutter: name: Glace insidieuse 
+school: Évocation
+flutter: name: Transport danimal 
+school: Invocation
+flutter: name: Cercle thaumaturgique 
+school: Abjuration
+flutter: name: Passager clandestin 
+school: Nécromancie
+flutter: name: Échange d'esprits 
+school: Enchantement
+flutter: name: Possession spirituelle 
+school: Nécromancie
+flutter: name: Bond dimensionnel 
+school: Invocation
+flutter: name: Dard de nausée 
+school: Invocation
+flutter: name: Sabot du tonnerre 
+school: Évocation
+flutter: name: Disque de pierre 
+school: Invocation
+flutter: name: Haricot magique 
+school: Invocation
+flutter: name: Nuage euphorisant 
+school: Invocation
+flutter: name: Violent nuage d'orage 
+school: Évocation
+flutter: name: Grand pas suprême 
+school: Transmutation
+flutter: name: Sabot du tonnerre suprême 
+school: Évocation
+flutter: name: Forme du nuage 
+school: Transmutation
+flutter: name: Sphère de feu suprême 
+school: Évocation
+flutter: name: Violent nuage dorage suprême 
+school: Évocation
+flutter: name: Lames de vent 
+school: Transmutation
+flutter: name: Arc-en-ciel embrasé 
+school: Évocation
+flutter: name: Brise-destructeur 
+school: Abjuration
+flutter: name: Limite infranchissable 
+school: Abjuration
+flutter: name: Guérison des morts-vivants 
+school: Nécromancie
+flutter: name: Bricolage alchimique 
+school: Transmutation
+flutter: name: Brillance miroir 
+school: Transmutation
+flutter: name: Éclats déchirants 
+school: Transmutation
+flutter: name: Confession écarlate 
+school: Abjuration
+flutter: name: Fouet fantôme 
+school: Évocation
+flutter: name: Sphère de bourrasques 
+school: Évocation
+flutter: name: Brume crépusculaire 
+school: Illusion
+flutter: name: Fouet de la rivière 
+school: Invocation
+flutter: name: Cachette-miroir 
+school: Transmutation
+flutter: name: Orbe en fusion 
+school: Évocation
+flutter: name: Détection de paysage mental 
+school: Divination
+flutter: name: Fléchettes dargent 
+school: Invocation
+flutter: name: Aura de cannibalisme 
+school: Nécromancie
+flutter: name: Brouillard des tertres 
+school: Nécromancie
+flutter: name: Coeur du métal 
+school: Transmutation
+flutter: name: Effacement de l'esprit 
+school: Enchantement
+flutter: name: Symbole de fou-rire 
+school: Enchantement
+flutter: name: Porte sur un paysage mental 
+school: Illusion
+flutter: name: Chasser les esprits 
+school: Nécromancie
+flutter: name: Possession spirituelle d'objet inférieure 
+school: Nécromancie
+flutter: name: Manoeuvre télékinétique 
+school: Transmutation
+flutter: name: Miroir de déplacement 
+school: Transmutation
+flutter: name: Perception des pensées 
+school: Divination
+flutter: name: Sonde mentale 
+school: Divination
+flutter: name: Mur ectoplasmique 
+school: Évocation
+flutter: name: Création de paysage mental 
+school: Illusion
+flutter: name: Bouclier d'ombre vampirique 
+school: Nécromancie
+flutter: name: Guérison des morts-vivants de groupe 
+school: Nécromancie
+flutter: name: Possession spirituelle d'objet 
+school: Nécromancie
+flutter: name: Éther condensé 
+school: Transmutation
+flutter: name: Nuée de papier 
+school: Transmutation
+flutter: name: Télépathie (sort) 
+school: Divination
+flutter: name: Tête explosive 
+school: Évocation
+flutter: name: Asile psychique 
+school: Illusion
+flutter: name: Souffle de la banshie 
+school: Nécromancie
+flutter: name: Rétrocognition 
+school: Divination
+flutter: name: Création de paysage mental suprême 
+school: Illusion
+flutter: name: Bond dimensionnel 
+school: Invocation
+flutter: name: Possession spirituelle d'objet suprême 
+school: Nécromancie
+flutter: name: Corps d'ombre 
+school: Transmutation
+flutter: name: Possession spirituelle suprême 
+school: Nécromancie
+flutter: name: Bilocation 
+school: Invocation
+flutter: name: Arme alignée (partagé) 
+school: Transmutation
+flutter: name: Fouette-lame 
+school: Transmutation
+flutter: name: Poings éthérés 
+school: Transmutation
+flutter: name: Intuition de l'ennemi 
+school: Divination
+flutter: name: Démarche du caméléon suprême 
+school: Illusion
+flutter: name: Ailes puissantes 
+school: Transmutation
+flutter: name: Boule de boue 
+school: Invocation
+flutter: name: Maîtrise des marids 
+school: Transmutation
+flutter: name: Plumage d'hiver 
+school: Abjuration
+flutter: name: Toucher de combustion 
+school: Évocation
+flutter: name: Flambée de sang 
+school: Transmutation
+flutter: name: La mort venue d'en bas 
+school: Abjuration
+flutter: name: Vol de souffle 
+school: Transmutation
+flutter: name: Déchaînement de débris 
+school: Transmutation
+flutter: name: Éclairs d'obscurité aveuglante 
+school: Invocation
+flutter: name: Onde de feu 
+school: Évocation
+flutter: name: Parangon soudain 
+school: Transmutation
+flutter: name: Perception du sang 
+school: Transmutation
+flutter: name: Piste de feu 
+school: Transmutation
+flutter: name: Fouet de la bouche de l’enfer 
+school: Transmutation
+flutter: name: Loup fantomatique 
+school: Invocation
+flutter: name: Double du familier 
+school: Illusion
+flutter: name: Détection d'importance psychique 
+school: Divination
+flutter: name: Paroles de la tombe 
+school: Nécromancie
+flutter: name: Bouffée dintuition 
+school: Transmutation
+flutter: name: Charger un objet 
+school: Transmutation
+flutter: name: Gloire dépréciée 
+school: Nécromancie
+flutter: name: Lecture d'objet 
+school: Divination
+flutter: name: Sages murmures 
+school: Divination
+flutter: name: Accorder une intuition 
+school: Enchantement
+flutter: name: Analyse d'aura 
+school: Divination
+flutter: name: Blocage cognitif 
+school: Enchantement
+flutter: name: Effet placebo 
+school: Illusion
+flutter: name: Lancer un duel psychique 
+school: Illusion
+flutter: name: Rupture mythique 
+school: Nécromancie
+flutter: name: Songe mineur 
+school: Illusion
+flutter: name: Vie scellée 
+school: Abjuration
+flutter: name: Effacement d'impression 
+school: Abjuration
+flutter: name: Modification d'aura 
+school: Illusion
+flutter: name: Nodule explosif 
+school: Abjuration
+flutter: name: Contempler de loin 
+school: Divination
+flutter: name: Piéger un esprit 
+school: Nécromancie
+flutter: name: Écho des pensées 
+school: Illusion
+flutter: name: Implantation de pensées 
+school: Enchantement
+flutter: name: Jitterbug 
+school: Illusion
+flutter: name: Montée d'adrénaline 
+school: Transmutation
+flutter: name: Projection télempathique 
+school: Enchantement
+flutter: name: Protection contre le vol 
+school: Abjuration
+flutter: name: Rechargement de la magie innée 
+school: Transmutation
+flutter: name: Blocage émotionnel 
+school: Enchantement
+flutter: name: Eau rouge 
+school: Nécromancie
+flutter: name: Implantation de lecture factice 
+school: Illusion
+flutter: name: Retardement des maladies 
+school: Invocation
+flutter: name: Appel des nixes 
+school: Enchantement
+flutter: name: Brouillage synaptique 
+school: Enchantement
+flutter: name: Double terrifiant 
+school: Illusion
+flutter: name: Isoler 
+school: Illusion
+flutter: name: Pulsation synaptique 
+school: Enchantement
+flutter: name: Reproche déchirant 
+school: Illusion
+flutter: name: Réservoir de résilience 
+school: Transmutation
+flutter: name: Synesthésie 
+school: Illusion
+flutter: name: Malédiction du vieux loup de mer 
+school: Nécromancie
+flutter: name: Objet fantomatique mineur 
+school: Illusion
+flutter: name: Pulsation synaptique suprême 
+school: Enchantement
+flutter: name: Sommeil de l'amnésique 
+school: Enchantement
+flutter: name: Surcharge synaptique 
+school: Divination
+flutter: name: Chirurgie psychique 
+school: Enchantement
+flutter: name: Objet fantomique majeur 
+school: Illusion
+flutter: name: Synesthésie de groupe 
+school: Illusion
+flutter: name: Village voilé 
+school: Illusion
+flutter: name: Traversée onirique 
+school: Invocation
+flutter: name: Projectile télékinétique 
+school: Évocation
+flutter: name: Talisman instrumental 
+school: Évocation
+flutter: name: Éclats éthérés 
+school: Évocation
+flutter: name: Coup mental I 
+school: Divination
+flutter: name: Apparence charnue 
+school: Transmutation
+flutter: name: Barrière mentale I 
+school: Abjuration
+flutter: name: Bouclier des pensées I 
+school: Abjuration
+flutter: name: Coup mental II 
+school: Divination
+flutter: name: Insinuation du ça I 
+school: Enchantement
+flutter: name: Mâchoire féroce 
+school: Transmutation
+flutter: name: Barrière mentale II 
+school: Abjuration
+flutter: name: Bouclier des pensées II 
+school: Abjuration
+flutter: name: Coup mental III 
+school: Divination
+flutter: name: Fouet d'ego I 
+school: Enchantement
+flutter: name: Insinuation du ça II 
+school: Enchantement
+flutter: name: Barrière mentale III 
+school: Abjuration
+flutter: name: Bouclier des pensées III 
+school: Abjuration
+flutter: name: Chaleur curative 
+school: Abjuration
+flutter: name: Coup mental IV 
+school: Divination
+flutter: name: Forteresse intellectuelle I 
+school: Abjuration
+flutter: name: Fouet d'ego II 
+school: Enchantement
+flutter: name: Jumeau de vomi 
+school: Invocation
+flutter: name: Barrière mentale IV 
+school: Abjuration
+flutter: name: Broyage psychique I 
+school: Nécromancie
+flutter: name: Coup mental V 
+school: Divination
+flutter: name: Enveloppe éthérée 
+school: Invocation
+flutter: name: Extraction du demi-sang 
+school: Transmutation
+flutter: name: Insinuation du ça IV 
+school: Enchantement
+flutter: name: Vol de pouvoir 
+school: Nécromancie
+flutter: name: Barrière mentale V 
+school: Abjuration
+flutter: name: Bouclier des pensées V 
+school: Abjuration
+flutter: name: Broyage psychique II 
+school: Nécromancie
+flutter: name: Chaînes intangibles 
+school: Évocation
+flutter: name: Coup mental VI 
+school: Divination
+flutter: name: Forteresse intellectuelle III 
+school: Abjuration
+flutter: name: Broyage psychique III 
+school: Nécromancie
+flutter: name: Enveloppement éthéré 
+school: Invocation
+flutter: name: Éruption ectoplasmique 
+school: Évocation
+flutter: name: Fouet d'ego V 
+school: Enchantement
+flutter: name: Tour de volonté de fer III 
+school: Abjuration
+flutter: name: Broyage psychique IV 
+school: Nécromancie
+flutter: name: Tour de volonté de fer IV 
+school: Abjuration
+flutter: name: Broyage psychique V 
+school: Nécromancie
+flutter: name: Diviser l'esprit 
+school: Enchantement
+flutter: name: Échange d'esprits majeur 
+school: Enchantement
+flutter: name: Forme akashique 
+school: Nécromancie
+flutter: name: Image psychique 
+school: Illusion
+flutter: name: Microcosme 
+school: Illusion
+flutter: name: Tempête télékinétique 
+school: Évocation
+flutter: name: Tour de volonté de fer V 
+school: Abjuration
+flutter: name: Voyage onirique 
+school: Invocation
+flutter: name: Vie scellée suprême 
+school: Abjuration
+flutter: name: Défense magique 
+school: Abjuration
+flutter: name: Insinuation du ça III 
+school: Enchantement
+flutter: name: Bouclier des pensées IV 
+school: Abjuration
+flutter: name: Forteresse intellectuelle II 
+school: Abjuration
+flutter: name: Fouet d'ego III 
+school: Enchantement
+flutter: name: Tour de volonté de fer I 
+school: Abjuration
+flutter: name: Fouet d'ego IV 
+school: Enchantement
+flutter: name: Tour de volonté de fer II 
+school: Abjuration
+flutter: name: De la soie à l’acier 
+school: Transmutation
+flutter: name: Chance héroïque 
+school: Évocation
+flutter: name: Chance héroïque de groupe 
+school: Évocation
+flutter: name: Destin brisé 
+school: Enchantement
+flutter: name: Destin défait 
+school: Divination
+flutter: name: Malédiction Funeste 
+school: Nécromancie
+flutter: name: Appel des esprits 
+school: Enchantement
+flutter: name: Arme colérique 
+school: Transmutation
+flutter: name: Don de maléfice 
+school: Évocation
+flutter: name: Grâce défensive 
+school: Transmutation
+flutter: name: Gueule acide 
+school: Transmutation
+flutter: name: Perturbation profane 
+school: Enchantement
+flutter: name: Salut du sang 
+school: Abjuration
+flutter: name: Substitution d'énergie destructive 
+school: Transmutation
+flutter: name: Traque spectrale 
+school: Transmutation
+flutter: name: Puanteur amplifiée 
+school: Transmutation
+flutter: name: Nuée de crocs 
+school: Invocation
+flutter: name: Respiration d'air 
+school: Transmutation
+flutter: name: Transfert de régénération 
+school: Transmutation
+flutter: name: Vol de sort 
+school: Abjuration
+flutter: name: Adaptation culturelle 
+school: Divination
+flutter: name: Arc brûlant 
+school: Évocation
+flutter: name: Assaut concerté 
+school: Transmutation
+flutter: name: Barbe de fer 
+school: Transmutation
+flutter: name: Bénédiction de chance et de résolution 
+school: Enchantement
+flutter: name: Bénédiction de chance et de résolution de groupe 
+school: Enchantement
+flutter: name: Brise magie suprême 
+school: Abjuration
+flutter: name: Brise-magie mineure 
+school: Abjuration
+flutter: name: Briser les lignes ennemies 
+school: Transmutation
+flutter: name: Chaînes de feu 
+school: Évocation
+flutter: name: Chant du labeur 
+school: Enchantement
+flutter: name: Cierge de mort 
+school: Nécromancie
+flutter: name: Coeur de l'ennemi 
+school: Nécromancie
+flutter: name: Communion ancestrale 
+school: Divination
+flutter: name: Compression 
+school: Transmutation
+flutter: name: Contrôle de la vermine 
+school: Transmutation
+flutter: name: Convocation de créature totémique 
+school: Invocation
+flutter: name: Convocation de gardien ancestral 
+school: Invocation
+flutter: name: Copain de boue 
+school: Invocation
+flutter: name: Corps caoutchouteux 
+school: Transmutation
+flutter: name: Crâne de sentinelle 
+school: Nécromancie
+flutter: name: Don ancestral 
+school: Invocation
+flutter: name: Élévation du sol 
+school: Transmutation
+flutter: name: Entrave de terre de groupe 
+school: Transmutation
+flutter: name: Éternuement de feu 
+school: Évocation
+flutter: name: Façonnage de la neige 
+school: Transmutation
+flutter: name: Force décuplée 
+school: Transmutation
+flutter: name: Formation tactique 
+school: Abjuration
+flutter: name: Forme cendrée brûlante 
+school: Transmutation
+flutter: name: Fouet affaiblissant 
+school: Nécromancie
+flutter: name: Frappes fébriles 
+school: Transmutation
+flutter: name: Fureur solaire 
+school: Transmutation
+flutter: name: Grâce des néréides 
+school: Abjuration
+flutter: name: Grâce urbaine 
+school: Transmutation
+flutter: name: Malédiction des ondins 
+school: Nécromancie
+flutter: name: Nappe de glace 
+school: Évocation
+flutter: name: Neuf vies 
+school: Abjuration
+flutter: name: Œil vigilant 
+school: Abjuration
+flutter: name: Passage sans trace 
+school: Transmutation
+flutter: name: Peau en fer 
+school: Transmutation
+flutter: name: Poing invincible de la terre 
+school: Invocation
+flutter: name: Poison illusoire 
+school: Illusion
+flutter: name: Poumons d'Aboleth 
+school: Transmutation
+flutter: name: Pourparlers du Faiseur de paix 
+school: Enchantement
+flutter: name: Protection de la bannière 
+school: Abjuration
+flutter: name: Rage sanguinaire 
+school: Enchantement
+flutter: name: Rature 
+school: Transmutation
+flutter: name: Repos revigorant 
+school: Invocation
+flutter: name: Rocher magique 
+school: Transmutation
+flutter: name: Rune de protection 
+school: Abjuration
+flutter: name: Rune de solidité 
+school: Transmutation
+flutter: name: Sanglantes représailles 
+school: Nécromancie
+flutter: name: Sceau de fuite 
+school: Abjuration
+flutter: name: Sentier de la damnation 
+school: Invocation
+flutter: name: Serment de justice 
+school: Nécromancie
+flutter: name: Sphère de protection 
+school: Abjuration
+flutter: name: Tâche noire 
+school: Nécromancie
+flutter: name: Transe guerrière 
+school: Enchantement
+flutter: name: Vision à travers la pierre 
+school: Divination
+flutter: name: Voie des vents 
+school: Évocation
+flutter: name: Voile nain 
+school: Transmutation
+flutter: name: Voleuse préhensile 
+school: Transmutation
+flutter: name: Arme de glace sacrée 
+school: Transmutation
+flutter: name: Anneau scindé 
+school: Invocation
+flutter: name: Armure épineuse 
+school: Transmutation
+flutter: name: Aura d'avidité 
+school: Abjuration
+flutter: name: Blessure grave de groupe 
+school: Nécromancie
+flutter: name: Bouclier de l'aube 
+school: Évocation
+flutter: name: Cœur incassable 
+school: Enchantement
+flutter: name: Complainte des chevaliers victorieux 
+school: Illusion
+flutter: name: Don des profondeurs 
+school: Transmutation
+flutter: name: Eaux de folie 
+school: Enchantement
+flutter: name: Écailles épineuses 
+school: Transmutation
+flutter: name: Écailles épineuses supérieures 
+school: Transmutation
+flutter: name: Épreuve de l'acide et du feu 
+school: Évocation
+flutter: name: Guérison diabolique 
+school: Invocation
+flutter: name: Guérison diabolique supérieure 
+school: Invocation
+flutter: name: Lecture du tourment 
+school: Divination
+flutter: name: Marque du dieu reptile 
+school: Transmutation
+flutter: name: Mémoire ancestrale 
+school: Divination
+flutter: name: Sceau de poussière 
+school: Abjuration
+flutter: name: Terre affamée 
+school: Transmutation
+flutter: name: Toucher endothermique 
+school: Transmutation
+flutter: name: Vengeance de l'amoureux 
+school: Enchantement
+flutter: name: Vision de folie 
+school: Illusion
+flutter: name: Vigueur 
+school: Transmutation
+flutter: Fin du test
+Syncing files to device Linux...                                    15ms
+
+Flutter run key commands.
+r Hot reload. 🔥🔥🔥
+R Hot restart.
+h List all available interactive commands.
+d Detach (terminate "flutter run" but leave application running).
+c Clear the screen
+q Quit (terminate the application on the device).
+
+💪 Running with sound null safety 💪
+
+An Observatory debugger and profiler on Linux is available at: http://127.0.0.1:42417/oVz3g5gR7hs=/
