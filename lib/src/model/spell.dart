@@ -36,6 +36,19 @@ class Spell {
       this._target,
       this._duration);
 
+
+  // ignore: non_constant_identifier_names
+  int? GetLevelByClass(String class_){
+    print(_level);
+    if (_level.containsKey(class_)) {
+      return _level[class_];
+    } 
+    else{
+      return null;
+    }
+  }
+
+
   @override
   String toString() {
     return " id: $_id \nname: $_name \nschool: $_school";

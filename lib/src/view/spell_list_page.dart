@@ -6,6 +6,15 @@ import 'package:flutter/material.dart';
 import '../data/dbhelper.dart';
 import 'dart:io' show Platform;
 
+
+//TODO ajouter les filtres sur les sorts
+//? filtrer les listes pour que un personnage vois que ces sort dispo (eviter les "null" dans l'affichage)
+//! Penser a supprimer se "mini stub", et de le remplacer par le binding des pages
+import '../model/character.dart';
+Character dum = Character("dummy", "Bar", 10);
+
+
+
 List<Spell> spells_list = [];
 
 enum OrderOption {
@@ -91,6 +100,10 @@ class _SpellListPageState extends State<SpellListPage> {
               image: AssetImage('assets/src/Sprite-SlimeGHallow.png'),
               height: 150,
             ),*/
+            leading: ExcludeSemantics(
+                  //child: CircleAvatar(child: Text('$index')), //cercle avec index => numero dans la liste
+                  child: CircleAvatar(child: Text(spells_list[index].GetLevelByClass(dum.cclass).toString())),
+            ),
             title: Text(spells_list[index].name),
             trailing: const Icon(
               Icons.arrow_forward,
