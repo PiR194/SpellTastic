@@ -12,130 +12,142 @@ class DetailsCharacter extends StatelessWidget {
     const Color accentColor = Color(0xFF9C27B0);
     const Color backgroundColor = Color(0xFFEDE7F6);
 
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: AppBar(
         title: Text('Profil'),
         backgroundColor: accentColor,
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            // En-tête
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                CircleAvatar(
-                  radius: 80,
-                  backgroundImage:
-                      AssetImage('assets/class_icons/Goblins_Fight.png'),
-                ),
-                Column(
-                  children: [
-                    Text(
-                      'LOU LE GOBELIN',
-                      style: TextStyle(
-                        fontSize: 40,
-                        fontFamily: 'Anaktoria',
-                        fontWeight: FontWeight.bold,
-                        color: primaryColor,
-                      ),
-                    ),
-                    Row(
-                      children: [
-                        const Text(
-                          'CLASS : ' + 'Gobelin',
-                          style: TextStyle(
-                            fontSize: 25,
-                            fontFamily: 'Anaktoria',
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                )
-              ],
-            ),
-            // Détails du personnage
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'CARACTERISTICS',
-                  style: TextStyle(
-                    fontSize: 26,
-                    fontFamily: 'Anaktoria',
-                    fontWeight: FontWeight.bold,
-                    color: primaryColor,
+      body: Padding(
+        padding: EdgeInsets.symmetric(vertical: screenHeight * 0.02),
+        child: SingleChildScrollView(
+          child: Wrap(
+            spacing: screenWidth * 0.05,
+            runSpacing: screenHeight * 0.05,
+            alignment: WrapAlignment.center,
+            children: [
+              // En-tête
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  CircleAvatar(
+                    radius: 80,
+                    backgroundImage:
+                        AssetImage('assets/class_icons/Goblins_Fight.png'),
                   ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Row(
-                      children: [
-                        const Text(
-                          'LEVEL :',
-                          style: TextStyle(
-                            fontSize: 25,
-                            fontFamily: 'Anaktoria',
-                          ),
-                        ),
-                        LevelCounterWidget(),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Text(
-                          'RACE : ' + 'Murder',
-                          style: TextStyle(
-                            fontSize: 25,
-                            fontFamily: 'Anaktoria',
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                const Text(
-                  'DESCRIPTION',
-                  style: TextStyle(
-                    fontSize: 26,
-                    fontFamily: 'Anaktoria',
-                    fontWeight: FontWeight.bold,
-                    color: primaryColor,
-                  ),
-                ),
-                Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel fringilla metus. Nulla facilisi. Sed efficitur laoreet nulla, eu lobortis justo tincidunt vel. Donec eu elit ultrices, sodales elit quis, ultrices urna. Duis sed volutpat sapien. Duis non erat quis est malesuada commodo vel at velit. Aliquam pulvinar ultricies nulla vel iaculis. Donec interdum vestibulum sem, vel rutrum enim commodo in.',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontFamily: 'Anaktoria',
-                  ),
-                ),
-              ],
-            ),
-            Column(
-              children: [
-                Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  Column(
                     children: [
-                      PlayButtonWidget(),
-                      const SizedBox(
-                        width: 15,
+                      Text(
+                        'LOU LE GOBELIN',
+                        style: TextStyle(
+                          fontSize: 40,
+                          fontFamily: 'Anaktoria',
+                          fontWeight: FontWeight.bold,
+                          color: primaryColor,
+                        ),
                       ),
-                      SelectSetButtonWidget(),
+                      Row(
+                        children: [
+                          const Text(
+                            'CLASS : ' + 'Gobelin',
+                            style: TextStyle(
+                              fontSize: 25,
+                              fontFamily: 'Anaktoria',
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  )
+                ],
+              ),
+              // Détails du personnage
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'CARACTERISTICS',
+                    style: TextStyle(
+                      fontSize: 26,
+                      fontFamily: 'Anaktoria',
+                      fontWeight: FontWeight.bold,
+                      color: primaryColor,
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Row(
+                        children: [
+                          const Text(
+                            'LEVEL :',
+                            style: TextStyle(
+                              fontSize: 25,
+                              fontFamily: 'Anaktoria',
+                            ),
+                          ),
+                          LevelCounterWidget(),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Text(
+                            'RACE : ' + 'Murder',
+                            style: TextStyle(
+                              fontSize: 25,
+                              fontFamily: 'Anaktoria',
+                            ),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
-                ),
-                CreateSetButton(),
-                DisplaySetButton(),
-                DisplaySetButton(),
-                DisplaySetButton(),
-              ],
-            )
-          ],
+                  const Text(
+                    'DESCRIPTION',
+                    style: TextStyle(
+                      fontSize: 26,
+                      fontFamily: 'Anaktoria',
+                      fontWeight: FontWeight.bold,
+                      color: primaryColor,
+                    ),
+                  ),
+                  Text(
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel fringilla metus. Nulla facilisi. Sed efficitur laoreet nulla, eu lobortis justo tincidunt vel. Donec eu elit ultrices, sodales elit quis, ultrices urna. Duis sed volutpat sapien. Duis non erat quis est malesuada commodo vel at velit. Aliquam pulvinar ultricies nulla vel iaculis. Donec interdum vestibulum sem, vel rutrum enim commodo in.',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontFamily: 'Anaktoria',
+                    ),
+                  ),
+                ],
+              ),
+              Wrap(
+                spacing: screenWidth * 0.05,
+                runSpacing: screenHeight * 0.02,
+                alignment: WrapAlignment.center,
+                children: [
+                  Center(
+                    child: Wrap(
+                      spacing: screenWidth * 0.05,
+                      runSpacing: screenHeight * 0.02,
+                      children: [
+                        PlayButtonWidget(),
+                        SelectSetButtonWidget(),
+                      ],
+                    ),
+                  ),
+                  Center(
+                    child: CreateSetButton(),
+                  ),
+                  DisplaySetButton(),
+                  DisplaySetButton(),
+                  DisplaySetButton(),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

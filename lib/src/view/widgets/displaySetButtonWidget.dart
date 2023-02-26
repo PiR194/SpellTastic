@@ -16,18 +16,15 @@ class DisplaySetButton extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30.0),
+            side: BorderSide(
+              color: Colors.amber,
+              width: 2,
+            ),
           ),
           elevation: 6.0,
           textStyle: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
-            shadows: [
-              Shadow(
-                color: Colors.grey,
-                offset: Offset(1, 1),
-                blurRadius: 2,
-              ),
-            ],
           ),
         ),
         onPressed: () {
@@ -36,7 +33,12 @@ class DisplaySetButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('Nom du set'),
+            Text(
+              'Nom du set',
+              style: TextStyle(
+                fontFamily: 'Anaktoria',
+              ),
+            ),
             Row(
               children: [
                 ElevatedButton(
