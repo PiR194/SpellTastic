@@ -20,6 +20,8 @@ List<Spell> spells_list = [];
 enum OrderOption {
   asc,
   desc,
+  Lvlasc,
+  Lvldesc,
   _default,
 }
 
@@ -71,9 +73,18 @@ class _SpellListPageState extends State<SpellListPage> {
                 if (currentOrder == OrderOption.asc) {
                   spells_list
                       .sort((toto, tata) => toto.name.compareTo(tata.name));
-                } else {
+                } else if (currentOrder == OrderOption.desc) {
                   spells_list
                       .sort((toto, tata) => tata.name.compareTo(toto.name));
+                } else if (currentOrder == OrderOption.Lvlasc) {
+                  spells_list.sort((toto, tata) =>
+                  (toto.GetLevelByClass(dum.cclass) ?? 0)
+                  .compareTo(tata.GetLevelByClass(dum.cclass) ?? 0));
+
+                } else if (currentOrder == OrderOption.Lvldesc) {
+                  spells_list.sort((toto, tata) =>
+                        (tata.GetLevelByClass(dum.cclass) ?? 0)
+                            .compareTo(toto.GetLevelByClass(dum.cclass) ?? 0));                
                 }
               });
             },
@@ -86,6 +97,14 @@ class _SpellListPageState extends State<SpellListPage> {
               const PopupMenuItem(
                 value: OrderOption.desc,
                 child: Text('Décroissant'),
+              ),
+              const PopupMenuItem(
+                value: OrderOption.Lvlasc,
+                child: Text('Level Croissant'),
+              ),
+              const PopupMenuItem(
+                value: OrderOption.Lvldesc,
+                child: Text('Level Décroissant'),
               ),
             ],
           ),
@@ -102,7 +121,7 @@ class _SpellListPageState extends State<SpellListPage> {
             ),*/
             leading: ExcludeSemantics(
                   //child: CircleAvatar(child: Text('$index')), //cercle avec index => numero dans la liste
-                  child: CircleAvatar(child: Text(spells_list[index].GetLevelByClass(dum.cclass).toString())),
+                  child: CircleAvatar(child: Text(spells_list[index].GetLevelByClass(dum.cclass).toString())), //! Changer le dum.cclass
             ),
             title: Text(spells_list[index].name),
             trailing: const Icon(
