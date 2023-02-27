@@ -6,6 +6,8 @@ import 'package:code/src/view/widgets/characterFormWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 
+import './src/model/character.dart';
+
 void main() async {
   setUrlStrategy(PathUrlStrategy());
   runApp(const MyApp());
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Pathfinder  ',
+      title: 'Pathfinder',
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
@@ -26,7 +28,8 @@ class MyApp extends StatelessWidget {
         '/characterform': (context) => CharacterFormWidget(),
         '/characterdetails': (context) => DetailsCharacter(),
         '/setdisplay': (context) => SetDisplay(),
-        '/displayallspell': (context) => SpellListPage(),
+        '/displayallspell': (context) =>
+            SpellListPage(character: Character("dummy", "Bar", 10)),
       },
     );
   }

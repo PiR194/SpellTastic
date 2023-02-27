@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class DisplaySetButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
     double halfWidth = MediaQuery.of(context).size.width / 2;
     const Color accentColor = Color(0xFF9C27B0);
     const Color primaryColor = Color(0xFFC2185B);
@@ -39,8 +40,19 @@ class DisplaySetButton extends StatelessWidget {
                 fontFamily: 'Anaktoria',
               ),
             ),
-            Row(
+            Wrap(
+              spacing: screenWidth * 0.02,
+              alignment: WrapAlignment.center,
               children: [
+                ElevatedButton(
+                  onPressed: () {
+                    // Modifier le set (à implémenter)
+                  },
+                  child: Text('Use'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green,
+                  ),
+                ),
                 ElevatedButton(
                   onPressed: () {
                     // Modifier le set (à implémenter)
@@ -49,9 +61,6 @@ class DisplaySetButton extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: primaryColor,
                   ),
-                ),
-                const SizedBox(
-                  width: 5,
                 ),
                 ElevatedButton(
                   onPressed: () {

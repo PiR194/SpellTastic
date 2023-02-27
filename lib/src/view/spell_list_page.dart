@@ -6,14 +6,12 @@ import 'package:flutter/material.dart';
 import '../data/dbhelper.dart';
 import 'dart:io' show Platform;
 
-
 //TODO ajouter les filtres sur les sorts
 //? filtrer les listes pour que un personnage vois que ces sort dispo (eviter les "null" dans l'affichage)
 //! Penser a supprimer se "mini stub", et de le remplacer par le binding des pages
 import '../model/character.dart';
-Character dum = Character("dummy", "Bar", 10);
 
-
+//Character dum = Character("dummy", "Bar", 10);
 
 List<Spell> spells_list = [];
 
@@ -28,13 +26,20 @@ enum OrderOption {
 OrderOption currentOrder = OrderOption.asc;
 
 class SpellListPage extends StatefulWidget {
+  const SpellListPage({super.key, required this.character});
+  final Character character;
+
   @override
-  _SpellListPageState createState() => new _SpellListPageState();
+  State<SpellListPage> createState() => _SpellListPage(character: character);
 }
 
-class _SpellListPageState extends State<SpellListPage> {
+class _SpellListPage extends State<SpellListPage> {
+  _SpellListPage({required this.character});
+  Character character;
+
   @override
   void initState() {
+    character = widget.character;
     super.initState();
     getData();
   }
@@ -78,13 +83,12 @@ class _SpellListPageState extends State<SpellListPage> {
                       .sort((toto, tata) => tata.name.compareTo(toto.name));
                 } else if (currentOrder == OrderOption.Lvlasc) {
                   spells_list.sort((toto, tata) =>
-                  (toto.GetLevelByClass(dum.cclass) ?? 0)
-                  .compareTo(tata.GetLevelByClass(dum.cclass) ?? 0));
-
+                      (toto.GetLevelByClass(character.cclass) ?? 0).compareTo(
+                          tata.GetLevelByClass(character.cclass) ?? 0));
                 } else if (currentOrder == OrderOption.Lvldesc) {
                   spells_list.sort((toto, tata) =>
-                        (tata.GetLevelByClass(dum.cclass) ?? 0)
-                            .compareTo(toto.GetLevelByClass(dum.cclass) ?? 0));                
+                      (tata.GetLevelByClass(character.cclass) ?? 0).compareTo(
+                          toto.GetLevelByClass(character.cclass) ?? 0));
                 }
               });
             },
@@ -120,8 +124,11 @@ class _SpellListPageState extends State<SpellListPage> {
               height: 150,
             ),*/
             leading: ExcludeSemantics(
-                  //child: CircleAvatar(child: Text('$index')), //cercle avec index => numero dans la liste
-                  child: CircleAvatar(child: Text(spells_list[index].GetLevelByClass(dum.cclass).toString())), //! Changer le dum.cclass
+              //child: CircleAvatar(child: Text('$index')), //cercle avec index => numero dans la liste
+              child: CircleAvatar(
+                  child: Text(spells_list[index]
+                      .GetLevelByClass(character.cclass)
+                      .toString())), //! Changer le dum.cclass
             ),
             title: Text(spells_list[index].name),
             trailing: const Icon(
