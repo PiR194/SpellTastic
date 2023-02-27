@@ -39,7 +39,7 @@ class Spell {
 
   // ignore: non_constant_identifier_names
   int? GetLevelByClass(String class_){
-    print(_level);
+  //  print(_level);
     if (_level.containsKey(class_)) {
       return _level[class_];
     } 

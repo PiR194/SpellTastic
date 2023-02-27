@@ -24,6 +24,10 @@ class Character {
   List<SpellSet> get sets => _sets;
   set sets(List<SpellSet> sets) => _sets = sets;
 
+    List<Spell> get knownSpells => _knownSpells;
+    set knownSpells(List<Spell> known) => _knownSpells = known;
+
+    // methods
   void addSet(SpellSet set) {
     _sets.add(set);
   }
