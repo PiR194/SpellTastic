@@ -18,9 +18,9 @@ class Spell {
   Map<String, int> _level;
   String _castingTime;
   List<String> _components;
-  double _range;
+  String _range;
   String _target;
-  double _duration;
+  String _duration;
 
   Spell(
       this._id,
@@ -36,18 +36,15 @@ class Spell {
       this._target,
       this._duration);
 
-
   // ignore: non_constant_identifier_names
-  int? GetLevelByClass(String class_){
+  int? GetLevelByClass(String class_) {
     print(_level);
     if (_level.containsKey(class_)) {
       return _level[class_];
-    } 
-    else{
+    } else {
       return null;
     }
   }
-
 
   @override
   String toString() {
