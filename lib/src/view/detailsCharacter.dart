@@ -105,22 +105,6 @@ class DetailsCharacter extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const Text(
-                    'DESCRIPTION',
-                    style: TextStyle(
-                      fontSize: 26,
-                      fontFamily: 'Anaktoria',
-                      fontWeight: FontWeight.bold,
-                      color: primaryColor,
-                    ),
-                  ),
-                  Text(
-                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel fringilla metus. Nulla facilisi. Sed efficitur laoreet nulla, eu lobortis justo tincidunt vel. Donec eu elit ultrices, sodales elit quis, ultrices urna. Duis sed volutpat sapien. Duis non erat quis est malesuada commodo vel at velit. Aliquam pulvinar ultricies nulla vel iaculis. Donec interdum vestibulum sem, vel rutrum enim commodo in.',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontFamily: 'Anaktoria',
-                    ),
-                  ),
                 ],
               ),
               Wrap(
