@@ -109,12 +109,6 @@ class _CharacterFormState extends State<CharacterFormWidget> {
                   activeColor: Colors.green,
                   inactiveColor: Colors.grey,
                   thumbColor: Colors.brown),
-              TextFormField(
-                decoration: InputDecoration(
-                  labelText: 'Description',
-                ),
-                maxLines: 4,
-              ),
             ],
           ),
         ),

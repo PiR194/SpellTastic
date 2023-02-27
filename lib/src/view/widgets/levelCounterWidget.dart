@@ -6,7 +6,7 @@ class LevelCounterWidget extends StatefulWidget {
 }
 
 class _LevelCounter extends State<LevelCounterWidget> {
-  int _count = 0;
+  int _count = 1;
 
   void _incrementCount() {
     setState(() {
@@ -18,7 +18,7 @@ class _LevelCounter extends State<LevelCounterWidget> {
 
   void _decrementCount() {
     setState(() {
-      if (_count > 0) {
+      if (_count > 1) {
         _count--;
       }
     });
@@ -26,16 +26,16 @@ class _LevelCounter extends State<LevelCounterWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Row(
       children: [
-        IconButton(
-          icon: Icon(Icons.arrow_upward),
-          onPressed: _incrementCount,
-        ),
-        Text('$_count'),
         IconButton(
           icon: Icon(Icons.arrow_downward),
           onPressed: _decrementCount,
+        ),
+        Text('$_count'),
+        IconButton(
+          icon: Icon(Icons.arrow_upward),
+          onPressed: _incrementCount,
         ),
       ],
     );

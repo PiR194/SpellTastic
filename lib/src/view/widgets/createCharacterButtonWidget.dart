@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-class CharacterButtonWidget extends StatelessWidget {
+import 'characterFormWidget.dart';
+
+class CreateCharacterButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double buttonWidth = MediaQuery.of(context).size.width / 2;
@@ -8,7 +10,7 @@ class CharacterButtonWidget extends StatelessWidget {
       width: buttonWidth,
       child: ElevatedButton(
         onPressed: () {
-          Navigator.pushNamed(context, '/characterdetails');
+          Navigator.pushNamed(context, '/characterform');
         },
         style: ElevatedButton.styleFrom(
           primary: Color.fromARGB(255, 123, 184, 235),
@@ -20,23 +22,7 @@ class CharacterButtonWidget extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            CircleAvatar(
-              radius: 30,
-              backgroundImage: AssetImage('assets/images/background_home.png'),
-            ),
-            SizedBox(width: 10),
-            Expanded(
-              child: Text(
-                'Nom du personnage',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 22,
-                ),
-              ),
-            ),
-          ],
+          children: const [Text("+++ Add a Character +++")],
         ),
       ),
     );

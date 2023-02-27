@@ -1,3 +1,5 @@
+import 'package:code/src/view/widgets/createCharacterButtonWidget.dart';
+import 'package:code/src/view/widgets/displayAllSpellButtonWidget.dart';
 import 'package:flutter/material.dart';
 import 'widgets/characterButtonWidget.dart';
 
@@ -24,6 +26,8 @@ class Home extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
+                  CreateCharacterButtonWidget(),
+                  const SizedBox(height: 10),
                   CharacterButtonWidget(),
                   const SizedBox(height: 10),
                   CharacterButtonWidget(),
@@ -35,6 +39,13 @@ class Home extends StatelessWidget {
               ),
             ),
           )),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Align(
+          alignment: Alignment.bottomRight,
+          child: DisplayAllSpellButtonWidget(),
+        ),
+      ),
     );
   }
 }

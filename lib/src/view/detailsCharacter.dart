@@ -8,147 +8,130 @@ import 'widgets/selectSetButtonWidget.dart';
 class DetailsCharacter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    const Color primaryColor = Color(0xFFC2185B);
+    const Color accentColor = Color(0xFF9C27B0);
+    const Color backgroundColor = Color(0xFFEDE7F6);
+
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
+      backgroundColor: backgroundColor,
       appBar: AppBar(
         title: Text('Profil'),
-        backgroundColor: Colors.black,
+        backgroundColor: accentColor,
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            // En-tête
-            Container(
-              height: 200,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: Colors.grey,
-                image: DecorationImage(
-                  image: AssetImage('assets/images/background_home.png'),
-                  fit: BoxFit.cover,
-                ),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+      body: Padding(
+        padding: EdgeInsets.symmetric(vertical: screenHeight * 0.02),
+        child: SingleChildScrollView(
+          child: Wrap(
+            spacing: screenWidth * 0.05,
+            runSpacing: screenHeight * 0.05,
+            alignment: WrapAlignment.center,
+            children: [
+              // En-tête
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   CircleAvatar(
-                    radius: 50,
+                    radius: 80,
                     backgroundImage:
-                        AssetImage('assets/images/background_home.png'),
+                        AssetImage('assets/class_icons/Goblins_Fight.png'),
                   ),
-                  SizedBox(height: 16),
-                  Text(
-                    'LOU LE GOBELIN',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
+                  Column(
+                    children: [
+                      Text(
+                        'LOU LE GOBELIN',
+                        style: TextStyle(
+                          fontSize: 40,
+                          fontFamily: 'Anaktoria',
+                          fontWeight: FontWeight.bold,
+                          color: primaryColor,
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          const Text(
+                            'CLASS : ' + 'Gobelin',
+                            style: TextStyle(
+                              fontSize: 25,
+                              fontFamily: 'Anaktoria',
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  )
                 ],
               ),
-            ),
-
-            // Détails du personnage
-            Padding(
-              padding: EdgeInsets.all(16),
-              child: Column(
+              // Détails du personnage
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
                     'CARACTERISTICS',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 26,
+                      fontFamily: 'Anaktoria',
+                      fontWeight: FontWeight.bold,
+                      color: primaryColor,
+                    ),
                   ),
-                  const SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Column(
+                      Row(
                         children: [
                           const Text(
                             'LEVEL :',
-                            style: TextStyle(fontSize: 16),
+                            style: TextStyle(
+                              fontSize: 25,
+                              fontFamily: 'Anaktoria',
+                            ),
                           ),
                           LevelCounterWidget(),
                         ],
                       ),
                       Column(
                         children: [
-                          const Text(
-                            'RACE :',
-                            style: TextStyle(fontSize: 16),
-                          ),
                           Text(
-                            'Gobelin',
-                            style: TextStyle(fontSize: 16),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Text(
-                            'CLASS :',
-                            style: TextStyle(fontSize: 16),
-                          ),
-                          Text(
-                            'Murder',
-                            style: TextStyle(fontSize: 16),
+                            'RACE : ' + 'Murder',
+                            style: TextStyle(
+                              fontSize: 25,
+                              fontFamily: 'Anaktoria',
+                            ),
                           ),
                         ],
                       ),
                     ],
                   ),
-                  const SizedBox(height: 16),
-                  const Text(
-                    'DESCRIPTION',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel fringilla metus. Nulla facilisi. Sed efficitur laoreet nulla, eu lobortis justo tincidunt vel. Donec eu elit ultrices, sodales elit quis, ultrices urna. Duis sed volutpat sapien. Duis non erat quis est malesuada commodo vel at velit. Aliquam pulvinar ultricies nulla vel iaculis. Donec interdum vestibulum sem, vel rutrum enim commodo in.',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                  const SizedBox(height: 16),
                 ],
               ),
-            ),
-            Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
+              Wrap(
+                spacing: screenWidth * 0.05,
+                runSpacing: screenHeight * 0.02,
+                alignment: WrapAlignment.center,
                 children: [
-                  PlayButtonWidget(),
-                  const SizedBox(
-                    width: 15,
+                  Center(
+                    child: Wrap(
+                      spacing: screenWidth * 0.05,
+                      runSpacing: screenHeight * 0.02,
+                      children: [
+                        PlayButtonWidget(),
+                        SelectSetButtonWidget(),
+                      ],
+                    ),
                   ),
-                  SelectSetButtonWidget(),
+                  Center(
+                    child: CreateSetButton(),
+                  ),
+                  DisplaySetButton(),
+                  DisplaySetButton(),
+                  DisplaySetButton(),
                 ],
-              ),
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            Center(
-              child: CreateSetButton(),
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            Center(
-              child: DisplaySetButton(),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Center(
-              child: DisplaySetButton(),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Center(
-              child: DisplaySetButton(),
-            ),
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );
