@@ -1,3 +1,4 @@
+import '../model/CharacterClass.dart';
 import '../model/spell.dart';
 import './spell__search_delegate_page.dart';
 import './spell_detail_page.dart';
@@ -6,14 +7,12 @@ import 'package:flutter/material.dart';
 import '../data/dbhelper.dart';
 import 'dart:io' show Platform;
 
-
 //TODO ajouter les filtres sur les sorts
 //? filtrer les listes pour que un personnage vois que ces sort dispo (eviter les "null" dans l'affichage)
 //! Penser a supprimer se "mini stub", et de le remplacer par le binding des pages
 import '../model/character.dart';
-Character dum = Character("dummy", "Bar", 10);
 
-
+Character dum = Character("dummy", CharacterClass.bard, 10);
 
 List<Spell> spells_list = [];
 
@@ -78,13 +77,12 @@ class _SpellListPageState extends State<SpellListPage> {
                       .sort((toto, tata) => tata.name.compareTo(toto.name));
                 } else if (currentOrder == OrderOption.Lvlasc) {
                   spells_list.sort((toto, tata) =>
-                  (toto.GetLevelByClass(dum.cclass) ?? 0)
-                  .compareTo(tata.GetLevelByClass(dum.cclass) ?? 0));
-
+                      (toto.GetLevelByClass(dum.cclass) ?? 0)
+                          .compareTo(tata.GetLevelByClass(dum.cclass) ?? 0));
                 } else if (currentOrder == OrderOption.Lvldesc) {
                   spells_list.sort((toto, tata) =>
-                        (tata.GetLevelByClass(dum.cclass) ?? 0)
-                            .compareTo(toto.GetLevelByClass(dum.cclass) ?? 0));                
+                      (tata.GetLevelByClass(dum.cclass) ?? 0)
+                          .compareTo(toto.GetLevelByClass(dum.cclass) ?? 0));
                 }
               });
             },
@@ -120,8 +118,11 @@ class _SpellListPageState extends State<SpellListPage> {
               height: 150,
             ),*/
             leading: ExcludeSemantics(
-                  //child: CircleAvatar(child: Text('$index')), //cercle avec index => numero dans la liste
-                  child: CircleAvatar(child: Text(spells_list[index].GetLevelByClass(dum.cclass).toString())), //! Changer le dum.cclass
+              //child: CircleAvatar(child: Text('$index')), //cercle avec index => numero dans la liste
+              child: CircleAvatar(
+                  child: Text(spells_list[index]
+                      .GetLevelByClass(dum.cclass)
+                      .toString())), //! Changer le dum.cclass
             ),
             title: Text(spells_list[index].name),
             trailing: const Icon(

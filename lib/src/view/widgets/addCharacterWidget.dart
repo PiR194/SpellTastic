@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'characterFormWidget.dart';
 
-class CreateCharacterButtonWidget extends StatelessWidget {
+class AddCharacterWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double buttonWidth = MediaQuery.of(context).size.width / 2;
@@ -22,7 +22,7 @@ class CreateCharacterButtonWidget extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: const [Text("+++ Add a Character +++")],
+          children: const [Text(" + ")],
         ),
       ),
     );
