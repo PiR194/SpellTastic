@@ -55,6 +55,11 @@ class SQLiteDataStrategy implements IDataStrategy {
           ? tmpTarget = list[i]['target']
           : tmpTarget = '';
 
+      var tmpComponent;
+      (list[i]['components'] != null)
+          ? tmpComponent = list[i]['components'].toString().split(',')
+          : tmpComponent = List<String>.empty();
+
       spells.add(Spell(
           list[i]['id'],
           list[i]['name'],
@@ -64,7 +69,7 @@ class SQLiteDataStrategy implements IDataStrategy {
           list[i]['school'],
           tmpLevel,
           tmpCastingTime,
-          List<String>.empty(), //list[i]['level'],
+          tmpComponent, //list[i]['level'],
           0, //list[i]['range'],
           tmpTarget,
           0)); //list[i]['duration']));
