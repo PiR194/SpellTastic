@@ -1,3 +1,5 @@
+import 'package:collection/collection.dart';
+
 class Spell {
   // Setting id
   int _id;
@@ -49,5 +51,20 @@ class Spell {
   @override
   String toString() {
     return " id: $_id \nname: $_name \nschool: $_school";
+  }
+
+  bool equals(Spell other) {
+    return _id == other._id &&
+        _name == other._name &&
+        _description == other._description &&
+        _reference == other._reference &&
+        _source == other._source &&
+        _school == other._school &&
+        const DeepCollectionEquality().equals(_level, other._level) &&
+        _castingTime == other._castingTime &&
+        const ListEquality().equals(_components, other._components) &&
+        _range == other._range &&
+        _target == other._target &&
+        _duration == other._duration;
   }
 }
