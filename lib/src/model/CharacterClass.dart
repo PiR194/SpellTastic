@@ -27,7 +27,7 @@ enum CharacterClass {
 extension GetImage on CharacterClass {
   String path() {
     var name = toString().split('.').last;
-    name[0].toUpperCase();
+    name = name[0].toUpperCase() + name.substring(1);
     return name;
   }
 }

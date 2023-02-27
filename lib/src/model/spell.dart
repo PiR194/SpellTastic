@@ -1,3 +1,5 @@
+import 'package:code/src/model/CharacterClass.dart';
+
 class Spell {
   // Setting id
   int _id;
@@ -15,7 +17,7 @@ class Spell {
   String _school;
   String get school => _school;
 
-  Map<String, int> _level;
+  Map<CharacterClass, int> _level;
   String _castingTime;
   List<String> _components;
   double _range;
@@ -36,18 +38,15 @@ class Spell {
       this._target,
       this._duration);
 
-
   // ignore: non_constant_identifier_names
-  int? GetLevelByClass(String class_){
-  //  print(_level);
+  int? GetLevelByClass(CharacterClass class_) {
+    //  print(_level);
     if (_level.containsKey(class_)) {
       return _level[class_];
-    } 
-    else{
+    } else {
       return null;
     }
   }
-
 
   @override
   String toString() {

@@ -3,6 +3,8 @@ The purpose of this file is to manually test Character and SpellSet classes.
 */
 
 import 'dart:io';
+import 'package:code/src/model/CharacterClass.dart';
+
 import '../src/model/character.dart';
 import '../src/model/spell_set.dart';
 import '../src/data/sqlite_data_strategy.dart';
@@ -27,7 +29,7 @@ void main(List<String> args) async {
   set2.addSpell(spells[132]);
   set2.addSpell(spells[469]);
 
-  var charac = Character("myChar", "Wizard", 1);
+  var charac = Character("myChar", CharacterClass.wizard, 1);
   charac.addSet(set1);
   charac.addSet(set2);
 }
