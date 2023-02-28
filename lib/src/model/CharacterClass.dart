@@ -30,4 +30,15 @@ extension GetImage on CharacterClass {
     name = name[0].toUpperCase() + name.substring(1);
     return name;
   }
+
+  // CharacterClass getFromString(String class) {
+  //   switch(class) {
+  //     case 'Bar' :
+  //       return CharacterClass.barbarian;
+  //     case 'Alc' :
+  //       return CharacterClass.alchemist;
+  //     case 'Alc' :
+  //       return CharacterClass.alchemist;
+  //   }
+  //}
 }

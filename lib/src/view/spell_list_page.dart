@@ -12,7 +12,7 @@ import 'dart:io' show Platform;
 //! Penser a supprimer se "mini stub", et de le remplacer par le binding des pages
 import '../model/character.dart';
 
-Character dum = Character("dummy", CharacterClass.bard, 10);
+Character dum = Character("dummy", "Bar", 10);
 
 List<Spell> spells_list = [];
 

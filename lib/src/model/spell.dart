@@ -17,7 +17,7 @@ class Spell {
   String _school;
   String get school => _school;
 
-  Map<CharacterClass, int> _level;
+  Map<String, int> _level;
   String _castingTime;
   List<String> _components;
   double _range;
@@ -39,7 +39,7 @@ class Spell {
       this._duration);
 
   // ignore: non_constant_identifier_names
-  int? GetLevelByClass(CharacterClass class_) {
+  int? GetLevelByClass(String class_) {
     //  print(_level);
     if (_level.containsKey(class_)) {
       return _level[class_];

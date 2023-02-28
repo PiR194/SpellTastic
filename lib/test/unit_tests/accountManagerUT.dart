@@ -9,9 +9,9 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   test('Should be able to add character list to account instance', () {
     List<Character> chars = <Character>[];
-    chars.add(Character("_name0", CharacterClass.barbarian, 3));
-    chars.add(Character("_name1", CharacterClass.alchemist, 5));
-    chars.add(Character("_name2", CharacterClass.cleric, 4));
+    chars.add(Character("_name0", "barbarian", 3));
+    chars.add(Character("_name1", "alchemist", 5));
+    chars.add(Character("_name2", "cleric", 4));
 
     var ac1 = AccountManager();
     ac1.characters = chars;
@@ -21,9 +21,9 @@ void main() {
 
   test('Account instance should be a singleton', () {
     List<Character> chars = <Character>[];
-    chars.add(Character("_name0", CharacterClass.barbarian, 3));
-    chars.add(Character("_name1", CharacterClass.alchemist, 5));
-    chars.add(Character("_name2", CharacterClass.cleric, 4));
+    chars.add(Character("_name0", "barbarian", 3));
+    chars.add(Character("_name1", "alchemist", 5));
+    chars.add(Character("_name2", "cleric", 4));
 
     var ac1 = AccountManager();
     ac1.characters = chars;
