@@ -1,3 +1,4 @@
+import 'package:code/src/model/character.dart';
 import 'package:code/src/view/detailsCharacter.dart';
 import 'package:code/src/view/home.dart';
 import 'package:code/src/view/setDisplay.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Pathfinder  ',
+      title: 'Pathfinder',
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
@@ -26,7 +27,8 @@ class MyApp extends StatelessWidget {
         '/characterform': (context) => CharacterFormWidget(),
         '/characterdetails': (context) => DetailsCharacter(),
         '/setdisplay': (context) => SetDisplay(),
-        '/displayallspell': (context) => SpellListPage(),
+        '/displayallspell': (context) =>
+            SpellListPage(character: Character("dummy", "Bar", 10)),
       },
     );
   }

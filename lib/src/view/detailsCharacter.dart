@@ -113,16 +113,6 @@ class DetailsCharacter extends StatelessWidget {
                 alignment: WrapAlignment.center,
                 children: [
                   Center(
-                    child: Wrap(
-                      spacing: screenWidth * 0.05,
-                      runSpacing: screenHeight * 0.02,
-                      children: [
-                        PlayButtonWidget(),
-                        SelectSetButtonWidget(),
-                      ],
-                    ),
-                  ),
-                  Center(
                     child: CreateSetButton(),
                   ),
                   DisplaySetButton(),
