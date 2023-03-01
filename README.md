@@ -4,7 +4,7 @@
 # **SPELLTASTIC**
 
 ## Bonjour et bienvenue sur le dépôt du projet SpellTastic ! 👋
-[![Build Status](https://codefirst.iut.uca.fr/api/badges/nicolas.franco/Pathfinder/status.svg)](https://codefirst.iut.uca.fr/nicolas.franco/Pathfinder)
+[![Build Status](https://codefirst.iut.uca.fr/api/badges/nicolas.franco/Spelltastic/status.svg)](https://codefirst.iut.uca.fr/nicolas.franco/Spelltastic)
 
 *******
 
