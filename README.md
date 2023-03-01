@@ -70,9 +70,9 @@ Application multi-plateforme vous assistant durant vos parties.
     - Ordinateurs portables sous Linux ou Windows   
     - Visual Studio Code    
 - Langages utilisés
-    - FLUTTER ![](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)
-    - DART ![](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)
-    - SQLITE ![](https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white)
+    -  ![](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)
+    -  ![](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)
+    -  ![](https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white)
 
 - Personnes 
     - 4 étudiants en BUT Informatique
