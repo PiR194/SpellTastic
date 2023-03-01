@@ -120,7 +120,13 @@ class _SpellListPage extends State<SpellListPage> {
         cacheExtent: 2,
         itemCount: spells_list.length,
         itemBuilder: (context, index) {
+          Color backgroundColor =
+              spells_list[index].GetLevelByClass(character.cclass)?.isEven ??
+                      false
+                  ? const Color.fromARGB(255, 209, 214, 216)
+                  : Colors.white;
           return ListTile(
+            tileColor: backgroundColor,
             title: Text(spells_list[index].name),
             onTap: () {
               Navigator.push(
