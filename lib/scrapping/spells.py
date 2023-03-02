@@ -57,11 +57,11 @@ for li in lis:
     print("name: ",spell_name)
 
     # get school
-    spell_school = spellContent.find('b', text='School').find_next_sibling('a').text.strip()
+    spell_school = spellContent.find('b', string='School').find_next_sibling('a').text.strip()
     print("school: ", spell_school)
 
     # get level
-    levels = spellContent.find('b', text='Level').find_next_siblings('a')
+    levels = spellContent.find('b', string='Level').find_next_siblings('a')
     #print("level: ", spell_level)
 
     spell_level = []
@@ -72,12 +72,12 @@ for li in lis:
     # print(spell_level) # check if gutten
 
     # get casting time
-    spell_castTime = spellContent.find('b', text='Casting Time').next_sibling.strip() # nao ta em balisa entao next_sibling sem parenthesis como um attributo
+    spell_castTime = spellContent.find('b', string='Casting Time').next_sibling.strip() # nao ta em balisa entao next_sibling sem parenthesis como um attributo
     print("cast time: ", spell_castTime)
 
     # get components 
     components = []
-    spell_components = spellContent.find('b', text='Components')#.next_sibling.strip()
+    spell_components = spellContent.find('b', string='Components')#.next_sibling.strip()
     if spell_components:
         for sibling in spell_components.next_siblings:
             if sibling.name == 'p': # if end of p tag
@@ -102,11 +102,49 @@ for li in lis:
         spell_range = None
     print("Range: ", spell_range)
 
+    # get target
+    target = []
+    spell_target = spellContent.find('b', string='Target')#.next_sibling.strip()
+    if spell_target:
+        for sibling in spell_target.next_siblings:
+            if sibling.name == 'p' or sibling.name == 'br': # if end of p tag
+                break
+            if sibling.name == 'a': # if href we want to just get text
+                target.append(sibling.text)
+            elif isinstance(sibling, bs4.element.NavigableString): # if its just random a** text in no specific <tag>
+                component_text = sibling.string.strip()
+                if component_text:
+                    target.append(component_text)
+        spell_target = ' '.join(target) # final touch :chef's_kiss:
+    else :
+        spell_target = None
+    print("Target: ", spell_target)
+
+    #get duration
+    spell_duration = spellContent.find('b',string='Duration').next_sibling.text.strip()
+    print("Duration: ",spell_duration)
+
+    
+    # get saving throw
+    svthrow = []
+    spell_saving_throw = spellContent.find('b',string='Saving Throw')
+    if spell_saving_throw :
+        for sibling in spell_saving_throw.next_siblings:
+            if sibling.name == 'b':
+                break
+            if sibling.name == 'a':
+                svthrow.append(sibling.text)
+            elif isinstance((sibling), bs4.element.NavigableString):
+                component_text = sibling.string.strip()
+                if component_text:
+                    target.append(svthrow)
+        print(svthrow)
+
+    print(spell_saving_throw)
 
     exit(0)
 
-
-    # print(components) # output like: "V, S, M (a" # IF NOTHING NEXT TO "(a" REMOVE LATER ------------ !
+   
 
 
 
