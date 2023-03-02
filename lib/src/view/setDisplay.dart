@@ -14,12 +14,12 @@ class SetDisplay extends StatelessWidget {
       body: PageView(
         controller: setController,
         children: <Widget>[
-          Expanded(
+          Container(
             child: SpellSetWidget(
               level: '1',
             ),
           ),
-          Expanded(
+          Container(
             child: SpellSetWidget(
               level: '2',
             ),

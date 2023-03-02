@@ -6,37 +6,30 @@ class SpellSetWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PageView(
-      children: [
-        SingleChildScrollView(
-          child: Column(
-            children: [
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Text(
+            'LEVEL $level',
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              color: Colors.brown,
+              decoration: TextDecoration.none,
+            ),
+          ),
+          ListView(scrollDirection: Axis.vertical, shrinkWrap: true, children: [
+            for (int i = 0; i < 30; i++)
               Text(
-                'LEVEL $level',
-                textAlign: TextAlign.center,
+                'Item $i',
                 style: const TextStyle(
-                  color: Colors.brown,
+                  fontSize: 20,
                   decoration: TextDecoration.none,
                 ),
+                textAlign: TextAlign.center,
               ),
-              ListView(
-                  scrollDirection: Axis.vertical,
-                  shrinkWrap: true,
-                  children: <Widget>[
-                    for (int i = 0; i < 30; i++)
-                      Text(
-                        'Item $i',
-                        style: const TextStyle(
-                          fontSize: 20,
-                          decoration: TextDecoration.none,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                  ])
-            ],
-          ),
-        )
-      ],
+          ])
+        ],
+      ),
     );
   }
 }
