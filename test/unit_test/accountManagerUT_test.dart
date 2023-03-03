@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:code/src/model/CharacterClass.dart';
 import 'package:code/src/model/character.dart';
 
-import '../../src/model/accountManager.dart';
+import '../../lib/src/model/accountManager.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
