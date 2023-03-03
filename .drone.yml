@@ -17,6 +17,7 @@ steps:
   - name: test
     image: cirrusci/flutter:stable
     commands:
+      - cd test
       - flutter test
     depends_on: [ build-apk ]
 
