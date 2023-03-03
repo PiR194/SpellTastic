@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 class CharacterButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    const Color accentColor = Color(0xFF9C27B0);
+
     double buttonWidth = MediaQuery.of(context).size.width / 2;
+
     return SizedBox(
       width: buttonWidth,
       child: ElevatedButton(
@@ -11,7 +14,7 @@ class CharacterButtonWidget extends StatelessWidget {
           Navigator.pushNamed(context, '/characterdetails');
         },
         style: ElevatedButton.styleFrom(
-          primary: Color.fromARGB(255, 123, 184, 235),
+          primary: accentColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(50),
           ),
