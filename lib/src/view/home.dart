@@ -1,4 +1,4 @@
-import 'package:code/src/view/widgets/createCharacterButtonWidget.dart';
+import 'package:code/src/view/widgets/addCharacterWidget.dart';
 import 'package:code/src/view/widgets/displayAllSpellButtonWidget.dart';
 import 'package:flutter/material.dart';
 import 'widgets/characterButtonWidget.dart';
@@ -9,7 +9,7 @@ class Home extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: Text('SPELLTASTIC',
+        title: const Text('SPELLTASTIC',
             style: TextStyle(
                 color: Colors.black,
                 fontSize: 50,
@@ -26,7 +26,7 @@ class Home extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  CreateCharacterButtonWidget(),
+                  AddCharacterWidget(),
                   const SizedBox(height: 10),
                   CharacterButtonWidget(),
                   const SizedBox(height: 10),

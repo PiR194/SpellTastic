@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:code/src/model/CharacterClass.dart';
 
 class Spell {
   // Setting id
@@ -64,7 +65,7 @@ class Spell {
 
   // ignore: non_constant_identifier_names
   int? GetLevelByClass(String class_) {
-    print(_level);
+    //  print(_level);
     if (_level.containsKey(class_)) {
       return _level[class_];
     } else {

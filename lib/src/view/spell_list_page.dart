@@ -1,3 +1,4 @@
+import '../model/CharacterClass.dart';
 import '../model/spell.dart';
 import './spell__search_delegate_page.dart';
 import './spell_detail_page.dart';
@@ -6,14 +7,12 @@ import 'package:flutter/material.dart';
 import '../data/dbhelper.dart';
 import 'dart:io' show Platform;
 
-
 //TODO ajouter les filtres sur les sorts
 //? filtrer les listes pour que un personnage vois que ces sort dispo (eviter les "null" dans l'affichage)
 //! Penser a supprimer se "mini stub", et de le remplacer par le binding des pages
 import '../model/character.dart';
-Character dum = Character("dummy", "Bar", 10);
 
-
+//Character dum = Character("dummy", "Bar", 10);
 
 List<Spell> spells_list = [];
 
@@ -28,13 +27,20 @@ enum OrderOption {
 OrderOption currentOrder = OrderOption.asc;
 
 class SpellListPage extends StatefulWidget {
+  const SpellListPage({super.key, required this.character});
+  final Character character;
+
   @override
-  _SpellListPageState createState() => new _SpellListPageState();
+  State<SpellListPage> createState() => _SpellListPage(character: character);
 }
 
-class _SpellListPageState extends State<SpellListPage> {
+class _SpellListPage extends State<SpellListPage> {
+  _SpellListPage({required this.character});
+  Character character;
+
   @override
   void initState() {
+    character = widget.character;
     super.initState();
     getData();
   }
@@ -78,13 +84,12 @@ class _SpellListPageState extends State<SpellListPage> {
                       .sort((toto, tata) => tata.name.compareTo(toto.name));
                 } else if (currentOrder == OrderOption.Lvlasc) {
                   spells_list.sort((toto, tata) =>
-                  (toto.GetLevelByClass(dum.cclass) ?? 0)
-                  .compareTo(tata.GetLevelByClass(dum.cclass) ?? 0));
-
+                      (toto.GetLevelByClass(character.cclass) ?? 0).compareTo(
+                          tata.GetLevelByClass(character.cclass) ?? 0));
                 } else if (currentOrder == OrderOption.Lvldesc) {
                   spells_list.sort((toto, tata) =>
-                        (tata.GetLevelByClass(dum.cclass) ?? 0)
-                            .compareTo(toto.GetLevelByClass(dum.cclass) ?? 0));                
+                      (tata.GetLevelByClass(character.cclass) ?? 0).compareTo(
+                          toto.GetLevelByClass(character.cclass) ?? 0));
                 }
               });
             },
@@ -111,24 +116,18 @@ class _SpellListPageState extends State<SpellListPage> {
         ],
       ),
       body: ListView.builder(
+        itemExtent: 50,
+        cacheExtent: 2,
         itemCount: spells_list.length,
         itemBuilder: (context, index) {
+          Color backgroundColor =
+              spells_list[index].GetLevelByClass(character.cclass)?.isEven ??
+                      false
+                  ? const Color.fromARGB(255, 209, 214, 216)
+                  : Colors.white;
           return ListTile(
-            //leading: Image.file(File('./src/LuvLimule.png')),
-            /*leading: const Image(
-              image: AssetImage('assets/src/Sprite-SlimeGHallow.png'),
-              height: 150,
-            ),*/
-            leading: ExcludeSemantics(
-                  //child: CircleAvatar(child: Text('$index')), //cercle avec index => numero dans la liste
-                  child: CircleAvatar(child: Text(spells_list[index].GetLevelByClass(dum.cclass).toString())), //! Changer le dum.cclass
-            ),
+            tileColor: backgroundColor,
             title: Text(spells_list[index].name),
-            trailing: const Icon(
-              Icons.arrow_forward,
-              color: Colors.blueGrey,
-              size: 24.0,
-            ),
             onTap: () {
               Navigator.push(
                 context,
@@ -144,27 +143,27 @@ class _SpellListPageState extends State<SpellListPage> {
     );
   }
 
-/* OLD WIDGET VIEW LIST 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Spell Names'),
-      ),
-      body: Container(
-          child: ListView.separated(
-              separatorBuilder: (context, index) =>
-                  const Divider(height: 0.5, color: Colors.black38),
-              physics: ClampingScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: spells_list == null ? 0 : spells_list.length,
-              itemBuilder: (context, index) {
-                return Container(
-                  padding: const EdgeInsets.all(15),
-                  child: Text(
-                      '${spells_list[index].name} ${spells_list[index].school} ${spells_list[index].source}'),
-                );
-              })),
-    );
-  } */
+  /* OLD WIDGET VIEW LIST 
+    @override
+    Widget build(BuildContext context) {
+      return Scaffold(
+        appBar: AppBar(
+          title: const Text('Spell Names'),
+        ),
+        body: Container(
+            child: ListView.separated(
+                separatorBuilder: (context, index) =>
+                    const Divider(height: 0.5, color: Colors.black38),
+                physics: ClampingScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: spells_list == null ? 0 : spells_list.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    padding: const EdgeInsets.all(15),
+                    child: Text(
+                        '${spells_list[index].name} ${spells_list[index].school} ${spells_list[index].source}'),
+                  );
+                })),
+      );
+    } */
 }
