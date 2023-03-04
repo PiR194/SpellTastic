@@ -112,7 +112,7 @@ for li in lis:
     print ("Components: ", spell_components)
 
     # get range
-    range_tag = spellContent.find('b', text='Range')
+    range_tag = spellContent.find('b', string='Range')
     if range_tag:
         try:
             spell_range = range_tag.find_next_sibling('a').text.strip()
@@ -142,7 +142,7 @@ for li in lis:
 
     #get duration
     spell_duration = spellContent.find('b',string='Duration')
-    if spell_duration.next_sibling is not None:
+    if spell_duration and spell_duration.next_sibling is not None:
         spell_duration = spell_duration.next_sibling.text.strip()
     else :
         spell_duration = None
