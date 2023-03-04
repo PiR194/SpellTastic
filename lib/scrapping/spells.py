@@ -52,6 +52,11 @@ for li in lis:
     spellContent = spellSoup.find(id='article-content')
 #    print(spellContent) # check if good
 
+###################
+### ATTRIBUTES
+###################
+
+
     # get name
     spell_name = spellContent.find('h1').text
     print("name: ",spell_name)
@@ -137,13 +142,19 @@ for li in lis:
             elif isinstance((sibling), bs4.element.NavigableString):
                 component_text = sibling.string.strip()
                 if component_text:
-                    target.append(svthrow)
-        print(svthrow)
+                    svthrow.append(component_text.rstrip(';'))
+        spell_saving_throw = ' '.join(svthrow)
+        print("Saving throw: ", spell_saving_throw)
+    else:
+        spell_saving_throw = None
 
-    print(spell_saving_throw)
+    print(" ----- ")
+    print(" ")
+#    exit(0)
 
-    exit(0)
-
+    spell_area = spellContent.find('b',string='Area')
+    if spell_area:
+        exit(0)
    
 
 
