@@ -7,7 +7,9 @@ from lxml import html
 ### -------------------------------------
 # GET ALL THE SPELLS FROM THE PAGE
 ### -------------------------------------
-
+###################
+### VARIABLES
+###################
 ## GET <li> ELEMENTS NAME + URL TO DETAIL PAGE
 # url with all spells
 URL = "https://www.d20pfsrd.com/magic/all-spells/"
@@ -39,6 +41,26 @@ lis = list.find_all('li')
 #        text = li.a.text
 #        f.write(text + '\n')
 
+###################
+### METHODS
+###################
+
+def getStringSiblings(array, content, stop):
+    if content:
+        for sibling in content.next_siblings:
+            if sibling.name == stop:
+                break
+            if sibling.name == 'a':
+                array.append(sibling.text)
+            elif isinstance((sibling), bs4.element.NavigableString):
+                component_text = sibling.string.strip()
+                if component_text:
+                    array.append(component_text.rstrip(';'))
+    else:
+        return None
+    return ' '.join(array)
+    
+
 ## GET ALL DETAILS FROM EACH SPELL
 for li in lis:
     url = li.a['href']
@@ -68,7 +90,6 @@ for li in lis:
     # get level
     levels = spellContent.find('b', string='Level').find_next_siblings('a')
     #print("level: ", spell_level)
-
     spell_level = []
     for i in levels : 
         if i.name == 'a':
@@ -77,24 +98,18 @@ for li in lis:
     # print(spell_level) # check if gutten
 
     # get casting time
-    spell_castTime = spellContent.find('b', string='Casting Time').next_sibling.strip() # nao ta em balisa entao next_sibling sem parenthesis como um attributo
+    spell_castTime = spellContent.find('b', string='Casting Time')
+    if spell_castTime:
+        spell_castTime = spell_castTime.next_sibling.strip() # nao ta em balisa entao next_sibling sem parenthesis como um attributo
+    else:
+        spell_castTime = None
     print("cast time: ", spell_castTime)
 
     # get components 
     components = []
     spell_components = spellContent.find('b', string='Components')#.next_sibling.strip()
-    if spell_components:
-        for sibling in spell_components.next_siblings:
-            if sibling.name == 'p': # if end of p tag
-                break
-            if sibling.name == 'a': # if href we want to just get text
-                spell_components.append(sibling.text)
-            elif isinstance(sibling, bs4.element.NavigableString): # if its just random a** text in no specific <tag>
-                component_text = sibling.string.strip()
-                if component_text:
-                    spell_components.append(component_text)
-    spell_components = ', '.join(spell_components) # final touch :chef's_kiss:
-    print(spell_components)
+    spell_components = getStringSiblings(components, spell_components, 'p')
+    print ("Components: ", spell_components)
 
     # get range
     range_tag = spellContent.find('b', text='Range')
@@ -126,37 +141,45 @@ for li in lis:
     print("Target: ", spell_target)
 
     #get duration
-    spell_duration = spellContent.find('b',string='Duration').next_sibling.text.strip()
+    spell_duration = spellContent.find('b',string='Duration')
+    if spell_duration.next_sibling is not None:
+        spell_duration = spell_duration.next_sibling.text.strip()
+    else :
+        spell_duration = None
     print("Duration: ",spell_duration)
 
     
     # get saving throw
     svthrow = []
     spell_saving_throw = spellContent.find('b',string='Saving Throw')
-    if spell_saving_throw :
-        for sibling in spell_saving_throw.next_siblings:
-            if sibling.name == 'b':
-                break
-            if sibling.name == 'a':
-                svthrow.append(sibling.text)
-            elif isinstance((sibling), bs4.element.NavigableString):
-                component_text = sibling.string.strip()
-                if component_text:
-                    svthrow.append(component_text.rstrip(';'))
-        spell_saving_throw = ' '.join(svthrow)
-        print("Saving throw: ", spell_saving_throw)
-    else:
-        spell_saving_throw = None
+    spell_saving_throw = getStringSiblings(svthrow, spell_saving_throw, 'b')
+    print("Saving throw: ", spell_saving_throw)
+
+    # get resistance
+    resistance = []
+    spell_resistance = spellContent.find('b',string='Spell Resistance')
+
+    # get area
+    area = []
+    spell_area = spellContent.find('b',string='Area')
+    spell_area = getStringSiblings(area, spell_area, 'b')
+    print("Area:", spell_area )
+
+    # get effect
+    effect = []
+    spell_effect = spellContent.find('b',string='Effect')
+    spell_effect = getStringSiblings(effect, spell_effect, 'b')
+    print('Effect: ',spell_effect)
+
 
     print(" ----- ")
     print(" ")
-#    exit(0)
 
-    spell_area = spellContent.find('b',string='Area')
-    if spell_area:
-        exit(0)
+    
+
+    
+
    
-
 
 
 
