@@ -4,7 +4,7 @@ import bs4
 from bs4 import BeautifulSoup
 from lxml import html
 
-URL = "https://www.d20pfsrd.com/magic/all-spells/y/youthful-appearance/"
+URL = "https://www.d20pfsrd.com/magic/all-spells/d/death-from-below/"
 
 responseDetails = requests.get(URL)
 spellSoup = BeautifulSoup(responseDetails.content, 'lxml')
@@ -14,9 +14,12 @@ spellContent = spellSoup.find(id='article-content')
 ### DESCRIPTION
 ###################
 spell_description = spellContent.find('p',string='DESCRIPTION')
-print("Desc separator: ", spell_description)
+print("Desc separator: ", spell_description)      
 
 spell_paragraphs = []
+spell_description = spellContent.find('p',string='DESCRIPTION')
+if not spell_description:
+    spell_description = spellSoup.find('div', {'class': 'page-center'}).find('p',string='DESCRIPTION')
 spell_description = spell_description.find_next('p')
 
 while spell_description and not spell_description.find_previous('div', {'class': 'section15'}):
@@ -25,6 +28,8 @@ while spell_description and not spell_description.find_previous('div', {'class':
     else:
         spell_paragraphs.append(spell_description.text)
     spell_description = spell_description.find_next('p')
+    if spell_description and spell_description.parent.name == 'div':
+        break
 
 print("Spell description:\n", '\n\n'.join(spell_paragraphs))
 

@@ -155,6 +155,11 @@ for li in lis:
     # get description 
     spell_paragraphs = []
     spell_description = spellContent.find('p',string='DESCRIPTION')
+    if not spell_description:
+        spell_description = spellSoup.find('div', {'class': 'page-center'}).find('p',string='DESCRIPTION')
+    if not spell_description:
+        spell_description = None
+        continue
     spell_description = spell_description.find_next('p')
 
     while spell_description and not spell_description.find_previous('div', {'class': 'section15'}):
@@ -163,6 +168,9 @@ for li in lis:
         else:
             spell_paragraphs.append(spell_description.text)
         spell_description = spell_description.find_next('p')
+        if spell_description and spell_description.parent.name == 'div':
+            break
+
 
     print("Spell description:\n", '\n\n'.join(spell_paragraphs))
     
