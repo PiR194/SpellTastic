@@ -4,28 +4,55 @@ import bs4
 from bs4 import BeautifulSoup
 from lxml import html
 
-URL = "https://www.d20pfsrd.com/magic/all-spells/a/absorb-rune-i/"
+URL = "https://www.d20pfsrd.com/magic/all-spells/a/acid-maw/"
 
 responseDetails = requests.get(URL)
 spellSoup = BeautifulSoup(responseDetails.content, 'lxml')
 spellContent = spellSoup.find(id='article-content')
 
+def getStringSiblings(array, content, stop):
+    if content:
+        for sibling in content.next_siblings:
+            print(sibling)
+            if sibling.name == stop:
+                break
+            if sibling.name == 'a':
+                array.append(sibling.text)
+            elif isinstance((sibling), bs4.element.NavigableString):
+                component_text = sibling.string.strip()
+                if component_text:
+                    array.append(component_text.rstrip(';'))
+    else:
+        return None
+    return ' '.join(array)
+
+###################
+### TARGET
+###################
+target = []
+spell_target = spellContent.find('b',string="Target")
+spell_target = getStringSiblings(target, spell_target, 'b')
+print("Target: ", spell_target)
+
 ###################
 ### LEVELS
 ###################
-p = spellContent.find('b',string="School")
-print(p)
-p = p.find_previous('p')
-print(p)
-text = p.text
-print(text)
-parts = text.split(";")
-school = parts[0].replace("School","").strip()
-level = parts[1].replace("Level","").strip()
+# p = spellContent.find('b',string="School")
+# print(p)
+# p = p.find_previous('p')
+# print(p)
+# text = p.text
+# print(text)
+# if ";" in text:
+#         parts = text.split(";")
+# else:
+#     parts = text.split(":")
+# school = parts[0].replace("School","").strip()
+# level = parts[1].replace("Level","").strip()
 
-print("---")
-print("School:", school)
-print("Level:", level)
+# print("---")
+# print("School:", school)
+# print("Level:", level)
 
 
 ###################

@@ -88,23 +88,23 @@ for li in lis:
     print("name: ",spell_name)
 
     # get school and level
-    school_levels = spellContent.find_next('p')
+    school_levels = spellContent.find('b',string="School").find_previous('p')
     text = school_levels.text
-    parts = text.split(";")
+    if ";" in text:
+        parts = text.split(";")
+    else:
+        parts = text.split(":")
     spell_school = parts[0].replace("School","").strip()
     spell_level = parts[1].replace("Level","").strip()
 
     print("School: ",spell_school)
     print("Level:",spell_level)
 
-    # print(spell_level) # check if gutten
     # get casting time
-    spell_castTime = spellContent.find('b', string='Casting Time')
-    if spell_castTime:
-        spell_castTime = spell_castTime.next_sibling.strip() # nao ta em balisa entao next_sibling sem parenthesis como um attributo
-    else:
-        spell_castTime = None
-    print("cast time: ", spell_castTime)
+    castTime = []
+    spell_castTime = spellContent.find('b',string="Casting Time")
+    spell_castTime = getStringSiblings(castTime, spell_castTime, 'b')
+    print("Cast time: ", spell_castTime)
 
     # get components 
     components = []
@@ -113,40 +113,21 @@ for li in lis:
     print ("Components: ", spell_components)
 
     # get range
-    range_tag = spellContent.find('b', string='Range')
-    if range_tag:
-        try:
-            spell_range = range_tag.find_next_sibling('a').text.strip()
-        except AttributeError: # In case there isn't a RANGE section at all ------------- ! 
-            spell_range = range_tag.next_sibling.strip()
-    else:
-        spell_range = None
+    rangesp = []
+    spell_range = spellContent.find('b',string="Range")
+    spell_range = getStringSiblings(rangesp, spell_range, 'b')
     print("Range: ", spell_range)
 
     # get target
     target = []
-    spell_target = spellContent.find('b', string='Target')#.next_sibling.strip()
-    if spell_target:
-        for sibling in spell_target.next_siblings:
-            if sibling.name == 'p' or sibling.name == 'br': # if end of p tag
-                break
-            if sibling.name == 'a': # if href we want to just get text
-                target.append(sibling.text)
-            elif isinstance(sibling, bs4.element.NavigableString): # if its just random a** text in no specific <tag>
-                component_text = sibling.string.strip()
-                if component_text:
-                    target.append(component_text)
-        spell_target = ' '.join(target) # final touch :chef's_kiss:
-    else :
-        spell_target = None
+    spell_target = spellContent.find('b',string="Target")
+    spell_target = getStringSiblings(target, spell_target, 'b')
     print("Target: ", spell_target)
 
     #get duration
-    spell_duration = spellContent.find('b',string='Duration')
-    if spell_duration and spell_duration.next_sibling is not None:
-        spell_duration = spell_duration.next_sibling.text.strip()
-    else :
-        spell_duration = None
+    duration = []
+    spell_duration = spellContent.find('b',string="Duration")
+    spell_duration = getStringSiblings(duration, spell_duration, 'b')
     print("Duration: ",spell_duration)
 
     
