@@ -1,42 +1,30 @@
 import 'package:flutter/material.dart';
 
+import '../spell_detail_page.dart';
+
 class SpellSetWidget extends StatelessWidget {
   String level;
   SpellSetWidget({super.key, required this.level});
 
   @override
   Widget build(BuildContext context) {
-    return PageView(
-      children: [
-        SingleChildScrollView(
-          child: Column(
-            children: [
-              Text(
-                'LEVEL $level',
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  color: Colors.brown,
-                  decoration: TextDecoration.none,
-                ),
-              ),
-              ListView(
-                  scrollDirection: Axis.vertical,
-                  shrinkWrap: true,
-                  children: <Widget>[
-                    for (int i = 0; i < 30; i++)
-                      Text(
-                        'Item $i',
-                        style: const TextStyle(
-                          fontSize: 20,
-                          decoration: TextDecoration.none,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                  ])
-            ],
-          ),
-        )
-      ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('LEVEL $level'),
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+      ),
+      body: ListView.builder(
+        itemExtent: 50,
+        cacheExtent: 2,
+        itemCount: 30,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text("spell"),
+            onTap: () {},
+          );
+        },
+      ),
     );
   }
 }
