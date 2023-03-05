@@ -153,7 +153,18 @@ for li in lis:
     print('Effect: ',spell_effect)
 
     # get description 
-    description = []
+    spell_paragraphs = []
+    spell_description = spellContent.find('p',string='DESCRIPTION')
+    spell_description = spell_description.find_next('p')
+
+    while spell_description and not spell_description.find_previous('div', {'class': 'section15'}):
+        if spell_description.has_attr('class'):
+            spell_paragraphs.append(spell_description.text)
+        else:
+            spell_paragraphs.append(spell_description.text)
+        spell_description = spell_description.find_next('p')
+
+    print("Spell description:\n", '\n\n'.join(spell_paragraphs))
     
     print(" ----- ")
     print(" ")
