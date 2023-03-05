@@ -19,4 +19,12 @@ class SpellSet {
   void addSpell(Spell spell) {
     spells.add(spell);
   }
+
+  bool containSpell(Spell spell) {
+    if (spells.contains(spell)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
