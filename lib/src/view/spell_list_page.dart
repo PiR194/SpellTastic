@@ -131,14 +131,14 @@ class _SpellListPage extends State<SpellListPage> {
               //     ? const Color.fromARGB(255, 209, 214, 216)
               //     : Colors.white;
           return ListTile(
-            leading: ExcludeSemantics(
-              child: CircleAvatar(
-                  child: Text(spells_list[index]
-                      .GetLevelByClass(character.cclass)
-                      .toString())),
-            ),
+            // trailing: ExcludeSemantics(
+            //   child:Text(spells_list[index]
+            //           .GetLevelByClass(character.cclass)
+            //           .toString()),
+            // ),
             tileColor: backgroundColor,
-            title: Text(spells_list[index].name),
+            title: Text("${spells_list[index].name} ${spells_list[index]
+                      .GetLevelByClass(character.cclass)}"),
             onTap: () {
               Navigator.push(
                 context,
