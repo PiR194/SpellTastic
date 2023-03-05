@@ -1,9 +1,7 @@
 import 'widgets/levelCounterWidget.dart';
 import 'widgets/displaySetButtonWidget.dart';
-import 'widgets/playButtonWidget.dart';
 import 'package:flutter/material.dart';
 import 'widgets/createSetButtonWidget.dart';
-import 'widgets/selectSetButtonWidget.dart';
 
 class DetailsCharacter extends StatelessWidget {
   @override
@@ -30,37 +28,30 @@ class DetailsCharacter extends StatelessWidget {
             alignment: WrapAlignment.center,
             children: [
               // En-tête
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              Wrap(
+                direction: Axis.vertical,
+                alignment: WrapAlignment.center,
                 children: [
                   CircleAvatar(
                     radius: 80,
                     backgroundImage:
                         AssetImage('assets/class_icons/Goblins_Fight.png'),
                   ),
-                  Column(
-                    children: [
-                      Text(
-                        'LOU LE GOBELIN',
-                        style: TextStyle(
-                          fontSize: 40,
-                          fontFamily: 'Anaktoria',
-                          fontWeight: FontWeight.bold,
-                          color: primaryColor,
-                        ),
-                      ),
-                      Row(
-                        children: [
-                          const Text(
-                            'CLASS : ' + 'Gobelin',
-                            style: TextStyle(
-                              fontSize: 25,
-                              fontFamily: 'Anaktoria',
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                  Text(
+                    'LOU LE GOBELIN',
+                    style: TextStyle(
+                      fontSize: 40,
+                      fontFamily: 'Anaktoria',
+                      fontWeight: FontWeight.bold,
+                      color: primaryColor,
+                    ),
+                  ),
+                  Text(
+                    'CLASS : ' + 'Gobelin',
+                    style: TextStyle(
+                      fontSize: 25,
+                      fontFamily: 'Anaktoria',
+                    ),
                   )
                 ],
               ),
@@ -68,19 +59,25 @@ class DetailsCharacter extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'CARACTERISTICS',
-                    style: TextStyle(
-                      fontSize: 26,
-                      fontFamily: 'Anaktoria',
-                      fontWeight: FontWeight.bold,
-                      color: primaryColor,
+                  const Padding(
+                    padding: EdgeInsets.only(left: 10.0),
+                    child: Text(
+                      'CARACTERISTICS',
+                      style: TextStyle(
+                        fontSize: 26,
+                        fontFamily: 'Anaktoria',
+                        fontWeight: FontWeight.bold,
+                        color: primaryColor,
+                      ),
                     ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Row(
+                      Wrap(
+                        spacing: screenWidth * 0.05,
+                        runSpacing: screenHeight * 0.05,
+                        alignment: WrapAlignment.center,
                         children: [
                           const Text(
                             'LEVEL :',
@@ -112,16 +109,6 @@ class DetailsCharacter extends StatelessWidget {
                 runSpacing: screenHeight * 0.02,
                 alignment: WrapAlignment.center,
                 children: [
-                  Center(
-                    child: Wrap(
-                      spacing: screenWidth * 0.05,
-                      runSpacing: screenHeight * 0.02,
-                      children: [
-                        PlayButtonWidget(),
-                        SelectSetButtonWidget(),
-                      ],
-                    ),
-                  ),
                   Center(
                     child: CreateSetButton(),
                   ),

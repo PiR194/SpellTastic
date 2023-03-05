@@ -4,12 +4,15 @@ import 'package:flutter/material.dart';
 class DisplaySetButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    double halfWidth = MediaQuery.of(context).size.width / 2;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
     const Color accentColor = Color(0xFF9C27B0);
     const Color primaryColor = Color(0xFFC2185B);
+
     return SizedBox(
       height: 70,
-      width: halfWidth,
+      width: screenWidth / 1.02,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           primary: accentColor,
@@ -30,8 +33,11 @@ class DisplaySetButton extends StatelessWidget {
         onPressed: () {
           Navigator.pushNamed(context, '/setdisplay');
         },
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Wrap(
+          spacing: screenWidth * 0.05,
+          runSpacing: screenHeight * 0.02,
+          direction: Axis.vertical,
+          alignment: WrapAlignment.center,
           children: [
             Text(
               'Nom du set',
@@ -39,8 +45,19 @@ class DisplaySetButton extends StatelessWidget {
                 fontFamily: 'Anaktoria',
               ),
             ),
-            Row(
+            Wrap(
+              spacing: screenWidth * 0.02,
+              alignment: WrapAlignment.center,
               children: [
+                ElevatedButton(
+                  onPressed: () {
+                    // Modifier le set (à implémenter)
+                  },
+                  child: Text('Use'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green,
+                  ),
+                ),
                 ElevatedButton(
                   onPressed: () {
                     // Modifier le set (à implémenter)
@@ -49,9 +66,6 @@ class DisplaySetButton extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: primaryColor,
                   ),
-                ),
-                const SizedBox(
-                  width: 5,
                 ),
                 ElevatedButton(
                   onPressed: () {

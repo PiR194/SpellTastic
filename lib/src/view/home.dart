@@ -6,7 +6,13 @@ import 'widgets/characterButtonWidget.dart';
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    const Color backgroundColor = Color(0xFFEDE7F6);
+
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
+      backgroundColor: backgroundColor,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: const Text('SPELLTASTIC',
@@ -24,16 +30,14 @@ class Home extends StatelessWidget {
               top: MediaQuery.of(context).padding.top + kToolbarHeight),
           child: Center(
             child: SingleChildScrollView(
-              child: Column(
+              child: Wrap(
+                spacing: screenWidth * 0.05,
+                runSpacing: screenHeight * 0.02,
                 children: [
                   AddCharacterWidget(),
-                  const SizedBox(height: 10),
                   CharacterButtonWidget(),
-                  const SizedBox(height: 10),
                   CharacterButtonWidget(),
-                  const SizedBox(height: 10),
                   CharacterButtonWidget(),
-                  const SizedBox(height: 10),
                   CharacterButtonWidget(),
                 ],
               ),

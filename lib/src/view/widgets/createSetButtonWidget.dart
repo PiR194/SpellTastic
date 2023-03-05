@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class CreateSetButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    double sixWidth = MediaQuery.of(context).size.width / 6;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
     const Color accentColor = Color(0xFF9C27B0);
     return SizedBox(
       height: 70,
-      width: sixWidth,
+      width: screenWidth / 2,
       child: ElevatedButton.icon(
         icon: Icon(Icons.create),
         clipBehavior: Clip.none,

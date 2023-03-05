@@ -1,6 +1,6 @@
 kind: pipeline
 type: docker
-name: Pathfinder
+name: Spelltastic 
 
 trigger:
   event:
@@ -13,6 +13,13 @@ steps:
       - flutter build apk
       - curl -F "file=@./build/app/outputs/flutter-apk/app-release.apk" https://api.anonfiles.com/upload -o link.txt
       - echo "$(cat link.txt)"
+
+  - name: test
+    image: cirrusci/flutter:stable
+    commands:
+      - flutter pub get
+      - flutter test
+    depends_on: [ build-apk ]
 
   - name: code-analysis
     image: cirrusci/flutter:stable

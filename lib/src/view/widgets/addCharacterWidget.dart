@@ -5,7 +5,10 @@ import 'characterFormWidget.dart';
 class AddCharacterWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    const Color primaryColor = Color(0xFFC2185B);
+
     double buttonWidth = MediaQuery.of(context).size.width / 2;
+
     return SizedBox(
       width: buttonWidth,
       child: ElevatedButton(
@@ -13,7 +16,7 @@ class AddCharacterWidget extends StatelessWidget {
           Navigator.pushNamed(context, '/characterform');
         },
         style: ElevatedButton.styleFrom(
-          primary: Color.fromARGB(255, 123, 184, 235),
+          primary: primaryColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(50),
           ),
