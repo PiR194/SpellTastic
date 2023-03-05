@@ -3,13 +3,12 @@ import requests
 import bs4
 from bs4 import BeautifulSoup
 from lxml import html
+import yaml
 
 ### -------------------------------------
 # GET ALL THE SPELLS FROM THE PAGE
 ### -------------------------------------
-###################
-### VARIABLES
-###################
+
 ## GET <li> ELEMENTS NAME + URL TO DETAIL PAGE
 # url with all spells
 URL = "https://www.d20pfsrd.com/magic/all-spells/"
@@ -19,32 +18,15 @@ response = requests.get(URL)
 
 # parse html using
 soup = BeautifulSoup(response.content, 'lxml')
-
-# i printed the content just to check
-# print(soup)
-
-# get all spells
 list = soup.find(id='article-content').find_next('div',class_="flexbox")
-#print(list)
-
-#uls = list.find_all('ul')
-#print(uls)
 
 # this gets all the <li> elements from the article-content div, which contain all of the 
 # spells (name and link to detail page)
 lis = list.find_all('li')
-# print(lis)
-
-# checked by writting names on a file
-#with open('spellzz.txt', 'w') as f:
-#    for li in lis:
-#        text = li.a.text
-#        f.write(text + '\n')
 
 ###################
 ### METHODS
 ###################
-
 def getStringSiblings(array, content, stop):
     if content:
         for sibling in content.next_siblings:
@@ -59,12 +41,13 @@ def getStringSiblings(array, content, stop):
     else:
         return None
     return ' '.join(array)
-    
+
+
 cpt = 0 
-## GET ALL DETAILS FROM EACH SPELL
+spellz = {}
+
 for li in lis:
     url = li.a['href']
-    #print(url)
 
     ## get html of details page
     responseDetails = requests.get(url)
@@ -72,12 +55,10 @@ for li in lis:
 
     # get article content which contains all info about spells
     spellContent = spellSoup.find(id='article-content')
-#    print(spellContent) # check if good
 
 ###################
 ### ATTRIBUTES
 ###################
-
 
     # get name
     if spellContent :
@@ -174,10 +155,28 @@ for li in lis:
 
     print("Spell description:\n", '\n\n'.join(spell_paragraphs))
     
-    print(" ----- ")
-    print(" ")
-    cpt += 1
-    print("no: ",cpt)
+    # print(" ----- ")
+    # print(" ")
+    # cpt += 1
+    # print("no: ",cpt)
+    spellz[spell_name] = {
+        'school': spell_school,
+        'level': spell_level,
+        'casting_time': spell_castTime,
+        'components': spell_components,
+        'range': spell_range,
+        'target': spell_target,
+        'duration': spell_duration,
+        'saving_throw': spell_saving_throw,
+        'spell_resistance': spell_resistance,
+        'area': spell_area,
+        'effect': spell_effect,
+        'description': spell_paragraphs
+    }
+
+with open('assets/spells.yaml', 'w') as f:
+    yaml.dump(spellz, f)
+
 
     
 
