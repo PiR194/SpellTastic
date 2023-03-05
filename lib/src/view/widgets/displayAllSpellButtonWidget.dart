@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 class DisplayAllSpellButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    const Color primaryColor = Color(0xFFC2185B);
+
     return ElevatedButton(
       onPressed: () {
         Navigator.pushNamed(context, '/displayallspell');
@@ -11,7 +13,7 @@ class DisplayAllSpellButtonWidget extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         shape: CircleBorder(),
         padding: EdgeInsets.all(16),
-        primary: Colors.blue, // Couleur du bouton
+        primary: primaryColor, // Couleur du bouton
       ),
     );
   }

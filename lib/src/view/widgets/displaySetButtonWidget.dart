@@ -5,12 +5,14 @@ class DisplaySetButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    double halfWidth = MediaQuery.of(context).size.width / 2;
+    final screenHeight = MediaQuery.of(context).size.height;
+
     const Color accentColor = Color(0xFF9C27B0);
     const Color primaryColor = Color(0xFFC2185B);
+
     return SizedBox(
       height: 70,
-      width: halfWidth,
+      width: screenWidth / 1.02,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           primary: accentColor,
@@ -31,8 +33,11 @@ class DisplaySetButton extends StatelessWidget {
         onPressed: () {
           Navigator.pushNamed(context, '/setdisplay');
         },
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Wrap(
+          spacing: screenWidth * 0.05,
+          runSpacing: screenHeight * 0.02,
+          direction: Axis.vertical,
+          alignment: WrapAlignment.center,
           children: [
             Text(
               'Nom du set',
