@@ -73,6 +73,18 @@ class Spell {
     }
   }
 
+  Map<String, int> GetMapClassLevel(){
+    Map<String, int> map = Map.fromEntries(
+      level.toString()
+          .substring(1, level.toString().length - 1)
+          .split(',')
+          .map((entry) => entry.split(':'))
+          .map((pair) => MapEntry(pair[0].trim(), int.parse(pair[1].trim())))
+    );
+    
+    return(map);
+  }
+
   @override
   String toString() {
     var levelString = "";
