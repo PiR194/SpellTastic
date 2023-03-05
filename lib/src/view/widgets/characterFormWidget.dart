@@ -41,16 +41,21 @@ class _CharacterFormState extends State<CharacterFormWidget> {
 
   @override
   Widget build(BuildContext context) {
+    const Color accentColor = Color(0xFF9C27B0);
+
     return Scaffold(
-      appBar: AppBar(title: Text('Character Creation')),
+      appBar: AppBar(
+        title: const Text('Character Creation'),
+        backgroundColor: accentColor,
+      ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Form(
           key: _formKey,
           child: ListView(
             children: [
               TextFormField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Name',
                 ),
                 validator: (value) {
@@ -71,7 +76,7 @@ class _CharacterFormState extends State<CharacterFormWidget> {
                     child: Text(value),
                   );
                 }).toList(),
-                hint: Text('Select race'),
+                hint: const Text('Select race'),
                 onChanged: (value) {
                   setState(() {
                     _selectedRace = value;
@@ -86,29 +91,43 @@ class _CharacterFormState extends State<CharacterFormWidget> {
                     child: Text(value),
                   );
                 }).toList(),
-                hint: Text('Select class'),
+                hint: const Text('Select class'),
                 onChanged: (value) {
                   setState(() {
                     _selectedClass = value;
                   });
                 },
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               Text('Level ' + _level.toString()),
               Slider(
-                  value: _level.toDouble(),
-                  min: 1,
-                  max: 20,
-                  divisions: 19,
-                  label: _level.toString(),
-                  onChanged: (value) {
-                    setState(() {
-                      _level = value.round();
-                    });
-                  },
-                  activeColor: Colors.green,
-                  inactiveColor: Colors.grey,
-                  thumbColor: Colors.brown),
+                value: _level.toDouble(),
+                min: 1,
+                max: 20,
+                divisions: 19,
+                label: _level.toString(),
+                onChanged: (value) {
+                  setState(() {
+                    _level = value.round();
+                  });
+                },
+                activeColor: Colors.green,
+                inactiveColor: Colors.grey,
+                thumbColor: Colors.brown,
+              ),
+              ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(accentColor),
+                ),
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    _formKey.currentState!.save();
+                    // do something with the form values
+                  }
+                },
+                child: const Text('CREATE !'),
+              ),
             ],
           ),
         ),
