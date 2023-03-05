@@ -90,11 +90,8 @@ for li in lis:
     # get school and level
     school_levels = spellContent.find('b',string="School").find_previous('p')
     text = school_levels.text
-    if ";" in text:
-        parts = text.split(";")
-    else:
-        parts = text.split(":")
-    spell_school = parts[0].replace("School","").strip()
+    parts = text.split("Level")
+    spell_school = parts[0].replace("School","").strip().strip(";")
     spell_level = parts[1].replace("Level","").strip()
 
     print("School: ",spell_school)
