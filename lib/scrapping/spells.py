@@ -60,7 +60,7 @@ def getStringSiblings(array, content, stop):
         return None
     return ' '.join(array)
     
-
+cpt = 0 
 ## GET ALL DETAILS FROM EACH SPELL
 for li in lis:
     url = li.a['href']
@@ -80,23 +80,24 @@ for li in lis:
 
 
     # get name
-    spell_name = spellContent.find('h1').text
+    if spellContent :
+        spell_name = spellContent.find('h1').text
+    else :
+        spell_name = None
+        continue
     print("name: ",spell_name)
 
-    # get school
-    spell_school = spellContent.find('b', string='School').find_next_sibling('a').text.strip()
-    print("school: ", spell_school)
+    # get school and level
+    school_levels = spellContent.find_next('p')
+    text = school_levels.text
+    parts = text.split(";")
+    spell_school = parts[0].replace("School","").strip()
+    spell_level = parts[1].replace("Level","").strip()
 
-    # get level
-    levels = spellContent.find('b', string='Level').find_next_siblings('a')
-    #print("level: ", spell_level)
-    spell_level = []
-    for i in levels : 
-        if i.name == 'a':
-            spell_level.append(i.text.strip())
+    print("School: ",spell_school)
+    print("Level:",spell_level)
 
     # print(spell_level) # check if gutten
-
     # get casting time
     spell_castTime = spellContent.find('b', string='Casting Time')
     if spell_castTime:
@@ -158,6 +159,8 @@ for li in lis:
     # get resistance
     resistance = []
     spell_resistance = spellContent.find('b',string='Spell Resistance')
+    spell_resistance = getStringSiblings(resistance, spell_resistance, 'b')
+    print("Spell Resistance: ", spell_resistance)
 
     # get area
     area = []
@@ -171,11 +174,13 @@ for li in lis:
     spell_effect = getStringSiblings(effect, spell_effect, 'b')
     print('Effect: ',spell_effect)
 
-
+    # get description 
+    description = []
+    
     print(" ----- ")
     print(" ")
-
-    
+    cpt += 1
+    print("no: ",cpt)
 
     
 
