@@ -20,7 +20,7 @@ class _SetDisplayState extends State<SetDisplay> {
   void _goToPage(int page) {
     _pageController.animateToPage(
       page,
-      duration: Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 500),
       curve: Curves.easeInOut,
     );
   }
@@ -33,31 +33,7 @@ class _SetDisplayState extends State<SetDisplay> {
       appBar: AppBar(
         title: Text('Nom du set'),
         backgroundColor: accentColor,
-      ),
-      body: Column(
-        children: [
-          Expanded(
-            child: PageView(
-              controller: _pageController,
-              onPageChanged: (int page) {
-                setState(() {
-                  _currentPage = page;
-                });
-              },
-              children: <Widget>[
-                Container(
-                  child: SpellSetWidget(
-                    level: '1',
-                  ),
-                ),
-                Container(
-                  child: SpellSetWidget(
-                    level: '2',
-                  ),
-                ),
-              ],
-            ),
-          ),
+        actions: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -78,6 +54,32 @@ class _SetDisplayState extends State<SetDisplay> {
                       },
               ),
             ],
+          ),
+        ],
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: PageView(
+              controller: _pageController,
+              onPageChanged: (int page) {
+                setState(() {
+                  _currentPage = page;
+                });
+              },
+              children: [
+                Container(
+                  child: SpellSetWidget(
+                    level: '1',
+                  ),
+                ),
+                Container(
+                  child: SpellSetWidget(
+                    level: '2',
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),

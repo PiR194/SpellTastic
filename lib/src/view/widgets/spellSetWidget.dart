@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../spell_detail_page.dart';
-
 class SpellSetWidget extends StatelessWidget {
   String level;
   SpellSetWidget({super.key, required this.level});

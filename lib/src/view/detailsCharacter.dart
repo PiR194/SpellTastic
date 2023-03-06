@@ -60,18 +60,6 @@ class DetailsCharacter extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.only(left: 10.0),
-                    child: Text(
-                      'CARACTERISTICS',
-                      style: TextStyle(
-                        fontSize: 26,
-                        fontFamily: 'Anaktoria',
-                        fontWeight: FontWeight.bold,
-                        color: primaryColor,
-                      ),
-                    ),
-                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -88,13 +76,6 @@ class DetailsCharacter extends StatelessWidget {
                           ),
                           LevelCounterWidget(),
                         ],
-                      ),
-                      Text(
-                        'RACE : ' + 'Murder',
-                        style: TextStyle(
-                          fontSize: 25,
-                          fontFamily: 'Anaktoria',
-                        ),
                       ),
                     ],
                   ),
