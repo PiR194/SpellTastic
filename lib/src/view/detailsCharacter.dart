@@ -31,6 +31,7 @@ class DetailsCharacter extends StatelessWidget {
               Wrap(
                 direction: Axis.vertical,
                 alignment: WrapAlignment.center,
+                crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
                   CircleAvatar(
                     radius: 80,
@@ -59,24 +60,11 @@ class DetailsCharacter extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.only(left: 10.0),
-                    child: Text(
-                      'CARACTERISTICS',
-                      style: TextStyle(
-                        fontSize: 26,
-                        fontFamily: 'Anaktoria',
-                        fontWeight: FontWeight.bold,
-                        color: primaryColor,
-                      ),
-                    ),
-                  ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Wrap(
-                        spacing: screenWidth * 0.05,
-                        runSpacing: screenHeight * 0.05,
+                        direction: Axis.horizontal,
                         alignment: WrapAlignment.center,
                         children: [
                           const Text(
@@ -87,17 +75,6 @@ class DetailsCharacter extends StatelessWidget {
                             ),
                           ),
                           LevelCounterWidget(),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Text(
-                            'RACE : ' + 'Murder',
-                            style: TextStyle(
-                              fontSize: 25,
-                              fontFamily: 'Anaktoria',
-                            ),
-                          ),
                         ],
                       ),
                     ],
