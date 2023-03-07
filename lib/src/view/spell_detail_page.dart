@@ -18,77 +18,51 @@ class SpellDetailsPage extends StatelessWidget {
       //   child: Text(spell.description),
       // ),
       
-      body:Table(
-      border: TableBorder.all(),
-      children: [
-        const TableRow(
-          children: [
-            TableCell(
-              child: Text('Class'),
-            ),
-            TableCell(
-              child: Text('Niveau'),
-            ),
-          ],
+      body: Container(
+      padding: EdgeInsets.all(16.0),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10.0),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 5,
+            blurRadius: 7,
+            offset: Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Table(
+        border: TableBorder.symmetric(
+          inside: BorderSide(width: 1.0, color: Colors.grey),
+          outside: BorderSide(width: 1.0, color: Colors.grey),
         ),
-        ... spell.GetMapClassLevel().entries.map(
-          (entry) => TableRow(
+        children: [
+          const TableRow(
             children: [
               TableCell(
-                child: Text(entry.key),
+                child: Text('Class'),
               ),
               TableCell(
-                child: Text(entry.value.toString()),
+                child: Text('Niveau'),
               ),
             ],
           ),
-        ),
-      ],
-    )
-      
-      // body: Table(
-      //     border: TableBorder.all(),
-      //     children: <TableRow>[
-      //       TableRow(
-      //         children: <Widget> [
-      //           Center(
-      //             child: Container(
-      //               child: Text(spell.id.toString())
-      //             ),
-      //           ),
-      //           Center(
-      //             child: Container(
-      //               child: Text(spell.components.toString())
-      //             ),
-      //           ),
-      //           Center(
-      //             child: Container(
-      //               child: Text(spell.level.toString())
-      //             ),
-      //           )
-      //         ]
-      //       ),
-      //       TableRow(
-      //         children: <Widget> [
-      //           Container(
-      //             height: 64,
-      //             width: 128,
-      //             color: Color.fromARGB(255, 241, 117, 15),
-      //           ),
-      //           Center(
-      //             child: Container(
-      //               child: Text(spell.description)
-      //             ),
-      //           ),
-      //           Container(
-      //             height: 64,
-      //             width: 128,
-      //             color: Color.fromARGB(255, 241, 117, 15),
-      //           ),
-      //         ]
-      //       )
-      //     ],
-      //   )
+          ...spell.GetMapClassLevel().entries.map(
+            (entry) => TableRow(
+              children: [
+                TableCell(
+                  child: Text(entry.key),
+                ),
+                TableCell(
+                  child: Text(entry.value.toString()),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    ),
     );
   }
 }
