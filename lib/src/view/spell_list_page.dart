@@ -51,11 +51,14 @@ class _SpellListPage extends State<SpellListPage> {
       var dbHelper = DbHelper();
       spells = await dbHelper.getSpells();
     } else {
-      await SQLiteDataStrategy.init();
-      spells = SQLiteDataStrategy.getInstance().loadSpells();
+      //await SQLiteDataStrategy.init();
+      var data = await SQLiteDataStrategy.getInstance();
+      spells = await data.loadSpells();
     }
     setState(() {
-      spells_list = spells.where((spell) => spell.GetLevelByClass(character.cclass) != null).toList();
+      spells_list = spells
+          .where((spell) => spell.GetLevelByClass(character.cclass) != null)
+          .toList();
     });
   }
 
