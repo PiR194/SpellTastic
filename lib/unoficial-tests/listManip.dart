@@ -13,7 +13,7 @@ import '../src/model/spell.dart';
 import 'package:path/path.dart' as p;
 
 void main(List<String> args) async {
-  var spells = getAllSpells();
+  var spells = await getAllSpells();
   print(spells.length);
 
   var set1 = SpellSet("set1");
@@ -34,9 +34,10 @@ void main(List<String> args) async {
   charac.addSet(set2);
 }
 
-List<Spell> getAllSpells() {
+Future<List<Spell>> getAllSpells() async {
   try {
-    return SQLiteDataStrategy.getInstance().loadSpells();
+    var data = await SQLiteDataStrategy.getInstance();
+    return await data.loadSpells();
   } on SqliteException catch (e) {
     print("Error loading spells: ${e.message}");
     print(

@@ -1,4 +1,4 @@
-import 'i_data_strategy.dart';
+import 'interface/i_data_strategy.dart';
 import '../model/spell.dart';
 import 'package:sqlite3/sqlite3.dart';
 import 'package:path/path.dart' as p;
@@ -11,7 +11,7 @@ class SQLiteDataStrategy implements IDataStrategy {
 
   SQLiteDataStrategy._();
 
-  static Future<void> init() async {
+  Future<void> _init() async {
     final dbPath = p.join(
         await io.Directory.current.path, 'assets', 'pathfinderfr-data.db');
 
@@ -19,9 +19,17 @@ class SQLiteDataStrategy implements IDataStrategy {
     _instance!._db = sqlite3.open(dbPath);
   }
 
+  static Future<SQLiteDataStrategy> getInstance() async {
+    if (_instance == null) {
+      _instance = SQLiteDataStrategy._();
+      await _instance?._init();
+    }
+    return _instance!;
+  }
+
   @override
-  List<Spell> loadSpells() {
-    var db = getInstance();
+  Future<List<Spell>> loadSpells() async {
+    var db = await getInstance();
 
     var list = db._db.select(
         'SELECT id, name, description, reference, source, school, level, castingtime, components, range, target, duration FROM SPELLS WHERE name is not null and school is not null');
@@ -120,8 +128,104 @@ class SQLiteDataStrategy implements IDataStrategy {
     return spells;
   }
 
-  static SQLiteDataStrategy getInstance() {
-    _instance ??= SQLiteDataStrategy._();
-    return _instance!;
+  @override
+  Future<Spell> getSpellById(int id) async {
+    var db = await getInstance();
+
+    var list = db._db.select(
+        'SELECT id, name, description, reference, source, school, level, castingtime, components, range, target, duration FROM SPELLS WHERE name is not null and school is not null and id=$id');
+
+    if (list.isEmpty) {
+      throw Exception('No Spell found with this id : $id');
+    }
+
+    var element = list.first;
+
+    var tmpId;
+    (element['id'] != null && element['id'] != Null)
+        ? tmpId = element['id']
+        : tmpId = '';
+
+    var tmpName;
+    (element['name'] != null && element['name'] != Null)
+        ? tmpName = element['name']
+        : tmpName = '';
+
+    var tmpDescription;
+    (element['description'] != null && element['description'] != Null)
+        ? tmpDescription = element['description']
+        : tmpDescription = '';
+
+    var tmpReference;
+    (element['reference'] != null && element['reference'] != Null)
+        ? tmpReference = element['reference']
+        : tmpReference = '';
+
+    var tmpSource;
+    (element['source'] != 'null' &&
+            element['source'] != Null &&
+            element['source'] != null)
+        ? tmpSource = element['source']
+        : tmpSource = '';
+
+    var tmpSchool;
+    (element['school'] != null && element['school'] != Null)
+        ? tmpSchool = element['school']
+        : tmpSchool = '';
+
+    Map<String, int> tmpLevel = {};
+    if (element['level'] != null && element['level'] != Null) {
+      var l = element['level'].toString().split(',');
+      for (var element in l) {
+        if (element.startsWith(' ', 0)) {
+          element = element.replaceFirst(' ', '');
+        }
+        var t = element.split(' ');
+        if (t.last == '') {
+          break;
+        }
+        tmpLevel[t.first] = int.parse(t.last);
+        //print('Result : ' + tmpLevel[t.first].toString());
+      }
+    }
+
+    var tmpCastingTime;
+    (element['castingtime'] != null && element['castingtime'] != Null)
+        ? tmpCastingTime = element['castingtime']
+        : tmpCastingTime = '';
+
+    var tmpComponent;
+    (element['components'] != null && element['components'] != Null)
+        ? tmpComponent = element['components'].toString().split(',')
+        : tmpComponent = List<String>.empty();
+
+    var tmpRange;
+    (element['range'] != null && element['range'] != Null)
+        ? tmpRange = element['range']
+        : tmpRange = '';
+
+    var tmpTarget;
+    (element['target'] != null && element['target'] != Null)
+        ? tmpTarget = element['target']
+        : tmpTarget = '';
+
+    var tmpDuration;
+    (element['duration'] != null && element['duration'] != Null)
+        ? tmpDuration = element['duration']
+        : tmpDuration = '';
+
+    return Spell(
+        tmpId,
+        tmpName,
+        tmpDescription,
+        tmpReference,
+        tmpSource,
+        tmpSchool,
+        tmpLevel,
+        tmpCastingTime,
+        tmpComponent,
+        tmpRange,
+        tmpTarget,
+        tmpDuration);
   }
 }
