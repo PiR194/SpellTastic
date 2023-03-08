@@ -83,7 +83,94 @@ Application multi-plateforme vous assistant durant vos parties.
 
 ## Détails de conception
 
-> **Warning**: Pas encore disponibles.
+> **Warning**: En Cours ...
+
+```mermaid
+classDiagram
+
+    Spell --o SpellSet : -spells
+    Spell --o Character : -knownSpells
+    SpellSet --o Character : -sets
+    Character --> CharacterClass : -cclass
+    AccountManager --> AccountManager : -acManager  
+    Character --o AccountManager : -characters
+    class Spell{
+        -id : int
+        -name : string
+        -description : string
+        -reference : string
+        -source : string
+        -school : string
+        -level : Map~stringint~
+        -castingTime : string
+        -components : List~string~
+        -range : string
+        -target : string
+        -duration : string
+        +GetLevelByClass(class : string):int
+    }
+    class SpellSet{
+        -name : string
+    }
+    class Character{
+        -name : string
+        -level : int
+    }
+
+    AccountManager --> IAccountStrategy : accountStrategy
+
+    class AccountManager{
+
+    }
+    class CharacterClass{
+        <<enumeration>>
+        alchemist
+        barbarian
+        bard
+        cleric
+        druid
+        fighter
+        goblins
+        gunslinger
+        hunter
+        inquisitor
+        magus
+        monk
+        oracle
+        paladin
+        ranger
+        rogue
+        sorcerer
+        summoner
+        warpriest
+        witch
+        wizard
+    }
+
+    DBHelper --|> IDataStrategy
+    SQLiteDataStrategy --|> IDataStrategy
+
+    class IDataStrategy {
+        <<Interface>>
+        loadSpells() : List~Spell~
+        getSpellById(id : int) : Spell
+    }
+
+    JsonAccountStrategy --|> IAccountStrategy
+
+    class IAccountStrategy{
+        <<Interface>>
+        loadChar() : List~Character~
+        saveChar(List~Character~)
+    }
+
+    MyApp --> IDataStrategy : dataStrategy
+    MyApp --> AccountManager : manager
+
+    class MyApp{
+
+    }
+```
 
 *******
 
