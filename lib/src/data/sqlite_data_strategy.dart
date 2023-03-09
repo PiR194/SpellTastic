@@ -12,8 +12,8 @@ class SQLiteDataStrategy implements IDataStrategy {
   SQLiteDataStrategy._();
 
   Future<void> _init() async {
-    final dbPath = p.join(
-        await io.Directory.current.path, 'assets', 'pathfinderfr-data.db');
+    final dbPath =
+        p.join(await io.Directory.current.path, 'assets', 'spells.db');
 
     _instance = SQLiteDataStrategy._();
     _instance!._db = sqlite3.open(dbPath);
@@ -58,7 +58,7 @@ class SQLiteDataStrategy implements IDataStrategy {
           if (t.last == '') {
             break;
           }
-          tmpLevel[t.first] = int.parse(t.last);
+          //tmpLevel[t.first] = int.parse(t.last);
           //print('Result : ' + tmpLevel[t.first].toString());
         }
       }
@@ -75,8 +75,8 @@ class SQLiteDataStrategy implements IDataStrategy {
 
       var tmpComponent;
       (list[i]['components'] != null && list[i]['components'] != Null)
-          ? tmpComponent = list[i]['components'].toString().split(',')
-          : tmpComponent = List<String>.empty();
+          ? tmpComponent = list[i]['components']
+          : tmpComponent = '';
 
       var tmpRange;
       (list[i]['range'] != null && list[i]['range'] != Null)

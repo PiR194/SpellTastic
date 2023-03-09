@@ -55,10 +55,12 @@ class _SpellListPage extends State<SpellListPage> {
       var data = await SQLiteDataStrategy.getInstance();
       spells = await data.loadSpells();
     }
+    print("size:  ${spells.length}");
     setState(() {
-      spells_list = spells
-          .where((spell) => spell.getLevelByClass(character.cclass) != null)
-          .toList();
+      spells_list = spells;
+      // .where((spell) => spell.getLevelByClass(character.cclass) != null)
+      // .toList();
+      print(spells_list.length);
     });
   }
 
