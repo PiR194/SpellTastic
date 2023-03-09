@@ -85,6 +85,8 @@ Application multi-plateforme vous assistant durant vos parties.
 
 > **Warning**: En Cours ...
 
+### **Diagramme de classe**
+
 ```mermaid
 classDiagram
 
@@ -171,6 +173,44 @@ classDiagram
 
     }
 ```
+
+### MCD : Modèle Conceptuel de Données
+```mermaid
+classDiagram
+
+    Spell "*" -- "*" SpellSet : Possèder
+    SpellSet "1" -- "*" Character : Avoir
+    Spell "*" -- "*" Character : Connaitre
+
+    class Spell{
+        id/
+        name
+        description
+        reference
+        source
+        school
+        level
+        castingTime
+        components
+        range
+        target
+        duration
+        }
+    class SpellSet{
+        name
+    }
+    class Character{
+        name
+        level
+    }
+```
+### MLD : Modèle Logique de Données
+
+Spell(<ins>id</ins>,name,description,reference,source,school,level,castingTime,components,range,target,duration);
+SpellSet(<ins>name</ins>,#charName);
+Character(<ins>name</ins>,level);
+Posséder(<ins>#nameSet</ins>,<ins>idSpell</ins>)
+Connaitre(<ins>#nameChar</ins>,<ins>#idSpell</ins>)
 
 *******
 
