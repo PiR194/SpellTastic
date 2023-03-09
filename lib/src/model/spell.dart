@@ -76,6 +76,7 @@ class Spell {
   String get description => _description;
   set description(String description) => _description = description;
 
+// Methods
   int? getLevelByClass(String class_) {
     //  print(_level);
     if (_level.containsKey(class_)) {

@@ -1,27 +1,29 @@
 import 'dart:ffi';
 
 enum CharacterClass {
-  alchemist, //OK
-  barbarian, //OK
-  bard, //OK
-  cleric, //PAS DANS LE WIKI ?
-  druid, //OK
-  fighter, //OK
-  goblins, //RACE ?
-  gunslinger, //PISTOLIER ?
-  hunter, //OK
-  inquisitor, //OK
-  magus, //OK
-  monk, //OK
-  oracle, //OK
-  paladin, //OK
-  ranger, //PAS DANS LE WIKI ?
-  rogue, //OK
-  sorcerer, //OK
-  summoner, //RACE ?
-  warpriest, //GESTION +1 ?
-  witch, //OK
-  wizard //OK
+  alchemist,
+  bard,
+  bloodrager,
+  cleric,
+  druid,
+  hunter,
+  inquisitor,
+  magus,
+  medium,
+  mesmerist, // ??
+  occultist, // ??
+  oracle,
+  paladin,
+  psychic,
+  ranger,
+  shaman,
+  sorcerer,
+  spiritualist,
+  summoner,
+  warpriest,
+  witch,
+  wizard
+  // glory, madness, investigator, artifice ??
 }
 
 extension GetImage on CharacterClass {
