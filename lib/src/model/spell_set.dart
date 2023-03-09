@@ -5,10 +5,7 @@ class SpellSet {
   List<Spell> _spells;
 
   // Constructor
-  SpellSet(this._name,
-      [this._spells =
-          const []]); // not sure this is the best way to initialize empty list
-
+  SpellSet(this._name, {List<Spell>? spells}) : _spells = spells ?? [];
   // Getters and Setters
   String get name => _name;
   set name(String n) => _name = n;
@@ -18,5 +15,11 @@ class SpellSet {
 
   void addSpell(Spell spell) {
     spells.add(spell);
+  }
+
+  @override
+  String toString() {
+    String spellsString = _spells.map((s) => s.toString()).join(', ');
+    return 'SpellSet{_name: $_name, _spells: [$spellsString]}';
   }
 }

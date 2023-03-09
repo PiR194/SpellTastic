@@ -1,4 +1,8 @@
+import 'dart:convert';
+import 'package:code/src/data/json_account_strategy.dart';
 import 'package:flutter/material.dart';
+
+import '../../model/character.dart';
 
 class CharacterFormWidget extends StatefulWidget {
   @override
@@ -8,22 +12,10 @@ class CharacterFormWidget extends StatefulWidget {
 class _CharacterFormState extends State<CharacterFormWidget> {
   final _formKey = GlobalKey<FormState>();
   String _name = '';
-  String _race = '';
   String _class = '';
   int _level = 1;
 
-  String? _selectedRace;
   String? _selectedClass;
-
-  List<String> _races = [
-    'Dwarf',
-    'Elf',
-    'Gnome',
-    'Half-Elf',
-    'Half-Orc',
-    'Halfling',
-    'Human'
-  ];
 
   List<String> _classes = [
     'Barbarian',
@@ -39,18 +31,25 @@ class _CharacterFormState extends State<CharacterFormWidget> {
     'Wizard'
   ];
 
+  List<Character> listCharacter = [];
+
   @override
   Widget build(BuildContext context) {
+    const Color accentColor = Color(0xFF9C27B0);
+
     return Scaffold(
-      appBar: AppBar(title: Text('Character Creation')),
+      appBar: AppBar(
+        title: const Text('Character Creation'),
+        backgroundColor: accentColor,
+      ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Form(
           key: _formKey,
           child: ListView(
             children: [
               TextFormField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Name',
                 ),
                 validator: (value) {
@@ -64,21 +63,6 @@ class _CharacterFormState extends State<CharacterFormWidget> {
                 },
               ),
               DropdownButton<String>(
-                value: _selectedRace,
-                items: _races.map((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
-                hint: Text('Select race'),
-                onChanged: (value) {
-                  setState(() {
-                    _selectedRace = value;
-                  });
-                },
-              ),
-              DropdownButton<String>(
                 value: _selectedClass,
                 items: _classes.map((String value) {
                   return DropdownMenuItem<String>(
@@ -86,29 +70,48 @@ class _CharacterFormState extends State<CharacterFormWidget> {
                     child: Text(value),
                   );
                 }).toList(),
-                hint: Text('Select class'),
+                hint: const Text('Select class'),
                 onChanged: (value) {
                   setState(() {
                     _selectedClass = value;
                   });
                 },
               ),
-              SizedBox(height: 16.0),
-              Text('Level ' + _level.toString()),
+              const SizedBox(height: 16.0),
+              Text('Maximum Character Level ' + _level.toString()),
               Slider(
-                  value: _level.toDouble(),
-                  min: 1,
-                  max: 20,
-                  divisions: 19,
-                  label: _level.toString(),
-                  onChanged: (value) {
-                    setState(() {
-                      _level = value.round();
-                    });
-                  },
-                  activeColor: Colors.green,
-                  inactiveColor: Colors.grey,
-                  thumbColor: Colors.brown),
+                value: _level.toDouble(),
+                min: 1,
+                max: 20,
+                divisions: 19,
+                label: _level.toString(),
+                onChanged: (value) {
+                  setState(() {
+                    _level = value.round();
+                  });
+                },
+                activeColor: Colors.green,
+                inactiveColor: Colors.grey,
+                thumbColor: Colors.brown,
+              ),
+              ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(accentColor),
+                ),
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    _formKey.currentState!.save();
+
+                    Character character =
+                        Character(_name, _selectedClass!, _level);
+
+                    listCharacter.add(character);
+                    JsonAccountStrategy().saveChar(listCharacter);
+                  }
+                },
+                child: const Text('CREATE !'),
+              ),
             ],
           ),
         ),

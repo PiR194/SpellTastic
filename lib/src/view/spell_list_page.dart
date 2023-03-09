@@ -51,11 +51,14 @@ class _SpellListPage extends State<SpellListPage> {
       var dbHelper = DbHelper();
       spells = await dbHelper.getSpells();
     } else {
-      await SQLiteDataStrategy.init();
-      spells = SQLiteDataStrategy.getInstance().loadSpells();
+      //await SQLiteDataStrategy.init();
+      var data = await SQLiteDataStrategy.getInstance();
+      spells = await data.loadSpells();
     }
     setState(() {
-      spells_list = spells.where((spell) => spell.GetLevelByClass(character.cclass) != null).toList();
+      spells_list = spells
+          .where((spell) => spell.GetLevelByClass(character.cclass) != null)
+          .toList();
     });
   }
 
@@ -121,15 +124,17 @@ class _SpellListPage extends State<SpellListPage> {
         itemCount: spells_list.length,
         itemBuilder: (context, index) {
           Color backgroundColor = Colors.white;
-          if (spells_list[index].GetLevelByClass(character.cclass)?.isEven ?? false) {
-            if (currentOrder == OrderOption.Lvlasc || currentOrder == OrderOption.Lvldesc){
+          if (spells_list[index].GetLevelByClass(character.cclass)?.isEven ??
+              false) {
+            if (currentOrder == OrderOption.Lvlasc ||
+                currentOrder == OrderOption.Lvldesc) {
               backgroundColor = const Color.fromARGB(255, 209, 214, 216);
             }
           }
-              // spells_list[index].GetLevelByClass(character.cclass)?.isEven ??
-              //         false
-              //     ? const Color.fromARGB(255, 209, 214, 216)
-              //     : Colors.white;
+          // spells_list[index].GetLevelByClass(character.cclass)?.isEven ??
+          //         false
+          //     ? const Color.fromARGB(255, 209, 214, 216)
+          //     : Colors.white;
           return ListTile(
             leading: ExcludeSemantics(
               child: CircleAvatar(
