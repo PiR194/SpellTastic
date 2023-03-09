@@ -32,7 +32,7 @@ class SQLiteDataStrategy implements IDataStrategy {
     var db = await getInstance();
 
     var list = db._db.select(
-        'SELECT id, name, description, reference, source, school, level, castingtime, components, range, target, duration FROM SPELLS WHERE name is not null and school is not null');
+        'SELECT id, name, level, school, casting_time, components, range, target, area, effect, duration, saving_throw, spell_resistance, description FROM spell WHERE name is not null and school is not null');
 
     List<Spell> spells = [];
 
@@ -46,28 +46,6 @@ class SQLiteDataStrategy implements IDataStrategy {
       (list[i]['name'] != null && list[i]['name'] != Null)
           ? tmpName = list[i]['name']
           : tmpName = '';
-
-      var tmpDescription;
-      (list[i]['description'] != null && list[i]['description'] != Null)
-          ? tmpDescription = list[i]['description']
-          : tmpDescription = '';
-
-      var tmpReference;
-      (list[i]['reference'] != null && list[i]['reference'] != Null)
-          ? tmpReference = list[i]['reference']
-          : tmpReference = '';
-
-      var tmpSource;
-      (list[i]['source'] != 'null' &&
-              list[i]['source'] != Null &&
-              list[i]['source'] != null)
-          ? tmpSource = list[i]['source']
-          : tmpSource = '';
-
-      var tmpSchool;
-      (list[i]['school'] != null && list[i]['school'] != Null)
-          ? tmpSchool = list[i]['school']
-          : tmpSchool = '';
 
       Map<String, int> tmpLevel = {};
       if (list[i]['level'] != null && list[i]['level'] != Null) {
@@ -84,6 +62,11 @@ class SQLiteDataStrategy implements IDataStrategy {
           //print('Result : ' + tmpLevel[t.first].toString());
         }
       }
+
+      var tmpSchool;
+      (list[i]['school'] != null && list[i]['school'] != Null)
+          ? tmpSchool = list[i]['school']
+          : tmpSchool = '';
 
       var tmpCastingTime;
       (list[i]['castingtime'] != null && list[i]['castingtime'] != Null)
@@ -105,26 +88,53 @@ class SQLiteDataStrategy implements IDataStrategy {
           ? tmpTarget = list[i]['target']
           : tmpTarget = '';
 
+      var tmpArea;
+      (list[i]['area'] != null && list[i]['area'] != Null)
+          ? tmpArea = list[i]['area']
+          : tmpArea = '';
+
+      var tmpEffect;
+      (list[i]['effect'] != null && list[i]['effect'] != Null)
+          ? tmpEffect = list[i]['effect']
+          : tmpEffect = '';
+
       var tmpDuration;
       (list[i]['duration'] != null && list[i]['duration'] != Null)
           ? tmpDuration = list[i]['duration']
           : tmpDuration = '';
 
+      var tmpSavingThrow;
+      (list[i]['saving_throw'] != null && list[i]['saving_throw'] != Null)
+          ? tmpSavingThrow = list[i]['saving_throw']
+          : tmpSavingThrow = '';
+
+      var tmpSepllResistance;
+      (list[i]['spell_resistance'] != null &&
+              list[i]['spell_resistance'] != Null)
+          ? tmpSepllResistance = list[i]['spell_resistance']
+          : tmpSepllResistance = '';
+
+      var tmpDescription;
+      (list[i]['description'] != null && list[i]['description'] != Null)
+          ? tmpDescription = list[i]['description']
+          : tmpDescription = '';
+
       spells.add(Spell(
           tmpId,
           tmpName,
-          tmpDescription,
-          tmpReference,
-          tmpSource,
-          tmpSchool,
           tmpLevel,
+          tmpSchool,
           tmpCastingTime,
-          tmpComponent, //list[i]['level'],
-          tmpRange, //list[i]['range'],
+          tmpComponent,
+          tmpRange,
           tmpTarget,
-          tmpDuration)); //list[i]['duration']));
+          tmpArea,
+          tmpEffect,
+          tmpDuration,
+          tmpSavingThrow,
+          tmpSepllResistance,
+          tmpDescription));
     }
-
     return spells;
   }
 
@@ -151,28 +161,6 @@ class SQLiteDataStrategy implements IDataStrategy {
         ? tmpName = element['name']
         : tmpName = '';
 
-    var tmpDescription;
-    (element['description'] != null && element['description'] != Null)
-        ? tmpDescription = element['description']
-        : tmpDescription = '';
-
-    var tmpReference;
-    (element['reference'] != null && element['reference'] != Null)
-        ? tmpReference = element['reference']
-        : tmpReference = '';
-
-    var tmpSource;
-    (element['source'] != 'null' &&
-            element['source'] != Null &&
-            element['source'] != null)
-        ? tmpSource = element['source']
-        : tmpSource = '';
-
-    var tmpSchool;
-    (element['school'] != null && element['school'] != Null)
-        ? tmpSchool = element['school']
-        : tmpSchool = '';
-
     Map<String, int> tmpLevel = {};
     if (element['level'] != null && element['level'] != Null) {
       var l = element['level'].toString().split(',');
@@ -188,6 +176,11 @@ class SQLiteDataStrategy implements IDataStrategy {
         //print('Result : ' + tmpLevel[t.first].toString());
       }
     }
+
+    var tmpSchool;
+    (element['school'] != null && element['school'] != Null)
+        ? tmpSchool = element['school']
+        : tmpSchool = '';
 
     var tmpCastingTime;
     (element['castingtime'] != null && element['castingtime'] != Null)
@@ -209,23 +202,50 @@ class SQLiteDataStrategy implements IDataStrategy {
         ? tmpTarget = element['target']
         : tmpTarget = '';
 
+    var tmpArea;
+    (element['area'] != null && element['area'] != Null)
+        ? tmpArea = element['area']
+        : tmpArea = '';
+
+    var tmpEffect;
+    (element['effect'] != null && element['effect'] != Null)
+        ? tmpEffect = element['effect']
+        : tmpEffect = '';
+
     var tmpDuration;
     (element['duration'] != null && element['duration'] != Null)
         ? tmpDuration = element['duration']
         : tmpDuration = '';
 
+    var tmpSavingThrow;
+    (element['saving_throw'] != null && element['saving_throw'] != Null)
+        ? tmpSavingThrow = element['saving_throw']
+        : tmpSavingThrow = '';
+
+    var tmpSepllResistance;
+    (element['spell_resistance'] != null && element['spell_resistance'] != Null)
+        ? tmpSepllResistance = element['spell_resistance']
+        : tmpSepllResistance = '';
+
+    var tmpDescription;
+    (element['description'] != null && element['description'] != Null)
+        ? tmpDescription = element['description']
+        : tmpDescription = '';
+
     return Spell(
         tmpId,
         tmpName,
-        tmpDescription,
-        tmpReference,
-        tmpSource,
-        tmpSchool,
         tmpLevel,
+        tmpSchool,
         tmpCastingTime,
         tmpComponent,
         tmpRange,
         tmpTarget,
-        tmpDuration);
+        tmpArea,
+        tmpEffect,
+        tmpDuration,
+        tmpSavingThrow,
+        tmpSepllResistance,
+        tmpDescription);
   }
 }

@@ -57,7 +57,7 @@ class _SpellListPage extends State<SpellListPage> {
     }
     setState(() {
       spells_list = spells
-          .where((spell) => spell.GetLevelByClass(character.cclass) != null)
+          .where((spell) => spell.getLevelByClass(character.cclass) != null)
           .toList();
     });
   }
@@ -87,12 +87,12 @@ class _SpellListPage extends State<SpellListPage> {
                       .sort((toto, tata) => tata.name.compareTo(toto.name));
                 } else if (currentOrder == OrderOption.Lvlasc) {
                   spells_list.sort((toto, tata) =>
-                      (toto.GetLevelByClass(character.cclass) ?? 0).compareTo(
-                          tata.GetLevelByClass(character.cclass) ?? 0));
+                      (toto.getLevelByClass(character.cclass) ?? 0).compareTo(
+                          tata.getLevelByClass(character.cclass) ?? 0));
                 } else if (currentOrder == OrderOption.Lvldesc) {
                   spells_list.sort((toto, tata) =>
-                      (tata.GetLevelByClass(character.cclass) ?? 0).compareTo(
-                          toto.GetLevelByClass(character.cclass) ?? 0));
+                      (tata.getLevelByClass(character.cclass) ?? 0).compareTo(
+                          toto.getLevelByClass(character.cclass) ?? 0));
                 }
               });
             },
@@ -124,7 +124,7 @@ class _SpellListPage extends State<SpellListPage> {
         itemCount: spells_list.length,
         itemBuilder: (context, index) {
           Color backgroundColor = Colors.white;
-          if (spells_list[index].GetLevelByClass(character.cclass)?.isEven ??
+          if (spells_list[index].getLevelByClass(character.cclass)?.isEven ??
               false) {
             if (currentOrder == OrderOption.Lvlasc ||
                 currentOrder == OrderOption.Lvldesc) {
@@ -139,7 +139,7 @@ class _SpellListPage extends State<SpellListPage> {
             leading: ExcludeSemantics(
               child: CircleAvatar(
                   child: Text(spells_list[index]
-                      .GetLevelByClass(character.cclass)
+                      .getLevelByClass(character.cclass)
                       .toString())),
             ),
             tileColor: backgroundColor,
