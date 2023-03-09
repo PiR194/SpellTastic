@@ -1,4 +1,8 @@
+import 'dart:convert';
+import 'package:code/src/data/json_account_strategy.dart';
 import 'package:flutter/material.dart';
+
+import '../../model/character.dart';
 
 class CharacterFormWidget extends StatefulWidget {
   @override
@@ -26,6 +30,8 @@ class _CharacterFormState extends State<CharacterFormWidget> {
     'Sorcerer',
     'Wizard'
   ];
+
+  List<Character> listCharacter = [];
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +102,12 @@ class _CharacterFormState extends State<CharacterFormWidget> {
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
-                    // do something with the form values
+
+                    Character character =
+                        Character(_name, _selectedClass!, _level);
+
+                    listCharacter.add(character);
+                    JsonAccountStrategy().saveChar(listCharacter);
                   }
                 },
                 child: const Text('CREATE !'),
