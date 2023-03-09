@@ -11,7 +11,9 @@ class JsonAccountStrategy implements IAccountStrategy {
   @override
   Future<List<Character>> loadChar() async {
     IDataStrategy dataStrategy = await SQLiteDataStrategy.getInstance();
+
     File file = File('assets/account.json');
+    if (!await file.exists()) return [];
     var jsonString = file.readAsStringSync();
     List<dynamic> decoded = jsonDecode(jsonString);
     List<Character> characters = [];
