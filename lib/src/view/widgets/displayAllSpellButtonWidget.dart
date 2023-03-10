@@ -13,7 +13,7 @@ class DisplayAllSpellButtonWidget extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         shape: CircleBorder(),
         padding: EdgeInsets.all(16),
-        primary: primaryColor, // Couleur du bouton
+        primary: primaryColor,
       ),
     );
   }

@@ -33,23 +33,21 @@ class Home extends StatelessWidget {
               child: Wrap(
                 spacing: screenWidth * 0.05,
                 runSpacing: screenHeight * 0.02,
+                alignment: WrapAlignment.center,
                 children: [
                   AddCharacterWidget(),
                   CharacterButtonWidget(),
                   CharacterButtonWidget(),
                   CharacterButtonWidget(),
                   CharacterButtonWidget(),
+                  Container(
+                    width: screenWidth,
+                    child: DisplayAllSpellButtonWidget(),
+                  )
                 ],
               ),
             ),
           )),
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Align(
-          alignment: Alignment.bottomRight,
-          child: DisplayAllSpellButtonWidget(),
-        ),
-      ),
     );
   }
 }
