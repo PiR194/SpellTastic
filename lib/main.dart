@@ -1,4 +1,5 @@
 import 'package:code/src/model/character.dart';
+import 'package:code/src/model/themeModel.dart';
 import 'package:code/src/view/detailsCharacter.dart';
 import 'package:code/src/view/home.dart';
 import 'package:code/src/view/setDisplay.dart';
@@ -7,35 +8,17 @@ import 'package:code/src/view/spell_list_page.dart';
 import 'package:code/src/view/widgets/characterFormWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   setUrlStrategy(PathUrlStrategy());
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider<ThemeModel>(
+      create: (_) => ThemeModel(),
+      child: MyApp(),
+    ),
+  );
 }
-
-final smallTheme = ThemeData(
-  textTheme: const TextTheme(
-    displayLarge: TextStyle(fontSize: 16),
-    displayMedium: TextStyle(fontSize: 14),
-    displaySmall: TextStyle(fontSize: 12),
-  ),
-);
-
-final mediumTheme = ThemeData(
-  textTheme: const TextTheme(
-    displayLarge: TextStyle(fontSize: 40),
-    displayMedium: TextStyle(fontSize: 18),
-    displaySmall: TextStyle(fontSize: 16),
-  ),
-);
-
-final largeTheme = ThemeData(
-  textTheme: const TextTheme(
-    displayLarge: TextStyle(fontSize: 100),
-    displayMedium: TextStyle(fontSize: 22),
-    displaySmall: TextStyle(fontSize: 20),
-  ),
-);
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -54,10 +37,9 @@ class MyApp extends StatelessWidget {
         '/setdisplay': (context) => SetDisplay(),
         '/displayallspell': (context) =>
             SpellListPage(character: Character("dummy", "Bar", 10)),
-        /*'/settings': (context) =>
-            SettingsPage(currentTheme: _themeData, onThemeChanged: setTheme),*/
+        '/settings': (context) => SettingsPage(),
       },
-      //theme: _themeData,
+      theme: Provider.of<ThemeModel>(context).currentTheme,
     );
   }
 }
