@@ -43,6 +43,12 @@ class Home extends StatelessWidget {
                   Container(
                     width: screenWidth,
                     child: DisplayAllSpellButtonWidget(),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/settings');
+                    },
+                    child: Icon(Icons.visibility),
                   )
                 ],
               ),
