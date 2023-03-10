@@ -22,4 +22,12 @@ class SpellSet {
     String spellsString = _spells.map((s) => s.toString()).join(', ');
     return 'SpellSet{_name: $_name, _spells: [$spellsString]}';
   }
+
+  SpellSet copy() {
+    List<Spell> copiedSpells = [];
+    for (Spell spell in spells) {
+      copiedSpells.add(spell);
+    }
+    return SpellSet(_name, spells: copiedSpells);
+  }
 }
