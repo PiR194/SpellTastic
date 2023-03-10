@@ -209,7 +209,7 @@ classDiagram
 Spell(<ins>id</ins>,name,description,reference,source,school,level,castingTime,components,range,target,duration);  
 SpellSet(<ins>name</ins>,#charName);  
 Character(<ins>name</ins>,level);  
-Posséder(<ins>#nameSet</ins>,<ins>idSpell</ins>);  
+Posséder(<ins>#nameSet</ins>,<ins>#idSpell</ins>);  
 Connaitre(<ins>#nameChar</ins>,<ins>#idSpell</ins>);  
 
 *******
