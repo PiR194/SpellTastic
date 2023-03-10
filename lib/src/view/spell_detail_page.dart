@@ -2,6 +2,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
+import 'package:flutter_html/style.dart';
+
+
 //* Model *//
 import '../model/spell.dart';
 
@@ -46,10 +51,24 @@ class SpellDetailsPage extends StatelessWidget {
                     ),
                   ],
                 ),
-            child: Text(
-              spell.description,
-              style:Theme.of(context).textTheme.bodyMedium,
-              textAlign: TextAlign.center,
+            child: RichText(
+              text: TextSpan(
+                text: 'Description du sort : \n',
+                style: Theme.of(context).textTheme.headlineLarge,
+                children: <TextSpan>[
+                  TextSpan(
+                    text: '',
+                    children: [
+                      WidgetSpan(
+                        child: HtmlWidget(
+                          spell.description,
+                          textStyle: Theme.of(context).textTheme.bodyMedium
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
     
@@ -90,56 +109,56 @@ class SpellDetailsPage extends StatelessWidget {
                         )
                     ),
 
-              //TableWidget(spell : this.spell)
+                    TableWidget(spell : spell)
 
-              Table(
-                    border: TableBorder.symmetric(
-                      inside: const BorderSide(
-                          width: 1.0, 
-                          color: Colors.grey
-                        ),
-                    ),
-                    children: [
-                      TableRow(
-                        children: [
-                          TableCell(
-                            child: Text(
-                                'Class',
-                                style:Theme.of(context).textTheme.titleLarge,
-                                textAlign: TextAlign.center,
-                              ),
-                          ),
-                          TableCell(
-                            child: Text(
-                                'Niveau',
-                                style:Theme.of(context).textTheme.titleLarge,
-                                textAlign: TextAlign.center,
-                              ),
-                          ),
-                        ],
-                      ),
-                      ...spell.GetMapClassLevel().entries.map(
-                        (entry) => TableRow(
-                          children: [
-                            TableCell(
-                              child: Text(
-                                entry.key,
-                                style:Theme.of(context).textTheme.bodyLarge,
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                            TableCell(
-                              child: Text(
-                                entry.value.toString(),
-                                style:Theme.of(context).textTheme.bodyLarge,
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+              // Table(
+              //       border: TableBorder.symmetric(
+              //         inside: const BorderSide(
+              //             width: 1.0, 
+              //             color: Colors.grey
+              //           ),
+              //       ),
+              //       children: [
+              //         TableRow(
+              //           children: [
+              //             TableCell(
+              //               child: Text(
+              //                   'Class',
+              //                   style:Theme.of(context).textTheme.titleLarge,
+              //                   textAlign: TextAlign.center,
+              //                 ),
+              //             ),
+              //             TableCell(
+              //               child: Text(
+              //                   'Niveau',
+              //                   style:Theme.of(context).textTheme.titleLarge,
+              //                   textAlign: TextAlign.center,
+              //                 ),
+              //             ),
+              //           ],
+              //         ),
+              //         ...spell.GetMapClassLevel().entries.map(
+              //           (entry) => TableRow(
+              //             children: [
+              //               TableCell(
+              //                 child: Text(
+              //                   entry.key,
+              //                   style:Theme.of(context).textTheme.bodyLarge,
+              //                   textAlign: TextAlign.center,
+              //                 ),
+              //               ),
+              //               TableCell(
+              //                 child: Text(
+              //                   entry.value.toString(),
+              //                   style:Theme.of(context).textTheme.bodyLarge,
+              //                   textAlign: TextAlign.center,
+              //                 ),
+              //               ),
+              //             ],
+              //           ),
+              //         ),
+              //       ],
+              //     ),
                 ]  
               ),
             )

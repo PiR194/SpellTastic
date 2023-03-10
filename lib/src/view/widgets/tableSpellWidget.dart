@@ -7,8 +7,9 @@ class TableWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body:Table(
+    return SizedBox(
+      height:MediaQuery.of(context).size.height,
+      child:Table(  
         border: TableBorder.symmetric(
           inside: const BorderSide(
               width: 1.0, 
