@@ -6,6 +6,8 @@ import 'widgets/createSetButtonWidget.dart';
 class DetailsCharacter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     const Color primaryColor = Color(0xFFC2185B);
     const Color accentColor = Color(0xFF9C27B0);
     const Color backgroundColor = Color(0xFFEDE7F6);
@@ -41,17 +43,17 @@ class DetailsCharacter extends StatelessWidget {
                   Text(
                     'LOU LE GOBELIN',
                     style: TextStyle(
-                      fontSize: 40,
-                      fontFamily: 'Anaktoria',
-                      fontWeight: FontWeight.bold,
+                      fontSize: theme.textTheme.titleLarge!.fontSize,
+                      fontFamily: theme.textTheme.titleLarge!.fontFamily,
+                      fontWeight: theme.textTheme.titleLarge!.fontWeight,
                       color: primaryColor,
                     ),
                   ),
                   Text(
                     'CLASS : ' + 'Gobelin',
                     style: TextStyle(
-                      fontSize: 25,
-                      fontFamily: 'Anaktoria',
+                      fontSize: theme.textTheme.bodyLarge!.fontSize,
+                      fontFamily: theme.textTheme.bodyLarge!.fontFamily,
                     ),
                   )
                 ],
@@ -67,11 +69,11 @@ class DetailsCharacter extends StatelessWidget {
                         direction: Axis.horizontal,
                         alignment: WrapAlignment.center,
                         children: [
-                          const Text(
+                          Text(
                             'LEVEL :',
                             style: TextStyle(
-                              fontSize: 25,
-                              fontFamily: 'Anaktoria',
+                              fontSize: theme.textTheme.bodyLarge!.fontSize,
+                              fontFamily: theme.textTheme.bodyLarge!.fontFamily,
                             ),
                           ),
                           LevelCounterWidget(),

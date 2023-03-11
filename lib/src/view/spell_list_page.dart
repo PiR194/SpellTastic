@@ -64,6 +64,8 @@ class _SpellListPage extends State<SpellListPage> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Liste de sorts'),
@@ -143,7 +145,13 @@ class _SpellListPage extends State<SpellListPage> {
                       .toString())),
             ),
             tileColor: backgroundColor,
-            title: Text(spells_list[index].name),
+            title: Text(
+              spells_list[index].name,
+              style: TextStyle(
+                fontSize: theme.textTheme.bodyLarge!.fontSize,
+                fontFamily: theme.textTheme.bodyLarge!.fontFamily,
+              ),
+            ),
             onTap: () {
               Navigator.push(
                 context,

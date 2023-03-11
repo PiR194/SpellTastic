@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 class DisplaySetButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
@@ -26,8 +28,9 @@ class DisplaySetButton extends StatelessWidget {
           ),
           elevation: 6.0,
           textStyle: TextStyle(
+            fontSize: theme.textTheme.bodyLarge!.fontSize,
+            fontFamily: theme.textTheme.bodyLarge!.fontFamily,
             color: Colors.white,
-            fontWeight: FontWeight.bold,
           ),
         ),
         onPressed: () {
@@ -42,7 +45,9 @@ class DisplaySetButton extends StatelessWidget {
             Text(
               'Nom du set',
               style: TextStyle(
-                fontFamily: 'Anaktoria',
+                fontSize: theme.textTheme.bodyLarge!.fontSize,
+                fontFamily: theme.textTheme.bodyLarge!.fontFamily,
+                fontWeight: theme.textTheme.bodyLarge!.fontWeight,
               ),
             ),
             Wrap(
@@ -53,27 +58,45 @@ class DisplaySetButton extends StatelessWidget {
                   onPressed: () {
                     // Modifier le set (à implémenter)
                   },
-                  child: Text('Use'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green,
+                  ),
+                  child: Text(
+                    'Use',
+                    style: TextStyle(
+                      fontSize: theme.textTheme.bodyMedium!.fontSize,
+                      fontFamily: theme.textTheme.bodyMedium!.fontFamily,
+                    ),
                   ),
                 ),
                 ElevatedButton(
                   onPressed: () {
                     // Modifier le set (à implémenter)
                   },
-                  child: Text('Modify'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: primaryColor,
+                  ),
+                  child: Text(
+                    'Modify',
+                    style: TextStyle(
+                      fontSize: theme.textTheme.bodyMedium!.fontSize,
+                      fontFamily: theme.textTheme.bodyMedium!.fontFamily,
+                    ),
                   ),
                 ),
                 ElevatedButton(
                   onPressed: () {
                     // Supprimer le set (à implémenter)
                   },
-                  child: Text('Delete'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: primaryColor,
+                  ),
+                  child: Text(
+                    'Delete',
+                    style: TextStyle(
+                      fontSize: theme.textTheme.bodyMedium!.fontSize,
+                      fontFamily: theme.textTheme.bodyMedium!.fontFamily,
+                    ),
                   ),
                 ),
               ],
