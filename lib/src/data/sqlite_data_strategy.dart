@@ -3,6 +3,7 @@ import '../model/spell.dart';
 import 'package:sqlite3/sqlite3.dart';
 import 'package:path/path.dart' as p;
 import 'dart:io' as io;
+import 'spell_serializer.dart';
 
 class SQLiteDataStrategy implements IDataStrategy {
   static SQLiteDataStrategy? _instance;
@@ -47,21 +48,9 @@ class SQLiteDataStrategy implements IDataStrategy {
           ? tmpName = list[i]['name']
           : tmpName = '';
 
-      Map<String, int> tmpLevel = {};
-      if (list[i]['level'] != null && list[i]['level'] != Null) {
-        var l = list[i]['level'].toString().split(',');
-        for (var element in l) {
-          if (element.startsWith(' ', 0)) {
-            element = element.replaceFirst(' ', '');
-          }
-          var t = element.split(' ');
-          if (t.last == '') {
-            break;
-          }
-          //tmpLevel[t.first] = int.parse(t.last);
-          //print('Result : ' + tmpLevel[t.first].toString());
-        }
-      }
+      var tmpLevel = (list[i]['level'] != null && list[i]['level'] != Null)
+          ? SpellSerializer.parseLevelAndGetClass(list[i]['level'])
+          : <String, int>{};
 
       var tmpSchool;
       (list[i]['school'] != null && list[i]['school'] != Null)
@@ -161,21 +150,9 @@ class SQLiteDataStrategy implements IDataStrategy {
         ? tmpName = element['name']
         : tmpName = '';
 
-    Map<String, int> tmpLevel = {};
-    if (element['level'] != null && element['level'] != Null) {
-      var l = element['level'].toString().split(',');
-      for (var element in l) {
-        if (element.startsWith(' ', 0)) {
-          element = element.replaceFirst(' ', '');
-        }
-        var t = element.split(' ');
-        if (t.last == '') {
-          break;
-        }
-        tmpLevel[t.first] = int.parse(t.last);
-        //print('Result : ' + tmpLevel[t.first].toString());
-      }
-    }
+    var tmpLevel = (element['level'] != null && element['level'] != Null)
+        ? SpellSerializer.parseLevelAndGetClass(element['level'])
+        : <String, int>{};
 
     var tmpSchool;
     (element['school'] != null && element['school'] != Null)

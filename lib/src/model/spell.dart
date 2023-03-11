@@ -9,11 +9,11 @@ class Spell {
   // Attributes
   int _id;
   String _name;
-  Map<String, int> _level;
+  final Map<String, int> _level;
   String _school;
   String _castingTime;
   String _components;
-  String _range;
+  final String _range;
   String _target;
   String _area;
   String _effect;

@@ -1,3 +1,4 @@
+import 'package:code/src/data/spell_serializer.dart';
 import 'package:code/src/model/spell.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
@@ -57,21 +58,9 @@ class DbHelper {
           ? tmpName = list[i]['name']
           : tmpName = '';
 
-      Map<String, int> tmpLevel = {};
-      if (list[i]['level'] != null && list[i]['level'] != Null) {
-        var l = list[i]['level'].toString().split(',');
-        for (var element in l) {
-          if (element.startsWith(' ', 0)) {
-            element = element.replaceFirst(' ', '');
-          }
-          var t = element.split(' ');
-          if (t.last == '') {
-            break;
-          }
-          tmpLevel[t.first] = int.parse(t.last);
-          //print('Result : ' + tmpLevel[t.first].toString());
-        }
-      }
+      var tmpLevel = (list[i]['level'] != null && list[i]['level'] != Null)
+          ? SpellSerializer.parseLevelAndGetClass(list[i]['level'])
+          : <String, int>{};
 
       var tmpSchool;
       (list[i]['school'] != null && list[i]['school'] != Null)
