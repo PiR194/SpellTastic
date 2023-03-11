@@ -48,6 +48,7 @@ class SQLiteDataStrategy implements IDataStrategy {
           ? tmpName = list[i]['name']
           : tmpName = '';
 
+      print("debug: ${tmpName}");
       var tmpLevel = (list[i]['level'] != null && list[i]['level'] != Null)
           ? SpellSerializer.parseLevelAndGetClass(list[i]['level'])
           : <String, int>{};

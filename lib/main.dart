@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         '/characterdetails': (context) => DetailsCharacter(),
         '/setdisplay': (context) => SetDisplay(),
         '/displayallspell': (context) =>
-            SpellListPage(character: Character("dummy", "Bar", 10)),
+            SpellListPage(character: Character("dummy", "wizard", 10)),
       },
     );
   }
