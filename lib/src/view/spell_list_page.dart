@@ -7,21 +7,19 @@ import 'package:flutter/material.dart';
 import '../data/dbhelper.dart';
 import 'dart:io' show Platform;
 
-//TODO ajouter les filtres sur les sorts
-//? filtrer les listes pour que un personnage vois que ces sort dispo (eviter les "null" dans l'affichage)
-//! Penser a supprimer se "mini stub", et de le remplacer par le binding des pages
-import '../model/character.dart';
+//TODO ajouter d'autres filtres sur les sorts ?
 
-//Character dum = Character("dummy", "Bar", 10);
+import '../model/character.dart';
 
 List<Spell> spells_list = [];
 
+//Option de tri
 enum OrderOption {
   asc,
   desc,
   Lvlasc,
   Lvldesc,
-  _default,
+  //_default,
 }
 
 OrderOption currentOrder = OrderOption.asc;
@@ -45,6 +43,7 @@ class _SpellListPage extends State<SpellListPage> {
     getData();
   }
 
+  //Chargement des données
   void getData() async {
     List<Spell> spells;
     if (Platform.isAndroid) {
@@ -58,7 +57,7 @@ class _SpellListPage extends State<SpellListPage> {
     print("size:  ${spells.length}");
     setState(() {
       spells_list = spells
-          .where((spell) => spell.getLevelByClass(character.cclass) != null)
+          .where((spell) => spell.GetLevelByClass(character.cclass) != null)
           .toList();
       print(spells_list.length);
     });
@@ -73,33 +72,59 @@ class _SpellListPage extends State<SpellListPage> {
           IconButton(
             icon: const Icon(Icons.search),
             onPressed: () {
+              //Appel de la fonction de recherche
               showSearch(
                   context: context, delegate: SpellSearchDelegate(spells_list));
             },
           ),
           PopupMenuButton<OrderOption>(
+            //Menu d'option de tri
             onSelected: (value) {
               setState(() {
-                currentOrder = value;
-                if (currentOrder == OrderOption.asc) {
-                  spells_list
-                      .sort((toto, tata) => toto.name.compareTo(tata.name));
-                } else if (currentOrder == OrderOption.desc) {
-                  spells_list
-                      .sort((toto, tata) => tata.name.compareTo(toto.name));
-                } else if (currentOrder == OrderOption.Lvlasc) {
-                  spells_list.sort((toto, tata) =>
-                      (toto.getLevelByClass(character.cclass) ?? 0).compareTo(
-                          tata.getLevelByClass(character.cclass) ?? 0));
-                } else if (currentOrder == OrderOption.Lvldesc) {
-                  spells_list.sort((toto, tata) =>
-                      (tata.getLevelByClass(character.cclass) ?? 0).compareTo(
-                          toto.getLevelByClass(character.cclass) ?? 0));
+                switch (value) {
+                  case OrderOption.asc:
+                    {
+                      //tri ascendant
+                      spells_list.sort((spell1, spell2) =>
+                          spell1.name.compareTo(spell2.name));
+                    }
+                    break;
+
+                  case OrderOption.desc:
+                    {
+                      //tri descendant
+                      spells_list.sort((spell1, spell2) =>
+                          spell2.name.compareTo(spell1.name));
+                    }
+                    break;
+
+                  case OrderOption.Lvlasc:
+                    {
+                      //tri par niveaux ascendant
+                      spells_list.sort((spell1, spell2) =>
+                          (spell1.GetLevelByClass(character.cclass) ?? 0)
+                              .compareTo(
+                                  spell2.GetLevelByClass(character.cclass) ??
+                                      0));
+                    }
+                    break;
+
+                  case OrderOption.Lvldesc:
+                    {
+                      //tri par niveaux descendant
+                      spells_list.sort((spell1, spell2) =>
+                          (spell2.GetLevelByClass(character.cclass) ?? 0)
+                              .compareTo(
+                                  spell1.GetLevelByClass(character.cclass) ??
+                                      0));
+                    }
+                    break;
                 }
               });
             },
             icon: const Icon(Icons.filter_alt),
             itemBuilder: (context) => [
+              //Option du menu de tri
               const PopupMenuItem(
                 value: OrderOption.asc,
                 child: Text('Croissant'),
@@ -125,27 +150,20 @@ class _SpellListPage extends State<SpellListPage> {
         cacheExtent: 2,
         itemCount: spells_list.length,
         itemBuilder: (context, index) {
+          //Coloration des lignes de la liste
           Color backgroundColor = Colors.white;
-          if (spells_list[index].getLevelByClass(character.cclass)?.isEven ??
+          if (spells_list[index].GetLevelByClass(character.cclass)?.isEven ??
               false) {
             if (currentOrder == OrderOption.Lvlasc ||
                 currentOrder == OrderOption.Lvldesc) {
               backgroundColor = const Color.fromARGB(255, 209, 214, 216);
             }
           }
-          // spells_list[index].GetLevelByClass(character.cclass)?.isEven ??
-          //         false
-          //     ? const Color.fromARGB(255, 209, 214, 216)
-          //     : Colors.white;
           return ListTile(
-            leading: ExcludeSemantics(
-              child: CircleAvatar(
-                  child: Text(spells_list[index]
-                      .getLevelByClass(character.cclass)
-                      .toString())),
-            ),
+            //Structure de chaque ligne (=> ListTile)
             tileColor: backgroundColor,
-            title: Text(spells_list[index].name),
+            title: Text(
+                "${spells_list[index].name} ${spells_list[index].GetLevelByClass(character.cclass)}"),
             onTap: () {
               Navigator.push(
                 context,
