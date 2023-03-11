@@ -1,15 +1,23 @@
 import 'package:code/src/model/character.dart';
+import 'package:code/src/model/themeModel.dart';
 import 'package:code/src/view/detailsCharacter.dart';
 import 'package:code/src/view/home.dart';
 import 'package:code/src/view/setDisplay.dart';
+import 'package:code/src/view/settings.dart';
 import 'package:code/src/view/spell_list_page.dart';
 import 'package:code/src/view/widgets/characterFormWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   setUrlStrategy(PathUrlStrategy());
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider<ThemeModel>(
+      create: (_) => ThemeModel(),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -29,7 +37,9 @@ class MyApp extends StatelessWidget {
         '/setdisplay': (context) => SetDisplay(),
         '/displayallspell': (context) =>
             SpellListPage(character: Character("dummy", "wizard", 10)),
+        '/settings': (context) => SettingsPage(),
       },
+      theme: Provider.of<ThemeModel>(context).currentTheme,
     );
   }
 }

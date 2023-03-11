@@ -26,15 +26,23 @@ class _LevelCounter extends State<LevelCounterWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Row(
       children: [
         IconButton(
-          icon: Icon(Icons.arrow_downward),
+          icon: const Icon(Icons.arrow_downward),
           onPressed: _decrementCount,
         ),
-        Text('$_count'),
+        Text(
+          '$_count',
+          style: TextStyle(
+            fontSize: theme.textTheme.bodyMedium!.fontSize,
+            fontFamily: theme.textTheme.bodyMedium!.fontFamily,
+          ),
+        ),
         IconButton(
-          icon: Icon(Icons.arrow_upward),
+          icon: const Icon(Icons.arrow_upward),
           onPressed: _incrementCount,
         ),
       ],

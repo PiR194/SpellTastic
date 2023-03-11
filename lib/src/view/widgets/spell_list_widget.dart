@@ -10,11 +10,19 @@ class SpellList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return ListView.builder(
       itemCount: spells.length,
       itemBuilder: (context, index) {
         return ListTile(
-          title: Text(spells[index].name),
+          title: Text(
+            spells[index].name,
+            style: TextStyle(
+              fontSize: theme.textTheme.bodyMedium!.fontSize,
+              fontFamily: theme.textTheme.bodyMedium!.fontFamily,
+            ),
+          ),
           onTap: () {
             Navigator.push(
               context,
