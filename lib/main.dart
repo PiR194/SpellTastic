@@ -1,15 +1,23 @@
 import 'package:code/src/model/character.dart';
+import 'package:code/src/model/themeModel.dart';
 import 'package:code/src/view/detailsCharacter.dart';
 import 'package:code/src/view/home.dart';
 import 'package:code/src/view/setDisplay.dart';
+import 'package:code/src/view/settings.dart';
 import 'package:code/src/view/spell_list_page.dart';
 import 'package:code/src/view/widgets/characterFormWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   setUrlStrategy(PathUrlStrategy());
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider<ThemeModel>(
+      create: (_) => ThemeModel(),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -28,24 +36,10 @@ class MyApp extends StatelessWidget {
         '/characterdetails': (context) => DetailsCharacter(),
         '/setdisplay': (context) => SetDisplay(),
         '/displayallspell': (context) =>
-            SpellListPage(character: Character("dummy", "Bar", 10)),
+            SpellListPage(character: Character("dummy", "wizard", 10)),
+        '/settings': (context) => SettingsPage(),
       },
-      theme: ThemeData(
-        // Define the default brightness and colors.
-        // brightness: Brightness.dark,
-        // primaryColor: Colors.lightBlue[800],
-
-        // Define the default font family.
-        fontFamily: 'Anaktoria',
-        // Define the default `TextTheme`. Use this to specify the default
-        // text styling for headlines, titles, bodies of text, and more.
-        textTheme: const TextTheme(
-          displayLarge: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-          titleLarge: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic, fontWeight: FontWeight.bold),
-          bodyLarge: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
-          bodyMedium: TextStyle(fontSize: 14.0),
-        ),
-      ),
+      theme: Provider.of<ThemeModel>(context).currentTheme,
     );
   }
 }

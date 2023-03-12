@@ -63,7 +63,7 @@ class StatTable extends StatelessWidget {
                   ],
                 )
               ),
-              DataCell(Text(spell.range.toString())),
+              DataCell(Text(spell.area.toString())),
             ]),
           ],
         )

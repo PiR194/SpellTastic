@@ -1,3 +1,4 @@
+import 'package:code/src/data/spell_serializer.dart';
 import 'package:code/src/model/spell.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
@@ -18,14 +19,13 @@ class DbHelper {
 
   initDb() async {
     io.Directory documentsDirectory = await getApplicationDocumentsDirectory();
-    String path = join(documentsDirectory.path, "pathfinderfr-data.db");
+    String path = join(documentsDirectory.path, "spells.db");
     bool dbExists = await io.File(path).exists();
     //bool dbExists = await databaseExists(path);
 
     if (!dbExists) {
       if (Platform.isAndroid) {
-        ByteData data =
-            await rootBundle.load(join("assets", "pathfinderfr-data.db"));
+        ByteData data = await rootBundle.load(join("assets", "spells.db"));
         List<int> bytes =
             data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
         await io.File(path).writeAsBytes(bytes, flush: true);
@@ -43,7 +43,7 @@ class DbHelper {
   Future<List<Spell>> getSpells() async {
     var dbClient = await db;
     List<Map> list = await dbClient!.rawQuery(
-        'SELECT id, name, description, reference, source, school, level, castingtime, components, range, target, duration FROM SPELLS WHERE name is not null and school is not null');
+        'SELECT id, name, level, school, casting_time, components, range, target, area, effect, duration, saving_throw, spell_resistance, description FROM spell WHERE name is not null and school is not null');
 
     List<Spell> spells = [];
 
@@ -58,43 +58,14 @@ class DbHelper {
           ? tmpName = list[i]['name']
           : tmpName = '';
 
-      var tmpDescription;
-      (list[i]['description'] != null && list[i]['description'] != Null)
-          ? tmpDescription = list[i]['description']
-          : tmpDescription = '';
-
-      var tmpReference;
-      (list[i]['reference'] != null && list[i]['reference'] != Null)
-          ? tmpReference = list[i]['reference']
-          : tmpReference = '';
-
-      var tmpSource;
-      (list[i]['source'] != 'null' &&
-              list[i]['source'] != Null &&
-              list[i]['source'] != null)
-          ? tmpSource = list[i]['source']
-          : tmpSource = '';
+      var tmpLevel = (list[i]['level'] != null && list[i]['level'] != Null)
+          ? SpellSerializer.parseLevelAndGetClass(list[i]['level'])
+          : <String, int>{};
 
       var tmpSchool;
       (list[i]['school'] != null && list[i]['school'] != Null)
           ? tmpSchool = list[i]['school']
           : tmpSchool = '';
-
-      Map<String, int> tmpLevel = {};
-      if (list[i]['level'] != null && list[i]['level'] != Null) {
-        var l = list[i]['level'].toString().split(',');
-        for (var element in l) {
-          if (element.startsWith(' ', 0)) {
-            element = element.replaceFirst(' ', '');
-          }
-          var t = element.split(' ');
-          if (t.last == '') {
-            break;
-          }
-          tmpLevel[t.first] = int.parse(t.last);
-          //print('Result : ' + tmpLevel[t.first].toString());
-        }
-      }
 
       var tmpCastingTime;
       (list[i]['castingtime'] != null && list[i]['castingtime'] != Null)
@@ -116,26 +87,53 @@ class DbHelper {
           ? tmpTarget = list[i]['target']
           : tmpTarget = '';
 
+      var tmpArea;
+      (list[i]['area'] != null && list[i]['area'] != Null)
+          ? tmpArea = list[i]['area']
+          : tmpArea = '';
+
+      var tmpEffect;
+      (list[i]['effect'] != null && list[i]['effect'] != Null)
+          ? tmpEffect = list[i]['effect']
+          : tmpEffect = '';
+
       var tmpDuration;
       (list[i]['duration'] != null && list[i]['duration'] != Null)
           ? tmpDuration = list[i]['duration']
           : tmpDuration = '';
 
+      var tmpSavingThrow;
+      (list[i]['saving_throw'] != null && list[i]['saving_throw'] != Null)
+          ? tmpSavingThrow = list[i]['saving_throw']
+          : tmpSavingThrow = '';
+
+      var tmpSepllResistance;
+      (list[i]['spell_resistance'] != null &&
+              list[i]['spell_resistance'] != Null)
+          ? tmpSepllResistance = list[i]['spell_resistance']
+          : tmpSepllResistance = '';
+
+      var tmpDescription;
+      (list[i]['description'] != null && list[i]['description'] != Null)
+          ? tmpDescription = list[i]['description']
+          : tmpDescription = '';
+
       spells.add(Spell(
           tmpId,
           tmpName,
-          tmpDescription,
-          tmpReference,
-          tmpSource,
-          tmpSchool,
           tmpLevel,
+          tmpSchool,
           tmpCastingTime,
-          tmpComponent, //list[i]['level'],
-          tmpRange, //list[i]['range'],
+          tmpComponent,
+          tmpRange,
           tmpTarget,
-          tmpDuration)); //list[i]['duration']));
+          tmpArea,
+          tmpEffect,
+          tmpDuration,
+          tmpSavingThrow,
+          tmpSepllResistance,
+          tmpDescription));
     }
-
     return spells;
   }
 }

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 class CreateSetButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
@@ -22,8 +24,9 @@ class CreateSetButton extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
           elevation: 4.0,
           textStyle: TextStyle(
+            fontSize: theme.textTheme.bodyLarge!.fontSize,
+            fontFamily: theme.textTheme.bodyLarge!.fontFamily,
             color: Colors.black,
-            fontWeight: FontWeight.bold,
             shadows: [
               Shadow(
                 color: Colors.black,

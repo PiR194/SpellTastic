@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 class CharacterButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     const Color accentColor = Color(0xFF9C27B0);
 
-    double buttonWidth = MediaQuery.of(context).size.width / 2;
+    double buttonWidth = MediaQuery.of(context).size.width / 1.1;
 
     return SizedBox(
       width: buttonWidth,
@@ -34,8 +36,8 @@ class CharacterButtonWidget extends StatelessWidget {
                 'Nom du personnage',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 22,
+                  fontSize: theme.textTheme.bodyLarge!.fontSize,
+                  fontFamily: theme.textTheme.bodyLarge!.fontFamily,
                 ),
               ),
             ),
