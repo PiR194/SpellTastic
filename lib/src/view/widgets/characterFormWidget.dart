@@ -133,6 +133,7 @@ class _CharacterFormState extends State<CharacterFormWidget> {
                     listCharacter.add(character);
                     JsonAccountStrategy().saveChar(listCharacter);
                   }
+                  Navigator.pop(context);
                 },
                 child: Text(
                   'CREATE !',
