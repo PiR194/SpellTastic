@@ -43,39 +43,41 @@ class SpellDetailsPage extends StatelessWidget {
                   left: 100.0,
                   right: 100.0,
                 ),
-                child:Container( //* Description
-                  padding: EdgeInsets.all(16.0),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10.0),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 5,
-                            blurRadius: 7,
-                            offset: Offset(0, 3),
-                          ),
-                        ],
-                      ),
-                  child: RichText(
-                    text: TextSpan(
-                      text: 'Description du sort : \n',
-                      style: Theme.of(context).textTheme.headlineLarge,
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: '',
-                          children: [
-                            WidgetSpan(
-                              child: HtmlWidget(
-                                spell.description,
-                                textStyle: Theme.of(context).textTheme.bodyMedium
-                              ),
+                child: Center(
+                  child: Container( //* Description
+                    padding: EdgeInsets.all(16.0),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10.0),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset: Offset(0, 3),
                             ),
                           ],
                         ),
-                      ],
+                    child: RichText(
+                      text: TextSpan(
+                        text: 'Description du sort : \n',
+                        style: Theme.of(context).textTheme.headlineLarge,
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: '',
+                            children: [
+                              WidgetSpan(
+                                child: HtmlWidget(
+                                  spell.description,
+                                  textStyle: Theme.of(context).textTheme.bodyMedium
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
+                  )
                 )
               ),
 

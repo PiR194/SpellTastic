@@ -54,7 +54,7 @@ class _SpellListPage extends State<SpellListPage> {
       var data = await SQLiteDataStrategy.getInstance();
       spells = await data.loadSpells();
     }
-    print("size:  ${spells.length}");
+    //print("size:  ${spells.length}");
     setState(() {
       spells_list = spells
           .where((spell) => spell.GetLevelByClass(character.cclass) != null)
