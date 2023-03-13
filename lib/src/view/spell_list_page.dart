@@ -147,6 +147,33 @@ class _SpellListPage extends State<SpellListPage> {
           ),
         ],
       ),
+      // body: ListView.builder(
+      //   itemCount: spells_list.length,
+      //   itemBuilder: (BuildContext context, int index) {
+      //     return ListTile(
+      //       title: Text('${spells_list[index].name} (niveau ${spells_list[index].GetLevelByClass(character.cclass)})'),
+      //       subtitle: Text('${spells_list[index].description.substring(0, 20)}...'),
+      //     );
+      //   },
+      // )
+
+      // body:ListView.builder(
+      //   itemCount: spells_list.length,
+      //   itemBuilder: (BuildContext context, int index) {
+      //     // Déterminer le nombre de caractères à afficher
+      //     final maxChars = MediaQuery.of(context).size.width.toInt() -
+      //         '${spells_list[index].name} (niveau ${spells_list[index].GetLevelByClass(character.cclass)}) ...'.length;
+      //     // Extraire les premiers caractères de la description
+      //     final desc = spells_list[index].description.substring(0, maxChars);
+      //     // Ajouter "..." à la fin si la description est plus longue que maxChars
+      //     final displayDesc = spells_list[index].description.length > maxChars ? '$desc...' : desc;
+      //     return ListTile(
+      //       title: Text('${spells_list[index].name} (niveau ${spells_list[index].GetLevelByClass(character.cclass)})'),
+      //       subtitle: Text(displayDesc),
+      //     );
+      //   },
+      // )
+
       body: ListView.builder(
         itemExtent: 50,
         cacheExtent: 2,
@@ -164,11 +191,20 @@ class _SpellListPage extends State<SpellListPage> {
           return ListTile(
             //Structure de chaque ligne (=> ListTile)
             tileColor: backgroundColor,
-            title: Text(
-              "${spells_list[index].name} ${spells_list[index].GetLevelByClass(character.cclass)}",
-              style: TextStyle(
-                fontSize: theme.textTheme.bodyLarge!.fontSize,
-                fontFamily: theme.textTheme.bodyLarge!.fontFamily,
+            title: RichText(
+              text: TextSpan(
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: Theme.of(context).textTheme.titleLarge!.fontSize,
+                  fontFamily: Theme.of(context).textTheme.titleLarge!.fontFamily,
+                ),
+                children: <TextSpan>[
+                  TextSpan(text:"${spells_list[index].name} ${spells_list[index].GetLevelByClass(character.cclass)}",),
+                  TextSpan(text:'${spells_list[index].description.substring(0,35)}...', style: Theme.of(context).textTheme.titleSmall)
+                  // TextSpan(text:'\t ${spells_list[index].description.substring(0, 
+                  //   MediaQuery.of(context).size.width.toInt() - '${spells_list[index].name} ${spells_list[index].GetLevelByClass(character.cclass)}) ...'.length
+                  // )}...', style: Theme.of(context).textTheme.titleSmall)
+                ]
               ),
             ),
             onTap: () {
