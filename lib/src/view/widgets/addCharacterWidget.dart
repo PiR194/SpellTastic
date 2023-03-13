@@ -5,6 +5,8 @@ import 'characterFormWidget.dart';
 class AddCharacterWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     const Color primaryColor = Color(0xFFC2185B);
 
     double buttonWidth = MediaQuery.of(context).size.width / 2;
@@ -25,7 +27,15 @@ class AddCharacterWidget extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: const [Text(" + ")],
+          children: [
+            Text(
+              " + ",
+              style: TextStyle(
+                fontSize: theme.textTheme.bodyLarge!.fontSize,
+                fontFamily: theme.textTheme.bodyLarge!.fontFamily,
+              ),
+            )
+          ],
         ),
       ),
     );

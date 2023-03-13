@@ -27,11 +27,18 @@ class _SetDisplayState extends State<SetDisplay> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     const Color accentColor = Color(0xFF9C27B0);
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Nom du set'),
+        title: Text(
+          'Nom du set',
+          style: TextStyle(
+            fontSize: theme.textTheme.bodyLarge!.fontSize,
+            fontFamily: theme.textTheme.bodyLarge!.fontFamily,
+          ),
+        ),
         backgroundColor: accentColor,
         actions: [
           Row(

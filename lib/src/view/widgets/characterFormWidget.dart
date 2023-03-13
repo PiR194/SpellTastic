@@ -35,6 +35,8 @@ class _CharacterFormState extends State<CharacterFormWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     const Color accentColor = Color(0xFF9C27B0);
 
     return Scaffold(
@@ -49,8 +51,12 @@ class _CharacterFormState extends State<CharacterFormWidget> {
           child: ListView(
             children: [
               TextFormField(
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   labelText: 'Name',
+                  labelStyle: TextStyle(
+                    fontSize: theme.textTheme.bodyLarge!.fontSize,
+                    fontFamily: theme.textTheme.bodyLarge!.fontFamily,
+                  ),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -67,10 +73,22 @@ class _CharacterFormState extends State<CharacterFormWidget> {
                 items: _classes.map((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
-                    child: Text(value),
+                    child: Text(
+                      value,
+                      style: TextStyle(
+                        fontSize: theme.textTheme.bodyMedium!.fontSize,
+                        fontFamily: theme.textTheme.bodyMedium!.fontFamily,
+                      ),
+                    ),
                   );
                 }).toList(),
-                hint: const Text('Select class'),
+                hint: Text(
+                  'Select class',
+                  style: TextStyle(
+                    fontSize: theme.textTheme.bodyLarge!.fontSize,
+                    fontFamily: theme.textTheme.bodyLarge!.fontFamily,
+                  ),
+                ),
                 onChanged: (value) {
                   setState(() {
                     _selectedClass = value;
@@ -78,7 +96,13 @@ class _CharacterFormState extends State<CharacterFormWidget> {
                 },
               ),
               const SizedBox(height: 16.0),
-              Text('Maximum Character Level ' + _level.toString()),
+              Text(
+                'Maximum Character Level $_level',
+                style: TextStyle(
+                  fontSize: theme.textTheme.bodyMedium!.fontSize,
+                  fontFamily: theme.textTheme.bodyMedium!.fontFamily,
+                ),
+              ),
               Slider(
                 value: _level.toDouble(),
                 min: 1,
@@ -110,7 +134,13 @@ class _CharacterFormState extends State<CharacterFormWidget> {
                     JsonAccountStrategy().saveChar(listCharacter);
                   }
                 },
-                child: const Text('CREATE !'),
+                child: Text(
+                  'CREATE !',
+                  style: TextStyle(
+                    fontSize: theme.textTheme.bodyMedium!.fontSize,
+                    fontFamily: theme.textTheme.bodyMedium!.fontFamily,
+                  ),
+                ),
               ),
             ],
           ),

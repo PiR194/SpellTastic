@@ -6,6 +6,8 @@ import 'widgets/characterButtonWidget.dart';
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     const Color backgroundColor = Color(0xFFEDE7F6);
 
     final screenHeight = MediaQuery.of(context).size.height;
@@ -15,12 +17,15 @@ class Home extends StatelessWidget {
       backgroundColor: backgroundColor,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: const Text('SPELLTASTIC',
-            style: TextStyle(
-                color: Colors.black,
-                fontSize: 50,
-                fontFamily: 'Anaktoria',
-                fontWeight: FontWeight.bold)),
+        title: Text(
+          'SPELLTASTIC',
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 50,
+            fontFamily: theme.textTheme.bodyLarge!.fontFamily,
+            fontWeight: theme.textTheme.bodyLarge!.fontWeight,
+          ),
+        ),
         centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -43,6 +48,12 @@ class Home extends StatelessWidget {
                   Container(
                     width: screenWidth,
                     child: DisplayAllSpellButtonWidget(),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/settings');
+                    },
+                    child: Icon(Icons.visibility),
                   )
                 ],
               ),

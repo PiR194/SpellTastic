@@ -6,11 +6,19 @@ class SpellSetWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     const Color primaryColor = Color(0xFFC2185B);
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('LEVEL $level'),
+        title: Text(
+          'LEVEL $level',
+          style: TextStyle(
+            fontSize: theme.textTheme.bodyLarge!.fontSize,
+            fontFamily: theme.textTheme.bodyLarge!.fontFamily,
+          ),
+        ),
         centerTitle: true,
         automaticallyImplyLeading: false,
         backgroundColor: primaryColor,
@@ -21,7 +29,13 @@ class SpellSetWidget extends StatelessWidget {
         itemCount: 30,
         itemBuilder: (context, index) {
           return ListTile(
-            title: Text("spell"),
+            title: Text(
+              "spell",
+              style: TextStyle(
+                fontSize: theme.textTheme.bodyMedium!.fontSize,
+                fontFamily: theme.textTheme.bodyMedium!.fontFamily,
+              ),
+            ),
             onTap: () {},
           );
         },
