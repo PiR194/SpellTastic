@@ -1,3 +1,5 @@
+import 'package:code/src/data/json_account_strategy.dart';
+import 'package:code/src/model/accountManager.dart';
 import 'package:code/src/model/character.dart';
 import 'package:code/src/model/themeModel.dart';
 import 'package:code/src/view/detailsCharacter.dart';
@@ -12,10 +14,19 @@ import 'package:provider/provider.dart';
 
 void main() async {
   setUrlStrategy(PathUrlStrategy());
+
+  // load characters from json
+  JsonAccountStrategy accountStrategy = JsonAccountStrategy();
+  List<Character> characters = await accountStrategy.loadCharacters();
+
+  // we create the account manager and give him the list of spells
+  AccountManager accountManager = AccountManager();
+  accountManager.characters = characters;
+
   runApp(
     ChangeNotifierProvider<ThemeModel>(
       create: (_) => ThemeModel(),
-      child: MyApp(),
+      child: const MyApp(), // maybe pass account manager as parameter ?
     ),
   );
 }

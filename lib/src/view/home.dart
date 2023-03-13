@@ -1,3 +1,4 @@
+import 'package:code/src/model/accountManager.dart';
 import 'package:code/src/view/widgets/addCharacterWidget.dart';
 import 'package:code/src/view/widgets/displayAllSpellButtonWidget.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final AccountManager accountManager = AccountManager();
 
     const Color backgroundColor = Color(0xFFEDE7F6);
 
@@ -41,10 +43,11 @@ class Home extends StatelessWidget {
                 alignment: WrapAlignment.center,
                 children: [
                   AddCharacterWidget(),
-                  CharacterButtonWidget(),
-                  CharacterButtonWidget(),
-                  CharacterButtonWidget(),
-                  CharacterButtonWidget(),
+                  ...accountManager.characters.map(
+                    (character) => CharacterButtonWidget(
+                      character: character,
+                    ),
+                  ),
                   Container(
                     width: screenWidth,
                     child: DisplayAllSpellButtonWidget(),

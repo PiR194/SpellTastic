@@ -131,7 +131,7 @@ class _CharacterFormState extends State<CharacterFormWidget> {
                         Character(_name, _selectedClass!, _level);
 
                     listCharacter.add(character);
-                    JsonAccountStrategy().saveChar(listCharacter);
+                    JsonAccountStrategy().saveCharacters(listCharacter);
                   }
                 },
                 child: Text(
