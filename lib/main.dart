@@ -1,7 +1,7 @@
 import 'package:code/src/model/character.dart';
-import 'package:code/src/view/detailsCharacter.dart';
+import 'package:code/src/view/details_character.dart';
 import 'package:code/src/view/home.dart';
-import 'package:code/src/view/setDisplay.dart';
+import 'package:code/src/view/set_display.dart';
 import 'package:code/src/view/spell_list_page.dart';
 import 'package:code/src/view/widgets/characterFormWidget.dart';
 import 'package:flutter/material.dart';

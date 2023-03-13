@@ -1,5 +1,5 @@
 import 'package:collection/collection.dart';
-import 'package:code/src/model/CharacterClass.dart';
+import 'package:code/src/model/character_class.dart';
 
 class Spell {
   // Setting id

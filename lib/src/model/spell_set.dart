@@ -23,7 +23,7 @@ class SpellSet {
     return 'SpellSet{_name: $_name, _spells: [$spellsString]}';
   }
 
-  SpellSet copy() {
+  SpellSet clone() {
     List<Spell> copiedSpells = [];
     for (Spell spell in spells) {
       copiedSpells.add(spell);

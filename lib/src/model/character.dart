@@ -1,4 +1,4 @@
-import 'CharacterClass.dart';
+import 'character_class.dart';
 import 'spell.dart';
 import 'spell_set.dart';
 

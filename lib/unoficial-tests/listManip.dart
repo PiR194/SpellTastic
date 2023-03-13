@@ -3,7 +3,7 @@ The purpose of this file is to manually test Character and SpellSet classes.
 */
 
 import 'dart:io';
-import 'package:code/src/model/CharacterClass.dart';
+import 'package:code/src/model/character_class.dart';
 
 import '../src/model/character.dart';
 import '../src/model/spell_set.dart';
