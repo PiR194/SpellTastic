@@ -9,7 +9,7 @@ class Spell {
   // Attributes
   int _id;
   String _name;
-  final Map<String, int> _level;
+  final Map<CharacterClass, int> _level;
   String _school;
   String _castingTime;
   String _components;
@@ -77,7 +77,7 @@ class Spell {
   set description(String description) => _description = description;
 
 // Methods
-  int? GetLevelByClass(String class_) {
+  int? GetLevelByClass(CharacterClass class_) {
     //  print(_level);
     if (_level.containsKey(class_)) {
       return _level[class_];
@@ -86,7 +86,7 @@ class Spell {
     }
   }
 
-  Map<String, int> GetMapClassLevel(){
+  Map<CharacterClass, int> GetMapClassLevel() {
     // Map<String, int> map = Map.fromEntries(
     //   level.toString()
     //       .substring(1, level.toString().length - 1)
@@ -94,9 +94,9 @@ class Spell {
     //       .map((entry) => entry.split(':'))
     //       .map((pair) => MapEntry(pair[0].trim(), int.parse(pair[1].trim())))
     // );
-    
+
     //return(map);
-    return(_level);
+    return (_level);
   }
 
   @override

@@ -29,7 +29,7 @@ void main(List<String> args) async {
   set2.addSpell(spells[132]);
   set2.addSpell(spells[469]);
 
-  var charac = Character("myChar", "wizard", 1);
+  var charac = Character("myChar", CharacterClass.wizard, 1);
   charac.addSet(set1);
   charac.addSet(set2);
 }

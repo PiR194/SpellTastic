@@ -8,6 +8,8 @@ import 'dart:io' show Platform;
 import 'package:path/path.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
+import '../model/CharacterClass.dart';
+
 class DbHelper {
   static Database? _db;
 
@@ -60,7 +62,7 @@ class DbHelper {
 
       var tmpLevel = (list[i]['level'] != null && list[i]['level'] != Null)
           ? SpellSerializer.parseLevelAndGetClass(list[i]['level'])
-          : <String, int>{};
+          : <CharacterClass, int>{};
 
       var tmpSchool;
       (list[i]['school'] != null && list[i]['school'] != Null)

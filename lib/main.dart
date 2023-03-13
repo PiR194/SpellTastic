@@ -1,4 +1,5 @@
 import 'package:code/src/data/json_account_strategy.dart';
+import 'package:code/src/model/CharacterClass.dart';
 import 'package:code/src/model/accountManager.dart';
 import 'package:code/src/model/character.dart';
 import 'package:code/src/model/themeModel.dart';
@@ -46,8 +47,8 @@ class MyApp extends StatelessWidget {
         '/characterform': (context) => CharacterFormWidget(),
         '/characterdetails': (context) => DetailsCharacter(),
         '/setdisplay': (context) => SetDisplay(),
-        '/displayallspell': (context) =>
-            SpellListPage(character: Character("dummy", "wizard", 10)),
+        '/displayallspell': (context) => SpellListPage(
+            character: Character("dummy", CharacterClass.wizard, 10)),
         '/settings': (context) => SettingsPage(),
       },
       theme: Provider.of<ThemeModel>(context).currentTheme,

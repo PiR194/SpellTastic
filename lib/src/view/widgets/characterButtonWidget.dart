@@ -1,10 +1,11 @@
+import 'package:code/src/model/CharacterClass.dart';
 import 'package:code/src/model/character.dart';
 import 'package:flutter/material.dart';
 
 class CharacterButtonWidget extends StatelessWidget {
   final Character character;
 
-  const CharacterButtonWidget({required this.character});
+  const CharacterButtonWidget({super.key, required this.character});
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +32,9 @@ class CharacterButtonWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const CircleAvatar(
+            CircleAvatar(
               radius: 30,
-              backgroundImage: AssetImage('assets/images/background_home.png'),
+              backgroundImage: AssetImage(character.cclass.getImagePath()),
             ),
             const SizedBox(width: 10),
             Expanded(

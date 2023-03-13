@@ -1,7 +1,10 @@
+import 'package:code/src/model/CharacterClass.dart';
+import 'package:code/src/model/character.dart';
+
 class SpellSerializer {
   // Methods
-  static Map<String, int> parseLevelAndGetClass(String spellLevel) {
-    Map<String, int> result_map = {};
+  static Map<CharacterClass, int> parseLevelAndGetClass(String spellLevel) {
+    Map<CharacterClass, int> result_map = {};
 
     /* In the scrapper's current state, some spells have other attributes
     scrapped on to their "level" string. We chose to trim this in this function
@@ -28,13 +31,13 @@ class SpellSerializer {
         if (className.contains("/")) {
           List<String> classList = className.split("/");
           for (String name in classList) {
-            result_map[name.trim()] = level;
+            result_map[SpellSerializer.stringToClass(name.trim())] = level;
           }
         } else {
-          result_map[className.trim()] = level;
+          result_map[SpellSerializer.stringToClass(className.trim())] = level;
         }
       } else {
-        result_map[classLevel.trim()] = 1;
+        result_map[SpellSerializer.stringToClass(classLevel.trim())] = 1;
       }
     }
     return result_map;
@@ -56,5 +59,39 @@ class SpellSerializer {
     // if not, take it up to last match (because some cases have "summoner (unchained)")
     int endIndex = matches.last.end;
     return cleanString.substring(0, endIndex);
+  }
+
+  static CharacterClass stringToClass(String character) {
+    switch (character) {
+      case "unchained summoner":
+        {
+          character = "unchainedSummoner";
+        }
+        break;
+
+      case "crimson assassin":
+        {
+          character = "crimsonAssassin";
+        }
+        break;
+
+      case "sahir-afiyun":
+        {
+          character = "sahirAfiyun";
+        }
+        break;
+    }
+
+    if (character == "Bloodline accursed" ||
+        character == "Mystery ascetic" ||
+        character == "") {
+      character = "unknown";
+    }
+    for (var value in CharacterClass.values) {
+      if (value.toString().split('.').last == character) {
+        return value;
+      }
+    }
+    throw ArgumentError('Invalid character class: $character');
   }
 }
