@@ -1,5 +1,3 @@
-@Skip('need to adjust accorddignly to new spell class')
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:code/src/model/spell.dart';
 
@@ -106,7 +104,7 @@ void main() {
     expect(mainSpell.effect, "mainEffect");
     expect(mainSpell.duration, "mainDuration");
     expect(mainSpell.savingThrow, "mainSavingThrow");
-    expect(mainSpell.spellResistance, "mainSpellRessitance");
+    expect(mainSpell.spellResistance, "mainSpellResistance");
     expect(mainSpell.description, "mainDesc");
   });
 

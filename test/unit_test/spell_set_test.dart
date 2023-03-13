@@ -1,5 +1,3 @@
-@Skip('need to adjust accorddignly to new spell class')
-
 import 'package:code/src/model/spell.dart';
 import 'package:code/src/model/spell_set.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -46,7 +44,7 @@ void main() {
 
     spellSet.spells[0] = Spell(
         3,
-        "name",
+        "blop",
         Map(),
         "reference",
         "school",

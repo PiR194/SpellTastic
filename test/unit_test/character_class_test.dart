@@ -1,5 +1,3 @@
-@Skip('Base class changed, need to change test accordignly')
-
 import 'package:code/src/model/character_class.dart';
 import 'package:flutter_test/flutter_test.dart';
 

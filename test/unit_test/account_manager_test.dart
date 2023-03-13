@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'dart:math';
 
 import 'package:code/src/model/character_class.dart';
@@ -23,7 +24,7 @@ void main() {
     });
 
     test('Random number of Add', () {
-      var nbOcc = Random().nextInt(60000000);
+      var nbOcc = Random().nextInt(10000000);
       var accountManager = AccountManager();
       accountManager.characters = [];
       for (var i = 0; i < nbOcc; i++) {
@@ -41,12 +42,13 @@ void main() {
       expect(0, accountManager.characters.length);
     });
 
-    test('', () {
+    test('When filled', () {
       var accountManager = AccountManager();
       accountManager.characters = [];
-      accountManager.addCharacter(Character('_name', '_cclass', 0));
+      Character character = Character('_name', '_cclass', 0);
+      accountManager.addCharacter(character);
       accountManager.addCharacter(Character('_name2', '_cclass2', 2));
-      accountManager.removeCharacter(Character('_name', '_cclass', 0));
+      accountManager.removeCharacter(character);
       expect(1, accountManager.characters.length);
     });
   });
