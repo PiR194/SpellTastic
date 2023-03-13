@@ -10,9 +10,11 @@ class AddCharacterWidget extends StatelessWidget {
     const Color primaryColor = Color(0xFFC2185B);
 
     double buttonWidth = MediaQuery.of(context).size.width / 2;
+    final screenHeight = MediaQuery.of(context).size.height;
 
     return SizedBox(
       width: buttonWidth,
+      height: screenHeight / 14,
       child: ElevatedButton(
         onPressed: () {
           Navigator.pushNamed(context, '/characterform');
