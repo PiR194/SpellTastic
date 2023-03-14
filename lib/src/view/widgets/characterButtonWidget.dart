@@ -7,10 +7,12 @@ class CharacterButtonWidget extends StatelessWidget {
 
     const Color accentColor = Color(0xFF9C27B0);
 
-    double buttonWidth = MediaQuery.of(context).size.width / 1.1;
+    double buttonWidth = MediaQuery.of(context).size.width / 2;
+    final screenHeight = MediaQuery.of(context).size.height;
 
     return SizedBox(
       width: buttonWidth,
+      height: screenHeight / 8,
       child: ElevatedButton(
         onPressed: () {
           Navigator.pushNamed(context, '/characterdetails');
@@ -18,7 +20,7 @@ class CharacterButtonWidget extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           primary: accentColor,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(50),
+            borderRadius: BorderRadius.circular(20),
           ),
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         ),
@@ -27,10 +29,10 @@ class CharacterButtonWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             CircleAvatar(
-              radius: 30,
+              radius: 50,
               backgroundImage: AssetImage('assets/images/background_home.png'),
             ),
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
             Expanded(
               child: Text(
                 'Nom du personnage',

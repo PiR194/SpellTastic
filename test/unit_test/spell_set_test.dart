@@ -1,5 +1,3 @@
-@Skip('need to adjust accorddignly to new spell class')
-
 import 'package:code/src/model/spell.dart';
 import 'package:code/src/model/spell_set.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -10,16 +8,18 @@ void main() {
     spellSet.addSpell(Spell(
         3,
         "name",
-        "description",
-        "reference",
-        "source",
-        "school",
         Map(),
+        "reference",
+        "school",
         "castingTime",
-        List.empty(),
+        "components",
         "_range",
         "_target",
-        "_duration"));
+        "area",
+        "effect",
+        "duration",
+        "savingThrow",
+        "description"));
 
     expect(spellSet.spells.length, 1);
   });
@@ -29,30 +29,34 @@ void main() {
     spellSet.addSpell(Spell(
         3,
         "name",
-        "description",
-        "reference",
-        "source",
-        "school",
         Map(),
+        "reference",
+        "school",
         "castingTime",
-        List.empty(),
+        "components",
         "_range",
         "_target",
-        "_duration"));
+        "area",
+        "effect",
+        "duration",
+        "savingThrow",
+        "description"));
 
     spellSet.spells[0] = Spell(
         3,
         "blop",
-        "description",
-        "reference",
-        "source",
-        "school",
         Map(),
+        "reference",
+        "school",
         "castingTime",
-        List.empty(),
+        "components",
         "_range",
         "_target",
-        "_duration");
+        "area",
+        "effect",
+        "duration",
+        "savingThrow",
+        "description");
 
     expect(spellSet.spells[0].name, "blop");
   });

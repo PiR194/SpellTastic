@@ -1,4 +1,4 @@
-import '../model/CharacterClass.dart';
+import '../model/character_class.dart';
 import '../model/spell.dart';
 import './spell__search_delegate_page.dart';
 import './spell_detail_page.dart';

@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:flutter_html/style.dart';
 
-
 //* Model *//
 import '../model/spell.dart';
 
@@ -24,21 +23,22 @@ class SpellDetailsPage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-                spell.name,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 35,
-                  fontFamily: 'Anaktoria',
-                  fontWeight: FontWeight.bold),
-              ),
+            spell.name,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+                color: Colors.white,
+                fontSize: 35,
+                fontFamily: 'Anaktoria',
+                fontWeight: FontWeight.bold),
+          ),
           centerTitle: true,
           backgroundColor: Color.fromARGB(255, 241, 117, 15),
         ),
         body: SingleChildScrollView(
-          child:Wrap( //MAin wrap
-            children: [
-              Padding(
+            child: Wrap(
+          //MAin wrap
+          children: [
+            Padding(
                 padding: const EdgeInsets.only(
                   left: 100.0,
                   right: 100.0,
