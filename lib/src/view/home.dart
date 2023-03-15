@@ -23,8 +23,8 @@ class Home extends StatelessWidget {
           style: TextStyle(
             color: Colors.black,
             fontSize: 50,
-            fontFamily: theme.textTheme.bodyLarge!.fontFamily,
-            fontWeight: theme.textTheme.bodyLarge!.fontWeight,
+            fontFamily: theme.textTheme.titleLarge!.fontFamily,
+            fontWeight: theme.textTheme.titleLarge!.fontWeight,
           ),
         ),
         centerTitle: true,
