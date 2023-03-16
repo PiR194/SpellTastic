@@ -2,7 +2,7 @@ import 'dart:ffi';
 
 enum CharacterClass {
   alchemist,
-  adept, //new
+  //adept, //new
   antipaladin, // new
   arcanist, // new
   artifice, // new

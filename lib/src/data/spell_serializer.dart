@@ -10,16 +10,22 @@ class SpellSerializer {
     scrapped on to their "level" string. We chose to trim this in this function
     as it was easier to debug and find those few cases. */
     spellLevel = spellLevel.replaceAll(
-        RegExp(r'\b(?:Duration|Components|Saving\sThrow|Target)\b.*'), '');
+        RegExp(
+            r'\b(?:Duration|Components|Saving\sThrow|Target|Casting|Bloodline|Mystery)\b.*'),
+        '');
 
     // "(*) We couldn't add "(*)" cases on the first RegExp so we did it seperatly"
     spellLevel = extractLevelAndClass(spellLevel);
+
+    // sometimes there are odd white spaces between the class and the level
+    spellLevel = spellLevel.replaceAll(
+        '\u00A0', ' '); // Replace non-breaking space with regular space
 
     // each "class level" is separated by a ","
     for (String classLevel in spellLevel.split(",")) {
       classLevel = classLevel.trim();
 
-      if (classLevel.contains(" ")) {
+      if (classLevel.contains(" ") || classLevel.contains("/")) {
         List<String> classAndLevel = classLevel.split(" ");
 
         // sometimes class name can be in two words
@@ -36,8 +42,6 @@ class SpellSerializer {
         } else {
           result_map[SpellSerializer.stringToClass(className.trim())] = level;
         }
-      } else {
-        result_map[SpellSerializer.stringToClass(classLevel.trim())] = 1;
       }
     }
     return result_map;
@@ -66,25 +70,27 @@ class SpellSerializer {
       case "unchained summoner":
         {
           character = "unchainedSummoner";
+          print("unchained summoner");
         }
         break;
 
       case "crimson assassin":
         {
           character = "crimsonAssassin";
+          print("crimson assassin");
         }
         break;
 
       case "sahir-afiyun":
         {
+          print("sahir-afiyun");
           character = "sahirAfiyun";
         }
         break;
     }
 
-    if (character == "Bloodline accursed" ||
-        character == "Mystery ascetic" ||
-        character == "") {
+    if (character == "") {
+      print("Empty character class");
       character = "unknown";
     }
     for (var value in CharacterClass.values) {
