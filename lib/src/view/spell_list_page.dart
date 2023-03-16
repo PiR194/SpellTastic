@@ -51,7 +51,7 @@ class _SpellListPage extends State<SpellListPage> {
       spells = await dbHelper.loadSpells();
     } else {
       //await SQLiteDataStrategy.init();
-      var data = await SQLiteDataStrategy();
+      var data = SQLiteDataStrategy();
       spells = await data.loadSpells();
     }
     //print("size:  ${spells.length}");

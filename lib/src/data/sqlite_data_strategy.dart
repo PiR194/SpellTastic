@@ -1,5 +1,4 @@
 import 'package:code/src/model/character_class.dart';
-
 import 'interface/i_data_strategy.dart';
 import '../model/spell.dart';
 import 'package:sqlite3/sqlite3.dart';
@@ -15,9 +14,12 @@ class SQLiteDataStrategy implements IDataStrategy {
     return _instance;
   }
 
+  void init() async {}
+
   SQLiteDataStrategy._internal() {
     final dbPath = p.join(io.Directory.current.path, 'assets', 'spells.db');
     _db = sqlite3.open(dbPath);
+    print("oh");
   }
 
   // Future<void> _init() async {
