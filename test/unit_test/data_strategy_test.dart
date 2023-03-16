@@ -5,14 +5,9 @@ import 'package:code/src/data/sqlite_data_strategy.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() async {
-  IDataStrategy dataStrategy;
-  if (Platform.isAndroid) {
-    dataStrategy = DbHelper();
-  } else {
-    dataStrategy = SQLiteDataStrategy();
-  }
-
-  test('get first spell', () {
-    //var champ = dataStrategy.getSpellById(1);
+  IDataStrategy dataStrategy = SQLiteDataStrategy();
+  test('get first spell', () async {
+    var champ = await dataStrategy.getSpellById(1);
+    expect("Abeyance", champ.name);
   });
 }
