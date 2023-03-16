@@ -70,20 +70,17 @@ class SpellSerializer {
       case "unchained summoner":
         {
           character = "unchainedSummoner";
-          print("unchained summoner");
         }
         break;
 
       case "crimson assassin":
         {
           character = "crimsonAssassin";
-          print("crimson assassin");
         }
         break;
 
       case "sahir-afiyun":
         {
-          print("sahir-afiyun");
           character = "sahirAfiyun";
         }
         break;
@@ -91,7 +88,6 @@ class SpellSerializer {
 
     if (character == "") {
       print("Empty character class");
-      character = "unknown";
     }
     for (var value in CharacterClass.values) {
       if (value.toString().split('.').last == character) {

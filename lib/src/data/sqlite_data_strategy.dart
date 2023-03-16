@@ -45,8 +45,6 @@ class SQLiteDataStrategy implements IDataStrategy {
           ? tmpId = list[i]['id']
           : tmpId = '';
 
-      print('tmpId: $tmpId');
-
       var tmpName;
       (list[i]['name'] != null && list[i]['name'] != Null)
           ? tmpName = list[i]['name']

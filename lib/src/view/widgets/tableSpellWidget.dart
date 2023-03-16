@@ -37,7 +37,7 @@ class TableWidget extends StatelessWidget {
                   children: [
                     TableCell(
                       child: Text(
-                        entry.key.toString(),
+                        entry.key.toString().split('.').last,
                         style: Theme.of(context).textTheme.bodyLarge,
                         textAlign: TextAlign.center,
                       ),
