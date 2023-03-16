@@ -1,5 +1,4 @@
 import 'package:code/src/model/character_class.dart';
-import 'package:code/src/model/character.dart';
 
 class SpellSerializer {
   // Methods
@@ -44,6 +43,7 @@ class SpellSerializer {
         }
       }
     }
+
     return result_map;
   }
 

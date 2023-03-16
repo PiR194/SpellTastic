@@ -97,9 +97,11 @@ class DetailsCharacter extends StatelessWidget {
                   Center(
                     child: CreateSetButton(),
                   ),
-                  DisplaySetButton(),
-                  DisplaySetButton(),
-                  DisplaySetButton(),
+                  ...character.sets.map(
+                    (set) => DisplaySetButton(
+                      spellSet: set,
+                    ),
+                  ),
                 ],
               )
             ],
