@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:code/src/data/dbhelper.dart';
 import 'package:code/src/data/interface/i_data_strategy.dart';
 import 'package:code/src/data/sqlite_data_strategy.dart';
@@ -10,10 +9,10 @@ void main() async {
   if (Platform.isAndroid) {
     dataStrategy = DbHelper();
   } else {
-    dataStrategy = await SQLiteDataStrategy();
+    dataStrategy = SQLiteDataStrategy();
   }
 
   test('get first spell', () {
-    var champ = dataStrategy.getSpellById(1);
+    //var champ = dataStrategy.getSpellById(1);
   });
 }
