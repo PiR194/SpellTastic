@@ -56,7 +56,7 @@ class DetailsCharacter extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'CLASS : ' + 'Gobelin',
+                    'Class : ${character.characterClass.toString().split('.').last}',
                     style: TextStyle(
                       fontSize: theme.textTheme.bodyLarge!.fontSize,
                       fontFamily: theme.textTheme.bodyLarge!.fontFamily,
@@ -76,13 +76,13 @@ class DetailsCharacter extends StatelessWidget {
                         alignment: WrapAlignment.center,
                         children: [
                           Text(
-                            'LEVEL :',
+                            'Level :',
                             style: TextStyle(
                               fontSize: theme.textTheme.bodyLarge!.fontSize,
                               fontFamily: theme.textTheme.bodyLarge!.fontFamily,
                             ),
                           ),
-                          LevelCounterWidget(),
+                          LevelCounterWidget(characterLevel: character.level),
                         ],
                       ),
                     ],

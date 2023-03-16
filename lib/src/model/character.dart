@@ -6,14 +6,14 @@ import 'spell_set.dart';
 
 class Character {
   String _name;
-  final CharacterClass _cclass; // change into actual cclass Class
+  final CharacterClass _characterClass; // change into actual cclass Class
   int _level;
   List<SpellSet> _sets;
   List<Spell> _knownSpells;
 
   Character(
     this._name,
-    this._cclass,
+    this._characterClass,
     this._level, {
     List<SpellSet>? sets,
     List<Spell>? knownSpells,
@@ -24,7 +24,7 @@ class Character {
   String get name => _name;
   set name(String n) => _name = n;
 
-  CharacterClass get cclass => _cclass;
+  CharacterClass get characterClass => _characterClass;
 
   int get level => _level;
   set level(int l) => _level = l;
@@ -44,6 +44,6 @@ class Character {
   String toString() {
     String setsString = _sets.map((s) => s.toString()).join(', ');
     String knownSpellsString = _knownSpells.map((s) => s.toString()).join(', ');
-    return 'Character{_name: $_name, _cclass: $_cclass, _level: $_level, _sets: [$setsString], _knownSpells: [$knownSpellsString]}';
+    return 'Character{_name: $_name, _cclass: $_characterClass, _level: $_level, _sets: [$setsString], _knownSpells: [$knownSpellsString]}';
   }
 }

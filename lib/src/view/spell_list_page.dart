@@ -57,7 +57,8 @@ class _SpellListPage extends State<SpellListPage> {
     //print("size:  ${spells.length}");
     setState(() {
       spells_list = spells
-          .where((spell) => spell.GetLevelByClass(character.cclass) != null)
+          .where((spell) =>
+              spell.GetLevelByClass(character.characterClass) != null)
           .toList();
     });
   }
@@ -103,10 +104,11 @@ class _SpellListPage extends State<SpellListPage> {
                     {
                       //tri par niveaux ascendant
                       spells_list.sort((spell1, spell2) =>
-                          (spell1.GetLevelByClass(character.cclass) ?? 0)
-                              .compareTo(
-                                  spell2.GetLevelByClass(character.cclass) ??
-                                      0));
+                          (spell1.GetLevelByClass(character.characterClass) ??
+                                  0)
+                              .compareTo(spell2.GetLevelByClass(
+                                      character.characterClass) ??
+                                  0));
                     }
                     break;
 
@@ -114,10 +116,11 @@ class _SpellListPage extends State<SpellListPage> {
                     {
                       //tri par niveaux descendant
                       spells_list.sort((spell1, spell2) =>
-                          (spell2.GetLevelByClass(character.cclass) ?? 0)
-                              .compareTo(
-                                  spell1.GetLevelByClass(character.cclass) ??
-                                      0));
+                          (spell2.GetLevelByClass(character.characterClass) ??
+                                  0)
+                              .compareTo(spell1.GetLevelByClass(
+                                      character.characterClass) ??
+                                  0));
                     }
                     break;
                 }
@@ -180,7 +183,9 @@ class _SpellListPage extends State<SpellListPage> {
         itemBuilder: (context, index) {
           //Coloration des lignes de la liste
           Color backgroundColor = Colors.white;
-          if (spells_list[index].GetLevelByClass(character.cclass)?.isEven ??
+          if (spells_list[index]
+                  .GetLevelByClass(character.characterClass)
+                  ?.isEven ??
               false) {
             if (currentOrder == OrderOption.Lvlasc ||
                 currentOrder == OrderOption.Lvldesc) {
@@ -201,7 +206,7 @@ class _SpellListPage extends State<SpellListPage> {
                   children: <TextSpan>[
                     TextSpan(
                       text:
-                          "${spells_list[index].name} ${spells_list[index].GetLevelByClass(character.cclass)}",
+                          "${spells_list[index].name} ${spells_list[index].GetLevelByClass(character.characterClass)}",
                     ),
                     //? Option avec les 7 premiers mots
                     TextSpan(
