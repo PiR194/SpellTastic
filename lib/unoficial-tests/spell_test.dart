@@ -7,6 +7,11 @@ import '../src/model/character.dart';
 import '../src/model/spell.dart';
 
 void main(List<String> args) async {
+  // IDataStrategy dataStrategy = SQLiteDataStrategy();
+
+  // var list = dataStrategy.loadSpells();
+  // var champ = dataStrategy.getSpellById(1);
+
   IAccountStrategy strat = JsonAccountStrategy();
 
   List<Character> list = await strat.loadCharacters();

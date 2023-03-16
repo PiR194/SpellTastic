@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:code/src/data/dbhelper.dart';
 import 'package:code/src/data/interface/i_account_strategy.dart';
 import 'package:code/src/data/interface/i_data_strategy.dart';
 import 'package:code/src/data/sqlite_data_strategy.dart';
@@ -9,7 +10,13 @@ import 'mapper/character_mapper.dart';
 class JsonAccountStrategy implements IAccountStrategy {
   @override
   Future<List<Character>> loadCharacters() async {
-    IDataStrategy dataStrategy = SQLiteDataStrategy();
+    IDataStrategy dataStrategy;
+
+    if (Platform.isAndroid) {
+      dataStrategy = DbHelper();
+    } else {
+      dataStrategy = SQLiteDataStrategy();
+    }
 
     File file = File('assets/account.json');
     if (!await file.exists()) return [];

@@ -1,5 +1,3 @@
-@Skip('Need to convert character class to enum')
-
 import 'package:code/src/model/character.dart';
 import 'package:code/src/model/character_class.dart';
 import 'package:flutter_test/flutter_test.dart';

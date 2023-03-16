@@ -172,8 +172,8 @@ class SQLiteDataStrategy implements IDataStrategy {
 
     var tmpComponent;
     (element['components'] != null && element['components'] != Null)
-        ? tmpComponent = element['components'].toString().split(',')
-        : tmpComponent = List<String>.empty();
+        ? tmpComponent = element['components']
+        : tmpComponent = '';
 
     var tmpRange;
     (element['range'] != null && element['range'] != Null)
