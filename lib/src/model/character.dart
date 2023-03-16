@@ -6,7 +6,7 @@ import 'spell_set.dart';
 
 class Character {
   String _name;
-  final String _cclass; // change into actual cclass Class
+  final CharacterClass _cclass; // change into actual cclass Class
   int _level;
   List<SpellSet> _sets;
   List<Spell> _knownSpells;
@@ -24,7 +24,7 @@ class Character {
   String get name => _name;
   set name(String n) => _name = n;
 
-  String get cclass => _cclass;
+  CharacterClass get cclass => _cclass;
 
   int get level => _level;
   set level(int l) => _level = l;

@@ -8,7 +8,7 @@ import 'mapper/character_mapper.dart';
 
 class JsonAccountStrategy implements IAccountStrategy {
   @override
-  Future<List<Character>> loadChar() async {
+  Future<List<Character>> loadCharacters() async {
     IDataStrategy dataStrategy = SQLiteDataStrategy();
 
     File file = File('assets/account.json');
@@ -24,7 +24,7 @@ class JsonAccountStrategy implements IAccountStrategy {
   }
 
   @override
-  void saveChar(List<Character> listChar) {
+  void saveCharacters(List<Character> listChar) {
     File file = File('assets/account.json');
     List content = List.empty(growable: true);
     for (var char in listChar) {

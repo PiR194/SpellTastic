@@ -1,3 +1,6 @@
+import 'package:code/src/data/json_account_strategy.dart';
+import 'package:code/src/model/character_class.dart';
+import 'package:code/src/model/account_manager.dart';
 import 'package:code/src/model/character.dart';
 import 'package:code/src/model/themeModel.dart';
 import 'package:code/src/view/details_character.dart';
@@ -12,10 +15,19 @@ import 'package:provider/provider.dart';
 
 void main() async {
   setUrlStrategy(PathUrlStrategy());
+
+  // load characters from json
+  JsonAccountStrategy accountStrategy = JsonAccountStrategy();
+  List<Character> characters = await accountStrategy.loadCharacters();
+
+  // we create the account manager and give him the list of spells
+  AccountManager accountManager = AccountManager();
+  accountManager.characters = characters;
+
   runApp(
     ChangeNotifierProvider<ThemeModel>(
       create: (_) => ThemeModel(),
-      child: MyApp(),
+      child: const MyApp(), // maybe pass account manager as parameter ?
     ),
   );
 }
@@ -35,8 +47,8 @@ class MyApp extends StatelessWidget {
         '/characterform': (context) => CharacterFormWidget(),
         '/characterdetails': (context) => DetailsCharacter(),
         '/setdisplay': (context) => SetDisplay(),
-        '/displayallspell': (context) =>
-            SpellListPage(character: Character("dummy", "wizard", 10)),
+        '/displayallspell': (context) => SpellListPage(
+            character: Character("dummy", CharacterClass.wizard, 10)),
         '/settings': (context) => SettingsPage(),
       },
       theme: Provider.of<ThemeModel>(context).currentTheme,

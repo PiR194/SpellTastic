@@ -1,3 +1,5 @@
+import 'package:code/src/model/character_class.dart';
+
 import 'interface/i_data_strategy.dart';
 import '../model/spell.dart';
 import 'package:sqlite3/sqlite3.dart';
@@ -54,7 +56,7 @@ class SQLiteDataStrategy implements IDataStrategy {
 
       var tmpLevel = (list[i]['level'] != null && list[i]['level'] != Null)
           ? SpellSerializer.parseLevelAndGetClass(list[i]['level'])
-          : <String, int>{};
+          : <CharacterClass, int>{};
 
       var tmpSchool;
       (list[i]['school'] != null && list[i]['school'] != Null)
@@ -156,7 +158,7 @@ class SQLiteDataStrategy implements IDataStrategy {
 
     var tmpLevel = (element['level'] != null && element['level'] != Null)
         ? SpellSerializer.parseLevelAndGetClass(element['level'])
-        : <String, int>{};
+        : <CharacterClass, int>{};
 
     var tmpSchool;
     (element['school'] != null && element['school'] != Null)

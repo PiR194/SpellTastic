@@ -9,7 +9,7 @@ import '../src/model/spell.dart';
 void main(List<String> args) async {
   IAccountStrategy strat = JsonAccountStrategy();
 
-  List<Character> list = await strat.loadChar();
+  List<Character> list = await strat.loadCharacters();
 
   for (var char in list) {
     print(char.toString());

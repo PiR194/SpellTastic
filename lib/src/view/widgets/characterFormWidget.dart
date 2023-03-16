@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:code/src/data/json_account_strategy.dart';
+import 'package:code/src/model/character_class.dart';
 import 'package:flutter/material.dart';
 
 import '../../model/character.dart';
@@ -15,21 +16,9 @@ class _CharacterFormState extends State<CharacterFormWidget> {
   String _class = '';
   int _level = 1;
 
-  String? _selectedClass;
+  CharacterClass? _selectedClass;
 
-  List<String> _classes = [
-    'Barbarian',
-    'Bard',
-    'Cleric',
-    'Druid',
-    'Fighter',
-    'Monk',
-    'Paladin',
-    'Ranger',
-    'Rogue',
-    'Sorcerer',
-    'Wizard'
-  ];
+  final List<CharacterClass> _classes = [CharacterClass.alchemist];
 
   List<Character> listCharacter = [];
 
@@ -68,13 +57,13 @@ class _CharacterFormState extends State<CharacterFormWidget> {
                   _name = value!;
                 },
               ),
-              DropdownButton<String>(
+              DropdownButton<CharacterClass>(
                 value: _selectedClass,
-                items: _classes.map((String value) {
-                  return DropdownMenuItem<String>(
+                items: _classes.map((CharacterClass value) {
+                  return DropdownMenuItem<CharacterClass>(
                     value: value,
                     child: Text(
-                      value,
+                      value.toString(),
                       style: TextStyle(
                         fontSize: theme.textTheme.bodyMedium!.fontSize,
                         fontFamily: theme.textTheme.bodyMedium!.fontFamily,
@@ -131,8 +120,9 @@ class _CharacterFormState extends State<CharacterFormWidget> {
                         Character(_name, _selectedClass!, _level);
 
                     listCharacter.add(character);
-                    JsonAccountStrategy().saveChar(listCharacter);
+                    JsonAccountStrategy().saveCharacters(listCharacter);
                   }
+                  Navigator.pop(context);
                 },
                 child: Text(
                   'CREATE !',
