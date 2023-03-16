@@ -9,6 +9,9 @@ class StatTable extends StatelessWidget {
   Widget build(BuildContext context) {
 
     //print("RANGE : ${spell.area}");
+
+
+    //? tenter une liste de 3-uplet avec le spell.valeur, le string de la valeur et l'icon ?
     List<DataRow> dataRows = [];
   if (spell.castingTime != null && spell.castingTime.trim() != '') {
     dataRows.add( DataRow(cells: [
@@ -41,7 +44,7 @@ class StatTable extends StatelessWidget {
     }
 
   if (spell.target != null && spell.target.trim() != '') {
-dataRows.add(DataRow(cells: [
+    dataRows.add(DataRow(cells: [
             DataCell(
               Wrap(
                 crossAxisAlignment: WrapCrossAlignment.center,
@@ -55,6 +58,21 @@ dataRows.add(DataRow(cells: [
           ]),);
     }
 
+  if (spell.range != null && spell.range.trim() != ''){
+    dataRows.add(DataRow(cells: [
+            DataCell(
+              Wrap(
+                crossAxisAlignment: WrapCrossAlignment.center,
+                children: const [
+                  Icon(Icons.redo),
+                  Text("\t Range"),
+                ],
+              )
+            ),
+            DataCell(Text(spell.range.toString())),
+          ]),);
+  }
+
   if (spell.area != null && spell.area.trim() != ''){
     dataRows.add(DataRow(cells: [
             DataCell(
@@ -62,13 +80,89 @@ dataRows.add(DataRow(cells: [
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: const [
                   Icon(Icons.crisis_alert),
-                  Text("\t Range"),
+                  Text("\t Area"),
                 ],
               )
             ),
             DataCell(Text(spell.area.toString())),
           ]),);
   }
+
+  if (spell.spellResistance != null && spell.spellResistance.trim() != ''){
+    dataRows.add(DataRow(cells: [
+            DataCell(
+              Wrap(
+                crossAxisAlignment: WrapCrossAlignment.center,
+                children: const [
+                  Icon(Icons.token),
+                  Text("\t Spell Resistance"),
+                ],
+              )
+            ),
+            DataCell(Text(spell.spellResistance.toString())),
+          ]),);
+  }
+
+  if (spell.savingThrow != null && spell.savingThrow.trim() != ''){
+    dataRows.add(DataRow(cells: [
+            DataCell(
+              Wrap(
+                crossAxisAlignment: WrapCrossAlignment.center,
+                children: const [
+                  Icon(Icons.savings),
+                  Text("\t Saving Throw"),
+                ],
+              )
+            ),
+            DataCell(Text(spell.savingThrow.toString())),
+          ]),);
+  }
+
+  if (spell.effect != null && spell.effect.trim() != ''){
+    dataRows.add(DataRow(cells: [
+            DataCell(
+              Wrap(
+                crossAxisAlignment: WrapCrossAlignment.center,
+                children: const [
+                  Icon(Icons.science),
+                  Text("\t Effect"),
+                ],
+              )
+            ),
+            DataCell(Text(spell.effect.toString())),
+          ]),);
+  }
+
+  if (spell.school != null && spell.school.trim() != ''){
+    dataRows.add(DataRow(cells: [
+            DataCell(
+              Wrap(
+                crossAxisAlignment: WrapCrossAlignment.center,
+                children: const [
+                  Icon(Icons.school),
+                  Text("\t School"),
+                ],
+              )
+            ),
+            DataCell(Text(spell.school.toString())),
+          ]),);
+  }
+
+  if (spell.components != null && spell.components.trim() != ''){
+    dataRows.add(DataRow(cells: [
+            DataCell(
+              Wrap(
+                crossAxisAlignment: WrapCrossAlignment.center,
+                children: const [
+                  Icon(Icons.smart_button),
+                  Text("\t Components"),
+                ],
+              )
+            ),
+            DataCell(Text(spell.components.toString())),
+          ]),);
+  }
+
 
     return Wrap(
             children: [

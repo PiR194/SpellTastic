@@ -38,6 +38,34 @@ class SpellDetailsPage extends StatelessWidget {
             child: Wrap(
           //MAin wrap
           children: [
+
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: 15.0,
+                  bottom: 15.0,
+                  left: 100.0,
+                  right: 100.0,
+                ),
+                child: Center(
+                  child: Container( //* Description
+                    padding: EdgeInsets.all(16.0),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10.0),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset: Offset(0, 3),
+                            ),
+                          ],
+                        ),
+                    child: StatTable(spell : spell),
+                  )
+                )
+              ),
+
             Padding(
                 padding: const EdgeInsets.only(
                   left: 100.0,
@@ -77,33 +105,6 @@ class SpellDetailsPage extends StatelessWidget {
                         ],
                       ),
                     ),
-                  )
-                )
-              ),
-
-              Padding(
-                padding: const EdgeInsets.only(
-                  top: 15.0,
-                  bottom: 15.0,
-                  left: 100.0,
-                  right: 100.0,
-                ),
-                child: Center(
-                  child: Container( //* Description
-                    padding: EdgeInsets.all(16.0),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10.0),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 5,
-                              blurRadius: 7,
-                              offset: Offset(0, 3),
-                            ),
-                          ],
-                        ),
-                    child: StatTable(spell : spell),
                   )
                 )
               ),
