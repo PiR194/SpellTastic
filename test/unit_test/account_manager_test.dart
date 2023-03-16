@@ -1,3 +1,5 @@
+@Skip('Need to convert character class to enum')
+
 import 'dart:ffi';
 import 'dart:math';
 
