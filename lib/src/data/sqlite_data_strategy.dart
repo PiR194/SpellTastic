@@ -1,4 +1,4 @@
-import 'package:code/src/model/CharacterClass.dart';
+import 'package:code/src/model/character_class.dart';
 
 import 'interface/i_data_strategy.dart';
 import '../model/spell.dart';

@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:code/src/data/json_account_strategy.dart';
-import 'package:code/src/model/CharacterClass.dart';
+import 'package:code/src/model/character_class.dart';
 import 'package:flutter/material.dart';
 
 import '../../model/character.dart';
@@ -122,6 +122,7 @@ class _CharacterFormState extends State<CharacterFormWidget> {
                     listCharacter.add(character);
                     JsonAccountStrategy().saveCharacters(listCharacter);
                   }
+                  Navigator.pop(context);
                 },
                 child: Text(
                   'CREATE !',

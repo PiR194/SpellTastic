@@ -8,7 +8,7 @@ import 'dart:io' show Platform;
 import 'package:path/path.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
-import '../model/CharacterClass.dart';
+import '../model/character_class.dart';
 
 class DbHelper {
   static Database? _db;

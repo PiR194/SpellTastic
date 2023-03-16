@@ -1,4 +1,4 @@
-import 'package:code/src/model/CharacterClass.dart';
+import 'package:code/src/model/character_class.dart';
 import 'package:code/src/model/character.dart';
 
 class SpellSerializer {

@@ -1,6 +1,6 @@
 import 'package:code/src/data/mapper/spell_set_mapper.dart';
 import 'package:code/src/model/character.dart';
-import '../../model/CharacterClass.dart';
+import '../../model/character_class.dart';
 import '../../model/spell.dart';
 import '../../model/spell_set.dart';
 import '../interface/i_data_strategy.dart';

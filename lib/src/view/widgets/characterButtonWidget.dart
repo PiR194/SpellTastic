@@ -1,4 +1,4 @@
-import 'package:code/src/model/CharacterClass.dart';
+import 'package:code/src/model/character_class.dart';
 import 'package:code/src/model/character.dart';
 import 'package:flutter/material.dart';
 
@@ -13,10 +13,12 @@ class CharacterButtonWidget extends StatelessWidget {
 
     const Color accentColor = Color(0xFF9C27B0);
 
-    double buttonWidth = MediaQuery.of(context).size.width / 1.1;
+    double buttonWidth = MediaQuery.of(context).size.width / 2;
+    final screenHeight = MediaQuery.of(context).size.height;
 
     return SizedBox(
       width: buttonWidth,
+      height: screenHeight / 8,
       child: ElevatedButton(
         onPressed: () {
           Navigator.pushNamed(context, '/characterdetails');
@@ -24,7 +26,7 @@ class CharacterButtonWidget extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           primary: accentColor,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(50),
+            borderRadius: BorderRadius.circular(20),
           ),
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         ),
@@ -32,9 +34,10 @@ class CharacterButtonWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            CircleAvatar(
-              radius: 30,
-              backgroundImage: AssetImage(character.cclass.getImagePath()),
+            const CircleAvatar(
+              // backgroundImage: AssetImage(character.cclass.getImagePath()), /* TODO tip: remove const*/
+              radius: 50,
+              backgroundImage: AssetImage('assets/images/background_home.png'),
             ),
             const SizedBox(width: 10),
             Expanded(

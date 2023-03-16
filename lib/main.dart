@@ -1,11 +1,11 @@
 import 'package:code/src/data/json_account_strategy.dart';
-import 'package:code/src/model/CharacterClass.dart';
-import 'package:code/src/model/accountManager.dart';
+import 'package:code/src/model/character_class.dart';
+import 'package:code/src/model/account_manager.dart';
 import 'package:code/src/model/character.dart';
 import 'package:code/src/model/themeModel.dart';
-import 'package:code/src/view/detailsCharacter.dart';
+import 'package:code/src/view/details_character.dart';
 import 'package:code/src/view/home.dart';
-import 'package:code/src/view/setDisplay.dart';
+import 'package:code/src/view/set_display.dart';
 import 'package:code/src/view/settings.dart';
 import 'package:code/src/view/spell_list_page.dart';
 import 'package:code/src/view/widgets/characterFormWidget.dart';

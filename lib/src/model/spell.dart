@@ -1,5 +1,5 @@
 import 'package:collection/collection.dart';
-import 'package:code/src/model/CharacterClass.dart';
+import 'package:code/src/model/character_class.dart';
 
 /*
 * This class represents a spell.
@@ -13,7 +13,7 @@ class Spell {
   String _school;
   String _castingTime;
   String _components;
-  final String _range;
+  String _range;
   String _target;
   String _area;
   String _effect;
@@ -54,6 +54,9 @@ class Spell {
   String get components => _components;
   set components(String components) => _components = components;
 
+  String get range => _range;
+  set range(String range) => _range = range;
+
   String get target => _target;
   set target(String target) => _target = target;
 
@@ -87,15 +90,6 @@ class Spell {
   }
 
   Map<CharacterClass, int> GetMapClassLevel() {
-    // Map<String, int> map = Map.fromEntries(
-    //   level.toString()
-    //       .substring(1, level.toString().length - 1)
-    //       .split(',')
-    //       .map((entry) => entry.split(':'))
-    //       .map((pair) => MapEntry(pair[0].trim(), int.parse(pair[1].trim())))
-    // );
-
-    //return(map);
     return (_level);
   }
 
