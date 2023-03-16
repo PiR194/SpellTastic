@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ThemeModel extends ChangeNotifier {
   static final smallFont = ThemeData(
-    fontFamily: 'Roboto',
+    fontFamily: null,
     textTheme: const TextTheme(
       bodyLarge: TextStyle(fontSize: 16),
       bodyMedium: TextStyle(fontSize: 12),
@@ -12,7 +12,7 @@ class ThemeModel extends ChangeNotifier {
   );
 
   static final mediumFont = ThemeData(
-    fontFamily: 'Roboto',
+    fontFamily: null,
     textTheme: const TextTheme(
       bodyLarge: TextStyle(fontSize: 28),
       bodyMedium: TextStyle(fontSize: 24),
@@ -22,7 +22,7 @@ class ThemeModel extends ChangeNotifier {
   );
 
   static final largeFont = ThemeData(
-    fontFamily: 'Roboto',
+    fontFamily: null,
     textTheme: const TextTheme(
       bodyLarge: TextStyle(fontSize: 40),
       bodyMedium: TextStyle(fontSize: 36),
