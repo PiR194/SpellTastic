@@ -1,3 +1,4 @@
+import 'package:code/src/data/interface/i_data_strategy.dart';
 import 'package:code/src/data/spell_serializer.dart';
 import 'package:code/src/model/spell.dart';
 import 'package:flutter/services.dart';
@@ -8,7 +9,7 @@ import 'dart:io' show Platform;
 import 'package:path/path.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
-class DbHelper {
+class DbHelper implements IDataStrategy {
   static Database? _db;
 
   Future<Database?> get db async {
@@ -40,7 +41,106 @@ class DbHelper {
     return theDb;
   }
 
-  Future<List<Spell>> getSpells() async {
+  @override
+  Future<Spell> getSpellById(int id) async {
+    var dbClient = await db;
+    List<Map> list = await dbClient!.rawQuery(
+        'SELECT id, name, description, reference, source, school, level, castingtime, components, range, target, duration FROM spell WHERE name is not null and school is not null and id=$id');
+
+    if (list.isEmpty) {
+      throw Exception('No Spell found with this id : $id');
+    }
+
+    var element = list.first;
+
+    var tmpId;
+    (element['id'] != null && element['id'] != Null)
+        ? tmpId = element['id']
+        : tmpId = '';
+
+    var tmpName;
+    (element['name'] != null && element['name'] != Null)
+        ? tmpName = element['name']
+        : tmpName = '';
+
+    var tmpLevel = (element['level'] != null && element['level'] != Null)
+        ? SpellSerializer.parseLevelAndGetClass(element['level'])
+        : <String, int>{};
+
+    var tmpSchool;
+    (element['school'] != null && element['school'] != Null)
+        ? tmpSchool = element['school']
+        : tmpSchool = '';
+
+    var tmpCastingTime;
+    (element['castingtime'] != null && element['castingtime'] != Null)
+        ? tmpCastingTime = element['castingtime']
+        : tmpCastingTime = '';
+
+    var tmpComponent;
+    (element['components'] != null && element['components'] != Null)
+        ? tmpComponent = element['components'].toString().split(',')
+        : tmpComponent = List<String>.empty();
+
+    var tmpRange;
+    (element['range'] != null && element['range'] != Null)
+        ? tmpRange = element['range']
+        : tmpRange = '';
+
+    var tmpTarget;
+    (element['target'] != null && element['target'] != Null)
+        ? tmpTarget = element['target']
+        : tmpTarget = '';
+
+    var tmpArea;
+    (element['area'] != null && element['area'] != Null)
+        ? tmpArea = element['area']
+        : tmpArea = '';
+
+    var tmpEffect;
+    (element['effect'] != null && element['effect'] != Null)
+        ? tmpEffect = element['effect']
+        : tmpEffect = '';
+
+    var tmpDuration;
+    (element['duration'] != null && element['duration'] != Null)
+        ? tmpDuration = element['duration']
+        : tmpDuration = '';
+
+    var tmpSavingThrow;
+    (element['saving_throw'] != null && element['saving_throw'] != Null)
+        ? tmpSavingThrow = element['saving_throw']
+        : tmpSavingThrow = '';
+
+    var tmpSepllResistance;
+    (element['spell_resistance'] != null && element['spell_resistance'] != Null)
+        ? tmpSepllResistance = element['spell_resistance']
+        : tmpSepllResistance = '';
+
+    var tmpDescription;
+    (element['description'] != null && element['description'] != Null)
+        ? tmpDescription = element['description']
+        : tmpDescription = '';
+
+    return Spell(
+        tmpId,
+        tmpName,
+        tmpLevel,
+        tmpSchool,
+        tmpCastingTime,
+        tmpComponent,
+        tmpRange,
+        tmpTarget,
+        tmpArea,
+        tmpEffect,
+        tmpDuration,
+        tmpSavingThrow,
+        tmpSepllResistance,
+        tmpDescription);
+  }
+
+  @override
+  Future<List<Spell>> loadSpells() async {
     var dbClient = await db;
     List<Map> list = await dbClient!.rawQuery(
         'SELECT id, name, level, school, casting_time, components, range, target, area, effect, duration, saving_throw, spell_resistance, description FROM spell WHERE name is not null and school is not null');

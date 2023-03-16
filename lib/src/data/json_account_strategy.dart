@@ -4,13 +4,12 @@ import 'package:code/src/data/interface/i_account_strategy.dart';
 import 'package:code/src/data/interface/i_data_strategy.dart';
 import 'package:code/src/data/sqlite_data_strategy.dart';
 import 'package:code/src/model/character.dart';
-
 import 'mapper/character_mapper.dart';
 
 class JsonAccountStrategy implements IAccountStrategy {
   @override
   Future<List<Character>> loadChar() async {
-    IDataStrategy dataStrategy = await SQLiteDataStrategy.getInstance();
+    IDataStrategy dataStrategy = SQLiteDataStrategy();
 
     File file = File('assets/account.json');
     if (!await file.exists()) return [];

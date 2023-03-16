@@ -48,10 +48,10 @@ class _SpellListPage extends State<SpellListPage> {
     List<Spell> spells;
     if (Platform.isAndroid) {
       var dbHelper = DbHelper();
-      spells = await dbHelper.getSpells();
+      spells = await dbHelper.loadSpells();
     } else {
       //await SQLiteDataStrategy.init();
-      var data = await SQLiteDataStrategy.getInstance();
+      var data = await SQLiteDataStrategy();
       spells = await data.loadSpells();
     }
     print("size:  ${spells.length}");

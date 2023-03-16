@@ -36,7 +36,7 @@ void main(List<String> args) async {
 
 Future<List<Spell>> getAllSpells() async {
   try {
-    var data = await SQLiteDataStrategy.getInstance();
+    var data = await SQLiteDataStrategy();
     return await data.loadSpells();
   } on SqliteException catch (e) {
     print("Error loading spells: ${e.message}");
