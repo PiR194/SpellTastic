@@ -1,15 +1,34 @@
 import 'package:flutter/material.dart';
 
+import '../../model/spell_set_check_use.dart';
+
 class SpellSetWidget extends StatefulWidget {
   final String level;
-  SpellSetWidget({super.key, required this.level});
+  final SpellSetCheckUse spellSetCheckUse;
+
+  SpellSetWidget(
+      {Key? key, required this.level, required this.spellSetCheckUse})
+      : super(key: key);
 
   @override
   _SpellSetWidgetState createState() => _SpellSetWidgetState();
 }
 
 class _SpellSetWidgetState extends State<SpellSetWidget> {
-  List<bool> _isCheckedList = List.generate(30, (index) => false);
+  late List<bool> _isCheckedList;
+
+  @override
+  void dispose() {
+    widget.spellSetCheckUse.isCheckedList = _isCheckedList;
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _isCheckedList = List.generate(
+        30, (index) => widget.spellSetCheckUse.isCheckedList[index]);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +66,7 @@ class _SpellSetWidgetState extends State<SpellSetWidget> {
             onChanged: (value) {
               setState(() {
                 _isCheckedList[index] = value!;
+                widget.spellSetCheckUse.isCheckedList = _isCheckedList;
               });
             },
           );

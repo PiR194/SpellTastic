@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import '../model/spell_set_check_use.dart';
 import 'widgets/spellSetWidget.dart';
 import 'home.dart';
 
@@ -10,6 +12,7 @@ class SetDisplay extends StatefulWidget {
 class _SetDisplayState extends State<SetDisplay> {
   final PageController _pageController = PageController();
   int _currentPage = 0;
+  SpellSetCheckUse spellSetCheckUse = SpellSetCheckUse();
 
   @override
   void dispose() {
@@ -44,21 +47,42 @@ class _SetDisplayState extends State<SetDisplay> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              IconButton(
-                icon: Icon(Icons.arrow_back),
-                onPressed: _currentPage == 0
-                    ? null
-                    : () {
-                        _goToPage(_currentPage - 1);
-                      },
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  IconButton(
+                    icon: Icon(Icons.arrow_back),
+                    onPressed: _currentPage == 0
+                        ? null
+                        : () {
+                            _goToPage(_currentPage - 1);
+                          },
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.arrow_forward),
+                    onPressed: _currentPage == 1
+                        ? null
+                        : () {
+                            _goToPage(_currentPage + 1);
+                          },
+                  ),
+                ],
               ),
-              IconButton(
-                icon: Icon(Icons.arrow_forward),
-                onPressed: _currentPage == 1
-                    ? null
-                    : () {
-                        _goToPage(_currentPage + 1);
-                      },
+              RawKeyboardListener(
+                focusNode: FocusNode(),
+                onKey: (event) {
+                  if (event.logicalKey == LogicalKeyboardKey.arrowLeft) {
+                    if (_currentPage != 0) {
+                      _goToPage(_currentPage - 1);
+                    }
+                  } else if (event.logicalKey ==
+                      LogicalKeyboardKey.arrowRight) {
+                    if (_currentPage != 1) {
+                      _goToPage(_currentPage + 1);
+                    }
+                  }
+                },
+                child: Container(),
               ),
             ],
           ),
@@ -78,11 +102,13 @@ class _SetDisplayState extends State<SetDisplay> {
                 Container(
                   child: SpellSetWidget(
                     level: '1',
+                    spellSetCheckUse: spellSetCheckUse,
                   ),
                 ),
                 Container(
                   child: SpellSetWidget(
                     level: '2',
+                    spellSetCheckUse: spellSetCheckUse,
                   ),
                 ),
               ],
