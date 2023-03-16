@@ -45,7 +45,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => Home(),
         '/characterform': (context) => CharacterFormWidget(),
-        '/characterdetails': (context) => DetailsCharacter(),
+        '/characterdetails': (context) =>
+            DetailsCharacter(character: AccountManager().selectedCharacter),
         '/setdisplay': (context) => SetDisplay(),
         '/displayallspell': (context) => SpellListPage(
             character: Character("dummy", CharacterClass.wizard, 10)),

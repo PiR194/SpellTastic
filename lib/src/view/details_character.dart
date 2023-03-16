@@ -1,9 +1,15 @@
+import 'package:code/src/model/character.dart';
+
 import 'widgets/levelCounterWidget.dart';
 import 'widgets/displaySetButtonWidget.dart';
 import 'package:flutter/material.dart';
 import 'widgets/createSetButtonWidget.dart';
 
 class DetailsCharacter extends StatelessWidget {
+  final Character character;
+
+  const DetailsCharacter({super.key, required this.character});
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -35,13 +41,13 @@ class DetailsCharacter extends StatelessWidget {
                 alignment: WrapAlignment.center,
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
-                  CircleAvatar(
+                  const CircleAvatar(
                     radius: 80,
                     backgroundImage:
                         AssetImage('assets/class_icons/Goblins_Fight.png'),
                   ),
                   Text(
-                    'LOU LE GOBELIN',
+                    character.name,
                     style: TextStyle(
                       fontSize: theme.textTheme.titleLarge!.fontSize,
                       fontFamily: theme.textTheme.titleLarge!.fontFamily,

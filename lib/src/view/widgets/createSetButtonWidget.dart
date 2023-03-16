@@ -27,7 +27,7 @@ class CreateSetButton extends StatelessWidget {
             fontSize: theme.textTheme.bodyLarge!.fontSize,
             fontFamily: theme.textTheme.bodyLarge!.fontFamily,
             color: Colors.black,
-            shadows: [
+            shadows: const [
               Shadow(
                 color: Colors.black,
                 offset: Offset(1, 1),
