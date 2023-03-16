@@ -36,7 +36,6 @@ class SpellDetailsPage extends StatelessWidget {
         ),
         body: SingleChildScrollView(
             child: Wrap(
-          //MAin wrap
           children: [
 
               Padding(
@@ -151,7 +150,7 @@ class SpellDetailsPage extends StatelessWidget {
                             )
                         ),
                         TableWidget(spell : spell),
-                        const SizedBox(height: 16.0),
+                        //const SizedBox(height: 16.0),
                       ]  
                     ),
                   )
