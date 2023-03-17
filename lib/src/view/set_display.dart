@@ -80,7 +80,8 @@ class _SetDisplayState extends State<SetDisplay> {
                     if (_currentPage != 1) {
                       _goToPage(_currentPage + 1);
                     }
-                  }
+                  } else if (event.logicalKey ==
+                      LogicalKeyboardKey.arrowDown) {}
                 },
                 child: Container(),
               ),

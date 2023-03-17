@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../model/spell_set_check_use.dart';
 
@@ -16,6 +17,7 @@ class SpellSetWidget extends StatefulWidget {
 
 class _SpellSetWidgetState extends State<SpellSetWidget> {
   late List<bool> _isCheckedList;
+  final _scrollController = ScrollController();
 
   @override
   void dispose() {
@@ -26,6 +28,24 @@ class _SpellSetWidgetState extends State<SpellSetWidget> {
   @override
   void initState() {
     super.initState();
+    _isCheckedList = List.generate(
+        30, (index) => widget.spellSetCheckUse.isCheckedList[index]);
+    RawKeyboard.instance.addListener((event) {
+      if (event.isKeyPressed(LogicalKeyboardKey.arrowDown)) {
+        _scrollController.animateTo(
+          _scrollController.offset + 50.0,
+          duration: Duration(milliseconds: 200),
+          curve: Curves.easeInOut,
+        );
+      }
+      if (event.isKeyPressed(LogicalKeyboardKey.arrowUp)) {
+        _scrollController.animateTo(
+          _scrollController.offset - 50.0,
+          duration: Duration(milliseconds: 200),
+          curve: Curves.easeInOut,
+        );
+      }
+    });
     _isCheckedList = List.generate(
         30, (index) => widget.spellSetCheckUse.isCheckedList[index]);
   }
@@ -50,6 +70,7 @@ class _SpellSetWidgetState extends State<SpellSetWidget> {
         backgroundColor: primaryColor,
       ),
       body: ListView.builder(
+        controller: _scrollController,
         itemExtent: 50,
         cacheExtent: 2,
         itemCount: 30,
