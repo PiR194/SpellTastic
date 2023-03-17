@@ -2,32 +2,32 @@ import 'package:flutter/material.dart';
 
 class ThemeModel extends ChangeNotifier {
   static final smallFont = ThemeData(
-    fontFamily: 'Anaktoria',
+    fontFamily: null,
     textTheme: const TextTheme(
-      bodyLarge: TextStyle(fontSize: 22),
-      bodyMedium: TextStyle(fontSize: 18),
-      titleSmall: TextStyle(fontSize: 20, color: Colors.grey),
-      titleLarge: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+      bodyLarge: TextStyle(fontSize: 16),
+      bodyMedium: TextStyle(fontSize: 12),
+      titleLarge: TextStyle(
+          fontSize: 20, fontWeight: FontWeight.bold, fontFamily: 'Anaktoria'),
     ),
   );
 
   static final mediumFont = ThemeData(
-    fontFamily: 'Anaktoria',
+    fontFamily: null,
     textTheme: const TextTheme(
       bodyLarge: TextStyle(fontSize: 28),
       bodyMedium: TextStyle(fontSize: 24),
-      titleSmall: TextStyle(fontSize: 26, color: Colors.grey),
-      titleLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+      titleLarge: TextStyle(
+          fontSize: 32, fontWeight: FontWeight.bold, fontFamily: 'Anaktoria'),
     ),
   );
 
   static final largeFont = ThemeData(
-    fontFamily: 'Anaktoria',
+    fontFamily: null,
     textTheme: const TextTheme(
-      bodyLarge: TextStyle(fontSize: 34),
-      bodyMedium: TextStyle(fontSize: 30),
-      titleSmall: TextStyle(fontSize: 32, color: Colors.grey),
-      titleLarge: TextStyle(fontSize: 38, fontWeight: FontWeight.bold),
+      bodyLarge: TextStyle(fontSize: 40),
+      bodyMedium: TextStyle(fontSize: 36),
+      titleLarge: TextStyle(
+          fontSize: 44, fontWeight: FontWeight.bold, fontFamily: 'Anaktoria'),
     ),
   );
 

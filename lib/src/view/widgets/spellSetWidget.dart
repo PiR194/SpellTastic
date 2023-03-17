@@ -1,8 +1,34 @@
 import 'package:flutter/material.dart';
 
-class SpellSetWidget extends StatelessWidget {
-  String level;
-  SpellSetWidget({super.key, required this.level});
+import '../../model/spell_set_check_use.dart';
+
+class SpellSetWidget extends StatefulWidget {
+  final String level;
+  final SpellSetCheckUse spellSetCheckUse;
+
+  SpellSetWidget(
+      {Key? key, required this.level, required this.spellSetCheckUse})
+      : super(key: key);
+
+  @override
+  _SpellSetWidgetState createState() => _SpellSetWidgetState();
+}
+
+class _SpellSetWidgetState extends State<SpellSetWidget> {
+  late List<bool> _isCheckedList;
+
+  @override
+  void dispose() {
+    widget.spellSetCheckUse.isCheckedList = _isCheckedList;
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _isCheckedList = List.generate(
+        30, (index) => widget.spellSetCheckUse.isCheckedList[index]);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +39,7 @@ class SpellSetWidget extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'LEVEL $level',
+          'LEVEL ${widget.level}',
           style: TextStyle(
             fontSize: theme.textTheme.bodyLarge!.fontSize,
             fontFamily: theme.textTheme.bodyLarge!.fontFamily,
@@ -28,7 +54,7 @@ class SpellSetWidget extends StatelessWidget {
         cacheExtent: 2,
         itemCount: 30,
         itemBuilder: (context, index) {
-          return ListTile(
+          return CheckboxListTile(
             title: Text(
               "spell",
               style: TextStyle(
@@ -36,7 +62,13 @@ class SpellSetWidget extends StatelessWidget {
                 fontFamily: theme.textTheme.bodyMedium!.fontFamily,
               ),
             ),
-            onTap: () {},
+            value: _isCheckedList[index],
+            onChanged: (value) {
+              setState(() {
+                _isCheckedList[index] = value!;
+                widget.spellSetCheckUse.isCheckedList = _isCheckedList;
+              });
+            },
           );
         },
       ),
