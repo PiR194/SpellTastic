@@ -192,6 +192,12 @@ class _SpellListPage extends State<SpellListPage> {
             //Structure de chaque ligne (=> ListTile)
             tileColor: backgroundColor,
             title: RichText(
+              
+              //? Version avec le maximum description puis ...
+              /*
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              */
               text: TextSpan(
                 style: TextStyle(
                   color: Colors.black,
@@ -199,9 +205,12 @@ class _SpellListPage extends State<SpellListPage> {
                   fontFamily: Theme.of(context).textTheme.titleLarge!.fontFamily,
                 ),
                 children: <TextSpan>[
+                  //? Version avec le maximum description puis ...
                   TextSpan(text:"${spells_list[index].name} ${spells_list[index].GetLevelByClass(character.cclass)}",),
+                  TextSpan(text:'     ${spells_list[index].description}', style: Theme.of(context).textTheme.titleSmall)
+                  
                   //? Option avec les 7 premiers mots
-                  TextSpan(text:'     ${spells_list[index].description.split(' ').take(7).join(' ')}...', style: Theme.of(context).textTheme.titleSmall)
+                  //TextSpan(text:'     ${spells_list[index].description.split(' ').take(7).join(' ')}...', style: Theme.of(context).textTheme.titleSmall)
                   
                   //? Option avec les 35 premiers caractères ?
                   //TextSpan(text:'${spells_list[index].description.substring(0,35)}...', style: Theme.of(context).textTheme.titleSmall)

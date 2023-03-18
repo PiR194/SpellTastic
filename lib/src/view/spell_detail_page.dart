@@ -20,6 +20,10 @@ class SpellDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
         appBar: AppBar(
           title: Text(
@@ -36,16 +40,10 @@ class SpellDetailsPage extends StatelessWidget {
         ),
         body: SingleChildScrollView(
             child: Wrap(
-          children: [
-
-              Padding(
-                padding: const EdgeInsets.only(
-                  top: 15.0,
-                  bottom: 15.0,
-                  left: 100.0,
-                  right: 100.0,
-                ),
-                child: Center(
+              spacing: screenWidth * 0.05,
+              runSpacing: screenHeight * 0.05,
+              children: [
+                Center(
                   child: Container( //* Description
                     padding: EdgeInsets.all(16.0),
                         decoration: BoxDecoration(
@@ -62,16 +60,11 @@ class SpellDetailsPage extends StatelessWidget {
                         ),
                     child: StatTable(spell : spell),
                   )
-                )
               ),
 
-            Padding(
-                padding: const EdgeInsets.only(
-                  left: 100.0,
-                  right: 100.0,
-                ),
-                child: Center(
+                Center(
                   child: Container( //* Description
+									constraints: BoxConstraints(maxWidth: 1000),
                     padding: EdgeInsets.all(16.0),
                         decoration: BoxDecoration(
                           color: Colors.white,
@@ -105,55 +98,52 @@ class SpellDetailsPage extends StatelessWidget {
                       ),
                     ),
                   )
-                )
               ),
 
-              Padding(
-                  padding: const EdgeInsets.only(
-                    top: 15.0,
-                    bottom: 15.0,
-                    left: 100.0,
-                    right: 100.0,
-                  ),
-                  child:Container(
-                    padding: EdgeInsets.all(16.0),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10.0),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 5,
-                          blurRadius: 7,
-                          offset: Offset(0, 3),
-                        ),
-                      ],
-                    ),
-                    child: Wrap( //*Wrap de toute la table
-                      children: [
-                        Center(
-                          child:Container(
-                            padding: EdgeInsets.all(16.0),
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Colors.grey,
+                Center(
+                    child:Container(
+                      padding: EdgeInsets.all(16.0),
+											width: screenWidth/3,
+                      constraints: BoxConstraints(minWidth: 500),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10.0),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 5,
+                            blurRadius: 7,
+                            offset: Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: Wrap( //*Wrap de toute la table
+                        spacing: screenWidth * 0.05,
+                        runSpacing: screenHeight * 0.05,
+                        children: [
+                          Center(
+                            child:Container(
+                              padding: EdgeInsets.all(16.0),
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: Colors.grey,
+                                ),
+                                borderRadius: const BorderRadius.all(
+                                  Radius.circular(15),
+                                )
                               ),
-                              borderRadius: const BorderRadius.all(
-                                Radius.circular(15),
+                              child:Text(
+                                      "Table des classes",
+                                      style:Theme.of(context).textTheme.titleLarge,
+                                      textAlign: TextAlign.center,
+                                    ),
                               )
-                            ),
-                            child:Text(
-                                    "Table des classes",
-                                    style:Theme.of(context).textTheme.titleLarge,
-                                    textAlign: TextAlign.center,
-                                  ),
-                            )
-                        ),
-                        TableWidget(spell : spell),
-                        //const SizedBox(height: 16.0),
-                      ]  
-                    ),
-                  )
+                          ),
+                          TableWidget(spell : spell),
+                          //const SizedBox(height: 16.0),
+                        ]  
+                      ),
+                    )
                 )
               ],
             )
