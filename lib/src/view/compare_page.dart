@@ -18,58 +18,98 @@ class ComparePage extends StatelessWidget {
         title: Text('Compare Page '),
         backgroundColor: accentColor,
       ),
-      body: Column(
+      body: Row(
         children: [
-          Container(
-            height: 50,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                DropdownButton<String>(
-                  items: [
-                    DropdownMenuItem<String>(
-                      child: Text('Dropdown 1'),
-                      value: '1',
+          Expanded(
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: Wrap(
+                direction: Axis.vertical,
+                alignment: WrapAlignment.center,
+                crossAxisAlignment: WrapCrossAlignment.center,
+                children: [
+                  DecoratedBox(
+                    decoration: BoxDecoration(
+                      color: accentColor,
+                      border: Border.all(color: Colors.white, width: 3),
+                      borderRadius: BorderRadius.circular(20),
                     ),
-                    DropdownMenuItem<String>(
-                      child: Text('Dropdown 2'),
-                      value: '2',
+                    child: DropdownButton<String>(
+                      items: [
+                        DropdownMenuItem<String>(
+                          child: Text('Dropdown 1'),
+                          value: '1',
+                        ),
+                        DropdownMenuItem<String>(
+                          child: Text('Dropdown 2'),
+                          value: '2',
+                        ),
+                        DropdownMenuItem<String>(
+                          child: Text('Dropdown 3'),
+                          value: '3',
+                        ),
+                      ],
+                      onChanged: (value) {},
+                      dropdownColor: primaryColor,
+                      iconEnabledColor: Colors.white,
                     ),
-                    DropdownMenuItem<String>(
-                      child: Text('Dropdown 3'),
-                      value: '3',
-                    ),
-                  ],
-                  onChanged: (value) {},
-                ),
-                SizedBox(width: 10),
-                Expanded(child: Divider(thickness: 1)),
-                SizedBox(width: 10),
-                DropdownButton<String>(
-                  items: [
-                    DropdownMenuItem<String>(
-                      child: Text('Dropdown 1'),
-                      value: '1',
-                    ),
-                    DropdownMenuItem<String>(
-                      child: Text('Dropdown 2'),
-                      value: '2',
-                    ),
-                    DropdownMenuItem<String>(
-                      child: Text('Dropdown 3'),
-                      value: '3',
-                    ),
-                  ],
-                  onChanged: (value) {},
-                ),
-              ],
+                  )
+                ],
+              ),
             ),
           ),
-          Expanded(child: Divider(thickness: 1)),
-          Container(
-            height: 100,
-            child: Center(
-              child: Text('Space 1'),
+          Expanded(
+              child: VerticalDivider(
+            thickness: 1,
+          )),
+          Expanded(
+            child: Wrap(
+              direction: Axis.vertical,
+              alignment: WrapAlignment.center,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              children: [],
+            ),
+          ),
+          Expanded(
+              child: VerticalDivider(
+            thickness: 1,
+          )),
+          Expanded(
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: Wrap(
+                direction: Axis.vertical,
+                alignment: WrapAlignment.center,
+                crossAxisAlignment: WrapCrossAlignment.center,
+                children: [
+                  DecoratedBox(
+                    decoration: BoxDecoration(
+                      color: accentColor,
+                      border: Border.all(color: Colors.white, width: 3),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: DropdownButton<String>(
+                      items: [
+                        DropdownMenuItem<String>(
+                          child: Text('Dropdown 1'),
+                          value: '1',
+                        ),
+                        DropdownMenuItem<String>(
+                          child: Text('Dropdown 2'),
+                          value: '2',
+                        ),
+                        DropdownMenuItem<String>(
+                          child: Text('Dropdown 3'),
+                          value: '3',
+                        ),
+                      ],
+                      onChanged: (value) {},
+                      dropdownColor: primaryColor,
+                      iconEnabledColor: Colors.white,
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ],
