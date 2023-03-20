@@ -2,7 +2,7 @@ import 'package:code/src/data/json_account_strategy.dart';
 import 'package:code/src/model/character_class.dart';
 import 'package:code/src/model/account_manager.dart';
 import 'package:code/src/model/character.dart';
-import 'package:code/src/model/themeModel.dart';
+import 'package:code/src/model/theme_model.dart';
 import 'package:code/src/view/details_character.dart';
 import 'package:code/src/view/home.dart';
 import 'package:code/src/view/set_display.dart';
@@ -17,8 +17,6 @@ void main() async {
   setUrlStrategy(PathUrlStrategy());
 
   // load characters from json
-  // JsonAccountStrategy accountStrategy = JsonAccountStrategy();
-  // List<Character> characters = await accountStrategy.loadCharacters();
 
   // we create the account manager and give him the list of spells
   AccountManager accountManager = AccountManager();
@@ -30,6 +28,8 @@ void main() async {
       child: const MyApp(), // maybe pass account manager as parameter ?
     ),
   );
+  JsonAccountStrategy accountStrategy = JsonAccountStrategy();
+  List<Character> characters = await accountStrategy.loadCharacters();
 }
 
 class MyApp extends StatelessWidget {
