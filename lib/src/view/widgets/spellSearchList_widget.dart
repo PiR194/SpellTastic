@@ -24,14 +24,17 @@ class SpellSearchList extends StatelessWidget {
         String twoPreviousWord = "";
         String twoNextWord = "";
         String displayQuery;
+        
+        //* Assignation mots premiers et suivants.
         if (jndex != -1 && query.trim().isNotEmpty) {
           twoPreviousWord = jndex > 2 ? "${words[jndex-2]}  ${words[jndex-1]}" : (jndex == 1 ? words[jndex-1] : "");
           twoNextWord = jndex < words.length-3 && jndex != words.length-2? "${words[jndex+1]}  ${words[jndex+2]}" : (jndex == words.length-2 ? words[jndex+1] : "");
-          twoPreviousWord = "..." + twoPreviousWord;
-          twoNextWord = twoNextWord + "...";
+          twoPreviousWord = "...$twoPreviousWord";
+          twoNextWord = "$twoNextWord...";
         }
         twoNextWord == "" && twoPreviousWord == "" ? displayQuery = "" : displayQuery = query;
         
+        //TODO
         //? essayer de trier pour mettre en valeur les recherches sur noms plutot que par description.
         //? essayer de voir pour les concaténations de mot
         //! comment faire pour les cas ou le mot est présent plusieurs fois ?
@@ -46,23 +49,12 @@ class SpellSearchList extends StatelessWidget {
                 ),
                 children: [
                   TextSpan(text:"${spells[index].name} ",),
-                  //TextSpan(text:'     ${spells[index].description.split(' ').take(7).join(' ')}...', style: Theme.of(context).textTheme.titleSmall)
-                  //TextSpan(text:'    $twoPreviousWord $query $twoNextWord...', style: Theme.of(context).textTheme.titleSmall)
                   TextSpan(text:'    $twoPreviousWord ', style: Theme.of(context).textTheme.titleSmall),
-                  TextSpan(text: ' $displayQuery ', style: const TextStyle(fontWeight: FontWeight.bold)),
+                  TextSpan(text: ' $displayQuery ', style: const TextStyle(fontWeight: FontWeight.bold)), //* mot recherché en gras
                   TextSpan(text: ' $twoNextWord', style: Theme.of(context).textTheme.titleSmall),
                 ]
               ),
             ),
-
-          // Text(
-          //   spells[index].name,
-          //   style: TextStyle(
-          //     fontSize: theme.textTheme.bodyMedium!.fontSize,
-          //     fontFamily: theme.textTheme.bodyMedium!.fontFamily,
-          //   ),
-          // ),
-          
           onTap: () {
             Navigator.push(
               context,

@@ -29,18 +29,15 @@ class SpellSearchDelegate extends SearchDelegate<Map<String, dynamic>> {
     );
   }
 
+  //* Affichage de la recherche
+
+
   @override
   Widget buildResults(BuildContext context) {
-    
-    // //* retirement de la ponctuation
-    // for (var i = 0; i < spells.length; i++) {
-    //   spells[i].description = spells[i].description.replaceAll(RegExp(r'[^\w\s]+'), '');
-    // }
-
     var filteredSpells = spells
       .where(
             (spell) => spell.name.toLowerCase().contains(query.toLowerCase())
-                      || spell.description.replaceAll(RegExp(r'[^\w\s]+'), '').toLowerCase().contains(query.toLowerCase())
+                      || spell.description.toLowerCase().contains(query.toLowerCase()) //* la regex retire la ponctuation
         )
         .toList();
     return SpellSearchList(spells: filteredSpells, query : query);
@@ -54,10 +51,6 @@ class SpellSearchDelegate extends SearchDelegate<Map<String, dynamic>> {
                       || spell.description.toLowerCase().contains(query.toLowerCase())
         )
         .toList();
-    // //* retirement de la ponctuation
-    // for (var i = 0; i < filteredSpells.length; i++) {
-    //   filteredSpells[i].description = filteredSpells[i].description.replaceAll(RegExp(r'[^\w\s]+'), '');
-    // }
     return SpellSearchList(spells: filteredSpells, query : query);
   }
 }

@@ -13,13 +13,13 @@ import '../model/character.dart';
 
 List<Spell> spells_list = [];
 
-//Option de tri
+//* Option de tri
 enum OrderOption {
   asc,
   desc,
   Lvlasc,
   Lvldesc,
-  //_default,
+  ////_default,
 }
 
 OrderOption currentOrder = OrderOption.asc;
@@ -43,18 +43,18 @@ class _SpellListPage extends State<SpellListPage> {
     getData();
   }
 
-  //Chargement des données
+  //* Chargement des données
   void getData() async {
     List<Spell> spells;
     if (Platform.isAndroid) {
       var dbHelper = DbHelper();
       spells = await dbHelper.getSpells();
     } else {
-      //await SQLiteDataStrategy.init();
+      /////await SQLiteDataStrategy.init();
       var data = await SQLiteDataStrategy.getInstance();
       spells = await data.loadSpells();
     }
-    //print("size:  ${spells.length}");
+    ////print("size:  ${spells.length}");
     setState(() {
       spells_list = spells
           .where((spell) => spell.GetLevelByClass(character.cclass) != null)
@@ -74,19 +74,19 @@ class _SpellListPage extends State<SpellListPage> {
           IconButton(
             icon: const Icon(Icons.search),
             onPressed: () {
-              //Appel de la fonction de recherche
+              //* Appel de la fonction de recherche
               showSearch(
                   context: context, delegate: SpellSearchDelegate(spells_list));
             },
           ),
           PopupMenuButton<OrderOption>(
-            //Menu d'option de tri
+            //* Menu d'option de tri
             onSelected: (value) {
               setState(() {
                 switch (value) {
                   case OrderOption.asc:
                     {
-                      //tri ascendant
+                      //* tri ascendant
                       spells_list.sort((spell1, spell2) =>
                           spell1.name.compareTo(spell2.name));
                     }
@@ -94,7 +94,7 @@ class _SpellListPage extends State<SpellListPage> {
 
                   case OrderOption.desc:
                     {
-                      //tri descendant
+                      //* tri descendant
                       spells_list.sort((spell1, spell2) =>
                           spell2.name.compareTo(spell1.name));
                     }
@@ -102,7 +102,7 @@ class _SpellListPage extends State<SpellListPage> {
 
                   case OrderOption.Lvlasc:
                     {
-                      //tri par niveaux ascendant
+                      //* tri par niveaux ascendant
                       spells_list.sort((spell1, spell2) =>
                           (spell1.GetLevelByClass(character.cclass) ?? 0)
                               .compareTo(
@@ -113,7 +113,7 @@ class _SpellListPage extends State<SpellListPage> {
 
                   case OrderOption.Lvldesc:
                     {
-                      //tri par niveaux descendant
+                      //* tri par niveaux descendant
                       spells_list.sort((spell1, spell2) =>
                           (spell2.GetLevelByClass(character.cclass) ?? 0)
                               .compareTo(
@@ -126,7 +126,7 @@ class _SpellListPage extends State<SpellListPage> {
             },
             icon: const Icon(Icons.filter_alt),
             itemBuilder: (context) => [
-              //Option du menu de tri
+              //* Option du menu de tri
               const PopupMenuItem(
                 value: OrderOption.asc,
                 child: Text('Croissant'),
@@ -147,33 +147,6 @@ class _SpellListPage extends State<SpellListPage> {
           ),
         ],
       ),
-      // body: ListView.builder(
-      //   itemCount: spells_list.length,
-      //   itemBuilder: (BuildContext context, int index) {
-      //     return ListTile(
-      //       title: Text('${spells_list[index].name} (niveau ${spells_list[index].GetLevelByClass(character.cclass)})'),
-      //       subtitle: Text('${spells_list[index].description.substring(0, 20)}...'),
-      //     );
-      //   },
-      // )
-
-      // body:ListView.builder(
-      //   itemCount: spells_list.length,
-      //   itemBuilder: (BuildContext context, int index) {
-      //     // Déterminer le nombre de caractères à afficher
-      //     final maxChars = MediaQuery.of(context).size.width.toInt() -
-      //         '${spells_list[index].name} (niveau ${spells_list[index].GetLevelByClass(character.cclass)}) ...'.length;
-      //     // Extraire les premiers caractères de la description
-      //     final desc = spells_list[index].description.substring(0, maxChars);
-      //     // Ajouter "..." à la fin si la description est plus longue que maxChars
-      //     final displayDesc = spells_list[index].description.length > maxChars ? '$desc...' : desc;
-      //     return ListTile(
-      //       title: Text('${spells_list[index].name} (niveau ${spells_list[index].GetLevelByClass(character.cclass)})'),
-      //       subtitle: Text(displayDesc),
-      //     );
-      //   },
-      // )
-
       body: ListView.builder(
         itemExtent: 50,
         cacheExtent: 2,
