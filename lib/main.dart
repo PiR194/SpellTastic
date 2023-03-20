@@ -3,6 +3,7 @@ import 'package:code/src/model/character_class.dart';
 import 'package:code/src/model/account_manager.dart';
 import 'package:code/src/model/character.dart';
 import 'package:code/src/model/themeModel.dart';
+import 'package:code/src/view/compare_page.dart';
 import 'package:code/src/view/details_character.dart';
 import 'package:code/src/view/home.dart';
 import 'package:code/src/view/set_display.dart';
@@ -50,6 +51,7 @@ class MyApp extends StatelessWidget {
         '/displayallspell': (context) => SpellListPage(
             character: Character("dummy", CharacterClass.wizard, 10)),
         '/settings': (context) => SettingsPage(),
+        '/compare': (context) => ComparePage(),
       },
       theme: Provider.of<ThemeModel>(context).currentTheme,
     );

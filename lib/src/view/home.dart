@@ -66,6 +66,17 @@ class Home extends StatelessWidget {
                     width: screenWidth,
                     child: DisplayAllSpellButtonWidget(),
                   ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/compare');
+                    },
+                    child: Icon(Icons.abc_outlined),
+                    style: ElevatedButton.styleFrom(
+                      shape: CircleBorder(),
+                      padding: EdgeInsets.all(16),
+                      primary: accentColor,
+                    ),
+                  ),
                 ],
               ),
             ),
