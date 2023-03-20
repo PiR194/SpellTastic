@@ -46,7 +46,7 @@ class DbHelper implements IDataStrategy {
   Future<Spell> getSpellById(int id) async {
     var dbClient = await db;
     List<Map> list = await dbClient!.rawQuery(
-        'SELECT id, name, description, reference, source, school, level, castingtime, components, range, target, duration FROM spell WHERE name is not null and school is not null and id=$id');
+        'SELECT id, name, level, school, casting_time, components, range, target, area, effect, duration, saving_throw, spell_resistance, description FROM spell WHERE name is not null and school is not null and id=$id');
 
     if (list.isEmpty) {
       throw Exception('No Spell found with this id : $id');
@@ -80,8 +80,8 @@ class DbHelper implements IDataStrategy {
 
     var tmpComponent;
     (element['components'] != null && element['components'] != Null)
-        ? tmpComponent = element['components'].toString().split(',')
-        : tmpComponent = List<String>.empty();
+        ? tmpComponent = element['components']
+        : tmpComponent = '';
 
     var tmpRange;
     (element['range'] != null && element['range'] != Null)
@@ -175,8 +175,8 @@ class DbHelper implements IDataStrategy {
 
       var tmpComponent;
       (list[i]['components'] != null && list[i]['components'] != Null)
-          ? tmpComponent = list[i]['components'].toString().split(',')
-          : tmpComponent = List<String>.empty();
+          ? tmpComponent = list[i]['components']
+          : tmpComponent = '';
 
       var tmpRange;
       (list[i]['range'] != null && list[i]['range'] != Null)

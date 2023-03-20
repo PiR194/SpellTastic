@@ -14,8 +14,6 @@ class SQLiteDataStrategy implements IDataStrategy {
     return _instance;
   }
 
-  void init() async {}
-
   SQLiteDataStrategy._internal() {
     final dbPath = p.join(io.Directory.current.path, 'assets', 'spells.db');
     _db = sqlite3.open(dbPath);

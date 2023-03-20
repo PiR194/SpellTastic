@@ -17,12 +17,12 @@ void main() async {
   setUrlStrategy(PathUrlStrategy());
 
   // load characters from json
-  JsonAccountStrategy accountStrategy = JsonAccountStrategy();
-  List<Character> characters = await accountStrategy.loadCharacters();
+  // JsonAccountStrategy accountStrategy = JsonAccountStrategy();
+  // List<Character> characters = await accountStrategy.loadCharacters();
 
   // we create the account manager and give him the list of spells
   AccountManager accountManager = AccountManager();
-  accountManager.characters = characters;
+  accountManager.characters = []; //characters;
 
   runApp(
     ChangeNotifierProvider<ThemeModel>(
