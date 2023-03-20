@@ -194,10 +194,9 @@ class _SpellListPage extends State<SpellListPage> {
             title: RichText(
               
               //? Version avec le maximum description puis ...
-              /*
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              */
+              
               text: TextSpan(
                 style: TextStyle(
                   color: Colors.black,
@@ -215,9 +214,6 @@ class _SpellListPage extends State<SpellListPage> {
                   //? Option avec les 35 premiers caractères ?
                   //TextSpan(text:'${spells_list[index].description.substring(0,35)}...', style: Theme.of(context).textTheme.titleSmall)
                   
-                  // TextSpan(text:'\t ${spells_list[index].description.substring(0, 
-                  //   MediaQuery.of(context).size.width.toInt() - '${spells_list[index].name} ${spells_list[index].GetLevelByClass(character.cclass)}) ...'.length
-                  // )}...', style: Theme.of(context).textTheme.titleSmall)
                 ]
               ),
             ),
