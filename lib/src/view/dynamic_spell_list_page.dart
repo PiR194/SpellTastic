@@ -3,7 +3,10 @@
 * diplays them our a SpellListView
 */
 
+import 'dart:ffi';
+
 import 'package:code/src/model/spell_set.dart';
+import 'package:code/src/view/widgets/add_spells_widget.dart';
 import 'package:flutter/material.dart';
 import '../model/character_class.dart';
 import 'spell__search_delegate_page.dart';
@@ -13,19 +16,30 @@ import 'spell_list_page.dart';
 class DynamicSpellListPage extends StatefulWidget {
   final SpellSet spellSet; // change character knownSpells to spellset
   final CharacterClass characterClass;
+  final bool isReadonly;
 
   const DynamicSpellListPage(
-      {super.key, required this.spellSet, required this.characterClass});
+      {super.key,
+      required this.spellSet,
+      required this.characterClass,
+      required this.isReadonly});
 
   @override
-  State<StatefulWidget> createState() =>
-      _DynamicSpellListPage(spellSet: spellSet, characterClass: characterClass);
+  // ignore: no_logic_in_create_state
+  State<StatefulWidget> createState() => _DynamicSpellListPage(
+      spellSet: spellSet,
+      characterClass: characterClass,
+      isReadonly: isReadonly);
 }
 
 class _DynamicSpellListPage extends State<DynamicSpellListPage> {
-  _DynamicSpellListPage({required this.spellSet, required this.characterClass});
+  _DynamicSpellListPage(
+      {required this.spellSet,
+      required this.characterClass,
+      required this.isReadonly});
   final SpellSet spellSet;
   final CharacterClass characterClass;
+  final bool isReadonly;
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +65,7 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
                   delegate: SpellSearchDelegate(spellSet.spells));
             },
           ),
+          if (!isReadonly) AddSpellWidget(spellSet: spellSet),
           PopupMenuButton<OrderOption>(
             //Menu d'option de tri
             onSelected: (value) {

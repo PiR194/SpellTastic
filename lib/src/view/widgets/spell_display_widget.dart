@@ -1,4 +1,4 @@
-import 'package:code/src/view/dynamic_spell_list.dart';
+import 'package:code/src/view/dynamic_spell_list_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../model/account_manager.dart';
@@ -6,8 +6,10 @@ import '../../model/spell_set.dart';
 
 class SpellDisplayWidget extends StatelessWidget {
   final SpellSet spellSet;
+  final bool isReadonly;
 
-  const SpellDisplayWidget({super.key, required this.spellSet});
+  const SpellDisplayWidget(
+      {super.key, required this.spellSet, required this.isReadonly});
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +27,15 @@ class SpellDisplayWidget extends StatelessWidget {
           clipBehavior: Clip.none,
           label: Text(spellSet.name),
           onPressed: () {
-            DynamicSpellList(
-                spellSet: spellSet,
-                characterClass:
-                    AccountManager().selectedCharacter.characterClass);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => DynamicSpellListPage(
+                      spellSet: spellSet,
+                      characterClass:
+                          AccountManager().selectedCharacter.characterClass,
+                      isReadonly: isReadonly)),
+            );
           }),
     );
   }

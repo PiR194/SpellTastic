@@ -112,8 +112,8 @@ class DetailsCharacter extends StatelessWidget {
                   alignment: WrapAlignment.center,
                   children: [
                     Center(
-                      child:
-                          SpellDisplayWidget(spellSet: character.knownSpells),
+                      child: SpellDisplayWidget(
+                          spellSet: character.knownSpells, isReadonly: false),
                     ),
                   ]),
             ],
