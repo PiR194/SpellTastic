@@ -4,6 +4,7 @@ import 'package:code/src/model/account_manager.dart';
 import 'package:code/src/model/character.dart';
 import 'package:code/src/model/themeModel.dart';
 import 'package:code/src/view/details_character.dart';
+import 'package:code/src/view/dynamic_spell_list.dart';
 import 'package:code/src/view/home.dart';
 import 'package:code/src/view/set_display.dart';
 import 'package:code/src/view/settings.dart';
@@ -51,6 +52,8 @@ class MyApp extends StatelessWidget {
         '/displayallspell': (context) => SpellListPage(
             character: Character("dummy", CharacterClass.wizard, 10)),
         '/settings': (context) => SettingsPage(),
+        //add all spells by default
+        '/spelllist': (context) => DynamicSpellListPage(spellSet: ,characterClass: AccountManager().selectedCharacter.characterClass),
       },
       theme: Provider.of<ThemeModel>(context).currentTheme,
     );

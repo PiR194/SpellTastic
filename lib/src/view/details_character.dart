@@ -1,4 +1,5 @@
 import 'package:code/src/model/character.dart';
+import 'package:code/src/view/widgets/spell_display_widget.dart';
 
 import 'widgets/levelCounterWidget.dart';
 import 'widgets/displaySetButtonWidget.dart';
@@ -103,7 +104,18 @@ class DetailsCharacter extends StatelessWidget {
                     ),
                   ),
                 ],
-              )
+              ),
+
+              Wrap(
+                  spacing: screenWidth * 0.05,
+                  runSpacing: screenHeight * 0.02,
+                  alignment: WrapAlignment.center,
+                  children: [
+                    Center(
+                      child:
+                          SpellDisplayWidget(spellSet: character.knownSpells),
+                    ),
+                  ]),
             ],
           ),
         ),

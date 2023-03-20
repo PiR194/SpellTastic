@@ -1,7 +1,4 @@
-import 'dart:ffi';
-
 import 'character_class.dart';
-import 'spell.dart';
 import 'spell_set.dart';
 
 class Character {
@@ -9,16 +6,16 @@ class Character {
   final CharacterClass _characterClass; // change into actual cclass Class
   int _level;
   List<SpellSet> _sets;
-  List<Spell> _knownSpells;
+  SpellSet _knownSpells;
 
   Character(
     this._name,
     this._characterClass,
     this._level, {
     List<SpellSet>? sets,
-    List<Spell>? knownSpells,
+    SpellSet? knownSpells,
   })  : _sets = sets ?? [],
-        _knownSpells = knownSpells ?? [];
+        _knownSpells = knownSpells ?? SpellSet('Known Spells');
 
   // Getters and Setters
   String get name => _name;
@@ -32,8 +29,8 @@ class Character {
   List<SpellSet> get sets => _sets;
   set sets(List<SpellSet> l) => _sets = l;
 
-  List<Spell> get knownSpells => _knownSpells;
-  set knownSpells(List<Spell> known) => _knownSpells = known;
+  SpellSet get knownSpells => _knownSpells;
+  set knownSpells(SpellSet known) => _knownSpells = known;
 
   // methods
   void addSet(SpellSet set) {
@@ -43,7 +40,8 @@ class Character {
   @override
   String toString() {
     String setsString = _sets.map((s) => s.toString()).join(', ');
-    String knownSpellsString = _knownSpells.map((s) => s.toString()).join(', ');
+    String knownSpellsString =
+        _knownSpells.spells.map((s) => s.toString()).join(', ');
     return 'Character{_name: $_name, _cclass: $_characterClass, _level: $_level, _sets: [$setsString], _knownSpells: [$knownSpellsString]}';
   }
 }
