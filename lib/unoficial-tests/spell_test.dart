@@ -1,12 +1,13 @@
+import 'dart:ffi';
+
 import 'package:code/src/data/dbhelper.dart';
 import 'package:code/src/data/interface/i_data_strategy.dart';
 
+import '../src/data/json_account_strategy.dart';
+import '../src/model/character.dart';
+import '../src/model/character_class.dart';
+
 void main(List<String> args) async {
-  IDataStrategy dataStrategy = DbHelper();
-
-  var list = dataStrategy.loadSpells();
-  var champ = dataStrategy.getSpellById(1);
-
   // IAccountStrategy strat = JsonAccountStrategy();
 
   // List<Character> list = await strat.loadCharacters();
@@ -15,7 +16,11 @@ void main(List<String> args) async {
   //   print(char.toString());
   // }
 
-  // JsonAccountStrategy j = JsonAccountStrategy();
+  JsonAccountStrategy j = JsonAccountStrategy();
+  j.saveCharacters([
+    Character("LouLeGob", CharacterClass.druid, 0),
+    Character("NicoLePal", CharacterClass.paladin, 12)
+  ]);
   // List<Character> l = [
   //   Character("champ 1 ", "Bar", 1),
   //   Character("champ 2 ", "Pal", 2),
