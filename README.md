@@ -216,7 +216,6 @@ Spell(<ins>id</ins>,name,description,reference,source,school,level,castingTime,c
 SpellSet(<ins>name</ins>,#charName);  
 Character(<ins>name</ins>,level,#knownSet);  
 Posséder(<ins>#nameSet</ins>,<ins>#idSpell</ins>);  
-Connaitre(<ins>#nameChar</ins>,<ins>#idSpell</ins>);  
 
 *******
 
