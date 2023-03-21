@@ -7,8 +7,6 @@ import 'package:flutter/material.dart';
 import '../data/dbhelper.dart';
 import 'dart:io' show Platform;
 
-//TODO ajouter d'autres filtres sur les sorts ?
-
 import '../model/character.dart';
 
 List<Spell> spells_list = [];
@@ -57,7 +55,8 @@ class _SpellListPage extends State<SpellListPage> {
     ////print("size:  ${spells.length}");
     setState(() {
       spells_list = spells
-          .where((spell) => spell.GetLevelByClass(character.cclass) != null)
+          .where((spell) =>
+              spell.GetLevelByClass(character.characterClass) != null)
           .toList();
     });
   }
@@ -103,10 +102,11 @@ class _SpellListPage extends State<SpellListPage> {
                     {
                       //* tri par niveaux ascendant
                       spells_list.sort((spell1, spell2) =>
-                          (spell1.GetLevelByClass(character.cclass) ?? 0)
-                              .compareTo(
-                                  spell2.GetLevelByClass(character.cclass) ??
-                                      0));
+                          (spell1.GetLevelByClass(character.characterClass) ??
+                                  0)
+                              .compareTo(spell2.GetLevelByClass(
+                                      character.characterClass) ??
+                                  0));
                     }
                     break;
 
@@ -114,10 +114,11 @@ class _SpellListPage extends State<SpellListPage> {
                     {
                       //* tri par niveaux descendant
                       spells_list.sort((spell1, spell2) =>
-                          (spell2.GetLevelByClass(character.cclass) ?? 0)
-                              .compareTo(
-                                  spell1.GetLevelByClass(character.cclass) ??
-                                      0));
+                          (spell2.GetLevelByClass(character.characterClass) ??
+                                  0)
+                              .compareTo(spell1.GetLevelByClass(
+                                      character.characterClass) ??
+                                  0));
                     }
                     break;
                 }
@@ -153,7 +154,9 @@ class _SpellListPage extends State<SpellListPage> {
         itemBuilder: (context, index) {
           //Coloration des lignes de la liste
           Color backgroundColor = Colors.white;
-          if (spells_list[index].GetLevelByClass(character.cclass)?.isEven ??
+          if (spells_list[index]
+                  .GetLevelByClass(character.characterClass)
+                  ?.isEven ??
               false) {
             if (currentOrder == OrderOption.Lvlasc ||
                 currentOrder == OrderOption.Lvldesc) {
@@ -164,30 +167,33 @@ class _SpellListPage extends State<SpellListPage> {
             //Structure de chaque ligne (=> ListTile)
             tileColor: backgroundColor,
             title: RichText(
-              
               //? Version avec le maximum description puis ...
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              
+
               text: TextSpan(
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: Theme.of(context).textTheme.titleLarge!.fontSize,
-                  fontFamily: Theme.of(context).textTheme.titleLarge!.fontFamily,
-                ),
-                children: <TextSpan>[
-                  //? Version avec le maximum description puis ...
-                  TextSpan(text:"${spells_list[index].name} ${spells_list[index].GetLevelByClass(character.cclass)}",),
-                  TextSpan(text:'     ${spells_list[index].description}', style: Theme.of(context).textTheme.titleSmall)
-                  
-                  //? Option avec les 7 premiers mots
-                  //TextSpan(text:'     ${spells_list[index].description.split(' ').take(7).join(' ')}...', style: Theme.of(context).textTheme.titleSmall)
-                  
-                  //? Option avec les 35 premiers caractères ?
-                  //TextSpan(text:'${spells_list[index].description.substring(0,35)}...', style: Theme.of(context).textTheme.titleSmall)
-                  
-                ]
-              ),
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: Theme.of(context).textTheme.titleLarge!.fontSize,
+                    fontFamily:
+                        Theme.of(context).textTheme.titleLarge!.fontFamily,
+                  ),
+                  children: <TextSpan>[
+                    //? Version avec le maximum description puis ...
+                    TextSpan(
+                      text:
+                          "${spells_list[index].name} ${spells_list[index].GetLevelByClass(character.characterClass)}",
+                    ),
+                    TextSpan(
+                        text: '     ${spells_list[index].description}',
+                        style: Theme.of(context).textTheme.titleSmall)
+
+                    //? Option avec les 7 premiers mots
+                    //TextSpan(text:'     ${spells_list[index].description.split(' ').take(7).join(' ')}...', style: Theme.of(context).textTheme.titleSmall)
+
+                    //? Option avec les 35 premiers caractères ?
+                    //TextSpan(text:'${spells_list[index].description.substring(0,35)}...', style: Theme.of(context).textTheme.titleSmall)
+                  ]),
             ),
             onTap: () {
               Navigator.push(

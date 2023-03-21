@@ -1,7 +1,13 @@
+import 'package:code/src/model/spell_set.dart';
+
 import '../home.dart';
 import 'package:flutter/material.dart';
 
 class DisplaySetButton extends StatelessWidget {
+  final SpellSet spellSet;
+
+  const DisplaySetButton({super.key, required this.spellSet});
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -18,10 +24,10 @@ class DisplaySetButton extends StatelessWidget {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           primary: accentColor,
-          padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30.0),
-            side: BorderSide(
+            side: const BorderSide(
               color: Colors.amber,
               width: 2,
             ),

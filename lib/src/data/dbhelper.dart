@@ -169,8 +169,8 @@ class DbHelper implements IDataStrategy {
           : tmpSchool = '';
 
       var tmpCastingTime;
-      (list[i]['castingtime'] != null && list[i]['castingtime'] != Null)
-          ? tmpCastingTime = list[i]['castingtime']
+      (list[i]['casting_time'] != null && list[i]['casting_time'] != Null)
+          ? tmpCastingTime = list[i]['casting_time']
           : tmpCastingTime = '';
 
       var tmpComponent;

@@ -40,7 +40,7 @@ class SQLiteDataStrategy implements IDataStrategy {
   Future<List<Spell>> loadSpells() async {
     var list = _db.select(
         'SELECT id, name, level, school, casting_time, components, range, target, area, effect, duration, saving_throw, spell_resistance, description FROM spell WHERE name is not null and school is not null');
-
+    //'SELECT id, name, level, school, casting_time, components, range, target, area, effect, duration, saving_throw, spell_resistance, description FROM spell WHERE id = 2038');
     List<Spell> spells = [];
 
     for (int i = 0; i < list.length; i++) {
@@ -64,8 +64,8 @@ class SQLiteDataStrategy implements IDataStrategy {
           : tmpSchool = '';
 
       var tmpCastingTime;
-      (list[i]['castingtime'] != null && list[i]['castingtime'] != Null)
-          ? tmpCastingTime = list[i]['castingtime']
+      (list[i]['casting_time'] != null && list[i]['casting_time'] != Null)
+          ? tmpCastingTime = list[i]['casting_time']
           : tmpCastingTime = '';
 
       var tmpComponent;
@@ -84,6 +84,7 @@ class SQLiteDataStrategy implements IDataStrategy {
           : tmpTarget = '';
 
       var tmpArea;
+      print(list[i]['area']);
       (list[i]['area'] != null && list[i]['area'] != Null)
           ? tmpArea = list[i]['area']
           : tmpArea = '';
@@ -166,8 +167,8 @@ class SQLiteDataStrategy implements IDataStrategy {
         : tmpSchool = '';
 
     var tmpCastingTime;
-    (element['castingtime'] != null && element['castingtime'] != Null)
-        ? tmpCastingTime = element['castingtime']
+    (element['casting_time'] != null && element['casting_time'] != Null)
+        ? tmpCastingTime = element['casting_time']
         : tmpCastingTime = '';
 
     var tmpComponent;
