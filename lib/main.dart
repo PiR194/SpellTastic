@@ -1,6 +1,4 @@
-import 'package:code/src/data/json_account_strategy.dart';
 import 'package:code/src/model/character_class.dart';
-import 'package:code/src/model/account_manager.dart';
 import 'package:code/src/model/character.dart';
 import 'package:code/src/model/theme_model.dart';
 import 'package:code/src/view/details_character.dart';
@@ -9,16 +7,12 @@ import 'package:code/src/view/set_display.dart';
 import 'package:code/src/view/settings.dart';
 import 'package:code/src/view/spell_list_page.dart';
 import 'package:code/src/view/widgets/characterFormWidget.dart';
-import 'package:code/src/view/widgets/characterLoaderWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
   setUrlStrategy(PathUrlStrategy());
-
-  // load characters from json
-  // we create the account manager and give him the list of spells
 
   runApp(
     ChangeNotifierProvider<ThemeModel>(

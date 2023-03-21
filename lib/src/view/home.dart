@@ -3,7 +3,6 @@ import 'package:code/src/view/widgets/addCharacterWidget.dart';
 import 'package:code/src/view/widgets/displayAllSpellButtonWidget.dart';
 import 'package:flutter/material.dart';
 import '../data/json_account_strategy.dart';
-import '../model/character.dart';
 import 'widgets/characterButtonWidget.dart';
 
 class Home extends StatefulWidget {
@@ -18,6 +17,11 @@ class _HomeState extends State<Home> {
     loadCharacters();
   }
 
+  /*
+  * This functions load the charactes from the account.json file
+  * into AccountManager's character list which accessible throughout
+  * the code.
+  */
   Future<void> loadCharacters() async {
     final JsonAccountStrategy accountStrategy = JsonAccountStrategy();
     AccountManager().characters = await accountStrategy.loadCharacters();
@@ -56,12 +60,12 @@ class _HomeState extends State<Home> {
             onPressed: () {
               Navigator.pushNamed(context, '/settings');
             },
-            child: Icon(Icons.settings),
             style: ElevatedButton.styleFrom(
-              shape: CircleBorder(),
-              padding: EdgeInsets.all(16),
+              shape: const CircleBorder(),
+              padding: const EdgeInsets.all(16),
               primary: accentColor,
             ),
+            child: const Icon(Icons.settings),
           ),
         ],
       ),
