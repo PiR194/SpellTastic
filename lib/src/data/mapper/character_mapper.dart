@@ -15,7 +15,7 @@ class CharacterMapper {
 
     Map<String, dynamic> map = {
       'name': char.name,
-      'class': char.characterClass,
+      'class': char.characterClass.name,
       'level': char.level,
       'sets': jsonSets,
       'knownSpells': jsonKnown

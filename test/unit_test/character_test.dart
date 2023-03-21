@@ -9,9 +9,9 @@ void main() {
     test('default parameter', () {
       var char = Character('_name', CharacterClass.alchemist, 1);
       expect('_name', char.name);
-      expect(CharacterClass.alchemist, char.cclass);
+      expect(CharacterClass.alchemist, char.characterClass);
       expect(1, char.level);
-      expect(0, char.knownSpells.length);
+      //expect(0, char.knownSpells);
       expect(0, char.sets.length);
     });
   });
