@@ -1,5 +1,4 @@
 import 'package:code/src/model/character_class.dart';
-
 import 'interface/i_data_strategy.dart';
 import '../model/spell.dart';
 import 'package:sqlite3/sqlite3.dart';
@@ -8,33 +7,38 @@ import 'dart:io' as io;
 import 'spell_serializer.dart';
 
 class SQLiteDataStrategy implements IDataStrategy {
-  static SQLiteDataStrategy? _instance;
-
+  static final SQLiteDataStrategy _instance = SQLiteDataStrategy._internal();
   late final Database _db;
 
-  SQLiteDataStrategy._();
-
-  Future<void> _init() async {
-    final dbPath =
-        p.join(await io.Directory.current.path, 'assets', 'spells.db');
-
-    _instance = SQLiteDataStrategy._();
-    _instance!._db = sqlite3.open(dbPath);
+  factory SQLiteDataStrategy() {
+    return _instance;
   }
 
-  static Future<SQLiteDataStrategy> getInstance() async {
-    if (_instance == null) {
-      _instance = SQLiteDataStrategy._();
-      await _instance?._init();
-    }
-    return _instance!;
+  SQLiteDataStrategy._internal() {
+    final dbPath = p.join(io.Directory.current.path, 'assets', 'spells.db');
+    _db = sqlite3.open(dbPath);
+    print("oh");
   }
+
+  // Future<void> _init() async {
+  //   final dbPath =
+  //       p.join(await io.Directory.current.path, 'assets', 'spells.db');
+
+  //   _instance = SQLiteDataStrategy._();
+  //   _instance!._db = sqlite3.open(dbPath);
+  // }
+
+  // static Future<SQLiteDataStrategy> getInstance() async {
+  //   if (_instance == null) {
+  //     _instance = SQLiteDataStrategy._();
+  //     await _instance?._init();
+  //   }
+  //   return _instance!;
+  // }
 
   @override
   Future<List<Spell>> loadSpells() async {
-    var db = await getInstance();
-
-    var list = db._db.select(
+    var list = _db.select(
         'SELECT id, name, level, school, casting_time, components, range, target, area, effect, duration, saving_throw, spell_resistance, description FROM spell WHERE name is not null and school is not null');
     //'SELECT id, name, level, school, casting_time, components, range, target, area, effect, duration, saving_throw, spell_resistance, description FROM spell WHERE id = 2038');
     List<Spell> spells = [];
@@ -132,10 +136,10 @@ class SQLiteDataStrategy implements IDataStrategy {
 
   @override
   Future<Spell> getSpellById(int id) async {
-    var db = await getInstance();
+    var db = _db;
 
-    var list = db._db.select(
-        'SELECT id, name, description, reference, source, school, level, castingtime, components, range, target, duration FROM SPELLS WHERE name is not null and school is not null and id=$id');
+    var list = db.select(
+        'SELECT id, name, level, school, casting_time, components, range, target, area, effect, duration, saving_throw, spell_resistance, description FROM spell WHERE name is not null and school is not null and id=$id');
 
     if (list.isEmpty) {
       throw Exception('No Spell found with this id : $id');
@@ -169,8 +173,8 @@ class SQLiteDataStrategy implements IDataStrategy {
 
     var tmpComponent;
     (element['components'] != null && element['components'] != Null)
-        ? tmpComponent = element['components'].toString().split(',')
-        : tmpComponent = List<String>.empty();
+        ? tmpComponent = element['components']
+        : tmpComponent = '';
 
     var tmpRange;
     (element['range'] != null && element['range'] != Null)

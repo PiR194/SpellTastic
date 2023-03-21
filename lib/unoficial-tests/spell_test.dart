@@ -1,19 +1,19 @@
+import 'package:code/src/data/dbhelper.dart';
 import 'package:code/src/data/interface/i_data_strategy.dart';
-import 'package:code/src/data/json_account_strategy.dart';
-import 'package:code/src/data/sqlite_data_strategy.dart';
-
-import '../src/data/interface/i_account_strategy.dart';
-import '../src/model/character.dart';
-import '../src/model/spell.dart';
 
 void main(List<String> args) async {
-  IAccountStrategy strat = JsonAccountStrategy();
+  IDataStrategy dataStrategy = DbHelper();
 
-  List<Character> list = await strat.loadCharacters();
+  var list = dataStrategy.loadSpells();
+  var champ = dataStrategy.getSpellById(1);
 
-  for (var char in list) {
-    print(char.toString());
-  }
+  // IAccountStrategy strat = JsonAccountStrategy();
+
+  // List<Character> list = await strat.loadCharacters();
+
+  // for (var char in list) {
+  //   print(char.toString());
+  // }
 
   // JsonAccountStrategy j = JsonAccountStrategy();
   // List<Character> l = [

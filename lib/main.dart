@@ -1,8 +1,7 @@
-import 'package:code/src/data/json_account_strategy.dart';
-import 'package:code/src/model/character_class.dart';
 import 'package:code/src/model/account_manager.dart';
+import 'package:code/src/model/character_class.dart';
 import 'package:code/src/model/character.dart';
-import 'package:code/src/model/themeModel.dart';
+import 'package:code/src/model/theme_model.dart';
 import 'package:code/src/view/details_character.dart';
 import 'package:code/src/view/dynamic_spell_list_page.dart';
 import 'package:code/src/view/home.dart';
@@ -16,14 +15,6 @@ import 'package:provider/provider.dart';
 
 void main() async {
   setUrlStrategy(PathUrlStrategy());
-
-  // load characters from json
-  JsonAccountStrategy accountStrategy = JsonAccountStrategy();
-  List<Character> characters = await accountStrategy.loadCharacters();
-
-  // we create the account manager and give him the list of spells
-  AccountManager accountManager = AccountManager();
-  accountManager.characters = characters;
 
   runApp(
     ChangeNotifierProvider<ThemeModel>(
@@ -82,9 +73,11 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  // List<Character> characters = await accountStrategy.loadCharacters();
+  // accountManager.characters = characters;
 
   void _incrementCounter() {
-    setState(() {
+    setState(() async {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
       // so that the display can reflect the updated values. If we changed
