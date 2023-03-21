@@ -24,7 +24,6 @@ class JsonAccountStrategy implements IAccountStrategy {
     } else {
       dataStrategy = SQLiteDataStrategy();
       File file = File('assets/account.json');
-      if (!await file.exists()) return [];
       jsonString = file.readAsStringSync();
     }
 

@@ -2,10 +2,10 @@ import 'package:code/src/model/account_manager.dart';
 import 'package:code/src/model/character.dart';
 import 'package:code/src/model/character_class.dart';
 import 'package:code/src/view/widgets/addCharacterWidget.dart';
+import 'package:code/src/view/widgets/characterButtonWidget.dart';
 import 'package:code/src/view/widgets/displayAllSpellButtonWidget.dart';
 import 'package:flutter/material.dart';
 import '../data/json_account_strategy.dart';
-import 'widgets/characterButtonWidget.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -26,10 +26,10 @@ class _HomeState extends State<Home> {
   */
   Future<void> loadCharacters() async {
     final JsonAccountStrategy accountStrategy = JsonAccountStrategy();
-    await accountStrategy.saveCharacters([
-      Character("Laalala", CharacterClass.arcanist, 0),
-      Character("NicoLePal", CharacterClass.paladin, 12)
-    ]);
+    // await accountStrategy.saveCharacters([
+    //   Character("Laalala", CharacterClass.arcanist, 0),
+    //   Character("NicoLePal", CharacterClass.paladin, 12)
+    // ]);
 
     AccountManager().characters = await accountStrategy.loadCharacters();
     setState(() {});
