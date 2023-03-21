@@ -1,3 +1,5 @@
+import 'package:code/src/model/character.dart';
+import 'package:code/src/model/character_class.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:code/src/model/spell.dart';
 
@@ -7,7 +9,7 @@ void main() {
       Spell mainSpell = Spell(
           1,
           "mainSpell",
-          <String, int>{},
+          <CharacterClass, int>{},
           "mainSchool",
           "mainCastTime",
           "mainComp",
@@ -23,7 +25,7 @@ void main() {
       Spell copySpell = Spell(
           1,
           "mainSpell",
-          <String, int>{},
+          <CharacterClass, int>{},
           "mainSchool",
           "mainCastTime",
           "mainComp",
@@ -43,7 +45,7 @@ void main() {
       Spell sideSpell = Spell(
           2,
           "sideSpell",
-          <String, int>{},
+          <CharacterClass, int>{},
           "sideSchool",
           "sideCastTime",
           "sideComp",
@@ -59,7 +61,7 @@ void main() {
       Spell mainSpell = Spell(
           1,
           "mainSpell",
-          <String, int>{},
+          <CharacterClass, int>{},
           "mainSchool",
           "mainCastTime",
           "mainComp",
@@ -80,7 +82,7 @@ void main() {
     Spell mainSpell = Spell(
         1,
         "mainSpell",
-        <String, int>{},
+        <CharacterClass, int>{},
         "mainSchool",
         "mainCastTime",
         "mainComp",
@@ -112,7 +114,7 @@ void main() {
     Spell spell = Spell(
         1,
         "mainSpell",
-        <String, int>{},
+        <CharacterClass, int>{},
         "mainSchool",
         "mainCastTime",
         "mainComp",

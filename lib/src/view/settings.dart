@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../model/themeModel.dart';
+import '../model/theme_model.dart';
 
 class SettingsPage extends StatelessWidget {
   @override

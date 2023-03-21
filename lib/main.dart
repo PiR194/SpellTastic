@@ -1,5 +1,6 @@
+import 'package:code/src/model/character_class.dart';
 import 'package:code/src/model/character.dart';
-import 'package:code/src/model/themeModel.dart';
+import 'package:code/src/model/theme_model.dart';
 import 'package:code/src/view/details_character.dart';
 import 'package:code/src/view/home.dart';
 import 'package:code/src/view/set_display.dart';
@@ -12,10 +13,11 @@ import 'package:provider/provider.dart';
 
 void main() async {
   setUrlStrategy(PathUrlStrategy());
+
   runApp(
     ChangeNotifierProvider<ThemeModel>(
       create: (_) => ThemeModel(),
-      child: MyApp(),
+      child: const MyApp(), // maybe pass account manager as parameter ?
     ),
   );
 }
@@ -35,8 +37,8 @@ class MyApp extends StatelessWidget {
         '/characterform': (context) => CharacterFormWidget(),
         '/characterdetails': (context) => DetailsCharacter(),
         '/setdisplay': (context) => SetDisplay(),
-        '/displayallspell': (context) =>
-            SpellListPage(character: Character("dummy", "wizard", 10)),
+        '/displayallspell': (context) => SpellListPage(
+            character: Character("dummy", CharacterClass.wizard, 10)),
         '/settings': (context) => SettingsPage(),
       },
       theme: Provider.of<ThemeModel>(context).currentTheme,
@@ -64,9 +66,11 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  // List<Character> characters = await accountStrategy.loadCharacters();
+  // accountManager.characters = characters;
 
   void _incrementCounter() {
-    setState(() {
+    setState(() async {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
       // so that the display can reflect the updated values. If we changed

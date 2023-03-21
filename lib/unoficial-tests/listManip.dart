@@ -29,14 +29,14 @@ void main(List<String> args) async {
   set2.addSpell(spells[132]);
   set2.addSpell(spells[469]);
 
-  var charac = Character("myChar", "wizard", 1);
+  var charac = Character("myChar", CharacterClass.wizard, 1);
   charac.addSet(set1);
   charac.addSet(set2);
 }
 
 Future<List<Spell>> getAllSpells() async {
   try {
-    var data = await SQLiteDataStrategy.getInstance();
+    var data = await SQLiteDataStrategy();
     return await data.loadSpells();
   } on SqliteException catch (e) {
     print("Error loading spells: ${e.message}");

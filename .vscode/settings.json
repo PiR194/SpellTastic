@@ -1,4 +1,5 @@
 {
     "sqltools.connections": [],
-    "sqltools.useNodeRuntime": true
+    "sqltools.useNodeRuntime": true,
+    "avdmanager.sdkPath": "/home/koroh/Android/Sdk"
 }

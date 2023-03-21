@@ -48,10 +48,10 @@ class _SpellListPage extends State<SpellListPage> {
     List<Spell> spells;
     if (Platform.isAndroid) {
       var dbHelper = DbHelper();
-      spells = await dbHelper.getSpells();
+      spells = await dbHelper.loadSpells();
     } else {
-      /////await SQLiteDataStrategy.init();
-      var data = await SQLiteDataStrategy.getInstance();
+      //await SQLiteDataStrategy.init();
+      var data = SQLiteDataStrategy();
       spells = await data.loadSpells();
     }
     ////print("size:  ${spells.length}");
@@ -59,7 +59,6 @@ class _SpellListPage extends State<SpellListPage> {
       spells_list = spells
           .where((spell) => spell.GetLevelByClass(character.cclass) != null)
           .toList();
-      print(spells_list.length);
     });
   }
 

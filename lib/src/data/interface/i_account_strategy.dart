@@ -1,6 +1,6 @@
 import 'package:code/src/model/character.dart';
 
 abstract class IAccountStrategy {
-  Future<List<Character>> loadChar();
-  void saveChar(List<Character> listChar);
+  Future<List<Character>> loadCharacters();
+  void saveCharacters(List<Character> listChar);
 }

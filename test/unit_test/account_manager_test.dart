@@ -14,9 +14,9 @@ void main() {
     });
     test('Should be able to add character list to account instance', () {
       List<Character> chars = <Character>[];
-      chars.add(Character("_name0", "barbarian", 3));
-      chars.add(Character("_name1", "alchemist", 5));
-      chars.add(Character("_name2", "cleric", 4));
+      chars.add(Character("_name0", CharacterClass.bard, 3));
+      chars.add(Character("_name1", CharacterClass.alchemist, 5));
+      chars.add(Character("_name2", CharacterClass.cleric, 4));
 
       var ac1 = AccountManager();
       ac1.characters = chars;
@@ -28,7 +28,8 @@ void main() {
       var accountManager = AccountManager();
       accountManager.characters = [];
       for (var i = 0; i < nbOcc; i++) {
-        accountManager.addCharacter(Character('_name', '_cclass', 2));
+        accountManager
+            .addCharacter(Character('_name', CharacterClass.antipaladin, 2));
       }
       expect(nbOcc, accountManager.characters.length);
     });
@@ -38,16 +39,17 @@ void main() {
     test('when empty', () {
       var accountManager = AccountManager();
       accountManager.characters = [];
-      accountManager.removeCharacter(Character('_name', '_cclass', 0));
+      accountManager
+          .removeCharacter(Character('_name', CharacterClass.antipaladin, 0));
       expect(0, accountManager.characters.length);
     });
 
     test('When filled', () {
       var accountManager = AccountManager();
       accountManager.characters = [];
-      Character character = Character('_name', '_cclass', 0);
+      Character character = Character('_name', CharacterClass.alchemist, 0);
       accountManager.addCharacter(character);
-      accountManager.addCharacter(Character('_name2', '_cclass2', 2));
+      accountManager.addCharacter(Character('_name2', CharacterClass.bard, 2));
       accountManager.removeCharacter(character);
       expect(1, accountManager.characters.length);
     });
@@ -56,9 +58,9 @@ void main() {
   group('Constructor', () {
     test('Account instance should be a singleton', () {
       List<Character> chars = <Character>[];
-      chars.add(Character("_name0", "barbarian", 3));
-      chars.add(Character("_name1", "alchemist", 5));
-      chars.add(Character("_name2", "cleric", 4));
+      chars.add(Character("_name0", CharacterClass.bard, 3));
+      chars.add(Character("_name1", CharacterClass.alchemist, 5));
+      chars.add(Character("_name2", CharacterClass.cleric, 4));
 
       var ac1 = AccountManager();
       ac1.characters = chars;

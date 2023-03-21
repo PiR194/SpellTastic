@@ -1,5 +1,6 @@
 import 'package:code/src/data/mapper/spell_set_mapper.dart';
 import 'package:code/src/model/character.dart';
+import '../../model/character_class.dart';
 import '../../model/spell.dart';
 import '../../model/spell_set.dart';
 import '../interface/i_data_strategy.dart';
@@ -43,7 +44,10 @@ class CharacterMapper {
       listSpell.add(spell);
     }
 
-    return Character(json['name'], json['class'], json['level'],
+    CharacterClass characterClass = CharacterClass.values.firstWhere((e) =>
+        e.toString().split('.').last == json['class'].toString().toLowerCase());
+
+    return Character(json['name'], characterClass, json['level'],
         sets: listSet, knownSpells: listSpell);
   }
 }

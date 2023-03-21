@@ -2,47 +2,49 @@ import 'dart:ffi';
 
 enum CharacterClass {
   alchemist,
+  adept, //new
+  antipaladin, // new
+  arcanist, // new
+  artifice, // new
   bard,
   bloodrager,
   cleric,
+  crimsonAssassin, // new
   druid,
+  darkness, // new
   hunter,
   inquisitor,
+  investigator, // new
+  glory, // new
   magus,
   medium,
   mesmerist,
+  madness,
   occultist,
   oracle,
   paladin,
   psychic,
   ranger,
+  sahirAfiyun, // new
   shaman,
+  skald, // new
   sorcerer,
   spiritualist,
   summoner,
+  unchainedSummoner, // new
   warpriest,
   witch,
-  wizard
-  // glory, madness, investigator, artifice ??
+  wizard,
+  // glory, madness, artifice ??
+  unknown
 }
 
 extension GetImage on CharacterClass {
-  String path() {
-    var name = toString().split('.').last;
+  String getImagePath() {
+    var name = toString().toLowerCase().split('.').last;
     name = name[0].toUpperCase() + name.substring(1);
-    return name;
+    return "assets/class_icons/$name.png";
   }
-
-  // CharacterClass getFromString(String class) {
-  //   switch(class) {
-  //     case 'Bar' :
-  //       return CharacterClass.barbarian;
-  //     case 'Alc' :
-  //       return CharacterClass.alchemist;
-  //     case 'Alc' :
-  //       return CharacterClass.alchemist;
-  //   }
-  //}
 }
 
 // Gestion des étoiles ??
@@ -535,69 +537,4 @@ extension GetSpellPerDay on CharacterClass {
       20: [4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
     },
   };
-
-  /*List<int>? getListSpellPerDay(String cclass, int level) {
-    if (_spellPerDay.containsKey(cclass)) {
-      if (_spellPerDay[cclass].containsKey(level)) {
-        return _spellPerDay[cclass][level]
-      }
-    }
-  }*/
 }
-
-
-
-/*
-extension GetSpellPerDay on CharacterClass {
-  List<int> getListSpellPerDay(String cclass, int level) {
-    switch (cclass) {
-      case 'Bar':
-        switch (level) {
-          case 1:
-            return [1, 0, 0, 0, 0, 0, 0, 0, 0];
-          case 2:
-            return [2, 0, 0, 0, 0, 0, 0, 0, 0];
-          case 3:
-            return [3, 0, 0, 0, 0, 0, 0, 0, 0];
-          case 4:
-            return [3, 1, 0, 0, 0, 0, 0, 0, 0];
-          case 5:
-            return [4, 2, 0, 0, 0, 0, 0, 0, 0];
-          case 6:
-            return [4, 3, 0, 0, 0, 0, 0, 0, 0];
-          case 7:
-            return [4, 3, 1, 0, 0, 0, 0, 0, 0];
-          case 8:
-            return [4, 4, 2, 0, 0, 0, 0, 0, 0];
-          case 9:
-            return [5, 4, 3, 0, 0, 0, 0, 0, 0];
-          case 10:
-            return [5, 4, 3, 1, 0, 0, 0, 0, 0];
-          case 11:
-            return [5, 4, 4, 2, 0, 0, 0, 0, 0];
-          case 12:
-            return [5, 5, 4, 3, 0, 0, 0, 0, 0];
-          case 13:
-            return [5, 5, 4, 3, 1, 0, 0, 0, 0];
-          case 14:
-            return [5, 5, 4, 4, 2, 0, 0, 0, 0];
-          case 15:
-            return [5, 5, 5, 4, 3, 0, 0, 0, 0];
-          case 16:
-            return [5, 5, 5, 4, 3, 1, 0, 0, 0];
-          case 17:
-            return [5, 5, 5, 4, 4, 2, 0, 0, 0];
-          case 18:
-            return [5, 5, 5, 5, 4, 3, 0, 0, 0];
-          case 19:
-            return [5, 5, 5, 5, 5, 4, 0, 0, 0];
-          case 20:
-            return [5, 5, 5, 5, 5, 5, 0, 0, 0];
-          default:
-            return [];
-        }
-      default:
-        return [];
-    }
-  }
-}*/
