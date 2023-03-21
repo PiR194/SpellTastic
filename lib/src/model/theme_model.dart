@@ -6,8 +6,8 @@ class ThemeModel extends ChangeNotifier {
     textTheme: const TextTheme(
       bodyLarge: TextStyle(fontSize: 16),
       bodyMedium: TextStyle(fontSize: 12),
-      titleLarge: TextStyle(
-          fontSize: 20, fontWeight: FontWeight.bold, fontFamily: 'Anaktoria'),
+      titleLarge: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, fontFamily: 'Anaktoria'),
+      titleSmall: TextStyle(fontSize: 20, color: Colors.grey, fontStyle: FontStyle.italic),
     ),
   );
 
@@ -16,8 +16,8 @@ class ThemeModel extends ChangeNotifier {
     textTheme: const TextTheme(
       bodyLarge: TextStyle(fontSize: 28),
       bodyMedium: TextStyle(fontSize: 24),
-      titleLarge: TextStyle(
-          fontSize: 32, fontWeight: FontWeight.bold, fontFamily: 'Anaktoria'),
+      titleLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, fontFamily: 'Anaktoria'),
+      titleSmall: TextStyle(fontSize: 26, color: Colors.grey, fontStyle: FontStyle.italic),
     ),
   );
 
@@ -26,8 +26,8 @@ class ThemeModel extends ChangeNotifier {
     textTheme: const TextTheme(
       bodyLarge: TextStyle(fontSize: 40),
       bodyMedium: TextStyle(fontSize: 36),
-      titleLarge: TextStyle(
-          fontSize: 44, fontWeight: FontWeight.bold, fontFamily: 'Anaktoria'),
+      titleLarge: TextStyle(fontSize: 44, fontWeight: FontWeight.bold, fontFamily: 'Anaktoria'),
+      titleSmall: TextStyle(fontSize: 32, color: Colors.grey, fontStyle: FontStyle.italic),
     ),
   );
 
