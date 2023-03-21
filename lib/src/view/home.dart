@@ -2,6 +2,7 @@ import 'package:code/src/model/account_manager.dart';
 import 'package:code/src/view/widgets/addCharacterWidget.dart';
 import 'package:code/src/view/widgets/displayAllSpellButtonWidget.dart';
 import 'package:flutter/material.dart';
+import '../data/json_account_strategy.dart';
 import 'widgets/characterButtonWidget.dart';
 
 class Home extends StatelessWidget {

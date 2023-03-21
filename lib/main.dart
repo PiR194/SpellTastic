@@ -9,6 +9,7 @@ import 'package:code/src/view/set_display.dart';
 import 'package:code/src/view/settings.dart';
 import 'package:code/src/view/spell_list_page.dart';
 import 'package:code/src/view/widgets/characterFormWidget.dart';
+import 'package:code/src/view/widgets/characterLoaderWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:provider/provider.dart';
@@ -17,23 +18,29 @@ void main() async {
   setUrlStrategy(PathUrlStrategy());
 
   // load characters from json
-
   // we create the account manager and give him the list of spells
   AccountManager accountManager = AccountManager();
-  accountManager.characters = []; //characters;
+  JsonAccountStrategy accountStrategy = JsonAccountStrategy();
+  CharacterLoader characterLoader =
+      CharacterLoader(accountManager, accountStrategy);
+
+  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsBinding.instance.addObserver(characterLoader);
 
   runApp(
     ChangeNotifierProvider<ThemeModel>(
       create: (_) => ThemeModel(),
-      child: const MyApp(), // maybe pass account manager as parameter ?
+      child: MyApp(
+          accountManager:
+              accountManager), // maybe pass account manager as parameter ?
     ),
   );
-  JsonAccountStrategy accountStrategy = JsonAccountStrategy();
-  List<Character> characters = await accountStrategy.loadCharacters();
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  final AccountManager accountManager;
+
+  const MyApp({super.key, required this.accountManager});
 
   // This widget is the root of your application.
   @override
@@ -76,9 +83,11 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  // List<Character> characters = await accountStrategy.loadCharacters();
+  // accountManager.characters = characters;
 
   void _incrementCounter() {
-    setState(() {
+    setState(() async {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
       // so that the display can reflect the updated values. If we changed
