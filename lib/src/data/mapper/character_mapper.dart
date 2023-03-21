@@ -11,11 +11,11 @@ class CharacterMapper {
     char.sets.map((item) => jsonSets.add(SpellSetMapper.toJson(item))).toList();
 
     List jsonKnown = [];
-    char.knownSpells.map((spell) => jsonKnown.add(spell.id)).toList();
+    char.knownSpells.spells.map((spell) => jsonKnown.add(spell.id)).toList();
 
     Map<String, dynamic> map = {
       'name': char.name,
-      'class': char.cclass.name,
+      'class': char.characterClass.name,
       'level': char.level,
       'sets': jsonSets,
       'knownSpells': jsonKnown
@@ -26,7 +26,7 @@ class CharacterMapper {
 
   static Future<Character> fromJson(dynamic json, IDataStrategy data) async {
     List<SpellSet> listSet = [];
-    List<Spell> listSpell = [];
+    SpellSet listSpell = SpellSet('Known Spells');
 
     for (var s in json['sets']) {
       String setName = s['name'];
@@ -41,7 +41,7 @@ class CharacterMapper {
 
     for (var spellIndex in json['knownSpells']) {
       Spell spell = await data.getSpellById(spellIndex);
-      listSpell.add(spell);
+      listSpell.spells.add(spell);
     }
 
     CharacterClass characterClass = CharacterClass.values.firstWhere((e) =>

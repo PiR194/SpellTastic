@@ -2,6 +2,8 @@ import 'package:code/src/model/character_class.dart';
 import 'package:code/src/model/character.dart';
 import 'package:flutter/material.dart';
 
+import '../../model/account_manager.dart';
+
 class CharacterButtonWidget extends StatelessWidget {
   final Character character;
 
@@ -21,14 +23,16 @@ class CharacterButtonWidget extends StatelessWidget {
       height: screenHeight / 8,
       child: ElevatedButton(
         onPressed: () {
-          Navigator.pushNamed(context, '/characterdetails');
+          AccountManager().selectCharacter(character);
+          Navigator.pushNamed(context, '/characterdetails',
+              arguments: character);
         },
         style: ElevatedButton.styleFrom(
-          primary: accentColor,
+          backgroundColor: accentColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

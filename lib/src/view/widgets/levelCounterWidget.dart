@@ -1,25 +1,31 @@
 import 'package:flutter/material.dart';
 
 class LevelCounterWidget extends StatefulWidget {
+  final characterLevel;
+
+  const LevelCounterWidget({super.key, required this.characterLevel});
+
   @override
-  _LevelCounter createState() => _LevelCounter();
+  _LevelCounter createState() => _LevelCounter(characterLevel);
 }
 
 class _LevelCounter extends State<LevelCounterWidget> {
-  int _count = 1;
+  late int count;
+
+  _LevelCounter(this.count);
 
   void _incrementCount() {
     setState(() {
-      if (_count < 20) {
-        _count++;
+      if (count < 20) {
+        count++;
       }
     });
   }
 
   void _decrementCount() {
     setState(() {
-      if (_count > 1) {
-        _count--;
+      if (count > 1) {
+        count--;
       }
     });
   }
@@ -35,7 +41,7 @@ class _LevelCounter extends State<LevelCounterWidget> {
           onPressed: _decrementCount,
         ),
         Text(
-          '$_count',
+          '$count',
           style: TextStyle(
             fontSize: theme.textTheme.bodyMedium!.fontSize,
             fontFamily: theme.textTheme.bodyMedium!.fontFamily,

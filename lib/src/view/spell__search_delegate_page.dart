@@ -1,5 +1,5 @@
 import '../model/spell.dart';
-import '../view/widgets/spell_list_widget.dart';
+import 'widgets/spellSearchList_widget.dart';
 import 'package:flutter/material.dart';
 
 class SpellSearchDelegate extends SearchDelegate<Map<String, dynamic>> {
@@ -29,21 +29,28 @@ class SpellSearchDelegate extends SearchDelegate<Map<String, dynamic>> {
     );
   }
 
+  //* Affichage de la recherche
+
+
   @override
   Widget buildResults(BuildContext context) {
-    final filteredSpells = spells
-        .where(
-            (spell) => spell.name.toLowerCase().contains(query.toLowerCase()))
+    var filteredSpells = spells
+      .where(
+            (spell) => spell.name.toLowerCase().contains(query.toLowerCase())
+                      || spell.description.toLowerCase().contains(query.toLowerCase()) //* la regex retire la ponctuation
+        )
         .toList();
-    return SpellList(spells: filteredSpells);
+    return SpellSearchList(spells: filteredSpells, query : query);
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
     final filteredSpells = spells
         .where(
-            (spell) => spell.name.toLowerCase().contains(query.toLowerCase()))
+            (spell) => spell.name.toLowerCase().contains(query.toLowerCase())
+                      || spell.description.toLowerCase().contains(query.toLowerCase())
+        )
         .toList();
-    return SpellList(spells: filteredSpells);
+    return SpellSearchList(spells: filteredSpells, query : query);
   }
 }

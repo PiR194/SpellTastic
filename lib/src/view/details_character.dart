@@ -1,9 +1,22 @@
+import 'package:code/src/model/character.dart';
+import 'package:code/src/view/widgets/spell_display_widget.dart';
+
+import '../model/account_manager.dart';
 import 'widgets/levelCounterWidget.dart';
 import 'widgets/displaySetButtonWidget.dart';
 import 'package:flutter/material.dart';
 import 'widgets/createSetButtonWidget.dart';
 
-class DetailsCharacter extends StatelessWidget {
+class DetailsCharacter extends StatefulWidget {
+  const DetailsCharacter({Key? key}) : super(key: key);
+
+  @override
+  _DetailsCharacterState createState() => _DetailsCharacterState();
+}
+
+class _DetailsCharacterState extends State<DetailsCharacter> {
+  Character character = AccountManager().selectedCharacter;
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -15,10 +28,17 @@ class DetailsCharacter extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
 
+    void _addSet() {
+      // Update the list of sets and trigger a rebuild of the widget tree
+      setState(() {
+        character = AccountManager().selectedCharacter;
+      });
+    }
+
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: AppBar(
-        title: Text('Profil'),
+        title: const Text('Profil'),
         backgroundColor: accentColor,
       ),
       body: Padding(
@@ -35,13 +55,13 @@ class DetailsCharacter extends StatelessWidget {
                 alignment: WrapAlignment.center,
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
-                  CircleAvatar(
+                  const CircleAvatar(
                     radius: 80,
                     backgroundImage:
                         AssetImage('assets/class_icons/Goblins_Fight.png'),
                   ),
                   Text(
-                    'LOU LE GOBELIN',
+                    character.name,
                     style: TextStyle(
                       fontSize: theme.textTheme.titleLarge!.fontSize,
                       fontFamily: theme.textTheme.titleLarge!.fontFamily,
@@ -50,7 +70,7 @@ class DetailsCharacter extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'CLASS : ' + 'Gobelin',
+                    'Class : ${character.characterClass.toString().split('.').last}',
                     style: TextStyle(
                       fontSize: theme.textTheme.bodyLarge!.fontSize,
                       fontFamily: theme.textTheme.bodyLarge!.fontFamily,
@@ -70,13 +90,13 @@ class DetailsCharacter extends StatelessWidget {
                         alignment: WrapAlignment.center,
                         children: [
                           Text(
-                            'LEVEL :',
+                            'Level :',
                             style: TextStyle(
                               fontSize: theme.textTheme.bodyLarge!.fontSize,
                               fontFamily: theme.textTheme.bodyLarge!.fontFamily,
                             ),
                           ),
-                          LevelCounterWidget(),
+                          LevelCounterWidget(characterLevel: character.level),
                         ],
                       ),
                     ],
@@ -89,13 +109,28 @@ class DetailsCharacter extends StatelessWidget {
                 alignment: WrapAlignment.center,
                 children: [
                   Center(
-                    child: CreateSetButton(),
+                    child: CreateSetButton(
+                      onSetAdded: _addSet,
+                    ),
                   ),
-                  DisplaySetButton(),
-                  DisplaySetButton(),
-                  DisplaySetButton(),
+                  ...character.sets.map(
+                    (set) => DisplaySetButton(
+                      spellSet: set,
+                    ),
+                  ),
                 ],
-              )
+              ),
+
+              Wrap(
+                  spacing: screenWidth * 0.05,
+                  runSpacing: screenHeight * 0.02,
+                  alignment: WrapAlignment.center,
+                  children: [
+                    Center(
+                      child: SpellDisplayWidget(
+                          spellSet: character.knownSpells, isReadonly: false),
+                    ),
+                  ]),
             ],
           ),
         ),

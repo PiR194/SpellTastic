@@ -7,19 +7,17 @@ import 'package:flutter/material.dart';
 import '../data/dbhelper.dart';
 import 'dart:io' show Platform;
 
-//TODO ajouter d'autres filtres sur les sorts ?
-
 import '../model/character.dart';
 
 List<Spell> spells_list = [];
 
-//Option de tri
+//* Option de tri
 enum OrderOption {
   asc,
   desc,
   Lvlasc,
   Lvldesc,
-  //_default,
+  ////_default,
 }
 
 OrderOption currentOrder = OrderOption.asc;
@@ -43,7 +41,7 @@ class _SpellListPage extends State<SpellListPage> {
     getData();
   }
 
-  //Chargement des données
+  //* Chargement des données
   void getData() async {
     List<Spell> spells;
     if (Platform.isAndroid) {
@@ -54,10 +52,11 @@ class _SpellListPage extends State<SpellListPage> {
       var data = SQLiteDataStrategy();
       spells = await data.loadSpells();
     }
-    //print("size:  ${spells.length}");
+    ////print("size:  ${spells.length}");
     setState(() {
       spells_list = spells
-          .where((spell) => spell.GetLevelByClass(character.cclass) != null)
+          .where((spell) =>
+              spell.GetLevelByClass(character.characterClass) != null)
           .toList();
     });
   }
@@ -73,19 +72,19 @@ class _SpellListPage extends State<SpellListPage> {
           IconButton(
             icon: const Icon(Icons.search),
             onPressed: () {
-              //Appel de la fonction de recherche
+              //* Appel de la fonction de recherche
               showSearch(
                   context: context, delegate: SpellSearchDelegate(spells_list));
             },
           ),
           PopupMenuButton<OrderOption>(
-            //Menu d'option de tri
+            //* Menu d'option de tri
             onSelected: (value) {
               setState(() {
                 switch (value) {
                   case OrderOption.asc:
                     {
-                      //tri ascendant
+                      //* tri ascendant
                       spells_list.sort((spell1, spell2) =>
                           spell1.name.compareTo(spell2.name));
                     }
@@ -93,7 +92,7 @@ class _SpellListPage extends State<SpellListPage> {
 
                   case OrderOption.desc:
                     {
-                      //tri descendant
+                      //* tri descendant
                       spells_list.sort((spell1, spell2) =>
                           spell2.name.compareTo(spell1.name));
                     }
@@ -101,23 +100,25 @@ class _SpellListPage extends State<SpellListPage> {
 
                   case OrderOption.Lvlasc:
                     {
-                      //tri par niveaux ascendant
+                      //* tri par niveaux ascendant
                       spells_list.sort((spell1, spell2) =>
-                          (spell1.GetLevelByClass(character.cclass) ?? 0)
-                              .compareTo(
-                                  spell2.GetLevelByClass(character.cclass) ??
-                                      0));
+                          (spell1.GetLevelByClass(character.characterClass) ??
+                                  0)
+                              .compareTo(spell2.GetLevelByClass(
+                                      character.characterClass) ??
+                                  0));
                     }
                     break;
 
                   case OrderOption.Lvldesc:
                     {
-                      //tri par niveaux descendant
+                      //* tri par niveaux descendant
                       spells_list.sort((spell1, spell2) =>
-                          (spell2.GetLevelByClass(character.cclass) ?? 0)
-                              .compareTo(
-                                  spell1.GetLevelByClass(character.cclass) ??
-                                      0));
+                          (spell2.GetLevelByClass(character.characterClass) ??
+                                  0)
+                              .compareTo(spell1.GetLevelByClass(
+                                      character.characterClass) ??
+                                  0));
                     }
                     break;
                 }
@@ -125,7 +126,7 @@ class _SpellListPage extends State<SpellListPage> {
             },
             icon: const Icon(Icons.filter_alt),
             itemBuilder: (context) => [
-              //Option du menu de tri
+              //* Option du menu de tri
               const PopupMenuItem(
                 value: OrderOption.asc,
                 child: Text('Croissant'),
@@ -146,33 +147,6 @@ class _SpellListPage extends State<SpellListPage> {
           ),
         ],
       ),
-      // body: ListView.builder(
-      //   itemCount: spells_list.length,
-      //   itemBuilder: (BuildContext context, int index) {
-      //     return ListTile(
-      //       title: Text('${spells_list[index].name} (niveau ${spells_list[index].GetLevelByClass(character.cclass)})'),
-      //       subtitle: Text('${spells_list[index].description.substring(0, 20)}...'),
-      //     );
-      //   },
-      // )
-
-      // body:ListView.builder(
-      //   itemCount: spells_list.length,
-      //   itemBuilder: (BuildContext context, int index) {
-      //     // Déterminer le nombre de caractères à afficher
-      //     final maxChars = MediaQuery.of(context).size.width.toInt() -
-      //         '${spells_list[index].name} (niveau ${spells_list[index].GetLevelByClass(character.cclass)}) ...'.length;
-      //     // Extraire les premiers caractères de la description
-      //     final desc = spells_list[index].description.substring(0, maxChars);
-      //     // Ajouter "..." à la fin si la description est plus longue que maxChars
-      //     final displayDesc = spells_list[index].description.length > maxChars ? '$desc...' : desc;
-      //     return ListTile(
-      //       title: Text('${spells_list[index].name} (niveau ${spells_list[index].GetLevelByClass(character.cclass)})'),
-      //       subtitle: Text(displayDesc),
-      //     );
-      //   },
-      // )
-
       body: ListView.builder(
         itemExtent: 50,
         cacheExtent: 2,
@@ -180,7 +154,9 @@ class _SpellListPage extends State<SpellListPage> {
         itemBuilder: (context, index) {
           //Coloration des lignes de la liste
           Color backgroundColor = Colors.white;
-          if (spells_list[index].GetLevelByClass(character.cclass)?.isEven ??
+          if (spells_list[index]
+                  .GetLevelByClass(character.characterClass)
+                  ?.isEven ??
               false) {
             if (currentOrder == OrderOption.Lvlasc ||
                 currentOrder == OrderOption.Lvldesc) {
@@ -191,6 +167,10 @@ class _SpellListPage extends State<SpellListPage> {
             //Structure de chaque ligne (=> ListTile)
             tileColor: backgroundColor,
             title: RichText(
+              //? Version avec le maximum description puis ...
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+
               text: TextSpan(
                   style: TextStyle(
                     color: Colors.black,
@@ -199,22 +179,20 @@ class _SpellListPage extends State<SpellListPage> {
                         Theme.of(context).textTheme.titleLarge!.fontFamily,
                   ),
                   children: <TextSpan>[
+                    //? Version avec le maximum description puis ...
                     TextSpan(
                       text:
-                          "${spells_list[index].name} ${spells_list[index].GetLevelByClass(character.cclass)}",
+                          "${spells_list[index].name} ${spells_list[index].GetLevelByClass(character.characterClass)}",
                     ),
-                    //? Option avec les 7 premiers mots
                     TextSpan(
-                        text:
-                            '     ${spells_list[index].description.split(' ').take(7).join(' ')}...',
+                        text: '     ${spells_list[index].description}',
                         style: Theme.of(context).textTheme.titleSmall)
+
+                    //? Option avec les 7 premiers mots
+                    //TextSpan(text:'     ${spells_list[index].description.split(' ').take(7).join(' ')}...', style: Theme.of(context).textTheme.titleSmall)
 
                     //? Option avec les 35 premiers caractères ?
                     //TextSpan(text:'${spells_list[index].description.substring(0,35)}...', style: Theme.of(context).textTheme.titleSmall)
-
-                    // TextSpan(text:'\t ${spells_list[index].description.substring(0,
-                    //   MediaQuery.of(context).size.width.toInt() - '${spells_list[index].name} ${spells_list[index].GetLevelByClass(character.cclass)}) ...'.length
-                    // )}...', style: Theme.of(context).textTheme.titleSmall)
                   ]),
             ),
             onTap: () {

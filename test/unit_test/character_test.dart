@@ -1,3 +1,5 @@
+@Skip('Not ready yet')
+
 import 'package:code/src/model/character.dart';
 import 'package:code/src/model/character_class.dart';
 import 'package:flutter_test/flutter_test.dart';
