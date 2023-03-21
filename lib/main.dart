@@ -19,28 +19,17 @@ void main() async {
 
   // load characters from json
   // we create the account manager and give him the list of spells
-  AccountManager accountManager = AccountManager();
-  JsonAccountStrategy accountStrategy = JsonAccountStrategy();
-  CharacterLoader characterLoader =
-      CharacterLoader(accountManager, accountStrategy);
-
-  WidgetsFlutterBinding.ensureInitialized();
-  WidgetsBinding.instance.addObserver(characterLoader);
 
   runApp(
     ChangeNotifierProvider<ThemeModel>(
       create: (_) => ThemeModel(),
-      child: MyApp(
-          accountManager:
-              accountManager), // maybe pass account manager as parameter ?
+      child: const MyApp(), // maybe pass account manager as parameter ?
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  final AccountManager accountManager;
-
-  const MyApp({super.key, required this.accountManager});
+  const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override

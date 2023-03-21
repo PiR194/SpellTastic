@@ -3,9 +3,27 @@ import 'package:code/src/view/widgets/addCharacterWidget.dart';
 import 'package:code/src/view/widgets/displayAllSpellButtonWidget.dart';
 import 'package:flutter/material.dart';
 import '../data/json_account_strategy.dart';
+import '../model/character.dart';
 import 'widgets/characterButtonWidget.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  @override
+  void initState() {
+    super.initState();
+    loadCharacters();
+  }
+
+  Future<void> loadCharacters() async {
+    final JsonAccountStrategy accountStrategy = JsonAccountStrategy();
+    AccountManager().characters = await accountStrategy.loadCharacters();
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -58,11 +76,11 @@ class Home extends StatelessWidget {
                 alignment: WrapAlignment.center,
                 children: [
                   AddCharacterWidget(),
-                  ...accountManager.characters.map(
-                    (character) => CharacterButtonWidget(
-                      character: character,
-                    ),
-                  ),
+                  ...AccountManager().characters.map(
+                        (character) => CharacterButtonWidget(
+                          character: character,
+                        ),
+                      ),
                   Container(
                     width: screenWidth,
                     child: DisplayAllSpellButtonWidget(),
