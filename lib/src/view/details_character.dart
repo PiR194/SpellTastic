@@ -1,15 +1,21 @@
 import 'package:code/src/model/character.dart';
 import 'package:code/src/view/widgets/spell_display_widget.dart';
 
+import '../model/account_manager.dart';
 import 'widgets/levelCounterWidget.dart';
 import 'widgets/displaySetButtonWidget.dart';
 import 'package:flutter/material.dart';
 import 'widgets/createSetButtonWidget.dart';
 
-class DetailsCharacter extends StatelessWidget {
-  final Character character;
+class DetailsCharacter extends StatefulWidget {
+  const DetailsCharacter({Key? key}) : super(key: key);
 
-  const DetailsCharacter({super.key, required this.character});
+  @override
+  _DetailsCharacterState createState() => _DetailsCharacterState();
+}
+
+class _DetailsCharacterState extends State<DetailsCharacter> {
+  Character character = AccountManager().selectedCharacter;
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +28,17 @@ class DetailsCharacter extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
 
+    void _addSet() {
+      // Update the list of sets and trigger a rebuild of the widget tree
+      setState(() {
+        character = AccountManager().selectedCharacter;
+      });
+    }
+
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: AppBar(
-        title: Text('Profil'),
+        title: const Text('Profil'),
         backgroundColor: accentColor,
       ),
       body: Padding(
@@ -96,7 +109,9 @@ class DetailsCharacter extends StatelessWidget {
                 alignment: WrapAlignment.center,
                 children: [
                   Center(
-                    child: CreateSetButton(),
+                    child: CreateSetButton(
+                      onSetAdded: _addSet,
+                    ),
                   ),
                   ...character.sets.map(
                     (set) => DisplaySetButton(
