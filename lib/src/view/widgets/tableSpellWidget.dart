@@ -14,7 +14,7 @@ class TableWidget extends StatelessWidget {
       dataRows.add( DataRow(cells: [
             DataCell(
               Text(
-                entry.key.toString()
+                entry.key.toString().split(".").last
               ),
             ),
           DataCell(

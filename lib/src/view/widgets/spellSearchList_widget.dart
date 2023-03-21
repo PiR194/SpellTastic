@@ -21,23 +21,31 @@ class SpellSearchList extends StatelessWidget {
         //* affichage du mot dans la description lors de la recherche 
         List<String> words = spells[index].description.replaceAll(RegExp(r'[^\w\s]+'), ' ').split(" ");
         int jndex = words.indexOf(query);
+        int occur = (words.where((e) => e == query)).length; //* comptage du nombre d'occurence
         String twoPreviousWord = "";
         String twoNextWord = "";
         String displayQuery;
         
-        //* Assignation mots premiers et suivants.
-        if (jndex != -1 && query.trim().isNotEmpty) {
-          twoPreviousWord = jndex > 2 ? "${words[jndex-2]}  ${words[jndex-1]}" : (jndex == 1 ? words[jndex-1] : "");
-          twoNextWord = jndex < words.length-3 && jndex != words.length-2? "${words[jndex+1]}  ${words[jndex+2]}" : (jndex == words.length-2 ? words[jndex+1] : "");
-          twoPreviousWord = "...$twoPreviousWord";
-          twoNextWord = "$twoNextWord...";
+
+        if (occur < 2){
+          //* Assignation mots premiers et suivants.
+          if (jndex != -1 && query.trim().isNotEmpty) {
+            twoPreviousWord = jndex > 2 ? "${words[jndex-2]}  ${words[jndex-1]}" : (jndex == 1 ? words[jndex-1] : "");
+            twoNextWord = jndex < words.length-3 && jndex != words.length-2? "${words[jndex+1]}  ${words[jndex+2]}" : (jndex == words.length-2 ? words[jndex+1] : "");
+            twoPreviousWord = "...$twoPreviousWord";
+            twoNextWord = "$twoNextWord...";
+          }
+          twoNextWord == "" && twoPreviousWord == "" ? displayQuery = "($query)" : displayQuery = query;
         }
-        twoNextWord == "" && twoPreviousWord == "" ? displayQuery = "" : displayQuery = query;
+        else {
+          query=="" ? displayQuery = query : displayQuery = "(${occur} occurences)";
+        }
+        
         
         //TODO
         //? essayer de trier pour mettre en valeur les recherches sur noms plutot que par description.
-        //? essayer de voir pour les concaténations de mot
-        //! comment faire pour les cas ou le mot est présent plusieurs fois ?
+        /////? essayer de voir pour les concaténations de mot 
+        /////! comment faire pour les cas ou le mot est présent plusieurs fois ?
 
         return ListTile(
           title: RichText(
