@@ -1,15 +1,21 @@
 import 'package:code/src/model/spell.dart';
 import 'package:code/src/model/spell_set.dart';
 
+import 'character_class.dart';
+
 class SpellSetManager {
-  static List<SpellSet> sortByLevel(SpellSet fullSet) {
+  static List<SpellSet> sortByLevel(
+      SpellSet fullSet, CharacterClass charClass) {
     List<SpellSet> setsPerLevel = [];
 
     Map<int, List<Spell>> spellsByLevel = {};
     fullSet.spells.forEach((spell) {
-      spell.level.values.forEach((level) {
-        spellsByLevel.putIfAbsent(level, () => []).add(spell);
-      });
+      int? level = spell.level[charClass];
+      if (level != null) {
+        if (spellsByLevel[level]?.contains(spell) != true) {
+          spellsByLevel.putIfAbsent(level, () => []).add(spell);
+        }
+      }
     });
 
     spellsByLevel.forEach((level, spells) {

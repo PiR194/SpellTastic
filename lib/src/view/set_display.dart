@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../model/account_manager.dart';
 import '../model/spellSetManager.dart';
 import '../model/spell_set.dart';
 import '../model/spell_set_check_use.dart';
@@ -24,7 +25,8 @@ class _SetDisplayState extends State<SetDisplay> {
 
   _SetDisplayState(SpellSet fullSet) {
     setName = fullSet.name;
-    selectedSpellSet = SpellSetManager.sortByLevel(fullSet);
+    selectedSpellSet = SpellSetManager.sortByLevel(
+        fullSet, AccountManager().selectedCharacter.characterClass);
   }
 
   @override

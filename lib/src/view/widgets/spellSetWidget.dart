@@ -73,29 +73,28 @@ class _SpellSetWidgetState extends State<SpellSetWidget> {
         automaticallyImplyLeading: false,
         backgroundColor: primaryColor,
       ),
-      body: ListView.builder(
+      body: ListView(
         controller: _scrollController,
-        itemExtent: 50,
         cacheExtent: 2,
-        itemCount: 30,
-        itemBuilder: (context, index) {
-          return CheckboxListTile(
-            title: Text(
-              "spell",
-              style: TextStyle(
-                fontSize: theme.textTheme.bodyMedium!.fontSize,
-                fontFamily: theme.textTheme.bodyMedium!.fontFamily,
+        children: [
+          for (var spell in currentSet.spells)
+            CheckboxListTile(
+              title: Text(
+                spell.name,
+                style: TextStyle(
+                  fontSize: theme.textTheme.bodyMedium!.fontSize,
+                  fontFamily: theme.textTheme.bodyMedium!.fontFamily,
+                ),
               ),
+              value: _isCheckedList[spell.id],
+              onChanged: (value) {
+                setState(() {
+                  _isCheckedList[spell.id] = value!;
+                  widget.spellSetCheckUse.isCheckedList = _isCheckedList;
+                });
+              },
             ),
-            value: _isCheckedList[index],
-            onChanged: (value) {
-              setState(() {
-                _isCheckedList[index] = value!;
-                widget.spellSetCheckUse.isCheckedList = _isCheckedList;
-              });
-            },
-          );
-        },
+        ],
       ),
     );
   }
