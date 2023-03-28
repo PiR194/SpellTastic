@@ -26,4 +26,12 @@ class SpellSetManager {
 
     return setsPerLevel;
   }
+
+  static Map<int, bool> isCheckedMapCreator(List<Spell> spellList) {
+    Map<int, bool> map = {};
+    for (var item in spellList) {
+      map[item.id] = false;
+    }
+    return map;
+  }
 }

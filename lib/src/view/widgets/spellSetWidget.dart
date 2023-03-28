@@ -75,7 +75,7 @@ class _SpellSetWidgetState extends State<SpellSetWidget> {
       ),
       body: ListView(
         controller: _scrollController,
-        cacheExtent: 50,
+        cacheExtent: 2,
         children: [
           for (var spell in currentSet.spells)
             CheckboxListTile(
