@@ -4,7 +4,6 @@
 */
 
 import 'dart:ffi';
-
 import 'package:code/src/model/spell_set.dart';
 import 'package:code/src/view/widgets/add_spells_widget.dart';
 import 'package:flutter/material.dart';

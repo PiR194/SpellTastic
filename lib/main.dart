@@ -46,10 +46,6 @@ class MyApp extends StatelessWidget {
             character: Character("dummy", CharacterClass.wizard, 10)),
         '/settings': (context) => SettingsPage(),
         //add all spells by default
-        '/spelllist': (context) => DynamicSpellListPage(
-            spellSet: AccountManager().selectedCharacter.knownSpells,
-            characterClass: AccountManager().selectedCharacter.characterClass,
-            isReadonly: true),
       },
       theme: Provider.of<ThemeModel>(context).currentTheme,
     );

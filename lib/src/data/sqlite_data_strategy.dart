@@ -84,7 +84,6 @@ class SQLiteDataStrategy implements IDataStrategy {
           : tmpTarget = '';
 
       var tmpArea;
-      print(list[i]['area']);
       (list[i]['area'] != null && list[i]['area'] != Null)
           ? tmpArea = list[i]['area']
           : tmpArea = '';
