@@ -91,6 +91,23 @@ class Spell {
     }
   }
 
+  int GetMedianClassLevel() {
+    int max = 0;
+    int min = 0;
+    bool flag = false;
+    _level.forEach((key, value) {
+      if (!flag){ //* premiere itération
+        max = value;
+        min = value;
+        flag = true;
+      }
+
+      if(max < value) max = value;
+      if(min > value) min = value;
+    });
+    return ((max + min)/2).round();
+  }
+
   Map<CharacterClass, int> GetMapClassLevel() {
     return (_level);
   }
