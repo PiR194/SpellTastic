@@ -62,8 +62,8 @@ class _HomeState extends State<Home> {
             },
             style: ElevatedButton.styleFrom(
               shape: const CircleBorder(),
+              backgroundColor: accentColor,
               padding: const EdgeInsets.all(16),
-              primary: accentColor,
             ),
             child: const Icon(Icons.settings),
           ),

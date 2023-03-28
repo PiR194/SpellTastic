@@ -13,6 +13,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:provider/provider.dart';
 
+import 'src/model/spell_set.dart';
+
 void main() async {
   setUrlStrategy(PathUrlStrategy());
 
@@ -38,7 +40,8 @@ class MyApp extends StatelessWidget {
         '/': (context) => Home(),
         '/characterform': (context) => CharacterFormWidget(),
         '/characterdetails': (context) => DetailsCharacter(),
-        '/setdisplay': (context) => SetDisplay(),
+        '/setdisplay': (context) =>
+            SetDisplay(selectedSpellSet: SpellSet("deafault")),
         '/displayallspell': (context) => SpellListPage(
             character: Character("dummy", CharacterClass.wizard, 10)),
         '/settings': (context) => SettingsPage(),

@@ -48,6 +48,8 @@ class Spell {
   String get school => _school;
   set school(String school) => _school = school;
 
+  Map<CharacterClass, int> get level => _level;
+
   String get castingTime => _castingTime;
   set castingTime(String castingTime) => _castingTime = castingTime;
 

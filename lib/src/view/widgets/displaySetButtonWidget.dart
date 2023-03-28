@@ -4,6 +4,8 @@ import '../../model/account_manager.dart';
 import '../home.dart';
 import 'package:flutter/material.dart';
 
+import '../set_display.dart';
+
 class DisplaySetButton extends StatelessWidget {
   final SpellSet spellSet;
   final Function onSetUpdate;
@@ -26,7 +28,7 @@ class DisplaySetButton extends StatelessWidget {
       width: screenWidth / 1.02,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          primary: accentColor,
+          backgroundColor: accentColor,
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30.0),
@@ -43,7 +45,12 @@ class DisplaySetButton extends StatelessWidget {
           ),
         ),
         onPressed: () {
-          Navigator.pushNamed(context, '/setdisplay');
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => SetDisplay(selectedSpellSet: spellSet),
+            ),
+          );
         },
         child: Wrap(
           spacing: screenWidth * 0.05,

@@ -1,18 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../model/spell_set.dart';
 import '../model/spell_set_check_use.dart';
 import 'widgets/spellSetWidget.dart';
 import 'home.dart';
 
 class SetDisplay extends StatefulWidget {
+  final SpellSet selectedSpellSet;
+
+  const SetDisplay({super.key, required this.selectedSpellSet});
+
   @override
-  _SetDisplayState createState() => _SetDisplayState();
+  _SetDisplayState createState() => _SetDisplayState(selectedSpellSet);
 }
 
 class _SetDisplayState extends State<SetDisplay> {
   final PageController _pageController = PageController();
   int _currentPage = 0;
   SpellSetCheckUse spellSetCheckUse = SpellSetCheckUse();
+  SpellSet selectedSpellSet;
+
+  _SetDisplayState(this.selectedSpellSet);
 
   @override
   void dispose() {
@@ -35,8 +43,9 @@ class _SetDisplayState extends State<SetDisplay> {
 
     return Scaffold(
       appBar: AppBar(
+        /* ** SET NAME ** */
         title: Text(
-          'Nom du set',
+          selectedSpellSet.name,
           style: TextStyle(
             fontSize: theme.textTheme.bodyLarge!.fontSize,
             fontFamily: theme.textTheme.bodyLarge!.fontFamily,
