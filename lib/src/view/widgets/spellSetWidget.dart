@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 
 import '../../model/spellSetManager.dart';
 import '../../model/spell_set_check_use.dart';
+import '../spell_detail_page.dart';
 
 class SpellSetWidget extends StatefulWidget {
   Map<int, bool> isCheckedList;
@@ -81,10 +82,20 @@ class _SpellSetWidgetState extends State<SpellSetWidget> {
         cacheExtent: 2,
         children: [
           for (var spell in currentSet.spells)
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: CheckboxListTile(
-                title: Text(spell.name),
+             Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        child: InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => SpellDetailsPage(spell: spell),
+              ),
+            );
+          },
+          child: Row(
+            children: [
+              Checkbox(
                 value: widget.isCheckedList[spell.id] ?? false,
                 onChanged: (value) {
                   setState(() {
@@ -92,7 +103,14 @@ class _SpellSetWidgetState extends State<SpellSetWidget> {
                   });
                 },
               ),
-            ),
+              SizedBox(width: 16.0),
+              Expanded(
+                child: Text(spell.name),
+              ),
+            ],
+          ),
+        ),
+      ),
         ],
       ),
     );
