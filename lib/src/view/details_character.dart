@@ -1,6 +1,7 @@
 import 'package:code/src/model/character.dart';
 import 'package:code/src/view/widgets/spell_display_widget.dart';
 
+import '../data/json_account_strategy.dart';
 import '../model/account_manager.dart';
 import 'widgets/levelCounterWidget.dart';
 import 'widgets/displaySetButtonWidget.dart';
@@ -32,6 +33,7 @@ class _DetailsCharacterState extends State<DetailsCharacter> {
       // Update the list of sets and trigger a rebuild of the widget tree
       setState(() {
         character = AccountManager().selectedCharacter;
+        //! gerer la sauvegarde
       });
     }
 
@@ -116,6 +118,7 @@ class _DetailsCharacterState extends State<DetailsCharacter> {
                   ...character.sets.map(
                     (set) => DisplaySetButton(
                       spellSet: set,
+                      onSetUpdate: _addSet,
                     ),
                   ),
                 ],

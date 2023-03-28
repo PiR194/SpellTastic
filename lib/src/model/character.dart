@@ -37,6 +37,10 @@ class Character {
     sets.add(set);
   }
 
+  void removeSet(SpellSet set) {
+    sets.remove(set);
+  }
+
   @override
   String toString() {
     String setsString = _sets.map((s) => s.toString()).join(', ');

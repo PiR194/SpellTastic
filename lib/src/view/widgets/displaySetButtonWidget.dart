@@ -1,12 +1,15 @@
 import 'package:code/src/model/spell_set.dart';
 
+import '../../model/account_manager.dart';
 import '../home.dart';
 import 'package:flutter/material.dart';
 
 class DisplaySetButton extends StatelessWidget {
   final SpellSet spellSet;
+  final Function onSetUpdate;
 
-  const DisplaySetButton({super.key, required this.spellSet});
+  const DisplaySetButton(
+      {super.key, required this.spellSet, required this.onSetUpdate});
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +52,7 @@ class DisplaySetButton extends StatelessWidget {
           alignment: WrapAlignment.center,
           children: [
             Text(
-              'Nom du set',
+              spellSet.name,
               style: TextStyle(
                 fontSize: theme.textTheme.bodyLarge!.fontSize,
                 fontFamily: theme.textTheme.bodyLarge!.fontFamily,
@@ -92,7 +95,8 @@ class DisplaySetButton extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    // Supprimer le set (à implémenter)
+                    AccountManager().selectedCharacter.removeSet(spellSet);
+                    onSetUpdate();
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: primaryColor,
