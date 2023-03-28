@@ -1,10 +1,10 @@
+import 'package:code/src/view/widgets/spellSetWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../model/account_manager.dart';
 import '../model/spellSetManager.dart';
 import '../model/spell_set.dart';
 import '../model/spell_set_check_use.dart';
-import 'widgets/spellSetWidget.dart';
 import 'home.dart';
 
 class SetDisplay extends StatefulWidget {

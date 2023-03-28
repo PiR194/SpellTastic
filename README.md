@@ -91,7 +91,7 @@ Application multi-plateforme vous assistant durant vos parties.
 classDiagram
 
     Spell --o SpellSet : -spells
-    Spell --o Character : -knownSpells
+    SpellSet <-- Character : -knownSpells
     SpellSet --o Character : -sets
     Character --> CharacterClass : -cclass
     AccountManager --> AccountManager : -acManager  
@@ -99,20 +99,25 @@ classDiagram
     class Spell{
         -id : int
         -name : string
-        -description : string
-        -reference : string
-        -source : string
+        -level : Map~CharacterClass.int~
         -school : string
-        -level : Map~stringint~
         -castingTime : string
-        -components : List~string~
+        -components : string
         -range : string
-        -target : string
+        -target : Map~stringint~
+        -area : string
+        -effect : List~string~
         -duration : string
+        -savingThrow : string
+        -spellResistance : string
+        -description : string
         +GetLevelByClass(class : string):int
+        +GetMapClassLevel() : Map~CharacterClass.int~
     }
     class SpellSet{
         -name : string
+        +addSpell(spell : Spell)
+        +clone() : SpellSet
     }
     class Character{
         -name : string
@@ -120,9 +125,13 @@ classDiagram
     }
 
     AccountManager --> IAccountStrategy : accountStrategy
+    AccountManager --> Character : selectedCharacter
 
     class AccountManager{
-
+        
+        +addCharacter(char : Character)
+        +removeCharacter(char : Character)
+        +selectCharacter(char : Character)
     }
     class CharacterClass{
         <<enumeration>>
@@ -166,12 +175,7 @@ classDiagram
         saveChar(List~Character~)
     }
 
-    MyApp --> IDataStrategy : dataStrategy
-    MyApp --> AccountManager : manager
-
-    class MyApp{
-
-    }
+    
 ```
 
 ### MCD : Modèle Conceptuel de Données
@@ -180,21 +184,23 @@ classDiagram
 
     Spell "*" -- "*" SpellSet : Possèder
     SpellSet "1" -- "*" Character : Avoir
-    Spell "*" -- "*" Character : Connaitre
+    SpellSet "1" -- "1" Character : Connaitre
 
     class Spell{
         id/
         name
-        description
-        reference
-        source
-        school
         level
+        school
         castingTime
         components
         range
         target
+        area
+        effect
         duration
+        savingThrow
+        spellResistance
+        description
         }
     class SpellSet{
         name
@@ -208,9 +214,8 @@ classDiagram
 
 Spell(<ins>id</ins>,name,description,reference,source,school,level,castingTime,components,range,target,duration);  
 SpellSet(<ins>name</ins>,#charName);  
-Character(<ins>name</ins>,level);  
+Character(<ins>name</ins>,level,#knownSet);  
 Posséder(<ins>#nameSet</ins>,<ins>#idSpell</ins>);  
-Connaitre(<ins>#nameChar</ins>,<ins>#idSpell</ins>);  
 
 *******
 
