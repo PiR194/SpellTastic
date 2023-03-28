@@ -2,7 +2,7 @@ import 'package:code/src/model/spell.dart';
 import 'package:code/src/model/spell_set.dart';
 
 class SpellSetManager {
-  static List<SpellSet> _sortByLevel(SpellSet fullSet) {
+  static List<SpellSet> sortByLevel(SpellSet fullSet) {
     List<SpellSet> setsPerLevel = [];
 
     Map<int, List<Spell>> spellsByLevel = {};

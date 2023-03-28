@@ -1,3 +1,6 @@
+import 'package:code/src/model/spell_set.dart';
+
+import '../model/account_manager.dart';
 import '../model/character_class.dart';
 import '../model/spell.dart';
 import './spell__search_delegate_page.dart';
@@ -58,6 +61,11 @@ class _SpellListPage extends State<SpellListPage> {
           .where((spell) =>
               spell.GetLevelByClass(character.characterClass) != null)
           .toList();
+      /* TO REMOVE */
+      AccountManager()
+          .characters[0]
+          .sets
+          .add(SpellSet("mySet", spells: spells_list.sublist(0, 10)));
     });
   }
 

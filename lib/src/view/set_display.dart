@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../model/spellSetManager.dart';
 import '../model/spell_set.dart';
 import '../model/spell_set_check_use.dart';
 import 'widgets/spellSetWidget.dart';
@@ -18,9 +19,13 @@ class _SetDisplayState extends State<SetDisplay> {
   final PageController _pageController = PageController();
   int _currentPage = 0;
   SpellSetCheckUse spellSetCheckUse = SpellSetCheckUse();
-  SpellSet selectedSpellSet;
+  List<SpellSet> selectedSpellSet = [];
+  late String setName;
 
-  _SetDisplayState(this.selectedSpellSet);
+  _SetDisplayState(SpellSet fullSet) {
+    setName = fullSet.name;
+    selectedSpellSet = SpellSetManager.sortByLevel(fullSet);
+  }
 
   @override
   void dispose() {
@@ -45,7 +50,7 @@ class _SetDisplayState extends State<SetDisplay> {
       appBar: AppBar(
         /* ** SET NAME ** */
         title: Text(
-          selectedSpellSet.name,
+          setName,
           style: TextStyle(
             fontSize: theme.textTheme.bodyLarge!.fontSize,
             fontFamily: theme.textTheme.bodyLarge!.fontFamily,
@@ -98,34 +103,31 @@ class _SetDisplayState extends State<SetDisplay> {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: PageView(
-              controller: _pageController,
-              onPageChanged: (int page) {
-                setState(() {
-                  _currentPage = page;
-                });
-              },
+      body: selectedSpellSet.isEmpty
+          ? Center(child: Text('This set is empty!'))
+          : Column(
               children: [
-                Container(
-                  child: SpellSetWidget(
-                    level: '1',
-                    spellSetCheckUse: spellSetCheckUse,
-                  ),
-                ),
-                Container(
-                  child: SpellSetWidget(
-                    level: '2',
-                    spellSetCheckUse: spellSetCheckUse,
+                Expanded(
+                  child: PageView.builder(
+                    controller: _pageController,
+                    onPageChanged: (int page) {
+                      setState(() {
+                        _currentPage = page;
+                      });
+                    },
+                    itemCount: selectedSpellSet.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container(
+                        child: SpellSetWidget(
+                          currentSet: selectedSpellSet[index],
+                          spellSetCheckUse: spellSetCheckUse,
+                        ),
+                      );
+                    },
                   ),
                 ),
               ],
             ),
-          ),
-        ],
-      ),
     );
   }
 }

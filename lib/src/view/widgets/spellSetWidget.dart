@@ -1,23 +1,27 @@
+import 'package:code/src/model/spell_set.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../model/spell_set_check_use.dart';
 
 class SpellSetWidget extends StatefulWidget {
-  final String level;
   final SpellSetCheckUse spellSetCheckUse;
+  final SpellSet currentSet;
 
-  SpellSetWidget(
-      {Key? key, required this.level, required this.spellSetCheckUse})
+  const SpellSetWidget(
+      {Key? key, required this.spellSetCheckUse, required this.currentSet})
       : super(key: key);
 
   @override
-  _SpellSetWidgetState createState() => _SpellSetWidgetState();
+  _SpellSetWidgetState createState() => _SpellSetWidgetState(currentSet);
 }
 
 class _SpellSetWidgetState extends State<SpellSetWidget> {
   late List<bool> _isCheckedList;
   final _scrollController = ScrollController();
+  final SpellSet currentSet;
+
+  _SpellSetWidgetState(this.currentSet);
 
   @override
   void dispose() {
@@ -59,7 +63,7 @@ class _SpellSetWidgetState extends State<SpellSetWidget> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'LEVEL ${widget.level}',
+          currentSet.name,
           style: TextStyle(
             fontSize: theme.textTheme.bodyLarge!.fontSize,
             fontFamily: theme.textTheme.bodyLarge!.fontFamily,
