@@ -65,7 +65,7 @@ class _SpellListPage extends State<SpellListPage> {
       AccountManager()
           .characters[0]
           .sets
-          .add(SpellSet("mySet", spells: spells_list.sublist(0, 10)));
+          .add(SpellSet("mySet", spells: spells_list.sublist(0, 20)));
     });
   }
 

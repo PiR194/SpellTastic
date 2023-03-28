@@ -21,10 +21,12 @@ class _SetDisplayState extends State<SetDisplay> {
   int _currentPage = 0;
   SpellSetCheckUse spellSetCheckUse = SpellSetCheckUse();
   List<SpellSet> selectedSpellSet = [];
+  late int pageCount;
   late String setName;
 
   _SetDisplayState(SpellSet fullSet) {
     setName = fullSet.name;
+    pageCount = fullSet.spells.length;
     selectedSpellSet = SpellSetManager.sortByLevel(
         fullSet, AccountManager().selectedCharacter.characterClass);
   }
@@ -68,7 +70,7 @@ class _SetDisplayState extends State<SetDisplay> {
                 children: [
                   IconButton(
                     icon: Icon(Icons.arrow_back),
-                    onPressed: _currentPage == 0
+                    onPressed: _currentPage == pageCount - 1
                         ? null
                         : () {
                             _goToPage(_currentPage - 1);
@@ -76,7 +78,7 @@ class _SetDisplayState extends State<SetDisplay> {
                   ),
                   IconButton(
                     icon: Icon(Icons.arrow_forward),
-                    onPressed: _currentPage == 1
+                    onPressed: _currentPage == pageCount - 1
                         ? null
                         : () {
                             _goToPage(_currentPage + 1);
@@ -117,7 +119,7 @@ class _SetDisplayState extends State<SetDisplay> {
                         _currentPage = page;
                       });
                     },
-                    itemCount: selectedSpellSet.length,
+                    itemCount: 5,
                     itemBuilder: (BuildContext context, int index) {
                       return Container(
                         child: SpellSetWidget(
