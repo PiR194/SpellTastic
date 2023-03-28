@@ -2,22 +2,29 @@ import 'package:code/src/model/spell_set.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../../model/spellSetManager.dart';
 import '../../model/spell_set_check_use.dart';
 
 class SpellSetWidget extends StatefulWidget {
-  final SpellSetCheckUse spellSetCheckUse;
+  Map<int, bool> isCheckedList;
   final SpellSet currentSet;
+  final Function(int, bool) onCheckChanged;
 
-  const SpellSetWidget(
-      {Key? key, required this.spellSetCheckUse, required this.currentSet})
+  SpellSetWidget(
+      {Key? key,
+      required this.isCheckedList,
+      required this.currentSet,
+      required this.onCheckChanged})
       : super(key: key);
+
+  get spellSetCheckUse => isCheckedList;
 
   @override
   _SpellSetWidgetState createState() => _SpellSetWidgetState(currentSet);
 }
 
 class _SpellSetWidgetState extends State<SpellSetWidget> {
-  late List<bool> _isCheckedList;
+  Map<int, bool> _isCheckedList = {};
   final _scrollController = ScrollController();
   final SpellSet currentSet;
 
@@ -25,15 +32,13 @@ class _SpellSetWidgetState extends State<SpellSetWidget> {
 
   @override
   void dispose() {
-    widget.spellSetCheckUse.isCheckedList = _isCheckedList;
     super.dispose();
   }
 
   @override
   void initState() {
     super.initState();
-    _isCheckedList = List.generate(
-        30, (index) => widget.spellSetCheckUse.isCheckedList[index]);
+    _isCheckedList = SpellSetManager.isCheckedMapCreator(currentSet.spells);
     RawKeyboard.instance.addListener((event) {
       if (event.isKeyPressed(LogicalKeyboardKey.arrowDown)) {
         _scrollController.animateTo(
@@ -50,8 +55,6 @@ class _SpellSetWidgetState extends State<SpellSetWidget> {
         );
       }
     });
-    _isCheckedList = List.generate(
-        30, (index) => widget.spellSetCheckUse.isCheckedList[index]);
   }
 
   @override
@@ -78,21 +81,17 @@ class _SpellSetWidgetState extends State<SpellSetWidget> {
         cacheExtent: 2,
         children: [
           for (var spell in currentSet.spells)
-            CheckboxListTile(
-              title: Text(
-                spell.name,
-                style: TextStyle(
-                  fontSize: theme.textTheme.bodyMedium!.fontSize,
-                  fontFamily: theme.textTheme.bodyMedium!.fontFamily,
-                ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: CheckboxListTile(
+                title: Text(spell.name),
+                value: widget.isCheckedList[spell.id] ?? false,
+                onChanged: (value) {
+                  setState(() {
+                    widget.isCheckedList[spell.id] = value ?? false;
+                  });
+                },
               ),
-              value: _isCheckedList[spell.id],
-              onChanged: (value) {
-                setState(() {
-                  _isCheckedList[spell.id] = value!;
-                  widget.spellSetCheckUse.isCheckedList = _isCheckedList;
-                });
-              },
             ),
         ],
       ),

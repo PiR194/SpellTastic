@@ -19,14 +19,15 @@ class SetDisplay extends StatefulWidget {
 class _SetDisplayState extends State<SetDisplay> {
   final PageController _pageController = PageController();
   int _currentPage = 0;
-  SpellSetCheckUse spellSetCheckUse = SpellSetCheckUse();
   List<SpellSet> selectedSpellSet = [];
   late String setName;
+  late Map<int, bool> isCheckedList;
 
   _SetDisplayState(SpellSet fullSet) {
     setName = fullSet.name;
     selectedSpellSet = SpellSetManager.sortByLevel(
         fullSet, AccountManager().selectedCharacter.characterClass);
+    isCheckedList = {};
   }
 
   @override
@@ -121,9 +122,14 @@ class _SetDisplayState extends State<SetDisplay> {
                     itemBuilder: (BuildContext context, int index) {
                       return Container(
                         child: SpellSetWidget(
-                          currentSet: selectedSpellSet[index],
-                          spellSetCheckUse: spellSetCheckUse,
-                        ),
+                            currentSet: selectedSpellSet[index],
+                            isCheckedList: isCheckedList,
+                            onCheckChanged: (int spellId, bool isChecked) {
+                              // update isCheckedList whenever a checkbox is clicked
+                              setState(() {
+                                isCheckedList[spellId] = isChecked;
+                              });
+                            }),
                       );
                     },
                   ),
