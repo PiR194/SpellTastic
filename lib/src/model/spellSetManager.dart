@@ -22,6 +22,8 @@ class SpellSetManager {
       setsPerLevel.add(SpellSet("Level $level", spells: spells));
     });
 
+    setsPerLevel.sort((a, b) => a.name.compareTo(b.name));
+
     return setsPerLevel;
   }
 }
