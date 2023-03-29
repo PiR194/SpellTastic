@@ -1,4 +1,5 @@
 import 'package:code/src/model/account_manager.dart';
+import 'package:code/src/model/spell.dart';
 import 'package:code/src/view/widgets/pop-ups/name_set_popup.dart';
 import 'package:flutter/material.dart';
 
@@ -35,7 +36,8 @@ class CreateSetButton extends StatelessWidget {
 
           if (result != null && result.isNotEmpty) {
             // Do something with the input text, such as creating a new set
-            SpellSet newSet = SpellSet(result);
+            SpellSet newSet =
+                SpellSet(result, spells: List<Spell>.empty(growable: true));
             AccountManager().selectedCharacter.addSet(newSet);
             onSetAdded();
           }

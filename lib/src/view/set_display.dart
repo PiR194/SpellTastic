@@ -34,7 +34,10 @@ class _SetDisplayState extends State<SetDisplay> {
 
   void onAddSpell(Spell spell, SpellSet set) {
     setState(() {
-      set.addSpell(spell.copy());
+      final newSpell = spell.copy();
+      var list = set.spells;
+      list.add(newSpell);
+      set = SpellSet(set.name, spells: list);
       selectedSpellSet = SpellSetManager.sortByLevel(
           set, AccountManager().selectedCharacter.characterClass);
     });
