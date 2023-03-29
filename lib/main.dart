@@ -47,9 +47,12 @@ class MyApp extends StatelessWidget {
         '/settings': (context) => SettingsPage(),
         //add all spells by default
         '/spelllist': (context) => DynamicSpellListPage(
-            spellSet: AccountManager().selectedCharacter.knownSpells,
-            characterClass: AccountManager().selectedCharacter.characterClass,
-            isReadonly: true),
+              spellSet: AccountManager().selectedCharacter.knownSpells,
+              characterClass: AccountManager().selectedCharacter.characterClass,
+              isReadonly: true,
+              isAddable: false,
+              onAddSpell: null,
+            ),
       },
       theme: Provider.of<ThemeModel>(context).currentTheme,
     );

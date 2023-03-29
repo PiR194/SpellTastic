@@ -127,4 +127,22 @@ class Spell {
         _target == other._target &&
         _duration == other._duration;
   }
+
+  Spell copy() {
+    return Spell(
+        this._id,
+        this._name,
+        this._level,
+        this._school,
+        this._castingTime,
+        this._components,
+        this._range,
+        this._target,
+        this._area,
+        this._effect,
+        this._duration,
+        this._savingThrow,
+        this._spellResistance,
+        this._description);
+  }
 }

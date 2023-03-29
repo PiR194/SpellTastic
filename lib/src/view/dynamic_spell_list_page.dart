@@ -5,6 +5,8 @@
 
 import 'dart:ffi';
 
+import 'package:code/src/model/account_manager.dart';
+import 'package:code/src/model/spell.dart';
 import 'package:code/src/model/spell_set.dart';
 import 'package:code/src/view/widgets/add_spells_widget.dart';
 import 'package:flutter/material.dart';
@@ -17,29 +19,55 @@ class DynamicSpellListPage extends StatefulWidget {
   final SpellSet spellSet; // change character knownSpells to spellset
   final CharacterClass characterClass;
   final bool isReadonly;
+  final bool isAddable;
+  final String nameSet;
+  final Function? onAddSpell;
 
   const DynamicSpellListPage(
       {super.key,
       required this.spellSet,
       required this.characterClass,
-      required this.isReadonly});
+      required this.isReadonly,
+      required this.isAddable,
+      this.nameSet = "",
+      required this.onAddSpell});
 
   @override
   // ignore: no_logic_in_create_state
   State<StatefulWidget> createState() => _DynamicSpellListPage(
       spellSet: spellSet,
       characterClass: characterClass,
-      isReadonly: isReadonly);
+      isReadonly: isReadonly,
+      isAddable: isAddable,
+      nameSet: nameSet,
+      onAddSpell: onAddSpell);
 }
 
 class _DynamicSpellListPage extends State<DynamicSpellListPage> {
   _DynamicSpellListPage(
       {required this.spellSet,
       required this.characterClass,
-      required this.isReadonly});
+      required this.isReadonly,
+      required this.isAddable,
+      this.nameSet = "",
+      required this.onAddSpell});
   final SpellSet spellSet;
   final CharacterClass characterClass;
   final bool isReadonly;
+  final bool isAddable;
+  final String nameSet;
+  final Function? onAddSpell;
+
+  // void onAddSpell(Spell spell) {
+  //   setState(() {
+  //     AccountManager()
+  //         .selectedCharacter
+  //         .sets
+  //         .where((element) => element.name == nameSet)
+  //         .first
+  //         .addSpell(spell.copy());
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +76,12 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
 
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
+
+    // void onAddSpell(Spell spell) {
+    //   setState(() {
+    //     widget.spellSet.addSpell(spell);
+    //   });
+    // }
 
     return Scaffold(
       /**
@@ -177,6 +211,21 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
                     // )}...', style: Theme.of(context).textTheme.titleSmall)
                   ]),
             ),
+            trailing: isAddable
+                ? IconButton(
+                    icon: Icon(Icons.add_box_outlined),
+                    onPressed: () {
+                      onAddSpell!(
+                          spellSet.spells[index],
+                          AccountManager()
+                              .selectedCharacter
+                              .sets
+                              .where((element) => element.name == nameSet)
+                              .first);
+                      Navigator.pop(context);
+                    },
+                  )
+                : null,
             onTap: () {
               Navigator.push(
                 context,

@@ -7,9 +7,13 @@ import '../../model/spell_set.dart';
 class SpellDisplayWidget extends StatelessWidget {
   final SpellSet spellSet;
   final bool isReadonly;
+  final Function? onAddSpell;
 
   const SpellDisplayWidget(
-      {super.key, required this.spellSet, required this.isReadonly});
+      {super.key,
+      required this.spellSet,
+      required this.isReadonly,
+      required this.onAddSpell});
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +35,13 @@ class SpellDisplayWidget extends StatelessWidget {
               context,
               MaterialPageRoute(
                   builder: (context) => DynamicSpellListPage(
-                      spellSet: spellSet,
-                      characterClass:
-                          AccountManager().selectedCharacter.characterClass,
-                      isReadonly: isReadonly)),
+                        spellSet: spellSet,
+                        characterClass:
+                            AccountManager().selectedCharacter.characterClass,
+                        isReadonly: isReadonly,
+                        isAddable: false,
+                        onAddSpell: onAddSpell,
+                      )),
             );
           }),
     );

@@ -1,3 +1,5 @@
+import 'package:code/src/model/spell.dart';
+import 'package:code/src/view/dynamic_spell_list_page.dart';
 import 'package:code/src/view/widgets/spellSetWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -28,6 +30,14 @@ class _SetDisplayState extends State<SetDisplay> {
     selectedSpellSet = SpellSetManager.sortByLevel(
         fullSet, AccountManager().selectedCharacter.characterClass);
     isCheckedList = {};
+  }
+
+  void onAddSpell(Spell spell, SpellSet set) {
+    setState(() {
+      set.addSpell(spell.copy());
+      selectedSpellSet = SpellSetManager.sortByLevel(
+          set, AccountManager().selectedCharacter.characterClass);
+    });
   }
 
   @override
@@ -67,6 +77,26 @@ class _SetDisplayState extends State<SetDisplay> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
+                  IconButton(
+                    icon: Icon(Icons.add_circle_outline),
+                    onPressed: () => {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DynamicSpellListPage(
+                                    spellSet: AccountManager()
+                                        .selectedCharacter
+                                        .knownSpells,
+                                    characterClass: AccountManager()
+                                        .selectedCharacter
+                                        .characterClass,
+                                    isReadonly: true,
+                                    isAddable: true,
+                                    nameSet: setName,
+                                    onAddSpell: onAddSpell,
+                                  )))
+                    },
+                  ),
                   IconButton(
                     icon: Icon(Icons.arrow_back),
                     onPressed: _currentPage == selectedSpellSet.length
