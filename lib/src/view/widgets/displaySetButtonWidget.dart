@@ -71,7 +71,7 @@ class DisplaySetButton extends StatelessWidget {
               spacing: screenWidth * 0.02,
               alignment: WrapAlignment.center,
               children: [
-                ElevatedButton(
+                ElevatedButton( //* Use
                   onPressed: () {
                     // Use le set (à implémenter)
                     Navigator.push(
@@ -92,7 +92,7 @@ class DisplaySetButton extends StatelessWidget {
                     ),
                   ),
                 ),
-                ElevatedButton(
+                ElevatedButton( //* Modify
                   onPressed: () async {
                     Navigator.push(
                       context,
@@ -112,7 +112,7 @@ class DisplaySetButton extends StatelessWidget {
                     ),
                   ),
                 ),
-                ElevatedButton(
+                ElevatedButton( //* Rename
                   onPressed: () async {
                     final String? result = await showDialog<String>(
                       context: context,
@@ -134,7 +134,7 @@ class DisplaySetButton extends StatelessWidget {
                     ),
                   ),
                 ),
-                ElevatedButton(
+                ElevatedButton( //* Delete
                   onPressed: () {
                     AccountManager().selectedCharacter.removeSet(spellSet);
                     onSetUpdate();
