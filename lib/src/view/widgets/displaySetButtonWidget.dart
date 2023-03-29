@@ -46,12 +46,12 @@ class DisplaySetButton extends StatelessWidget {
           ),
         ),
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => SetDisplay(selectedSpellSet: spellSet),
-            ),
-          );
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(
+          //     builder: (context) => SetDisplay(selectedSpellSet: spellSet),
+          //   ),
+          // );
         },
         child: Wrap(
           spacing: screenWidth * 0.05,
@@ -74,6 +74,12 @@ class DisplaySetButton extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {
                     // Use le set (à implémenter)
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SetDisplay(selectedSpellSet: spellSet),
+                      ),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green,
@@ -88,7 +94,26 @@ class DisplaySetButton extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () async {
-                    print("coucou");
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SetDisplay(selectedSpellSet: spellSet),
+                      ),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: primaryColor,
+                  ),
+                  child: Text(
+                    'Modify',
+                    style: TextStyle(
+                      fontSize: theme.textTheme.bodyMedium!.fontSize,
+                      fontFamily: theme.textTheme.bodyMedium!.fontFamily,
+                    ),
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () async {
                     final String? result = await showDialog<String>(
                       context: context,
                       builder: (BuildContext context) {
