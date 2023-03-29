@@ -36,6 +36,11 @@ class _HomeState extends State<Home> {
       spells = await data.loadSpells();
     }
     this.spells_list.spells = spells;
+
+    // Stub data: to be removed
+    var stubSet = SpellSet("stubSet");
+    stubSet.spells = spells_list.spells.sublist(0, 40);
+    AccountManager().characters[0].sets.add(stubSet);
   }
 
   /*
