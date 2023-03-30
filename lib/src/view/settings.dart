@@ -31,6 +31,28 @@ class SettingsPage extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {
                     Provider.of<ThemeModel>(context, listen: false)
+                        .setTheme(ThemeModel.extraSmallFont);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: Provider.of<ThemeModel>(context).currentTheme ==
+                            ThemeModel.extraSmallFont
+                        ? theme.accentColor.withOpacity(0.2)
+                        : null,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(
+                      'XS',
+                      style: TextStyle(
+                        fontSize: theme.textTheme.bodyLarge!.fontSize,
+                        fontFamily: theme.textTheme.bodyLarge!.fontFamily,
+                      ),
+                    ),
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Provider.of<ThemeModel>(context, listen: false)
                         .setTheme(ThemeModel.smallFont);
                   },
                   style: ElevatedButton.styleFrom(
@@ -87,6 +109,28 @@ class SettingsPage extends StatelessWidget {
                     padding: const EdgeInsets.all(16.0),
                     child: Text(
                       'L',
+                      style: TextStyle(
+                        fontSize: theme.textTheme.bodyLarge!.fontSize,
+                        fontFamily: theme.textTheme.bodyLarge!.fontFamily,
+                      ),
+                    ),
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Provider.of<ThemeModel>(context, listen: false)
+                        .setTheme(ThemeModel.extraLargeFont);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: Provider.of<ThemeModel>(context).currentTheme ==
+                            ThemeModel.extraLargeFont
+                        ? theme.accentColor.withOpacity(0.2)
+                        : null,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(
+                      'XL',
                       style: TextStyle(
                         fontSize: theme.textTheme.bodyLarge!.fontSize,
                         fontFamily: theme.textTheme.bodyLarge!.fontFamily,

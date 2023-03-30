@@ -1,5 +1,8 @@
+import 'package:code/src/model/account_manager.dart';
+import 'package:code/src/model/spell_set.dart';
 import 'package:flutter/material.dart';
 
+import '../../model/character_class.dart';
 import 'characterFormWidget.dart';
 
 class AddCharacterWidget extends StatelessWidget {
@@ -17,6 +20,18 @@ class AddCharacterWidget extends StatelessWidget {
       height: screenHeight / 14,
       child: ElevatedButton(
         onPressed: () {
+          AccountManager().selectedCharacter.sets.add(SpellSet("All Spells"));
+          var allSpellForClass = AccountManager()
+              .allSpells
+              .spells
+              .where((spell) =>
+                  spell.GetLevelByClass(
+                      AccountManager().selectedCharacter.characterClass) !=
+                  null)
+              .toList();
+          AccountManager()
+              .selectedCharacter
+              .addSpellListToSet("All Spells", allSpellForClass);
           Navigator.pushNamed(context, '/characterform');
         },
         style: ElevatedButton.styleFrom(

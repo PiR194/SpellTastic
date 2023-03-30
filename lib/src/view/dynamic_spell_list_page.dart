@@ -2,10 +2,7 @@
 * this class takes a list of spells and 
 * diplays them in our a SpellListView
 */
-
-import 'dart:ffi';
 import 'package:code/src/model/account_manager.dart';
-import 'package:code/src/model/spell.dart';
 import 'package:code/src/model/spell_set.dart';
 import 'package:code/src/view/set_display.dart';
 import 'package:code/src/view/widgets/add_spells_widget.dart';

@@ -5,7 +5,7 @@ void main() {
       '\u00A0', ' '); // Replace non-breaking space with regular space
 
   var result = testParser(spellLevel);
-  print(result);
+  //print(result);
 }
 
 Map<String, int> testParser(String spellLevel) {
