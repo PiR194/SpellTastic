@@ -18,9 +18,18 @@ class _CharacterFormState extends State<CharacterFormWidget> {
 
   CharacterClass? _selectedClass;
 
-  final List<CharacterClass> _classes = [CharacterClass.alchemist];
+  final List<CharacterClass> _classes = [];
 
   List<Character> listCharacter = [];
+
+  @override
+  void initState() {
+    super.initState();
+
+    for (var characterClass in CharacterClass.values) {
+      _classes.add(characterClass);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +72,7 @@ class _CharacterFormState extends State<CharacterFormWidget> {
                   return DropdownMenuItem<CharacterClass>(
                     value: value,
                     child: Text(
-                      value.toString(),
+                      value.toString().split('.').last,
                       style: TextStyle(
                         fontSize: theme.textTheme.bodyMedium!.fontSize,
                         fontFamily: theme.textTheme.bodyMedium!.fontFamily,
