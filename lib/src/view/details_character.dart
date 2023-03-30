@@ -1,4 +1,5 @@
 import 'package:code/src/model/character.dart';
+import 'package:code/src/model/character_class.dart';
 import 'package:code/src/view/widgets/spell_display_widget.dart';
 
 import '../data/json_account_strategy.dart';
@@ -57,10 +58,10 @@ class _DetailsCharacterState extends State<DetailsCharacter> {
                 alignment: WrapAlignment.center,
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
-                  const CircleAvatar(
+                  CircleAvatar(
                     radius: 80,
                     backgroundImage:
-                        AssetImage('assets/class_icons/Goblins_Fight.png'),
+                        AssetImage(character.characterClass.getImagePath()),
                   ),
                   Text(
                     character.name,

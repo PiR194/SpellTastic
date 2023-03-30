@@ -38,10 +38,10 @@ class CharacterButtonWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const CircleAvatar(
-              // backgroundImage: AssetImage(character.cclass.getImagePath()), /* TODO tip: remove const*/
+            CircleAvatar(
               radius: 50,
-              backgroundImage: AssetImage('assets/images/background_home.png'),
+              backgroundImage:
+                  AssetImage(character.characterClass.getImagePath()),
             ),
             const SizedBox(width: 10),
             Expanded(
