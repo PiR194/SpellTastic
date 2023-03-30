@@ -1,13 +1,13 @@
 /*
 * this class takes a list of spells and 
-* diplays them our a SpellListView
+* diplays them in our a SpellListView
 */
 
 import 'dart:ffi';
-
 import 'package:code/src/model/account_manager.dart';
 import 'package:code/src/model/spell.dart';
 import 'package:code/src/model/spell_set.dart';
+import 'package:code/src/view/set_display.dart';
 import 'package:code/src/view/widgets/add_spells_widget.dart';
 import 'package:flutter/material.dart';
 import '../model/character_class.dart';
@@ -21,7 +21,6 @@ class DynamicSpellListPage extends StatefulWidget {
   final bool isReadonly;
   final bool isAddable;
   final String nameSet;
-  final void Function(String name) onAddSpell;
 
   const DynamicSpellListPage({
     Key? key,
@@ -30,7 +29,6 @@ class DynamicSpellListPage extends StatefulWidget {
     required this.isReadonly,
     required this.isAddable,
     this.nameSet = "",
-    required this.onAddSpell,
   }) : super(key: key);
 
   @override
@@ -66,12 +64,6 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
 
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
-
-    // void onAddSpell(Spell spell) {
-    //   setState(() {
-    //     widget.spellSet.addSpell(spell);
-    //   });
-    // }
 
     return Scaffold(
       /**
@@ -213,7 +205,16 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
                           .spells
                           .add(spellSet.spells[index]);
                       Navigator.pop(context);
-                      widget.onAddSpell(nameSet);
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (BuildContext context) => SetDisplay(
+                                fullSet: AccountManager()
+                                    .selectedCharacter
+                                    .sets
+                                    .where((set) => set.name == nameSet)
+                                    .first)),
+                      );
                     },
                   )
                 : null,

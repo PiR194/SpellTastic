@@ -97,7 +97,6 @@ class _SetDisplayState extends State<SetDisplay> {
                                     isReadonly: true,
                                     isAddable: true,
                                     nameSet: setName,
-                                    onAddSpell: onAddSpell,
                                   )))
                     },
                   ),

@@ -40,7 +40,6 @@ class SpellDisplayWidget extends StatelessWidget {
                             AccountManager().selectedCharacter.characterClass,
                         isReadonly: isReadonly,
                         isAddable: false,
-                        onAddSpell: onAddSpell,
                       )),
             );
           }),

@@ -50,7 +50,6 @@ class MyApp extends StatelessWidget {
               characterClass: AccountManager().selectedCharacter.characterClass,
               isReadonly: true,
               isAddable: false,
-              onAddSpell: null,
             ),
       },
       theme: Provider.of<ThemeModel>(context).currentTheme,
