@@ -3,6 +3,7 @@ import 'package:code/src/data/json_account_strategy.dart';
 import 'package:code/src/model/character_class.dart';
 import 'package:flutter/material.dart';
 
+import '../../model/account_manager.dart';
 import '../../model/character.dart';
 
 class CharacterFormWidget extends StatefulWidget {
@@ -29,6 +30,17 @@ class _CharacterFormState extends State<CharacterFormWidget> {
     for (var characterClass in CharacterClass.values) {
       _classes.add(characterClass);
     }
+
+    loadCharacters();
+  }
+
+  Future<void> loadCharacters() async {
+    final JsonAccountStrategy accountStrategy = JsonAccountStrategy();
+
+    AccountManager().characters = await accountStrategy.loadCharacters();
+    setState(() {
+      listCharacter = AccountManager().characters;
+    });
   }
 
   @override
@@ -130,8 +142,9 @@ class _CharacterFormState extends State<CharacterFormWidget> {
 
                     listCharacter.add(character);
                     JsonAccountStrategy().saveCharacters(listCharacter);
+                    JsonAccountStrategy().loadCharacters();
                   }
-                  Navigator.pop(context);
+                  Navigator.pushNamed(context, '/');
                 },
                 child: Text(
                   'CREATE !',
