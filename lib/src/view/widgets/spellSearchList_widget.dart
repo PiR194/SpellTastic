@@ -2,6 +2,7 @@ import '../../model/spell.dart';
 import '../spell_detail_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 
 class SpellSearchList extends StatelessWidget {
   final List<Spell> spells;
@@ -21,18 +22,28 @@ class SpellSearchList extends StatelessWidget {
         //* affichage du mot dans la description lors de la recherche 
         List<String> words = spells[index].description.replaceAll(RegExp(r'[^\w\s]+'), ' ').split(" ");
         int jndex = words.indexOf(query);
+        int occur = (words.where((e) => e == query)).length;
         String twoPreviousWord = "";
         String twoNextWord = "";
         String displayQuery;
         
-        //* Assignation mots premiers et suivants.
-        if (jndex != -1 && query.trim().isNotEmpty) {
-          twoPreviousWord = jndex > 2 ? "${words[jndex-2]}  ${words[jndex-1]}" : (jndex == 1 ? words[jndex-1] : "");
-          twoNextWord = jndex < words.length-3 && jndex != words.length-2? "${words[jndex+1]}  ${words[jndex+2]}" : (jndex == words.length-2 ? words[jndex+1] : "");
-          twoPreviousWord = "...$twoPreviousWord";
-          twoNextWord = "$twoNextWord...";
+
+        
+        
+        if (occur < 2){
+          //* Assignation mots premiers et suivants.
+          if (jndex != -1 && query.trim().isNotEmpty) {
+            twoPreviousWord = jndex > 2 ? "${words[jndex-2]}  ${words[jndex-1]}" : (jndex == 1 ? words[jndex-1] : "");
+            twoNextWord = jndex < words.length-3 && jndex != words.length-2? "${words[jndex+1]}  ${words[jndex+2]}" : (jndex == words.length-2 ? words[jndex+1] : "");
+            twoPreviousWord = "...$twoPreviousWord";
+            twoNextWord = "$twoNextWord...";
+          }
+          twoNextWord == "" && twoPreviousWord == "" ? displayQuery = "" : displayQuery = query;
         }
-        twoNextWord == "" && twoPreviousWord == "" ? displayQuery = "" : displayQuery = query;
+        else {
+          query=="" ? displayQuery = query : displayQuery = "($occur occurences)";
+        }
+        
         
         //TODO
         //? essayer de trier pour mettre en valeur les recherches sur noms plutot que par description.
@@ -40,7 +51,8 @@ class SpellSearchList extends StatelessWidget {
         //! comment faire pour les cas ou le mot est présent plusieurs fois ?
 
         return ListTile(
-          title: RichText(
+          
+          title:RichText(
               text: TextSpan(
                 style: TextStyle(
                   color: Colors.black,
@@ -48,10 +60,26 @@ class SpellSearchList extends StatelessWidget {
                   fontFamily: Theme.of(context).textTheme.titleLarge!.fontFamily,
                 ),
                 children: [
-                  TextSpan(text:"${spells[index].name} ",),
-                  TextSpan(text:'    $twoPreviousWord ', style: Theme.of(context).textTheme.titleSmall),
-                  TextSpan(text: ' $displayQuery ', style: const TextStyle(fontWeight: FontWeight.bold)), //* mot recherché en gras
-                  TextSpan(text: ' $twoNextWord', style: Theme.of(context).textTheme.titleSmall),
+                  WidgetSpan(
+                    child: HtmlWidget(
+                      "${spells[index].name} ",
+                      textStyle: Theme.of(context).textTheme.titleLarge,
+                    )),
+                  WidgetSpan(
+                    child: HtmlWidget(
+                      '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  $twoPreviousWord ',
+                      textStyle :Theme.of(context).textTheme.titleSmall
+                    )),
+                  WidgetSpan(
+                    child: HtmlWidget(
+                      '&nbsp; $displayQuery &nbsp;',
+                      textStyle : TextStyle(fontWeight: FontWeight.bold, fontSize:Theme.of(context).textTheme.titleLarge!.fontSize)
+                    )),
+                  WidgetSpan(
+                    child: HtmlWidget(
+                      ' $twoNextWord',
+                      textStyle : Theme.of(context).textTheme.titleSmall
+                    )),
                 ]
               ),
             ),

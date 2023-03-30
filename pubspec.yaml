@@ -37,7 +37,9 @@ dependencies:
   path_provider: ^2.0.12
   sqlite3: ^1.9.1
   sqflite_common_ffi: ^2.2.1+1
-  
+#  html_unescape: ^1.0.2
+
+
   flutter_web_plugins:
     sdk: flutter
   flutter_html: ^2.2.1

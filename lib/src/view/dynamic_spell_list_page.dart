@@ -7,10 +7,14 @@ import 'dart:ffi';
 import 'package:code/src/model/spell_set.dart';
 import 'package:code/src/view/widgets/add_spells_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
+import '../model/HTMLView.dart';
 import '../model/character_class.dart';
 import 'spell__search_delegate_page.dart';
 import 'spell_detail_page.dart';
 import 'spell_list_page.dart';
+//import 'package:html_unescape/html_unescape.dart'; //! pb de dependance
+
 
 class DynamicSpellListPage extends StatefulWidget {
   final SpellSet spellSet; // change character knownSpells to spellset
@@ -150,6 +154,7 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
             //Structure de chaque ligne (=> ListTile)
             tileColor: backgroundColor,
             title: RichText(
+              maxLines:1,
               text: TextSpan(
                   style: TextStyle(
                     color: Colors.black,
@@ -157,16 +162,42 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
                     fontFamily:
                         Theme.of(context).textTheme.titleLarge!.fontFamily,
                   ),
-                  children: <TextSpan>[
+                  children:[
                     TextSpan(
                       text:
                           "${spellSet.spells[index].name} ${spellSet.spells[index].GetLevelByClass(characterClass)}",
                     ),
-                    //? Option avec les 7 premiers mots
+
+
+                    //! sans le parseur html : marche mais y'a les balises
                     TextSpan(
-                        text:
-                            '     ${spellSet.spells[index].description.split(' ').take(7).join(' ')}...',
-                        style: Theme.of(context).textTheme.titleSmall)
+                      text: spellSet.spells[index].description,
+                      style: Theme.of(context).textTheme.titleSmall
+                      ),
+
+                    //! parseur mais pb de dépendance
+                    // TextSpan(
+                    //   text: HtmlUnescape().convert(spellSet.spells[index].description),
+                    //   style: Theme.of(context).textTheme.titleSmall
+                    //   ),
+
+
+                      //! parseur mais ne display rien
+                    // WidgetSpan(
+                    // child: HtmlWidget(
+                    //   spellSet.spells[index].description,
+                    //   textStyle: Theme.of(context).textTheme.titleSmall),
+                    // ),
+                    // WidgetSpan(
+                    //   child: HTMLView(htmlString: spellSet.spells[index].description),
+                    // ),
+
+
+                    //? Option avec les 7 premiers mots
+                    // TextSpan(
+                    //     text:
+                    //         '     ${spellSet.spells[index].description.split(' ').take(7).join(' ')}...',
+                    //     style: Theme.of(context).textTheme.titleSmall)
 
                     //? Option avec les 35 premiers caractères ?
                     //TextSpan(text:'${spells_list[index].description.substring(0,35)}...', style: Theme.of(context).textTheme.titleSmall)

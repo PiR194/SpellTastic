@@ -1,4 +1,5 @@
 import 'package:code/src/model/spell_set.dart';
+import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 
 import '../model/account_manager.dart';
 import '../model/character_class.dart';
@@ -184,15 +185,22 @@ class _SpellListPage extends State<SpellListPage> {
                     fontFamily:
                         Theme.of(context).textTheme.titleLarge!.fontFamily,
                   ),
-                  children: <TextSpan>[
+                  children: [
                     //? Version avec le maximum description puis ...
                     TextSpan(
                       text:
                           "${spells_list[index].name} ${spells_list[index].GetLevelByClass(character.characterClass)}",
                     ),
-                    TextSpan(
-                        text: '     ${spells_list[index].description}',
-                        style: Theme.of(context).textTheme.titleSmall)
+                    
+                                        // TextSpan(
+                    //     text: '     ${spells_list[index].description}',
+                    //     style: Theme.of(context).textTheme.titleSmall)
+
+                    WidgetSpan(
+                    child: HtmlWidget(
+                      '     ${spells_list[index].description}',
+                      textStyle: Theme.of(context).textTheme.titleSmall),
+                    ),
 
                     //? Option avec les 7 premiers mots
                     //TextSpan(text:'     ${spells_list[index].description.split(' ').take(7).join(' ')}...', style: Theme.of(context).textTheme.titleSmall)
