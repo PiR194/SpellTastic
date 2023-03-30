@@ -21,7 +21,7 @@ class AddCharacterWidget extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () {
           AccountManager().selectedCharacter.sets.add(SpellSet("All Spells"));
-          AccountManager()
+          var allSpellForClass = AccountManager()
               .allSpells
               .spells
               .where((spell) =>
@@ -29,6 +29,9 @@ class AddCharacterWidget extends StatelessWidget {
                       AccountManager().selectedCharacter.characterClass) !=
                   null)
               .toList();
+          AccountManager()
+              .selectedCharacter
+              .addSpellListToSet("All Spells", allSpellForClass);
           Navigator.pushNamed(context, '/characterform');
         },
         style: ElevatedButton.styleFrom(

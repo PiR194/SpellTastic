@@ -35,7 +35,7 @@ class _HomeState extends State<Home> {
       var data = SQLiteDataStrategy();
       spells = await data.loadSpells();
     }
-    this.spells_list.spells = spells;
+    spells_list.spells = spells;
     AccountManager().allSpells.spells = spells;
 
     // Stub data: to be removed

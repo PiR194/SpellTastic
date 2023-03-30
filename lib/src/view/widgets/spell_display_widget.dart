@@ -21,7 +21,7 @@ class SpellDisplayWidget extends StatelessWidget {
 
     return SizedBox(
       height: 50,
-      width: screenWidth / 2.5,
+      width: screenWidth / 3,
       child: ElevatedButton.icon(
           icon: const Icon(Icons.class_outlined),
           clipBehavior: Clip.none,
