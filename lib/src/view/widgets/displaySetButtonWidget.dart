@@ -48,7 +48,7 @@ class DisplaySetButton extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => SetDisplay(selectedSpellSet: spellSet),
+              builder: (context) => SetDisplay(fullSet: spellSet),
             ),
           );
         },

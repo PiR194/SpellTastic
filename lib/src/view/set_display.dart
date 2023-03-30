@@ -10,12 +10,12 @@ import '../model/spell_set_check_use.dart';
 import 'home.dart';
 
 class SetDisplay extends StatefulWidget {
-  final SpellSet selectedSpellSet;
+  final SpellSet fullSet;
 
-  const SetDisplay({super.key, required this.selectedSpellSet});
+  const SetDisplay({Key? key, required this.fullSet}) : super(key: key);
 
   @override
-  _SetDisplayState createState() => _SetDisplayState(selectedSpellSet);
+  _SetDisplayState createState() => _SetDisplayState(fullSet);
 }
 
 class _SetDisplayState extends State<SetDisplay> {
@@ -32,14 +32,15 @@ class _SetDisplayState extends State<SetDisplay> {
     isCheckedList = {};
   }
 
-  void onAddSpell(Spell spell, SpellSet set) {
+  void onAddSpell(String name) {
     setState(() {
-      final newSpell = spell.copy();
-      var list = set.spells;
-      list.add(newSpell);
-      set = SpellSet(set.name, spells: list);
       selectedSpellSet = SpellSetManager.sortByLevel(
-          set, AccountManager().selectedCharacter.characterClass);
+          AccountManager()
+              .selectedCharacter
+              .sets
+              .where((spell) => spell.name == name)
+              .first,
+          AccountManager().selectedCharacter.characterClass);
     });
   }
 

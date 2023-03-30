@@ -16,58 +16,48 @@ import 'spell_detail_page.dart';
 import 'spell_list_page.dart';
 
 class DynamicSpellListPage extends StatefulWidget {
-  final SpellSet spellSet; // change character knownSpells to spellset
-  final CharacterClass characterClass;
-  final bool isReadonly;
-  final bool isAddable;
-  final String nameSet;
-  final Function? onAddSpell;
-
-  const DynamicSpellListPage(
-      {super.key,
-      required this.spellSet,
-      required this.characterClass,
-      required this.isReadonly,
-      required this.isAddable,
-      this.nameSet = "",
-      required this.onAddSpell});
-
-  @override
-  // ignore: no_logic_in_create_state
-  State<StatefulWidget> createState() => _DynamicSpellListPage(
-      spellSet: spellSet,
-      characterClass: characterClass,
-      isReadonly: isReadonly,
-      isAddable: isAddable,
-      nameSet: nameSet,
-      onAddSpell: onAddSpell);
-}
-
-class _DynamicSpellListPage extends State<DynamicSpellListPage> {
-  _DynamicSpellListPage(
-      {required this.spellSet,
-      required this.characterClass,
-      required this.isReadonly,
-      required this.isAddable,
-      this.nameSet = "",
-      required this.onAddSpell});
   final SpellSet spellSet;
   final CharacterClass characterClass;
   final bool isReadonly;
   final bool isAddable;
   final String nameSet;
-  final Function? onAddSpell;
+  final void Function(String name) onAddSpell;
 
-  // void onAddSpell(Spell spell) {
-  //   setState(() {
-  //     AccountManager()
-  //         .selectedCharacter
-  //         .sets
-  //         .where((element) => element.name == nameSet)
-  //         .first
-  //         .addSpell(spell.copy());
-  //   });
-  // }
+  const DynamicSpellListPage({
+    Key? key,
+    required this.spellSet,
+    required this.characterClass,
+    required this.isReadonly,
+    required this.isAddable,
+    this.nameSet = "",
+    required this.onAddSpell,
+  }) : super(key: key);
+
+  @override
+  // ignore: no_logic_in_create_state
+  State<StatefulWidget> createState() => _DynamicSpellListPage(
+        spellSet: spellSet,
+        characterClass: characterClass,
+        isReadonly: isReadonly,
+        isAddable: isAddable,
+        nameSet: nameSet,
+      );
+}
+
+class _DynamicSpellListPage extends State<DynamicSpellListPage> {
+  _DynamicSpellListPage({
+    required this.spellSet,
+    required this.characterClass,
+    required this.isReadonly,
+    required this.isAddable,
+    this.nameSet = "",
+  });
+
+  SpellSet spellSet;
+  final CharacterClass characterClass;
+  final bool isReadonly;
+  final bool isAddable;
+  final String nameSet;
 
   @override
   Widget build(BuildContext context) {
@@ -215,14 +205,15 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
                 ? IconButton(
                     icon: Icon(Icons.add_box_outlined),
                     onPressed: () {
-                      onAddSpell!(
-                          spellSet.spells[index],
-                          AccountManager()
-                              .selectedCharacter
-                              .sets
-                              .where((element) => element.name == nameSet)
-                              .first);
+                      AccountManager()
+                          .selectedCharacter
+                          .sets
+                          .where((set) => set.name == nameSet)
+                          .first
+                          .spells
+                          .add(spellSet.spells[index]);
                       Navigator.pop(context);
+                      widget.onAddSpell(nameSet);
                     },
                   )
                 : null,
