@@ -203,7 +203,7 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
                           .where((set) => set.name == nameSet)
                           .first
                           .spells
-                          .add(spellSet.spells[index]);
+                          .add(spellSet.spells[index].copy());
                       Navigator.pop(context);
                       Navigator.pushReplacement(
                         context,
