@@ -36,6 +36,7 @@ class _HomeState extends State<Home> {
       spells = await data.loadSpells();
     }
     this.spells_list.spells = spells;
+    AccountManager().allSpells.spells = spells;
 
     // Stub data: to be removed
     var stubSet = SpellSet("stubSet");
