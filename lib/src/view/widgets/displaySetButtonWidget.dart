@@ -1,4 +1,5 @@
 import 'package:code/src/model/spell_set.dart';
+import 'package:code/src/view/widgets/pop-ups/name_set_popup.dart';
 
 import '../../model/account_manager.dart';
 import '../home.dart';
@@ -45,12 +46,12 @@ class DisplaySetButton extends StatelessWidget {
           ),
         ),
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => SetDisplay(selectedSpellSet: spellSet),
-            ),
-          );
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(
+          //     builder: (context) => SetDisplay(selectedSpellSet: spellSet),
+          //   ),
+          // );
         },
         child: Wrap(
           spacing: screenWidth * 0.05,
@@ -70,9 +71,15 @@ class DisplaySetButton extends StatelessWidget {
               spacing: screenWidth * 0.02,
               alignment: WrapAlignment.center,
               children: [
-                ElevatedButton(
+                ElevatedButton( //* Use
                   onPressed: () {
-                    // Modifier le set (à implémenter)
+                    // Use le set (à implémenter)
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SetDisplay(selectedSpellSet: spellSet),
+                      ),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green,
@@ -85,9 +92,14 @@ class DisplaySetButton extends StatelessWidget {
                     ),
                   ),
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    // Modifier le set (à implémenter)
+                ElevatedButton( //* Modify
+                  onPressed: () async {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SetDisplay(selectedSpellSet: spellSet),
+                      ),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: primaryColor,
@@ -100,7 +112,29 @@ class DisplaySetButton extends StatelessWidget {
                     ),
                   ),
                 ),
-                ElevatedButton(
+                ElevatedButton( //* Rename
+                  onPressed: () async {
+                    final String? result = await showDialog<String>(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return TextInputDialog(name: 'Enter a new set name');
+                      },
+                    );
+                    spellSet.name = result ?? spellSet.name;
+                    onSetUpdate();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: primaryColor,
+                  ),
+                  child: Text(
+                    'Rename',
+                    style: TextStyle(
+                      fontSize: theme.textTheme.bodyMedium!.fontSize,
+                      fontFamily: theme.textTheme.bodyMedium!.fontFamily,
+                    ),
+                  ),
+                ),
+                ElevatedButton( //* Delete
                   onPressed: () {
                     AccountManager().selectedCharacter.removeSet(spellSet);
                     onSetUpdate();
