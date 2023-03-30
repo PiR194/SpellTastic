@@ -35,6 +35,8 @@ class _HomeState extends State<Home> {
     setState(() {});
   }
 
+  final characterButtons = <Widget>[];
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -45,6 +47,16 @@ class _HomeState extends State<Home> {
 
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
+
+    characterButtons.clear();
+
+    for (final character in AccountManager().characters) {
+      characterButtons.add(
+        CharacterButtonWidget(
+          character: character,
+        ),
+      );
+    }
 
     return Scaffold(
       backgroundColor: backgroundColor,
@@ -87,11 +99,7 @@ class _HomeState extends State<Home> {
                 alignment: WrapAlignment.center,
                 children: [
                   AddCharacterWidget(),
-                  ...AccountManager().characters.map(
-                        (character) => CharacterButtonWidget(
-                          character: character,
-                        ),
-                      ),
+                  ...characterButtons,
                   Container(
                     width: screenWidth,
                     child: DisplayAllSpellButtonWidget(),
