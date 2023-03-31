@@ -7,6 +7,7 @@ import 'package:code/src/model/spell_set.dart';
 import 'package:code/src/view/set_display.dart';
 import 'package:code/src/view/widgets/add_spells_widget.dart';
 import 'package:flutter/material.dart';
+import '../data/json_account_strategy.dart';
 import '../model/character_class.dart';
 import 'spell__search_delegate_page.dart';
 import 'spell_detail_page.dart';
@@ -73,6 +74,7 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
                   .where((set) => set.name == nameSet)
                   .first)),
     );
+    JsonAccountStrategy().saveCharacters(AccountManager().characters);
   }
 
   void addToKnownSpell(int index) {
@@ -91,6 +93,7 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
               isReadonly: false,
               isAddable: false)),
     );
+    JsonAccountStrategy().saveCharacters(AccountManager().characters);
   }
 
   @override

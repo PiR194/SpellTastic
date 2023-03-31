@@ -1,3 +1,4 @@
+import 'package:code/src/data/json_account_strategy.dart';
 import 'package:code/src/model/spell_set.dart';
 import 'package:code/src/view/widgets/pop-ups/name_set_popup.dart';
 
@@ -125,6 +126,8 @@ class DisplaySetButton extends StatelessWidget {
                     );
                     spellSet.name = result ?? spellSet.name;
                     onSetUpdate();
+                    JsonAccountStrategy()
+                        .saveCharacters(AccountManager().characters);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: primaryColor,
@@ -142,6 +145,8 @@ class DisplaySetButton extends StatelessWidget {
                   onPressed: () {
                     AccountManager().selectedCharacter.removeSet(spellSet);
                     onSetUpdate();
+                    JsonAccountStrategy()
+                        .saveCharacters(AccountManager().characters);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: primaryColor,
