@@ -55,6 +55,8 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
   final bool isAddable;
   final String nameSet;
 
+  /// this is trash but no time for better:
+
   void addToSet(int index) {
     AccountManager()
         .selectedCharacter
@@ -96,6 +98,8 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
     JsonAccountStrategy().saveCharacters(AccountManager().characters);
   }
 
+// ====
+
   @override
   Widget build(BuildContext context) {
     // propreties for responsivity / theme
@@ -117,7 +121,8 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
               //Appel de la fonction de recherche
               showSearch(
                   context: context,
-                  delegate: SpellSearchDelegate(spellSet.spells));
+                  delegate: SpellSearchDelegate(spellSet.spells,
+                      isAddable: isAddable, nameSet: nameSet));
             },
           ),
           if (!isReadonly)
@@ -170,19 +175,19 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
               //Option du menu de tri
               const PopupMenuItem(
                 value: OrderOption.asc,
-                child: Text('Croissant'),
+                child: Text('Descending'),
               ),
               const PopupMenuItem(
                 value: OrderOption.desc,
-                child: Text('Décroissant'),
+                child: Text('Ascending'),
               ),
               const PopupMenuItem(
                 value: OrderOption.Lvlasc,
-                child: Text('Level Croissant'),
+                child: Text('Level Ascending'),
               ),
               const PopupMenuItem(
                 value: OrderOption.Lvldesc,
-                child: Text('Level Décroissant'),
+                child: Text('Level Descending'),
               ),
             ],
           ),
