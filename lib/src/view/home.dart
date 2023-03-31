@@ -41,8 +41,8 @@ class _HomeState extends State<Home> {
     var stubSet = SpellSet("stubSet");
     stubSet.spells = spells_list.spells.sublist(0, 40);
     AccountManager().characters[0].sets.add(stubSet);
-    stubSet.spells = spells_list.spells.sublist(40, 80);
-    AccountManager().characters[0].knownSpells.spells = stubSet.spells;
+    // stubSet.spells = spells_list.spells.sublist(40, 80);
+    // AccountManager().characters[0].knownSpells.spells = stubSet.spells;
   }
 
   /*

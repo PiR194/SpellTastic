@@ -15,7 +15,7 @@ class Character {
       {List<SpellSet>? sets, SpellSet? knownSpells, SpellSet? classSpells})
       : _sets = sets ?? [],
         _knownSpells = knownSpells ?? SpellSet('Known Spells'),
-        _classSpells = classSpells ?? SpellSet('All spells');
+        _classSpells = classSpells ?? SpellSet('All class spells');
 
   // Getters and Setters
   String get name => _name;

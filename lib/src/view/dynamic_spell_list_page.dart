@@ -54,6 +54,45 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
   final bool isAddable;
   final String nameSet;
 
+  void addToSet(int index) {
+    AccountManager()
+        .selectedCharacter
+        .sets
+        .where((set) => set.name == nameSet)
+        .first
+        .spells
+        .add(spellSet.spells[index].copy());
+    Navigator.pop(context);
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+          builder: (BuildContext context) => SetDisplay(
+              fullSet: AccountManager()
+                  .selectedCharacter
+                  .sets
+                  .where((set) => set.name == nameSet)
+                  .first)),
+    );
+  }
+
+  void addToKnownSpell(int index) {
+    AccountManager()
+        .selectedCharacter
+        .knownSpells
+        .spells
+        .add(spellSet.spells[index].copy());
+    Navigator.pop(context);
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+          builder: (BuildContext context) => DynamicSpellListPage(
+              spellSet: AccountManager().selectedCharacter.knownSpells,
+              characterClass: AccountManager().selectedCharacter.characterClass,
+              isReadonly: false,
+              isAddable: false)),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     // propreties for responsivity / theme
@@ -78,7 +117,12 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
                   delegate: SpellSearchDelegate(spellSet.spells));
             },
           ),
-          if (!isReadonly) AddSpellWidget(spellSet: spellSet),
+          if (!isReadonly)
+            AddSpellWidget(
+              // known spells was given directly beacause only known spells will
+              // have this add button for now, idally this would be a variable
+              spellSet: spellSet, nameSet: "Known Spells",
+            ),
           PopupMenuButton<OrderOption>(
             //Menu d'option de tri
             onSelected: (value) {
@@ -194,24 +238,11 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
                 ? IconButton(
                     icon: Icon(Icons.add_box_outlined),
                     onPressed: () {
-                      AccountManager()
-                          .selectedCharacter
-                          .sets
-                          .where((set) => set.name == nameSet)
-                          .first
-                          .spells
-                          .add(spellSet.spells[index].copy());
-                      Navigator.pop(context);
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (BuildContext context) => SetDisplay(
-                                fullSet: AccountManager()
-                                    .selectedCharacter
-                                    .sets
-                                    .where((set) => set.name == nameSet)
-                                    .first)),
-                      );
+                      if (nameSet == "Known Spells") {
+                        addToKnownSpell(index);
+                      } else {
+                        addToSet(index);
+                      }
                     },
                   )
                 : null,
