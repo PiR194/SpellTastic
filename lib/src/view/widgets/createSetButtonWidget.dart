@@ -1,3 +1,4 @@
+import 'package:code/src/data/json_account_strategy.dart';
 import 'package:code/src/model/account_manager.dart';
 import 'package:code/src/model/spell.dart';
 import 'package:code/src/view/widgets/pop-ups/name_set_popup.dart';
@@ -40,6 +41,7 @@ class CreateSetButton extends StatelessWidget {
                 SpellSet(result, spells: List<Spell>.empty(growable: true));
             AccountManager().selectedCharacter.addSet(newSet);
             onSetAdded();
+            JsonAccountStrategy().saveCharacters(AccountManager().characters);
           }
         },
         style: ElevatedButton.styleFrom(
