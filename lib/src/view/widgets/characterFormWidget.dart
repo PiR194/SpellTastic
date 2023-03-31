@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../../model/account_manager.dart';
 import '../../model/character.dart';
+import '../home.dart';
 
 class CharacterFormWidget extends StatefulWidget {
   @override
@@ -144,7 +145,11 @@ class _CharacterFormState extends State<CharacterFormWidget> {
                     JsonAccountStrategy().saveCharacters(listCharacter);
                     JsonAccountStrategy().loadCharacters();
                   }
-                  Navigator.pushNamed(context, '/');
+                  Navigator.pop(context);
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => Home()));
                 },
                 child: Text(
                   'CREATE !',
