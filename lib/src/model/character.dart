@@ -1,3 +1,5 @@
+import 'package:code/src/model/spell.dart';
+
 import 'character_class.dart';
 import 'spell_set.dart';
 
@@ -7,15 +9,13 @@ class Character {
   int _level;
   List<SpellSet> _sets;
   SpellSet _knownSpells;
+  SpellSet _classSpells;
 
-  Character(
-    this._name,
-    this._characterClass,
-    this._level, {
-    List<SpellSet>? sets,
-    SpellSet? knownSpells,
-  })  : _sets = sets ?? [],
-        _knownSpells = knownSpells ?? SpellSet('Known Spells');
+  Character(this._name, this._characterClass, this._level,
+      {List<SpellSet>? sets, SpellSet? knownSpells, SpellSet? classSpells})
+      : _sets = sets ?? [],
+        _knownSpells = knownSpells ?? SpellSet('Known Spells'),
+        _classSpells = classSpells ?? SpellSet('All class spells');
 
   // Getters and Setters
   String get name => _name;
@@ -32,9 +32,19 @@ class Character {
   SpellSet get knownSpells => _knownSpells;
   set knownSpells(SpellSet known) => _knownSpells = known;
 
+  SpellSet get classSpells => _classSpells;
+  set classSpells(SpellSet classS) => _classSpells = classS;
+
   // methods
   void addSet(SpellSet set) {
     sets.add(set);
+  }
+
+  void addSpellListToSet(String setname, List<Spell> spells) {
+    final spellSetIndex = _sets.indexWhere((set) => set.name == setname);
+    if (spellSetIndex != -1) {
+      _sets[spellSetIndex].spells.addAll(spells);
+    }
   }
 
   void removeSet(SpellSet set) {

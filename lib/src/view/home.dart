@@ -1,11 +1,15 @@
+import 'dart:io';
 import 'package:code/src/model/account_manager.dart';
-import 'package:code/src/model/character.dart';
-import 'package:code/src/model/character_class.dart';
 import 'package:code/src/view/widgets/addCharacterWidget.dart';
 import 'package:code/src/view/widgets/characterButtonWidget.dart';
 import 'package:code/src/view/widgets/displayAllSpellButtonWidget.dart';
+import 'package:code/src/view/widgets/spell_display_widget.dart';
 import 'package:flutter/material.dart';
+import '../data/dbhelper.dart';
 import '../data/json_account_strategy.dart';
+import '../data/sqlite_data_strategy.dart';
+import '../model/spell.dart';
+import '../model/spell_set.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -13,10 +17,25 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  late SpellSet spells_list = SpellSet("All Spells");
+
   @override
   void initState() {
     super.initState();
     loadCharacters();
+  }
+
+  void getData() async {
+    List<Spell> spells;
+    if (Platform.isAndroid) {
+      var dbHelper = DbHelper();
+      spells = await dbHelper.loadSpells();
+    } else {
+      var data = SQLiteDataStrategy();
+      spells = await data.loadSpells();
+    }
+    spells_list.spells = spells;
+    AccountManager().allSpells.spells = spells;
   }
 
   /*
@@ -26,12 +45,9 @@ class _HomeState extends State<Home> {
   */
   Future<void> loadCharacters() async {
     final JsonAccountStrategy accountStrategy = JsonAccountStrategy();
-    // await accountStrategy.saveCharacters([
-    //   Character("Laalala", CharacterClass.arcanist, 0),
-    //   Character("NicoLePal", CharacterClass.paladin, 12)
-    // ]);
 
     AccountManager().characters = await accountStrategy.loadCharacters();
+    getData();
     setState(() {});
   }
 
@@ -99,11 +115,21 @@ class _HomeState extends State<Home> {
                 alignment: WrapAlignment.center,
                 children: [
                   AddCharacterWidget(),
-                  ...characterButtons,
-                  Container(
-                    width: screenWidth,
-                    child: DisplayAllSpellButtonWidget(),
-                  ),
+                  ...AccountManager().characters.map(
+                        (character) => CharacterButtonWidget(
+                          character: character,
+                        ),
+                      ),
+                  Wrap(
+                      spacing: screenWidth * 0.05,
+                      runSpacing: screenHeight * 0.02,
+                      alignment: WrapAlignment.center,
+                      children: [
+                        Center(
+                          child: SpellDisplayWidget(
+                              spellSet: spells_list, isReadonly: true),
+                        ),
+                      ]),
                 ],
               ),
             ),

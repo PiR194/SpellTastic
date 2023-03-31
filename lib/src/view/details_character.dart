@@ -38,6 +38,13 @@ class _DetailsCharacterState extends State<DetailsCharacter> {
       });
     }
 
+    character.classSpells.spells = AccountManager()
+        .allSpells
+        .spells
+        .where(
+            (spell) => spell.GetLevelByClass(character.characterClass) != null)
+        .toList();
+
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: AppBar(
@@ -132,7 +139,20 @@ class _DetailsCharacterState extends State<DetailsCharacter> {
                   children: [
                     Center(
                       child: SpellDisplayWidget(
-                          spellSet: character.knownSpells, isReadonly: false),
+                        spellSet: character.knownSpells,
+                        isReadonly: false,
+                      ),
+                    ),
+                  ]),
+
+              Wrap(
+                  spacing: screenWidth * 0.05,
+                  runSpacing: screenHeight * 0.02,
+                  alignment: WrapAlignment.center,
+                  children: [
+                    Center(
+                      child: SpellDisplayWidget(
+                          spellSet: character.classSpells, isReadonly: true),
                     ),
                   ]),
             ],

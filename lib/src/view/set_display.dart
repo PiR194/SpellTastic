@@ -1,3 +1,5 @@
+import 'package:code/src/model/spell.dart';
+import 'package:code/src/view/dynamic_spell_list_page.dart';
 import 'package:code/src/view/widgets/spellSetWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -8,12 +10,12 @@ import '../model/spell_set_check_use.dart';
 import 'home.dart';
 
 class SetDisplay extends StatefulWidget {
-  final SpellSet selectedSpellSet;
+  final SpellSet fullSet;
 
-  const SetDisplay({super.key, required this.selectedSpellSet});
+  const SetDisplay({Key? key, required this.fullSet}) : super(key: key);
 
   @override
-  _SetDisplayState createState() => _SetDisplayState(selectedSpellSet);
+  _SetDisplayState createState() => _SetDisplayState(fullSet);
 }
 
 class _SetDisplayState extends State<SetDisplay> {
@@ -28,6 +30,18 @@ class _SetDisplayState extends State<SetDisplay> {
     selectedSpellSet = SpellSetManager.sortByLevel(
         fullSet, AccountManager().selectedCharacter.characterClass);
     isCheckedList = {};
+  }
+
+  void onAddSpell(String name) {
+    setState(() {
+      selectedSpellSet = SpellSetManager.sortByLevel(
+          AccountManager()
+              .selectedCharacter
+              .sets
+              .where((spell) => spell.name == name)
+              .first,
+          AccountManager().selectedCharacter.characterClass);
+    });
   }
 
   @override
@@ -67,6 +81,25 @@ class _SetDisplayState extends State<SetDisplay> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
+                  IconButton(
+                    icon: Icon(Icons.add_circle_outline),
+                    onPressed: () => {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DynamicSpellListPage(
+                                    spellSet: AccountManager()
+                                        .selectedCharacter
+                                        .knownSpells,
+                                    characterClass: AccountManager()
+                                        .selectedCharacter
+                                        .characterClass,
+                                    isReadonly: true,
+                                    isAddable: true,
+                                    nameSet: setName,
+                                  )))
+                    },
+                  ),
                   IconButton(
                     icon: Icon(Icons.arrow_back),
                     onPressed: _currentPage == selectedSpellSet.length

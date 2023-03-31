@@ -40,16 +40,17 @@ class MyApp extends StatelessWidget {
         '/': (context) => Home(),
         '/characterform': (context) => CharacterFormWidget(),
         '/characterdetails': (context) => DetailsCharacter(),
-        '/setdisplay': (context) =>
-            SetDisplay(selectedSpellSet: SpellSet("deafault")),
+        '/setdisplay': (context) => SetDisplay(fullSet: SpellSet("deafault")),
         '/displayallspell': (context) => SpellListPage(
             character: Character("dummy", CharacterClass.wizard, 10)),
         '/settings': (context) => SettingsPage(),
         //add all spells by default
         '/spelllist': (context) => DynamicSpellListPage(
-            spellSet: AccountManager().selectedCharacter.knownSpells,
-            characterClass: AccountManager().selectedCharacter.characterClass,
-            isReadonly: true),
+              spellSet: AccountManager().selectedCharacter.knownSpells,
+              characterClass: AccountManager().selectedCharacter.characterClass,
+              isReadonly: true,
+              isAddable: false,
+            ),
       },
       theme: Provider.of<ThemeModel>(context).currentTheme,
     );

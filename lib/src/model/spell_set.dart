@@ -6,6 +6,7 @@ class SpellSet {
 
   // Constructor
   SpellSet(this._name, {List<Spell>? spells}) : _spells = spells ?? [];
+
   // Getters and Setters
   String get name => _name;
   set name(String n) => _name = n;
