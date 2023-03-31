@@ -12,12 +12,7 @@ class AddSpellWidget extends StatelessWidget {
     return ElevatedButton(
       child: const Icon(Icons.add),
       onPressed: () {
-        /*Navigator.push(
-          context,
-          MaterialPageRoute(
-              // push to add spell page with corresponding spellset
-              ),
-        );*/
+        print("add spell");
       },
     );
   }

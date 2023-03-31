@@ -23,7 +23,6 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
     loadCharacters();
-    getData();
   }
 
   void getData() async {
@@ -42,6 +41,8 @@ class _HomeState extends State<Home> {
     var stubSet = SpellSet("stubSet");
     stubSet.spells = spells_list.spells.sublist(0, 40);
     AccountManager().characters[0].sets.add(stubSet);
+    stubSet.spells = spells_list.spells.sublist(40, 80);
+    AccountManager().characters[0].knownSpells.spells = stubSet.spells;
   }
 
   /*
@@ -50,13 +51,12 @@ class _HomeState extends State<Home> {
   * the code.
   */
   Future<void> loadCharacters() async {
+    print("a");
     final JsonAccountStrategy accountStrategy = JsonAccountStrategy();
-    // await accountStrategy.saveCharacters([
-    //   Character("Laalala", CharacterClass.arcanist, 0),
-    //   Character("NicoLePal", CharacterClass.paladin, 12)
-    // ]);
 
     AccountManager().characters = await accountStrategy.loadCharacters();
+    print("characters ${AccountManager().characters}");
+    getData();
     setState(() {});
   }
 

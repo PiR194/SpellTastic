@@ -151,7 +151,7 @@ class _DetailsCharacterState extends State<DetailsCharacter> {
                   children: [
                     Center(
                       child: SpellDisplayWidget(
-                          spellSet: character.classSpells, isReadonly: false),
+                          spellSet: character.classSpells, isReadonly: true),
                     ),
                   ]),
             ],
