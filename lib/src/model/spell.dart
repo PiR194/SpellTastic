@@ -83,7 +83,6 @@ class Spell {
 
 // Methods
   int? GetLevelByClass(CharacterClass class_) {
-    //  print(_level);
     if (_level.containsKey(class_)) {
       return _level[class_];
     } else {
@@ -96,16 +95,17 @@ class Spell {
     int min = 0;
     bool flag = false;
     _level.forEach((key, value) {
-      if (!flag){ //* premiere itération
+      if (!flag) {
+        //* premiere itération
         max = value;
         min = value;
         flag = true;
       }
 
-      if(max < value) max = value;
-      if(min > value) min = value;
+      if (max < value) max = value;
+      if (min > value) min = value;
     });
-    return ((max + min)/2).round();
+    return ((max + min) / 2).round();
   }
 
   Map<CharacterClass, int> GetMapClassLevel() {
