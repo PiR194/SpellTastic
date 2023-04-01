@@ -18,7 +18,8 @@ class CharacterMapper {
       'class': char.characterClass.name,
       'level': char.level,
       'sets': jsonSets,
-      'knownSpells': jsonKnown
+      'knownSpells': jsonKnown,
+      'spellSetPositions': char.spellSetPositions,
     };
 
     return map;
@@ -30,8 +31,9 @@ class CharacterMapper {
 
     for (var s in json['sets']) {
       String setName = s['name'];
+      List<int> spellIds = s['spells'].map<int>((id) => id as int).toList();
       List<Spell> spells = [];
-      for (var spellIndex in s['spells']) {
+      for (var spellIndex in spellIds) {
         Spell spell = await data.getSpellById(spellIndex);
         spells.add(spell);
       }
@@ -47,7 +49,20 @@ class CharacterMapper {
     CharacterClass characterClass = CharacterClass.values.firstWhere((e) =>
         e.toString().split('.').last == json['class'].toString().toLowerCase());
 
-    return Character(json['name'], characterClass, json['level'],
+    Character character = Character(json['name'], characterClass, json['level'],
         sets: listSet, knownSpells: listSpell);
+
+    if (json['spellSetPositions'] != null) {
+      character.spellSetPositions = {};
+      Map<String, dynamic> jsonPositions = json['spellSetPositions'];
+      jsonPositions.forEach((key, value) {
+        if (value is List<dynamic>) {
+          List<int> positions = value.cast<int>().toList();
+          character.spellSetPositions[key] = positions;
+        }
+      });
+    }
+
+    return character;
   }
 }

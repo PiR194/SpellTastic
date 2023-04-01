@@ -3,6 +3,7 @@ import 'package:code/src/view/dynamic_spell_list_page.dart';
 import 'package:code/src/view/widgets/spellSetWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../data/json_account_strategy.dart';
 import '../model/account_manager.dart';
 import '../model/spellSetManager.dart';
 import '../model/spell_set.dart';
@@ -23,8 +24,8 @@ class _SetDisplayState extends State<SetDisplay> {
   int _currentPage = 0;
   List<SpellSet> selectedSpellSet = [];
   late String setName;
-  late Map<int, bool> isCheckedList;
   bool isEditing = false;
+  late Map<String, bool> isCheckedList;
 
   _SetDisplayState(SpellSet fullSet) {
     setName = fullSet.name;
@@ -166,19 +167,13 @@ class _SetDisplayState extends State<SetDisplay> {
                         child: SpellSetWidget(
                           currentSet: selectedSpellSet[index],
                           isCheckedList: isCheckedList,
-                          onCheckChanged: (int spellId, bool isChecked) {
-                            // update isCheckedList whenever a checkbox is clicked
-                            setState(() {
-                              isCheckedList[spellId] = isChecked;
-                            });
-                          },
+                          onCheckChanged: (String position, bool isChecked) {},
+                          fullSetName: setName,
                           isEditing: isEditing,
-                          onDelete: () {
-                            // setState(() {
-                            //   selectedSpellSet.removeAt(index);
-                            // });
-                            
-                          }
+                          indexToRemove: AccountManager()
+                              .selectedCharacter
+                              .sets
+                              .indexWhere((set) => set.name == setName),
                         ),
                       );
                     },

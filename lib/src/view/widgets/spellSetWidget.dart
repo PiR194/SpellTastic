@@ -10,35 +10,39 @@ import '../set_display.dart';
 import '../spell_detail_page.dart';
 
 class SpellSetWidget extends StatefulWidget {
-  Map<int, bool> isCheckedList;
+  Map<String, bool> isCheckedList;
   final SpellSet currentSet;
-  final Function(int, bool) onCheckChanged;
-  
   final bool isEditing;
-  final VoidCallback onDelete;
-  
+  final Function(String, bool) onCheckChanged;
+  final String fullSetName;
+  final int indexToRemove;
+
   SpellSetWidget(
       {Key? key,
       required this.isCheckedList,
       required this.currentSet,
       required this.onCheckChanged,
       required this.isEditing,
-      required this.onDelete,
-      })
+      required this.fullSetName,
+      required this.indexToRemove})
       : super(key: key);
 
   get spellSetCheckUse => isCheckedList;
 
   @override
-  _SpellSetWidgetState createState() => _SpellSetWidgetState(currentSet);
+  _SpellSetWidgetState createState() =>
+      _SpellSetWidgetState(currentSet, indexToRemove);
 }
 
 class _SpellSetWidgetState extends State<SpellSetWidget> {
   Map<int, bool> _isCheckedList = {};
   final _scrollController = ScrollController();
   final SpellSet currentSet;
+  final int indexToRemove;
 
-  _SpellSetWidgetState(this.currentSet);
+  _SpellSetWidgetState(this.currentSet, this.indexToRemove);
+
+  Object get fullSetName => fullSetName;
 
   @override
   void dispose() {
@@ -57,6 +61,7 @@ class _SpellSetWidgetState extends State<SpellSetWidget> {
           curve: Curves.easeInOut,
         );
       }
+
       if (event.isKeyPressed(LogicalKeyboardKey.arrowUp)) {
         _scrollController.animateTo(
           _scrollController.offset - 50.0,
@@ -86,73 +91,124 @@ class _SpellSetWidgetState extends State<SpellSetWidget> {
         automaticallyImplyLeading: false,
         backgroundColor: primaryColor,
       ),
-      body: ListView(
+      body: ListView.builder(
         controller: _scrollController,
         cacheExtent: 2,
-        children: [
-          for (var spell in currentSet.spells)
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => SpellDetailsPage(spell: spell),
+        itemCount: currentSet.spells.length,
+        itemBuilder: (context, index) {
+          final spell = currentSet.spells[index];
+          final isCheckedKey = '${widget.currentSet.name}-$index';
+          final isChecked = widget.isCheckedList[isCheckedKey] ??
+              (AccountManager()
+                          .selectedCharacter
+                          .spellSetPositions[spell.name] !=
+                      null &&
+                  AccountManager()
+                      .selectedCharacter
+                      .spellSetPositions[spell.name]!
+                      .contains(index));
+          var textStyle = isChecked
+              ? const TextStyle(
+                  decoration: TextDecoration.lineThrough,
+                  color: Colors.grey,
+                )
+              : const TextStyle();
+          if (AccountManager()
+                      .selectedCharacter
+                      .spellSetPositions[spell.name] !=
+                  null &&
+              AccountManager()
+                  .selectedCharacter
+                  .spellSetPositions[spell.name]!
+                  .contains(index)) {
+            textStyle = const TextStyle(
+              decoration: TextDecoration.lineThrough,
+              color: Colors.grey,
+            );
+          }
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SpellDetailsPage(spell: spell),
+                  ),
+                );
+              },
+              child: Row(
+                children: [
+                  Checkbox(
+                    value: isChecked,
+                    onChanged: (value) {
+                      setState(() {
+                        widget.isCheckedList[isCheckedKey] = value ?? false;
+                      });
+                      if (value == true) {
+                        if (AccountManager()
+                                .selectedCharacter
+                                .spellSetPositions[spell.name] ==
+                            null) {
+                          // If the key is not present in the map, create a new list for the key
+                          AccountManager()
+                              .selectedCharacter
+                              .spellSetPositions[spell.name] = [index];
+                        } else {
+                          AccountManager()
+                              .selectedCharacter
+                              .spellSetPositions[spell.name]
+                              ?.add(index);
+                        }
+                        JsonAccountStrategy()
+                            .saveCharacters(AccountManager().characters);
+                      } else {
+                        if (AccountManager()
+                                .selectedCharacter
+                                .spellSetPositions[spell.name] ==
+                            null) {
+                          // If the key is not present in the map, create a new list for the key
+                          AccountManager()
+                              .selectedCharacter
+                              .spellSetPositions[spell.name] = [index];
+                        } else {
+                          AccountManager()
+                              .selectedCharacter
+                              .spellSetPositions[spell.name]
+                              ?.remove(index);
+                        }
+                        JsonAccountStrategy()
+                            .saveCharacters(AccountManager().characters);
+                      }
+                    },
+                  ),
+                  SizedBox(width: 16.0),
+                  Expanded(
+                    child: Text(
+                      spell.name,
+                      style: textStyle,
                     ),
-                  );
-                },
-                child: Row(
-                  children: [
-                    Checkbox(
-                      value: widget.isCheckedList[spell.id] ?? false,
-                      onChanged: (value) {
-                        setState(() {
-                          widget.isCheckedList[spell.id] = value ?? false;
-                        });
+                  ),
+                  if (widget.isEditing)
+                    IconButton(
+                      icon: const Icon(Icons.delete),
+                      onPressed: () {
+                        currentSet.spells.remove(spell);
+                        AccountManager()
+                            .selectedCharacter
+                            .sets[indexToRemove]
+                            .spells
+                            .remove(spell);
+                        setState(() {});
+                        JsonAccountStrategy()
+                            .saveCharacters(AccountManager().characters);
                       },
-                    ),
-                    const SizedBox(width: 16.0),
-                    Expanded(
-                      child: Text(spell.name),
-                    ),
-                    if (widget.isEditing)
-                      IconButton(
-                        icon: const Icon(Icons.delete),
-                        onPressed: () {
-                          //widget.onDelete();
-                          currentSet.spells.remove(spell);
-                          AccountManager().selectedCharacter.knownSpells.spells.remove(spell);
-
-                          // AccountManager()
-                          // .selectedCharacter
-                          // .sets
-                          // .where((set) => set.name == currentSet.name)
-                          // .first
-                          // .spells
-                          // .remove(spell);
-                          
-                          // Navigator.pop(context);
-                          // Navigator.pushReplacement(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //       builder: (BuildContext context) => SetDisplay(
-                          //           fullSet: AccountManager()
-                          //               .selectedCharacter
-                          //               .sets
-                          //               .where((set) => set.name == currentSet.name)
-                          //               .first)),
-                          // );  
-
-                          JsonAccountStrategy().saveCharacters(AccountManager().characters);
-
-                        },
-                      )
-                  ],
-                ),
+                    )
+                ],
               ),
             ),
-        ],
+          );
+        },
       ),
     );
   }

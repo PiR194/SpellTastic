@@ -53,52 +53,8 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
   final CharacterClass characterClass;
   final bool isReadonly;
   final bool isAddable;
+  bool removeMode = false;
   final String nameSet;
-
-  /// this is trash but no time for better:
-
-  void addToSet(int index) {
-    AccountManager()
-        .selectedCharacter
-        .sets
-        .where((set) => set.name == nameSet)
-        .first
-        .spells
-        .add(spellSet.spells[index].copy());
-    Navigator.pop(context);
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-          builder: (BuildContext context) => SetDisplay(
-              fullSet: AccountManager()
-                  .selectedCharacter
-                  .sets
-                  .where((set) => set.name == nameSet)
-                  .first)),
-    );
-    JsonAccountStrategy().saveCharacters(AccountManager().characters);
-  }
-
-  void addToKnownSpell(int index) {
-    AccountManager()
-        .selectedCharacter
-        .knownSpells
-        .spells
-        .add(spellSet.spells[index].copy());
-    Navigator.pop(context);
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-          builder: (BuildContext context) => DynamicSpellListPage(
-              spellSet: AccountManager().selectedCharacter.knownSpells,
-              characterClass: AccountManager().selectedCharacter.characterClass,
-              isReadonly: false,
-              isAddable: false)),
-    );
-    JsonAccountStrategy().saveCharacters(AccountManager().characters);
-  }
-
-// ====
 
   @override
   Widget build(BuildContext context) {
@@ -125,6 +81,17 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
                       isAddable: isAddable, nameSet: nameSet));
             },
           ),
+          Visibility(
+              visible: spellSet.name == 'Known Spells' && !isReadonly,
+              child: IconButton(
+                icon: const Icon(Icons.edit),
+                onPressed: () {
+                  removeMode = !removeMode;
+                  setState(() {
+                    //update the view
+                  });
+                },
+              )),
           if (!isReadonly)
             AddSpellWidget(
               // known spells was given directly beacause only known spells will
@@ -242,18 +209,35 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
                     // )}...', style: Theme.of(context).textTheme.titleSmall)
                   ]),
             ),
-            trailing: isAddable
-                ? IconButton(
-                    icon: Icon(Icons.add_box_outlined),
-                    onPressed: () {
-                      if (nameSet == "Known Spells") {
-                        addToKnownSpell(index);
-                      } else {
-                        addToSet(index);
-                      }
-                    },
-                  )
-                : null,
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                isAddable && !removeMode
+                    ? IconButton(
+                        icon: Icon(Icons.add_box_outlined),
+                        onPressed: () {
+                          if (nameSet == "Known Spells") {
+                            addToKnownSpell(index);
+                          } else {
+                            addToSet(index);
+                          }
+                        },
+                      )
+                    : const SizedBox(),
+                // Add a second IconButton here
+                !isAddable && removeMode
+                    ? IconButton(
+                        icon: const Icon(Icons.delete_outline),
+                        onPressed: () {
+                          if (spellSet.name == "Known Spells") {
+                            removeFromKnownSPell(index);
+                          }
+                        },
+                      )
+                    : SizedBox(),
+              ],
+            ),
+
             onTap: () {
               Navigator.push(
                 context,
@@ -268,4 +252,61 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
       ),
     );
   }
+
+  /// this is trash but no time for better:
+
+  void addToSet(int index) {
+    AccountManager()
+        .selectedCharacter
+        .sets
+        .where((set) => set.name == nameSet)
+        .first
+        .spells
+        .add(spellSet.spells[index].copy());
+    Navigator.pop(context);
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+          builder: (BuildContext context) => SetDisplay(
+              fullSet: AccountManager()
+                  .selectedCharacter
+                  .sets
+                  .where((set) => set.name == nameSet)
+                  .first)),
+    );
+    JsonAccountStrategy().saveCharacters(AccountManager().characters);
+  }
+
+  void addToKnownSpell(int index) {
+    AccountManager()
+        .selectedCharacter
+        .knownSpells
+        .spells
+        .add(spellSet.spells[index].copy());
+    Navigator.pop(context);
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+          builder: (BuildContext context) => DynamicSpellListPage(
+              spellSet: AccountManager().selectedCharacter.knownSpells,
+              characterClass: AccountManager().selectedCharacter.characterClass,
+              isReadonly: false,
+              isAddable: false)),
+    );
+    JsonAccountStrategy().saveCharacters(AccountManager().characters);
+  }
+
+  void removeFromKnownSPell(int index) {
+    AccountManager()
+        .selectedCharacter
+        .knownSpells
+        .spells
+        .remove(spellSet.spells[index]);
+    JsonAccountStrategy().saveCharacters(AccountManager().characters);
+    setState(() {
+      // update view
+    });
+  }
+
+// ====
 }

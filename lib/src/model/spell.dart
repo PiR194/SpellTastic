@@ -22,6 +22,9 @@ class Spell {
   String _spellResistance;
   String _description;
 
+  // for use
+  List<int> usedSpellPositions = [];
+
   // Constructor
   Spell(
       this._id,
@@ -41,6 +44,7 @@ class Spell {
 
   // Getters and Setters
   int get id => _id;
+  set id(int id) => _id = id;
 
   String get name => _name;
   set name(String name) => _name = name;
