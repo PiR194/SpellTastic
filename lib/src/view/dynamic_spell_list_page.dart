@@ -56,15 +56,81 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
   final String nameSet;
 
   /// this is trash but no time for better:
+  ///
+  void _showAlert(int count) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Too many spells"),
+          content: Text("You have $count spells of this level already"),
+          actions: [
+            TextButton(
+              child: Text("OK"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   void addToSet(int index) {
-    AccountManager()
-        .selectedCharacter
-        .sets
-        .where((set) => set.name == nameSet)
-        .first
-        .spells
-        .add(spellSet.spells[index].copy());
+    if (!spellSet.spells[index].level.keys
+        .contains(AccountManager().selectedCharacter.characterClass)) {
+      return;
+    }
+    if (AccountManager()
+            .selectedCharacter
+            .sets
+            .where((set) => set.name == nameSet)
+            .first
+            .spells
+            .where((spell) =>
+                spell
+                    .level[AccountManager().selectedCharacter.characterClass] ==
+                spellSet.spells[index]
+                    .level[AccountManager().selectedCharacter.characterClass])
+            .length >=
+        AccountManager()
+            .selectedCharacter
+            .characterClass
+            .getSpellPerDay()[AccountManager()
+                .selectedCharacter
+                .characterClass
+                .name]![AccountManager().selectedCharacter.level]!
+            .elementAt(spellSet.spells[index]
+                .level[AccountManager().selectedCharacter.characterClass]!)) {
+      print(
+          "too much spells :${AccountManager().selectedCharacter.sets.where((set) => set.name == nameSet).first.spells.where((element) => element.level[AccountManager().selectedCharacter.characterClass] == spellSet.spells[index].level[AccountManager().selectedCharacter.characterClass]).length}");
+      // showDialog(
+      //   context: context,
+      //   builder: (BuildContext context) {
+      //     return AlertDialog(
+      //       title: Text("Too many spells"),
+      //       content: Text("You have ot musch spells of this level already"),
+      //       actions: [
+      //         TextButton(
+      //           child: Text("OK"),
+      //           onPressed: () {
+      //             Navigator.of(context).pop();
+      //           },
+      //         ),
+      //       ],
+      //     );
+      //   },
+      // );
+    } else {
+      AccountManager()
+          .selectedCharacter
+          .sets
+          .where((set) => set.name == nameSet)
+          .first
+          .spells
+          .add(spellSet.spells[index].copy());
+    }
     Navigator.pop(context);
     Navigator.pushReplacement(
       context,
