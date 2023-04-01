@@ -99,7 +99,7 @@ class Spell {
     int min = 0;
     bool flag = false;
     _level.forEach((key, value) {
-      if (value != null){
+      if (value != null) {
         if (!flag) {
           //* premiere itération
           max = value;
