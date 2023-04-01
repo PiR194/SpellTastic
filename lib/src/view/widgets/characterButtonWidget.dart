@@ -13,14 +13,14 @@ class CharacterButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    const Color accentColor = Color(0xFF9C27B0);
+    const Color accentColor = Color.fromARGB(255, 50, 17, 56);
 
     double buttonWidth = MediaQuery.of(context).size.width / 2;
     final screenHeight = MediaQuery.of(context).size.height;
 
     return SizedBox(
       width: buttonWidth,
-      height: screenHeight / 8,
+      height: screenHeight / 9,
       child: ElevatedButton(
         onPressed: () {
           AccountManager().selectCharacter(character);
@@ -30,7 +30,7 @@ class CharacterButtonWidget extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: accentColor,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(15),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         ),
@@ -38,17 +38,21 @@ class CharacterButtonWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            CircleAvatar(
-              radius: 50,
-              backgroundImage:
-                  AssetImage(character.characterClass.getImagePath()),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: CircleAvatar(
+                radius: 40,
+                backgroundImage: AssetImage(
+                  character.characterClass.getImagePath(),
+                ),
+              ),
             ),
-            const SizedBox(width: 10),
             Expanded(
               child: Text(
                 character.name,
                 textAlign: TextAlign.center,
                 style: TextStyle(
+                  fontWeight: FontWeight.bold,
                   fontSize: theme.textTheme.bodyLarge!.fontSize,
                   fontFamily: theme.textTheme.bodyLarge!.fontFamily,
                 ),

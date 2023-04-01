@@ -108,30 +108,28 @@ class _HomeState extends State<Home> {
           padding: EdgeInsets.only(
               top: MediaQuery.of(context).padding.top + kToolbarHeight),
           child: Center(
-            child: SingleChildScrollView(
-              child: Wrap(
-                spacing: screenWidth * 0.05,
-                runSpacing: screenHeight * 0.02,
-                alignment: WrapAlignment.center,
-                children: [
-                  AddCharacterWidget(),
-                  ...AccountManager().characters.map(
-                        (character) => CharacterButtonWidget(
-                          character: character,
-                        ),
+            child: Wrap(
+              spacing: screenWidth * 0.05,
+              runSpacing: screenHeight * 0.02,
+              alignment: WrapAlignment.center,
+              children: [
+                AddCharacterWidget(),
+                ...AccountManager().characters.map(
+                      (character) => CharacterButtonWidget(
+                        character: character,
                       ),
-                  Wrap(
-                      spacing: screenWidth * 0.05,
-                      runSpacing: screenHeight * 0.02,
-                      alignment: WrapAlignment.center,
-                      children: [
-                        Center(
-                          child: SpellDisplayWidget(
-                              spellSet: spells_list, isReadonly: true),
-                        ),
-                      ]),
-                ],
-              ),
+                    ),
+                Wrap(
+                    spacing: screenWidth * 0.05,
+                    runSpacing: screenHeight * 0.02,
+                    alignment: WrapAlignment.center,
+                    children: [
+                      Center(
+                        child: SpellDisplayWidget(
+                            spellSet: spells_list, isReadonly: true),
+                      ),
+                    ]),
+              ],
             ),
           )),
     );
