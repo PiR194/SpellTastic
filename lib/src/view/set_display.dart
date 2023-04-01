@@ -24,6 +24,7 @@ class _SetDisplayState extends State<SetDisplay> {
   List<SpellSet> selectedSpellSet = [];
   late String setName;
   late Map<int, bool> isCheckedList;
+  bool isEditing = false;
 
   _SetDisplayState(SpellSet fullSet) {
     setName = fullSet.name;
@@ -101,6 +102,14 @@ class _SetDisplayState extends State<SetDisplay> {
                     },
                   ),
                   IconButton(
+                    icon: Icon(isEditing ? Icons.check : Icons.edit),
+                    onPressed: () => {
+                      setState(() {
+                        isEditing = !isEditing;
+                      })
+                    },
+                  ),
+                  IconButton(
                     icon: Icon(Icons.arrow_back),
                     onPressed: _currentPage == selectedSpellSet.length
                         ? null
@@ -155,14 +164,22 @@ class _SetDisplayState extends State<SetDisplay> {
                     itemBuilder: (BuildContext context, int index) {
                       return Container(
                         child: SpellSetWidget(
-                            currentSet: selectedSpellSet[index],
-                            isCheckedList: isCheckedList,
-                            onCheckChanged: (int spellId, bool isChecked) {
-                              // update isCheckedList whenever a checkbox is clicked
-                              setState(() {
-                                isCheckedList[spellId] = isChecked;
-                              });
-                            }),
+                          currentSet: selectedSpellSet[index],
+                          isCheckedList: isCheckedList,
+                          onCheckChanged: (int spellId, bool isChecked) {
+                            // update isCheckedList whenever a checkbox is clicked
+                            setState(() {
+                              isCheckedList[spellId] = isChecked;
+                            });
+                          },
+                          isEditing: isEditing,
+                          onDelete: () {
+                            // setState(() {
+                            //   selectedSpellSet.removeAt(index);
+                            // });
+                            
+                          }
+                        ),
                       );
                     },
                   ),

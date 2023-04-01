@@ -1,21 +1,30 @@
+import 'package:code/src/data/json_account_strategy.dart';
+import 'package:code/src/model/account_manager.dart';
 import 'package:code/src/model/spell_set.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../model/spellSetManager.dart';
 import '../../model/spell_set_check_use.dart';
+import '../set_display.dart';
 import '../spell_detail_page.dart';
 
 class SpellSetWidget extends StatefulWidget {
   Map<int, bool> isCheckedList;
   final SpellSet currentSet;
   final Function(int, bool) onCheckChanged;
-
+  
+  final bool isEditing;
+  final VoidCallback onDelete;
+  
   SpellSetWidget(
       {Key? key,
       required this.isCheckedList,
       required this.currentSet,
-      required this.onCheckChanged})
+      required this.onCheckChanged,
+      required this.isEditing,
+      required this.onDelete,
+      })
       : super(key: key);
 
   get spellSetCheckUse => isCheckedList;
@@ -82,35 +91,67 @@ class _SpellSetWidgetState extends State<SpellSetWidget> {
         cacheExtent: 2,
         children: [
           for (var spell in currentSet.spells)
-             Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8.0),
-        child: InkWell(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => SpellDetailsPage(spell: spell),
-              ),
-            );
-          },
-          child: Row(
-            children: [
-              Checkbox(
-                value: widget.isCheckedList[spell.id] ?? false,
-                onChanged: (value) {
-                  setState(() {
-                    widget.isCheckedList[spell.id] = value ?? false;
-                  });
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SpellDetailsPage(spell: spell),
+                    ),
+                  );
                 },
+                child: Row(
+                  children: [
+                    Checkbox(
+                      value: widget.isCheckedList[spell.id] ?? false,
+                      onChanged: (value) {
+                        setState(() {
+                          widget.isCheckedList[spell.id] = value ?? false;
+                        });
+                      },
+                    ),
+                    const SizedBox(width: 16.0),
+                    Expanded(
+                      child: Text(spell.name),
+                    ),
+                    if (widget.isEditing)
+                      IconButton(
+                        icon: const Icon(Icons.delete),
+                        onPressed: () {
+                          //widget.onDelete();
+                          currentSet.spells.remove(spell);
+                          AccountManager().selectedCharacter.knownSpells.spells.remove(spell);
+
+                          // AccountManager()
+                          // .selectedCharacter
+                          // .sets
+                          // .where((set) => set.name == currentSet.name)
+                          // .first
+                          // .spells
+                          // .remove(spell);
+                          
+                          // Navigator.pop(context);
+                          // Navigator.pushReplacement(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //       builder: (BuildContext context) => SetDisplay(
+                          //           fullSet: AccountManager()
+                          //               .selectedCharacter
+                          //               .sets
+                          //               .where((set) => set.name == currentSet.name)
+                          //               .first)),
+                          // );  
+
+                          JsonAccountStrategy().saveCharacters(AccountManager().characters);
+
+                        },
+                      )
+                  ],
+                ),
               ),
-              SizedBox(width: 16.0),
-              Expanded(
-                child: Text(spell.name),
-              ),
-            ],
-          ),
-        ),
-      ),
+            ),
         ],
       ),
     );
