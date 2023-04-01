@@ -91,14 +91,28 @@ class _SpellSetWidgetState extends State<SpellSetWidget> {
           final spell = currentSet.spells[index];
           final isCheckedKey = '${widget.currentSet.name}-$index';
           final isChecked = widget.isCheckedList[isCheckedKey] ??
-              spell.usedSpellPositions.contains(index);
+              (AccountManager()
+                          .selectedCharacter
+                          .spellSetPositions[spell.name] !=
+                      null &&
+                  AccountManager()
+                      .selectedCharacter
+                      .spellSetPositions[spell.name]!
+                      .contains(index));
           var textStyle = isChecked
               ? const TextStyle(
                   decoration: TextDecoration.lineThrough,
                   color: Colors.grey,
                 )
               : const TextStyle();
-          if (spell.usedSpellPositions.contains(index)) {
+          if (AccountManager()
+                      .selectedCharacter
+                      .spellSetPositions[spell.name] !=
+                  null &&
+              AccountManager()
+                  .selectedCharacter
+                  .spellSetPositions[spell.name]!
+                  .contains(index)) {
             textStyle = const TextStyle(
               decoration: TextDecoration.lineThrough,
               color: Colors.grey,
@@ -124,9 +138,39 @@ class _SpellSetWidgetState extends State<SpellSetWidget> {
                         widget.isCheckedList[isCheckedKey] = value ?? false;
                       });
                       if (value == true) {
-                        spell.usedSpellPositions.add(index);
+                        if (AccountManager()
+                                .selectedCharacter
+                                .spellSetPositions[spell.name] ==
+                            null) {
+                          // If the key is not present in the map, create a new list for the key
+                          AccountManager()
+                              .selectedCharacter
+                              .spellSetPositions[spell.name] = [index];
+                        } else {
+                          AccountManager()
+                              .selectedCharacter
+                              .spellSetPositions[spell.name]
+                              ?.add(index);
+                        }
+                        JsonAccountStrategy()
+                            .saveCharacters(AccountManager().characters);
                       } else {
-                        spell.usedSpellPositions.remove(index);
+                        if (AccountManager()
+                                .selectedCharacter
+                                .spellSetPositions[spell.name] ==
+                            null) {
+                          // If the key is not present in the map, create a new list for the key
+                          AccountManager()
+                              .selectedCharacter
+                              .spellSetPositions[spell.name] = [index];
+                        } else {
+                          AccountManager()
+                              .selectedCharacter
+                              .spellSetPositions[spell.name]
+                              ?.remove(index);
+                        }
+                        JsonAccountStrategy()
+                            .saveCharacters(AccountManager().characters);
                       }
                     },
                   ),

@@ -10,6 +10,7 @@ class Character {
   List<SpellSet> _sets;
   SpellSet _knownSpells;
   SpellSet _classSpells;
+  Map<String, List<int>> spellSetPositions = {};
 
   Character(this._name, this._characterClass, this._level,
       {List<SpellSet>? sets, SpellSet? knownSpells, SpellSet? classSpells})
