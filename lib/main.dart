@@ -40,8 +40,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => Home(),
         '/characterform': (context) => CharacterFormWidget(),
         '/characterdetails': (context) => DetailsCharacter(),
-        '/setdisplay': (context) =>
-            SetDisplay(selectedSpellSet: SpellSet("deafault")),
+        '/setdisplay': (context) => SetDisplay(fullSet: SpellSet("deafault")),
         '/displayallspell': (context) => SpellListPage(
             character: Character("dummy", CharacterClass.wizard, 10)),
         '/settings': (context) => SettingsPage(),
@@ -51,7 +50,6 @@ class MyApp extends StatelessWidget {
               characterClass: AccountManager().selectedCharacter.characterClass,
               isReadonly: true,
               isAddable: false,
-              onAddSpell: null,
             ),
       },
       theme: Provider.of<ThemeModel>(context).currentTheme,

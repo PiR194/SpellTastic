@@ -1,73 +1,104 @@
 /*
 * this class takes a list of spells and 
-* diplays them our a SpellListView
+* diplays them in our a SpellListView
 */
-
-import 'dart:ffi';
-
 import 'package:code/src/model/account_manager.dart';
-import 'package:code/src/model/spell.dart';
 import 'package:code/src/model/spell_set.dart';
+import 'package:code/src/view/set_display.dart';
 import 'package:code/src/view/widgets/add_spells_widget.dart';
 import 'package:flutter/material.dart';
+import '../data/json_account_strategy.dart';
 import '../model/character_class.dart';
 import 'spell__search_delegate_page.dart';
 import 'spell_detail_page.dart';
 import 'spell_list_page.dart';
 
 class DynamicSpellListPage extends StatefulWidget {
-  final SpellSet spellSet; // change character knownSpells to spellset
-  final CharacterClass characterClass;
-  final bool isReadonly;
-  final bool isAddable;
-  final String nameSet;
-  final Function? onAddSpell;
-
-  const DynamicSpellListPage(
-      {super.key,
-      required this.spellSet,
-      required this.characterClass,
-      required this.isReadonly,
-      required this.isAddable,
-      this.nameSet = "",
-      required this.onAddSpell});
-
-  @override
-  // ignore: no_logic_in_create_state
-  State<StatefulWidget> createState() => _DynamicSpellListPage(
-      spellSet: spellSet,
-      characterClass: characterClass,
-      isReadonly: isReadonly,
-      isAddable: isAddable,
-      nameSet: nameSet,
-      onAddSpell: onAddSpell);
-}
-
-class _DynamicSpellListPage extends State<DynamicSpellListPage> {
-  _DynamicSpellListPage(
-      {required this.spellSet,
-      required this.characterClass,
-      required this.isReadonly,
-      required this.isAddable,
-      this.nameSet = "",
-      required this.onAddSpell});
   final SpellSet spellSet;
   final CharacterClass characterClass;
   final bool isReadonly;
   final bool isAddable;
   final String nameSet;
-  final Function? onAddSpell;
 
-  // void onAddSpell(Spell spell) {
-  //   setState(() {
-  //     AccountManager()
-  //         .selectedCharacter
-  //         .sets
-  //         .where((element) => element.name == nameSet)
-  //         .first
-  //         .addSpell(spell.copy());
-  //   });
-  // }
+  const DynamicSpellListPage({
+    Key? key,
+    required this.spellSet,
+    required this.characterClass,
+    required this.isReadonly,
+    required this.isAddable,
+    this.nameSet = "",
+  }) : super(key: key);
+
+  @override
+  // ignore: no_logic_in_create_state
+  State<StatefulWidget> createState() => _DynamicSpellListPage(
+        spellSet: spellSet,
+        characterClass: characterClass,
+        isReadonly: isReadonly,
+        isAddable: isAddable,
+        nameSet: nameSet,
+      );
+}
+
+class _DynamicSpellListPage extends State<DynamicSpellListPage> {
+  _DynamicSpellListPage({
+    required this.spellSet,
+    required this.characterClass,
+    required this.isReadonly,
+    required this.isAddable,
+    this.nameSet = "",
+  });
+
+  SpellSet spellSet;
+  final CharacterClass characterClass;
+  final bool isReadonly;
+  final bool isAddable;
+  final String nameSet;
+
+  /// this is trash but no time for better:
+
+  void addToSet(int index) {
+    AccountManager()
+        .selectedCharacter
+        .sets
+        .where((set) => set.name == nameSet)
+        .first
+        .spells
+        .add(spellSet.spells[index].copy());
+    Navigator.pop(context);
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+          builder: (BuildContext context) => SetDisplay(
+              fullSet: AccountManager()
+                  .selectedCharacter
+                  .sets
+                  .where((set) => set.name == nameSet)
+                  .first)),
+    );
+    JsonAccountStrategy().saveCharacters(AccountManager().characters);
+  }
+
+  void addToKnownSpell(int index) {
+    AccountManager()
+        .selectedCharacter
+        .knownSpells
+        .spells
+        .add(spellSet.spells[index].copy());
+    Navigator.pop(context);
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+          builder: (BuildContext context) => DynamicSpellListPage(
+              spellSet: AccountManager().selectedCharacter.knownSpells,
+              characterClass: AccountManager().selectedCharacter.characterClass,
+              isReadonly: false,
+              isAddable: false)),
+    );
+    JsonAccountStrategy().saveCharacters(AccountManager().characters);
+  }
+
+// ====
 
   @override
   Widget build(BuildContext context) {
@@ -76,12 +107,6 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
 
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
-
-    // void onAddSpell(Spell spell) {
-    //   setState(() {
-    //     widget.spellSet.addSpell(spell);
-    //   });
-    // }
 
     return Scaffold(
       /**
@@ -96,10 +121,16 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
               //Appel de la fonction de recherche
               showSearch(
                   context: context,
-                  delegate: SpellSearchDelegate(spellSet.spells));
+                  delegate: SpellSearchDelegate(spellSet.spells,
+                      isAddable: isAddable, nameSet: nameSet));
             },
           ),
-          if (!isReadonly) AddSpellWidget(spellSet: spellSet),
+          if (!isReadonly)
+            AddSpellWidget(
+              // known spells was given directly beacause only known spells will
+              // have this add button for now, idally this would be a variable
+              spellSet: spellSet, nameSet: "Known Spells",
+            ),
           PopupMenuButton<OrderOption>(
             //Menu d'option de tri
             onSelected: (value) {
@@ -144,19 +175,19 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
               //Option du menu de tri
               const PopupMenuItem(
                 value: OrderOption.asc,
-                child: Text('Croissant'),
+                child: Text('Descending'),
               ),
               const PopupMenuItem(
                 value: OrderOption.desc,
-                child: Text('Décroissant'),
+                child: Text('Ascending'),
               ),
               const PopupMenuItem(
                 value: OrderOption.Lvlasc,
-                child: Text('Level Croissant'),
+                child: Text('Level Ascending'),
               ),
               const PopupMenuItem(
                 value: OrderOption.Lvldesc,
-                child: Text('Level Décroissant'),
+                child: Text('Level Descending'),
               ),
             ],
           ),
@@ -215,14 +246,11 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
                 ? IconButton(
                     icon: Icon(Icons.add_box_outlined),
                     onPressed: () {
-                      onAddSpell!(
-                          spellSet.spells[index],
-                          AccountManager()
-                              .selectedCharacter
-                              .sets
-                              .where((element) => element.name == nameSet)
-                              .first);
-                      Navigator.pop(context);
+                      if (nameSet == "Known Spells") {
+                        addToKnownSpell(index);
+                      } else {
+                        addToSet(index);
+                      }
                     },
                   )
                 : null,

@@ -7,13 +7,9 @@ import '../../model/spell_set.dart';
 class SpellDisplayWidget extends StatelessWidget {
   final SpellSet spellSet;
   final bool isReadonly;
-  final Function? onAddSpell;
 
   const SpellDisplayWidget(
-      {super.key,
-      required this.spellSet,
-      required this.isReadonly,
-      required this.onAddSpell});
+      {super.key, required this.spellSet, required this.isReadonly});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +21,7 @@ class SpellDisplayWidget extends StatelessWidget {
 
     return SizedBox(
       height: 50,
-      width: screenWidth / 2.5,
+      width: screenWidth / 3,
       child: ElevatedButton.icon(
           icon: const Icon(Icons.class_outlined),
           clipBehavior: Clip.none,
@@ -40,7 +36,6 @@ class SpellDisplayWidget extends StatelessWidget {
                             AccountManager().selectedCharacter.characterClass,
                         isReadonly: isReadonly,
                         isAddable: false,
-                        onAddSpell: onAddSpell,
                       )),
             );
           }),

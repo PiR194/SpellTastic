@@ -1,4 +1,5 @@
 import 'dart:ffi';
+import 'dart:io';
 
 enum CharacterClass {
   alchemist,
@@ -43,7 +44,13 @@ extension GetImage on CharacterClass {
   String getImagePath() {
     var name = toString().toLowerCase().split('.').last;
     name = name[0].toUpperCase() + name.substring(1);
-    return "assets/class_icons/$name.png";
+    var imagePath = "assets/class_icons/$name.png";
+
+    if (File(imagePath).existsSync()) {
+      return imagePath;
+    } else {
+      return "assets/images/default_profil.png";
+    }
   }
 }
 

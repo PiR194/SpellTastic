@@ -1,4 +1,5 @@
 import 'package:code/src/model/character.dart';
+import 'package:code/src/model/character_class.dart';
 import 'package:code/src/view/widgets/spell_display_widget.dart';
 
 import '../data/json_account_strategy.dart';
@@ -37,6 +38,13 @@ class _DetailsCharacterState extends State<DetailsCharacter> {
       });
     }
 
+    character.classSpells.spells = AccountManager()
+        .allSpells
+        .spells
+        .where(
+            (spell) => spell.GetLevelByClass(character.characterClass) != null)
+        .toList();
+
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: AppBar(
@@ -57,10 +65,10 @@ class _DetailsCharacterState extends State<DetailsCharacter> {
                 alignment: WrapAlignment.center,
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
-                  const CircleAvatar(
+                  CircleAvatar(
                     radius: 80,
                     backgroundImage:
-                        AssetImage('assets/class_icons/Goblins_Fight.png'),
+                        AssetImage(character.characterClass.getImagePath()),
                   ),
                   Text(
                     character.name,
@@ -133,8 +141,18 @@ class _DetailsCharacterState extends State<DetailsCharacter> {
                       child: SpellDisplayWidget(
                         spellSet: character.knownSpells,
                         isReadonly: false,
-                        onAddSpell: null,
                       ),
+                    ),
+                  ]),
+
+              Wrap(
+                  spacing: screenWidth * 0.05,
+                  runSpacing: screenHeight * 0.02,
+                  alignment: WrapAlignment.center,
+                  children: [
+                    Center(
+                      child: SpellDisplayWidget(
+                          spellSet: character.classSpells, isReadonly: true),
                     ),
                   ]),
             ],

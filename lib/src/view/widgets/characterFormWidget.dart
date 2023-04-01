@@ -3,7 +3,9 @@ import 'package:code/src/data/json_account_strategy.dart';
 import 'package:code/src/model/character_class.dart';
 import 'package:flutter/material.dart';
 
+import '../../model/account_manager.dart';
 import '../../model/character.dart';
+import '../home.dart';
 
 class CharacterFormWidget extends StatefulWidget {
   @override
@@ -18,9 +20,29 @@ class _CharacterFormState extends State<CharacterFormWidget> {
 
   CharacterClass? _selectedClass;
 
-  final List<CharacterClass> _classes = [CharacterClass.alchemist];
+  final List<CharacterClass> _classes = [];
 
   List<Character> listCharacter = [];
+
+  @override
+  void initState() {
+    super.initState();
+
+    for (var characterClass in CharacterClass.values) {
+      _classes.add(characterClass);
+    }
+
+    loadCharacters();
+  }
+
+  Future<void> loadCharacters() async {
+    final JsonAccountStrategy accountStrategy = JsonAccountStrategy();
+
+    AccountManager().characters = await accountStrategy.loadCharacters();
+    setState(() {
+      listCharacter = AccountManager().characters;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +85,7 @@ class _CharacterFormState extends State<CharacterFormWidget> {
                   return DropdownMenuItem<CharacterClass>(
                     value: value,
                     child: Text(
-                      value.toString(),
+                      value.toString().split('.').last,
                       style: TextStyle(
                         fontSize: theme.textTheme.bodyMedium!.fontSize,
                         fontFamily: theme.textTheme.bodyMedium!.fontFamily,
@@ -121,8 +143,13 @@ class _CharacterFormState extends State<CharacterFormWidget> {
 
                     listCharacter.add(character);
                     JsonAccountStrategy().saveCharacters(listCharacter);
+                    JsonAccountStrategy().loadCharacters();
                   }
                   Navigator.pop(context);
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => Home()));
                 },
                 child: Text(
                   'CREATE !',

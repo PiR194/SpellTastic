@@ -1,4 +1,5 @@
 import 'package:code/src/model/character.dart';
+import 'package:code/src/model/spell_set.dart';
 
 import 'character_class.dart';
 
@@ -6,6 +7,8 @@ class AccountManager {
   static final AccountManager _acManager = AccountManager._internal();
   List<Character> _characters = <Character>[];
   Character selectedCharacter = Character("dummy", CharacterClass.wizard, 10);
+
+  SpellSet allSpells = SpellSet("All Spells");
 
   factory AccountManager() {
     return _acManager;

@@ -20,7 +20,6 @@ enum OrderOption {
   desc,
   Lvlasc,
   Lvldesc,
-  ////_default,
 }
 
 OrderOption currentOrder = OrderOption.asc;
@@ -51,11 +50,10 @@ class _SpellListPage extends State<SpellListPage> {
       var dbHelper = DbHelper();
       spells = await dbHelper.loadSpells();
     } else {
-      //await SQLiteDataStrategy.init();
       var data = SQLiteDataStrategy();
       spells = await data.loadSpells();
     }
-    ////print("size:  ${spells.length}");
+
     setState(() {
       spells_list = spells
           .where((spell) =>

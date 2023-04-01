@@ -86,9 +86,6 @@ class SpellSerializer {
         break;
     }
 
-    if (character == "") {
-      print("Empty character class");
-    }
     for (var value in CharacterClass.values) {
       if (value.toString().split('.').last == character) {
         return value;
