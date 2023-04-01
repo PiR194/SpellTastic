@@ -82,35 +82,35 @@ class _SpellSetWidgetState extends State<SpellSetWidget> {
         cacheExtent: 2,
         children: [
           for (var spell in currentSet.spells)
-             Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8.0),
-        child: InkWell(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => SpellDetailsPage(spell: spell),
-              ),
-            );
-          },
-          child: Row(
-            children: [
-              Checkbox(
-                value: widget.isCheckedList[spell.id] ?? false,
-                onChanged: (value) {
-                  setState(() {
-                    widget.isCheckedList[spell.id] = value ?? false;
-                  });
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SpellDetailsPage(spell: spell),
+                    ),
+                  );
                 },
+                child: Row(
+                  children: [
+                    Checkbox(
+                      value: widget.isCheckedList[spell.id] ?? false,
+                      onChanged: (value) {
+                        setState(() {
+                          widget.isCheckedList[spell.id] = value ?? false;
+                        });
+                      },
+                    ),
+                    SizedBox(width: 16.0),
+                    Expanded(
+                      child: Text(spell.name),
+                    ),
+                  ],
+                ),
               ),
-              SizedBox(width: 16.0),
-              Expanded(
-                child: Text(spell.name),
-              ),
-            ],
-          ),
-        ),
-      ),
+            ),
         ],
       ),
     );
