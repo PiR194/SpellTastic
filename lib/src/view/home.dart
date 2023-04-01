@@ -129,6 +129,17 @@ class _HomeState extends State<Home> {
                             spellSet: spells_list, isReadonly: true),
                       ),
                     ]),
+                Wrap(
+                    spacing: screenWidth * 0.05,
+                    runSpacing: screenHeight * 0.02,
+                    alignment: WrapAlignment.center,
+                    children: [
+                      Center(
+                        child: SpellDisplayWidget(
+                            spellSet: AccountManager().favoriteSpells,
+                            isReadonly: false),
+                      ),
+                    ]),
               ],
             ),
           )),

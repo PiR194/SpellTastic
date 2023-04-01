@@ -1,4 +1,5 @@
 //* Package *//
+import 'package:code/src/model/account_manager.dart';
 import 'package:code/src/view/widgets/StatTable.dart';
 import 'package:flutter/cupertino.dart';
 import '../model/spell.dart';
@@ -20,7 +21,6 @@ class SpellDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
@@ -35,119 +35,131 @@ class SpellDetailsPage extends StatelessWidget {
                 fontFamily: 'Anaktoria',
                 fontWeight: FontWeight.bold),
           ),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.star),
+              onPressed: () {
+                AccountManager().favoriteSpells.addSpell(spell);
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Row(
+                      children: const [
+                        Icon(Icons.check, color: Colors.green),
+                        SizedBox(width: 8),
+                        Text("Added to favorites!"),
+                      ],
+                    ),
+                    duration: Duration(seconds: 1),
+                  ),
+                );
+              },
+            ),
+          ],
           centerTitle: true,
           backgroundColor: Color.fromARGB(255, 241, 117, 15),
         ),
         body: SingleChildScrollView(
             child: Wrap(
-              spacing: screenWidth * 0.05,
-              runSpacing: screenHeight * 0.05,
-              children: [
-                Center(
-                  child: Container( //* Description
-                    padding: EdgeInsets.all(16.0),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10.0),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 5,
-                              blurRadius: 7,
-                              offset: Offset(0, 3),
-                            ),
-                          ],
-                        ),
-                    child: StatTable(spell : spell),
-                  )
+          spacing: screenWidth * 0.05,
+          runSpacing: screenHeight * 0.05,
+          children: [
+            Center(
+                child: Container(
+              //* Description
+              padding: EdgeInsets.all(16.0),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10.0),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: Offset(0, 3),
+                  ),
+                ],
               ),
-
-                Center(
-                  child: Container( //* Description
-									constraints: BoxConstraints(maxWidth: 1000),
-                    padding: EdgeInsets.all(16.0),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10.0),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 5,
-                              blurRadius: 7,
-                              offset: Offset(0, 3),
-                            ),
-                          ],
+              child: StatTable(spell: spell),
+            )),
+            Center(
+                child: Container(
+              //* Description
+              constraints: BoxConstraints(maxWidth: 1000),
+              padding: EdgeInsets.all(16.0),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10.0),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: Offset(0, 3),
+                  ),
+                ],
+              ),
+              child: RichText(
+                text: TextSpan(
+                  text: 'Description du sort : \n',
+                  style: Theme.of(context).textTheme.headlineLarge,
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: '',
+                      children: [
+                        WidgetSpan(
+                          child: HtmlWidget(spell.description,
+                              textStyle:
+                                  Theme.of(context).textTheme.bodyMedium),
                         ),
-                    child: RichText(
-                      text: TextSpan(
-                        text: 'Description du sort : \n',
-                        style: Theme.of(context).textTheme.headlineLarge,
-                        children: <TextSpan>[
-                          TextSpan(
-                            text: '',
-                            children: [
-                              WidgetSpan(
-                                child: HtmlWidget(
-                                  spell.description,
-                                  textStyle: Theme.of(context).textTheme.bodyMedium
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
+                      ],
                     ),
-                  )
+                  ],
+                ),
               ),
-
-                Center(
-                    child:Container(
+            )),
+            Center(
+                child: Container(
+              padding: EdgeInsets.all(16.0),
+              width: screenWidth / 3,
+              constraints: BoxConstraints(minWidth: 500),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10.0),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: Offset(0, 3),
+                  ),
+                ],
+              ),
+              child: Wrap(
+                  //*Wrap de toute la table
+                  spacing: screenWidth * 0.05,
+                  runSpacing: screenHeight * 0.05,
+                  children: [
+                    Center(
+                        child: Container(
                       padding: EdgeInsets.all(16.0),
-											width: screenWidth/3,
-                      constraints: BoxConstraints(minWidth: 500),
                       decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10.0),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 5,
-                            blurRadius: 7,
-                            offset: Offset(0, 3),
+                          border: Border.all(
+                            color: Colors.grey,
                           ),
-                        ],
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(15),
+                          )),
+                      child: Text(
+                        "Table des classes",
+                        style: Theme.of(context).textTheme.titleLarge,
+                        textAlign: TextAlign.center,
                       ),
-                      child: Wrap( //*Wrap de toute la table
-                        spacing: screenWidth * 0.05,
-                        runSpacing: screenHeight * 0.05,
-                        children: [
-                          Center(
-                            child:Container(
-                              padding: EdgeInsets.all(16.0),
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: Colors.grey,
-                                ),
-                                borderRadius: const BorderRadius.all(
-                                  Radius.circular(15),
-                                )
-                              ),
-                              child:Text(
-                                      "Table des classes",
-                                      style:Theme.of(context).textTheme.titleLarge,
-                                      textAlign: TextAlign.center,
-                                    ),
-                              )
-                          ),
-                          TableWidget(spell : spell),
-                          //const SizedBox(height: 16.0),
-                        ]  
-                      ),
-                    )
-                )
-              ],
-            )
-          )
-    );
+                    )),
+                    TableWidget(spell: spell),
+                    //const SizedBox(height: 16.0),
+                  ]),
+            ))
+          ],
+        )));
   }
 }
