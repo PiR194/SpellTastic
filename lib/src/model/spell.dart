@@ -22,6 +22,9 @@ class Spell {
   String _spellResistance;
   String _description;
 
+  // for use
+  List<int> usedSpellPositions = [];
+
   // Constructor
   Spell(
       this._id,

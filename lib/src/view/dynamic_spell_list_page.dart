@@ -278,8 +278,6 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
   }
 
   void addToKnownSpell(int index) {
-    var newspell = spellSet.spells[index].copy();
-    newspell.id = newspell.id + 2641;
     AccountManager()
         .selectedCharacter
         .knownSpells

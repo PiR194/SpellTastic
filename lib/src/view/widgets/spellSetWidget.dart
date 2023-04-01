@@ -1,3 +1,5 @@
+import 'package:code/src/data/json_account_strategy.dart';
+import 'package:code/src/model/account_manager.dart';
 import 'package:code/src/model/spell_set.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,15 +9,17 @@ import '../../model/spell_set_check_use.dart';
 import '../spell_detail_page.dart';
 
 class SpellSetWidget extends StatefulWidget {
-  Map<int, bool> isCheckedList;
+  Map<String, bool> isCheckedList;
   final SpellSet currentSet;
-  final Function(int, bool) onCheckChanged;
+  final Function(String, bool) onCheckChanged;
+  final String fullSetName;
 
   SpellSetWidget(
       {Key? key,
       required this.isCheckedList,
       required this.currentSet,
-      required this.onCheckChanged})
+      required this.onCheckChanged,
+      required this.fullSetName})
       : super(key: key);
 
   get spellSetCheckUse => isCheckedList;
@@ -30,6 +34,8 @@ class _SpellSetWidgetState extends State<SpellSetWidget> {
   final SpellSet currentSet;
 
   _SpellSetWidgetState(this.currentSet);
+
+  Object get fullSetName => fullSetName;
 
   @override
   void dispose() {
@@ -77,41 +83,65 @@ class _SpellSetWidgetState extends State<SpellSetWidget> {
         automaticallyImplyLeading: false,
         backgroundColor: primaryColor,
       ),
-      body: ListView(
+      body: ListView.builder(
         controller: _scrollController,
         cacheExtent: 2,
-        children: [
-          for (var spell in currentSet.spells)
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => SpellDetailsPage(spell: spell),
+        itemCount: currentSet.spells.length,
+        itemBuilder: (context, index) {
+          final spell = currentSet.spells[index];
+          final isCheckedKey = '${widget.currentSet.name}-$index';
+          final isChecked = widget.isCheckedList[isCheckedKey] ??
+              spell.usedSpellPositions.contains(index);
+          var textStyle = isChecked
+              ? const TextStyle(
+                  decoration: TextDecoration.lineThrough,
+                  color: Colors.grey,
+                )
+              : const TextStyle();
+          if (spell.usedSpellPositions.contains(index)) {
+            textStyle = const TextStyle(
+              decoration: TextDecoration.lineThrough,
+              color: Colors.grey,
+            );
+          }
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SpellDetailsPage(spell: spell),
+                  ),
+                );
+              },
+              child: Row(
+                children: [
+                  Checkbox(
+                    value: isChecked,
+                    onChanged: (value) {
+                      setState(() {
+                        widget.isCheckedList[isCheckedKey] = value ?? false;
+                      });
+                      if (value == true) {
+                        spell.usedSpellPositions.add(index);
+                      } else {
+                        spell.usedSpellPositions.remove(index);
+                      }
+                    },
+                  ),
+                  SizedBox(width: 16.0),
+                  Expanded(
+                    child: Text(
+                      spell.name,
+                      style: textStyle,
                     ),
-                  );
-                },
-                child: Row(
-                  children: [
-                    Checkbox(
-                      value: widget.isCheckedList[spell.id] ?? false,
-                      onChanged: (value) {
-                        setState(() {
-                          widget.isCheckedList[spell.id] = value ?? false;
-                        });
-                      },
-                    ),
-                    SizedBox(width: 16.0),
-                    Expanded(
-                      child: Text(spell.name),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
-        ],
+          );
+        },
       ),
     );
   }

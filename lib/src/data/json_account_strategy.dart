@@ -8,7 +8,6 @@ import 'package:code/src/model/character.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'mapper/character_mapper.dart';
-import 'package:flutter/services.dart' show rootBundle;
 
 class JsonAccountStrategy implements IAccountStrategy {
   @override
