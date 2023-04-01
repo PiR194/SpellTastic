@@ -52,10 +52,7 @@ class MyApp extends StatelessWidget {
               isReadonly: true,
               isAddable: false,
             ),
-        '/compare': (context) => CompareList(
-              class1Spells: SpellSet("deafault"),
-              class2Spells: SpellSet("defofo"),
-            ),
+        '/compare': (context) => ComparePage(),
       },
       theme: Provider.of<ThemeModel>(context).currentTheme,
     );
