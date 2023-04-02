@@ -160,20 +160,13 @@ class _DetailsCharacterState extends State<DetailsCharacter> {
                   alignment: WrapAlignment.center,
                   children: [
                     Center(
-                      child: ElevatedButton(
+                      child: ElevatedButton.icon(
+                        icon: const Icon(Icons.swap_horizontal_circle_outlined),
+                        clipBehavior: Clip.none,
+                        label: const Text("Compare"),
                         onPressed: () {
                           Navigator.pushNamed(context, '/compare');
                         },
-                        child: const CircleAvatar(
-                          backgroundColor: Colors.blue,
-                          child: Text(
-                            '=',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 24.0,
-                            ),
-                          ),
-                        ),
                       ),
                     ),
                   ]),

@@ -1,8 +1,10 @@
+import 'package:code/src/model/account_manager.dart';
 import 'package:code/src/model/spell_set.dart';
 import 'package:flutter/material.dart';
 
 import '../../model/character_class.dart';
 import '../../model/spell.dart';
+import '../spell_detail_page.dart';
 
 class ComparePage extends StatefulWidget {
   const ComparePage({Key? key}) : super(key: key);
@@ -15,17 +17,27 @@ class _ComparePageState extends State<ComparePage> {
   CharacterClass? selectedClass1;
   CharacterClass? selectedClass2;
 
-  final List<CharacterClass> classes = [
-    CharacterClass('Class 1', []),
-    CharacterClass('Class 2', []),
-  ];
+  // final List<CharacterClass> classes = [
+  //   CharacterClass('Class 1', []),
+  //   CharacterClass('Class 2', []),
+  // ];
 
   SpellSet get class1Spells => selectedClass1 != null
-      ? SpellSet('Class 1 Spells', spells: selectedClass1!.spells)
+      ? SpellSet('Class 1 Spells',
+          spells: AccountManager()
+              .allSpells
+              .spells
+              .where((spell) => spell.GetLevelByClass(selectedClass1!) != null)
+              .toList())
       : SpellSet('Class 1 Spells', spells: []);
 
   SpellSet get class2Spells => selectedClass2 != null
-      ? SpellSet('Class 2 Spells', spells: selectedClass2!.spells)
+      ? SpellSet('Class 2 Spells',
+          spells: AccountManager()
+              .allSpells
+              .spells
+              .where((spell) => spell.GetLevelByClass(selectedClass2!) != null)
+              .toList())
       : SpellSet('Class 2 Spells', spells: []);
 
   List<Spell> get allSpells {
@@ -35,7 +47,10 @@ class _ComparePageState extends State<ComparePage> {
         .where((spell1) => spells2.any((spell2) => spell1 == spell2))
         .toList();
 
-    return [...spells1, ...spells2, ...commonSpells];
+    final List<Spell> allSpells = [...spells1, ...spells2, ...commonSpells];
+    allSpells.sort((spell1, spell2) => spell1.name.compareTo(spell2.name));
+
+    return allSpells;
   }
 
   TextAlign getSpellAlignment(Spell spell) {
@@ -52,6 +67,10 @@ class _ComparePageState extends State<ComparePage> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    const Color accentColor = Color(0xFF9C27B0);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Compare'),
@@ -59,10 +78,10 @@ class _ComparePageState extends State<ComparePage> {
       body: Column(
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: const [
               Text('Class 1'),
-              const Text('='),
+              Text('='),
               Text('Class 2'),
             ],
           ),
@@ -76,12 +95,22 @@ class _ComparePageState extends State<ComparePage> {
                     selectedClass1 = value;
                   });
                 },
-                items: classes.map((characterClass) {
-                  return DropdownMenuItem<CharacterClass>(
-                    value: characterClass,
-                    child: Text(characterClass.name),
-                  );
-                }).toList(),
+                items: [
+                  for (var characterClass in CharacterClass.values)
+                    DropdownMenuItem<CharacterClass>(
+                      value: characterClass,
+                      child: Text(characterClass.name),
+                    ),
+                ],
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: theme.textTheme.bodyLarge!.fontSize,
+                  fontFamily: theme.textTheme.bodyLarge!.fontFamily,
+                ),
+                underline: Container(
+                  height: 2,
+                  color: accentColor,
+                ),
               ),
               DropdownButton<CharacterClass>(
                 value: selectedClass2,
@@ -90,23 +119,46 @@ class _ComparePageState extends State<ComparePage> {
                     selectedClass2 = value;
                   });
                 },
-                items: classes.map((characterClass) {
-                  return DropdownMenuItem<CharacterClass>(
-                    value: characterClass,
-                    child: Text(characterClass.name),
-                  );
-                }).toList(),
+                items: [
+                  for (var characterClass in CharacterClass.values)
+                    DropdownMenuItem<CharacterClass>(
+                      value: characterClass,
+                      child: Text(characterClass.name),
+                    ),
+                ],
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: theme.textTheme.bodyLarge!.fontSize,
+                  fontFamily: theme.textTheme.bodyLarge!.fontFamily,
+                ),
+                underline: Container(
+                  height: 2,
+                  color: accentColor,
+                ),
               ),
             ],
           ),
           Expanded(
             child: ListView.builder(
+              itemExtent: 50,
+              cacheExtent: 2,
               itemCount: allSpells.length,
               itemBuilder: (context, index) {
                 final spell = allSpells[index];
-                return Text(
-                  spell.name,
-                  textAlign: getSpellAlignment(spell),
+                return ListTile(
+                  title: Text(
+                    spell.name,
+                    textAlign: getSpellAlignment(spell),
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            SpellDetailsPage(spell: allSpells[index]),
+                      ),
+                    );
+                  },
                 );
               },
             ),
