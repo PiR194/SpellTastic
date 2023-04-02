@@ -141,7 +141,8 @@ class SpellSearchList extends StatelessWidget {
                               .getSpellPerDay()[AccountManager()
                                       .selectedCharacter
                                       .characterClass
-                                      .name]![
+                                      .name
+                                      .toLowerCase()]![
                                   AccountManager().selectedCharacter.level]!
                               .elementAt(spells[index].level[AccountManager()
                                   .selectedCharacter
@@ -150,7 +151,8 @@ class SpellSearchList extends StatelessWidget {
                             context: context,
                             builder: (BuildContext context) {
                               return const AlertPopup(
-                                  message: "Already too many spells");
+                                  message:
+                                      "Your current character level doesn't allow you to add more spells of this level ");
                             });
                       } else {
                         addToSet(context, index);

@@ -294,7 +294,8 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
                                           .getSpellPerDay()[AccountManager()
                                                   .selectedCharacter
                                                   .characterClass
-                                                  .name]![
+                                                  .name
+                                                  .toLowerCase()]![
                                               AccountManager()
                                                   .selectedCharacter
                                                   .level]!
