@@ -6,6 +6,7 @@ import 'package:code/src/model/account_manager.dart';
 import 'package:code/src/model/spell_set.dart';
 import 'package:code/src/view/set_display.dart';
 import 'package:code/src/view/widgets/add_spells_widget.dart';
+import 'package:code/src/view/widgets/pop-ups/alert_popup.dart';
 import 'package:flutter/material.dart';
 import '../data/json_account_strategy.dart';
 import '../model/character_class.dart';
@@ -262,7 +263,7 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
                             icon: isAdding[index]
                                 ? const Icon(Icons.check, color: Colors.green)
                                 : const Icon(Icons.add),
-                            onPressed: () {
+                            onPressed: () async {
                               if (!isAdding[index]) {
                                 setState(() {
                                   isAdding[index] = true;
@@ -271,23 +272,63 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
                                 if (widget.nameSet == "Known Spells") {
                                   addToKnownSpell(index);
                                 } else {
-                                  addToSet(index);
+                                  if (AccountManager()
+                                          .selectedCharacter
+                                          .sets
+                                          .where((set) => set.name == nameSet)
+                                          .first
+                                          .spells
+                                          .where((spell) =>
+                                              spell.level[
+                                                  AccountManager()
+                                                      .selectedCharacter
+                                                      .characterClass] ==
+                                              spellSet.spells[index].level[
+                                                  AccountManager()
+                                                      .selectedCharacter
+                                                      .characterClass])
+                                          .length >=
+                                      AccountManager()
+                                          .selectedCharacter
+                                          .characterClass
+                                          .getSpellPerDay()[AccountManager()
+                                                  .selectedCharacter
+                                                  .characterClass
+                                                  .name
+                                                  .toLowerCase()]![
+                                              AccountManager()
+                                                  .selectedCharacter
+                                                  .level]!
+                                          .elementAt(
+                                              spellSet.spells[index].level[
+                                                  AccountManager()
+                                                      .selectedCharacter
+                                                      .characterClass]!)) {
+                                    await showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return const AlertPopup(
+                                              message:
+                                                  "Your current character level doesn't allow you to add more spells of this level ");
+                                        });
+                                  } else {
+                                    addToSet(index);
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Row(
+                                          children: [
+                                            const Icon(Icons.check,
+                                                color: Colors.green),
+                                            const SizedBox(width: 8),
+                                            Text(
+                                                "Spell added to ${widget.nameSet}"),
+                                          ],
+                                        ),
+                                        duration: const Duration(seconds: 1),
+                                      ),
+                                    );
+                                  }
                                 }
-
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Row(
-                                      children: [
-                                        const Icon(Icons.check,
-                                            color: Colors.green),
-                                        const SizedBox(width: 8),
-                                        Text(
-                                            "Spell added to ${widget.nameSet}"),
-                                      ],
-                                    ),
-                                    duration: const Duration(seconds: 1),
-                                  ),
-                                );
 
                                 Future.delayed(const Duration(seconds: 1), () {
                                   setState(() {
@@ -328,6 +369,26 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
   }
 
   /// this is trash but no time for better:
+  ///
+  void _showAlert(int count) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Too many spells"),
+          content: Text("You have $count spells of this level already"),
+          actions: [
+            TextButton(
+              child: Text("OK"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   void addToSet(int index) {
     wasAdded = true;

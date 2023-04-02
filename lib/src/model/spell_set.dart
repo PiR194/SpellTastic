@@ -31,8 +31,8 @@ class SpellSet {
   SpellSet clone() {
     List<Spell> copiedSpells = [];
     for (Spell spell in spells) {
-      copiedSpells.add(spell);
+      copiedSpells.add(spell.copy());
     }
-    return SpellSet(_name, spells: copiedSpells);
+    return SpellSet("Copy Of $_name", spells: copiedSpells);
   }
 }

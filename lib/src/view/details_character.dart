@@ -144,7 +144,6 @@ class _DetailsCharacterState extends State<DetailsCharacter> {
                       ),
                     ),
                   ]),
-
               Wrap(
                   spacing: screenWidth * 0.05,
                   runSpacing: screenHeight * 0.02,
@@ -153,6 +152,22 @@ class _DetailsCharacterState extends State<DetailsCharacter> {
                     Center(
                       child: SpellDisplayWidget(
                           spellSet: character.classSpells, isReadonly: true),
+                    ),
+                  ]),
+              Wrap(
+                  spacing: screenWidth * 0.05,
+                  runSpacing: screenHeight * 0.02,
+                  alignment: WrapAlignment.center,
+                  children: [
+                    Center(
+                      child: ElevatedButton.icon(
+                        icon: const Icon(Icons.swap_horizontal_circle_outlined),
+                        clipBehavior: Clip.none,
+                        label: const Text("Compare"),
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/compare');
+                        },
+                      ),
                     ),
                   ]),
             ],
