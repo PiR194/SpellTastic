@@ -18,7 +18,7 @@ class SetDisplay extends StatefulWidget {
       : super(key: key);
 
   @override
-  _SetDisplayState createState() => _SetDisplayState(fullSet);
+  _SetDisplayState createState() => _SetDisplayState(fullSet, isModify);
 }
 
 class _SetDisplayState extends State<SetDisplay> {
@@ -28,8 +28,9 @@ class _SetDisplayState extends State<SetDisplay> {
   late String setName;
   bool isEditing = false;
   late Map<String, bool> isCheckedList;
+  bool isModify;
 
-  _SetDisplayState(SpellSet fullSet) {
+  _SetDisplayState(SpellSet fullSet, this.isModify) {
     setName = fullSet.name;
     selectedSpellSet = SpellSetManager.sortByLevel(
         fullSet, AccountManager().selectedCharacter.characterClass);
@@ -85,32 +86,38 @@ class _SetDisplayState extends State<SetDisplay> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  IconButton(
-                    icon: Icon(Icons.add_circle_outline),
-                    onPressed: () => {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => DynamicSpellListPage(
-                                    spellSet: AccountManager()
-                                        .selectedCharacter
-                                        .knownSpells,
-                                    characterClass: AccountManager()
-                                        .selectedCharacter
-                                        .characterClass,
-                                    isReadonly: true,
-                                    isAddable: true,
-                                    nameSet: setName,
-                                  )))
-                    },
+                  Visibility(
+                    visible: isModify,
+                    child: IconButton(
+                      icon: Icon(Icons.add),
+                      onPressed: () => {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => DynamicSpellListPage(
+                                      spellSet: AccountManager()
+                                          .selectedCharacter
+                                          .knownSpells,
+                                      characterClass: AccountManager()
+                                          .selectedCharacter
+                                          .characterClass,
+                                      isReadonly: true,
+                                      isAddable: true,
+                                      nameSet: setName,
+                                    )))
+                      },
+                    ),
                   ),
-                  IconButton(
-                    icon: Icon(isEditing ? Icons.check : Icons.edit),
-                    onPressed: () => {
-                      setState(() {
-                        isEditing = !isEditing;
-                      })
-                    },
+                  Visibility(
+                    visible: isModify,
+                    child: IconButton(
+                      icon: Icon(isEditing ? Icons.check : Icons.edit),
+                      onPressed: () => {
+                        setState(() {
+                          isEditing = !isEditing;
+                        })
+                      },
+                    ),
                   ),
                   IconButton(
                     icon: Icon(Icons.arrow_back),
