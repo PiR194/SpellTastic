@@ -47,6 +47,7 @@ class _HomeState extends State<Home> {
     final JsonAccountStrategy accountStrategy = JsonAccountStrategy();
 
     AccountManager().characters = await accountStrategy.loadCharacters();
+    AccountManager().favoriteSpells = await accountStrategy.loadFavorites();
     getData();
     setState(() {});
   }

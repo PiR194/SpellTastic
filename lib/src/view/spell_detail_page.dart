@@ -1,4 +1,5 @@
 //* Package *//
+import 'package:code/src/data/json_account_strategy.dart';
 import 'package:code/src/model/account_manager.dart';
 import 'package:code/src/view/widgets/StatTable.dart';
 import 'package:flutter/cupertino.dart';
@@ -40,6 +41,8 @@ class SpellDetailsPage extends StatelessWidget {
               icon: const Icon(Icons.star),
               onPressed: () {
                 AccountManager().favoriteSpells.addSpell(spell);
+                JsonAccountStrategy()
+                    .saveFavorites(AccountManager().favoriteSpells);
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Row(
