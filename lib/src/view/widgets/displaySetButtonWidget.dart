@@ -50,7 +50,8 @@ class DisplaySetButton extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => SetDisplay(fullSet: spellSet),
+              builder: (context) =>
+                  SetDisplay(fullSet: spellSet, isModify: false),
             ),
           );
         },
@@ -79,7 +80,10 @@ class DisplaySetButton extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => SetDisplay(fullSet: spellSet),
+                        builder: (context) => SetDisplay(
+                          fullSet: spellSet,
+                          isModify: false,
+                        ),
                       ),
                     );
                   },
@@ -100,7 +104,8 @@ class DisplaySetButton extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => SetDisplay(fullSet: spellSet),
+                        builder: (context) =>
+                            SetDisplay(fullSet: spellSet, isModify: true),
                       ),
                     );
                   },
