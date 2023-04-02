@@ -36,7 +36,6 @@ enum CharacterClass {
   warpriest,
   witch,
   wizard,
-  // glory, madness, artifice ??
   unknown
 }
 
@@ -50,6 +49,83 @@ extension GetImage on CharacterClass {
       return imagePath;
     } else {
       return imagePath;
+    }
+  }
+}
+
+extension CharacterClassNameExtension on CharacterClass {
+  String get name {
+    switch (this) {
+      case CharacterClass.alchemist:
+        return 'Alchemist';
+      case CharacterClass.adept:
+        return 'Adept';
+      case CharacterClass.antipaladin:
+        return 'Antipaladin';
+      case CharacterClass.arcanist:
+        return 'Arcanist';
+      case CharacterClass.artifice:
+        return 'Artifice';
+      case CharacterClass.bard:
+        return 'Bard';
+      case CharacterClass.bloodrager:
+        return 'Bloodrager';
+      case CharacterClass.cleric:
+        return 'Cleric';
+      case CharacterClass.crimsonAssassin:
+        return 'Crimson Assassin';
+      case CharacterClass.druid:
+        return 'Druid';
+      case CharacterClass.darkness:
+        return 'Darkness';
+      case CharacterClass.hunter:
+        return 'Hunter';
+      case CharacterClass.inquisitor:
+        return 'Inquisitor';
+      case CharacterClass.investigator:
+        return 'Investigator';
+      case CharacterClass.glory:
+        return 'Glory';
+      case CharacterClass.magus:
+        return 'Magus';
+      case CharacterClass.medium:
+        return 'Medium';
+      case CharacterClass.mesmerist:
+        return 'Mesmerist';
+      case CharacterClass.madness:
+        return 'Madness';
+      case CharacterClass.occultist:
+        return 'Occultist';
+      case CharacterClass.oracle:
+        return 'Oracle';
+      case CharacterClass.paladin:
+        return 'Paladin';
+      case CharacterClass.psychic:
+        return 'Psychic';
+      case CharacterClass.ranger:
+        return 'Ranger';
+      case CharacterClass.sahirAfiyun:
+        return 'Sahir-Afiyun';
+      case CharacterClass.shaman:
+        return 'Shaman';
+      case CharacterClass.skald:
+        return 'Skald';
+      case CharacterClass.sorcerer:
+        return 'Sorcerer';
+      case CharacterClass.spiritualist:
+        return 'Spiritualist';
+      case CharacterClass.summoner:
+        return 'Summoner';
+      case CharacterClass.unchainedSummoner:
+        return 'Unchained Summoner';
+      case CharacterClass.warpriest:
+        return 'Warpriest';
+      case CharacterClass.witch:
+        return 'Witch';
+      case CharacterClass.wizard:
+        return 'Wizard';
+      default:
+        return 'Unknown';
     }
   }
 }

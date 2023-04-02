@@ -9,6 +9,7 @@ import 'package:code/src/view/set_display.dart';
 import 'package:code/src/view/settings.dart';
 import 'package:code/src/view/spell_list_page.dart';
 import 'package:code/src/view/widgets/characterFormWidget.dart';
+import 'package:code/src/view/widgets/compare_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:provider/provider.dart';
@@ -52,6 +53,7 @@ class MyApp extends StatelessWidget {
               isReadonly: true,
               isAddable: false,
             ),
+        '/compare': (context) => ComparePage(),
       },
       theme: Provider.of<ThemeModel>(context).currentTheme,
     );

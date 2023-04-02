@@ -308,7 +308,7 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
                                         builder: (BuildContext context) {
                                           return const AlertPopup(
                                               message:
-                                                  "Already too many spells");
+                                                  "Your current character level doesn't allow you to add more spells of this level ");
                                         });
                                   } else {
                                     addToSet(index);
