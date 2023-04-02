@@ -1,5 +1,7 @@
+import 'package:code/src/model/character_class.dart';
 import 'package:code/src/model/spell.dart';
 import 'package:code/src/view/dynamic_spell_list_page.dart';
+import 'package:code/src/view/widgets/pop-ups/alert_popup.dart';
 import 'package:code/src/view/widgets/spellSetWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -37,17 +39,58 @@ class _SetDisplayState extends State<SetDisplay> {
     isCheckedList = {};
   }
 
-  void onAddSpell(String name) {
-    setState(() {
-      selectedSpellSet = SpellSetManager.sortByLevel(
-          AccountManager()
-              .selectedCharacter
-              .sets
-              .where((spell) => spell.name == name)
-              .first,
-          AccountManager().selectedCharacter.characterClass);
-    });
-  }
+  // void onAddSpell(Spell spell, SpellSet set) {
+  //   if (!spell.level
+  //       .containsKey(AccountManager().selectedCharacter.characterClass)) {
+  //     print("spell Not Valid");
+  //     showDialog(
+  //       context: context,
+  //       builder: (BuildContext context) {
+  //         return AlertPopup(
+  //             message: 'Spell not compatible with this character.');
+  //       },
+  //     );
+  //     return;
+  //   }
+  //   if (set.spells
+  //           .where((element) =>
+  //               element
+  //                   .level[AccountManager().selectedCharacter.characterClass] ==
+  //               spell.level[AccountManager().selectedCharacter.characterClass])
+  //           .length >=
+  //       AccountManager()
+  //           .selectedCharacter
+  //           .characterClass
+  //           .getSpellPerDay()[AccountManager()
+  //               .selectedCharacter
+  //               .characterClass
+  //               .name]![AccountManager().selectedCharacter.level]!
+  //           .elementAt(spell
+  //                   .level[AccountManager().selectedCharacter.characterClass]! -
+  //               1)) {
+  //     print(
+  //         "too much spells :${set.spells.where((element) => element.level[AccountManager().selectedCharacter.characterClass] == spell.level[AccountManager().selectedCharacter.characterClass]).length}");
+
+  //     //show a pop-up
+  //     return; // add pop up to say it is not added
+  //   }
+
+  //   setState(() {
+  //     set.addSpell(spell.copy());
+  //     selectedSpellSet = List.of(SpellSetManager.sortByLevel(
+  //         set, AccountManager().selectedCharacter.characterClass));
+  // void onAddSpell(String name) {
+  //   print("add");
+  //   setState(() {
+  //     selectedSpellSet = SpellSetManager.sortByLevel(
+  //         AccountManager()
+  //             .selectedCharacter
+  //             .sets
+  //             .where((spell) => spell.name == name)
+  //             .first,
+  //         AccountManager().selectedCharacter.characterClass);
+  //   });
+  // }
 
   @override
   void dispose() {
