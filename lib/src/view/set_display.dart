@@ -1,5 +1,6 @@
 import 'package:code/src/model/spell.dart';
 import 'package:code/src/view/dynamic_spell_list_page.dart';
+import 'package:code/src/view/widgets/pop-ups/show_hide.dart';
 import 'package:code/src/view/widgets/spellSetWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -49,6 +50,30 @@ class _SetDisplayState extends State<SetDisplay> {
     });
   }
 
+  void resetAllSpells() {
+    setState(() {
+      isCheckedList.forEach((key, value) {
+        isCheckedList[key] = false;
+      });
+      AccountManager()
+          .selectedCharacter
+          .spellSetPositions
+          .forEach((key, value) {
+        AccountManager().selectedCharacter.spellSetPositions[key] = [];
+      });
+      JsonAccountStrategy().saveCharacters(AccountManager().characters);
+    });
+  }
+
+  void showCheckPopup(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return const CheckPopup(message: "You've slept! All spells recovered");
+      },
+    );
+  }
+
   @override
   void dispose() {
     _pageController.dispose();
@@ -80,6 +105,21 @@ class _SetDisplayState extends State<SetDisplay> {
         ),
         backgroundColor: accentColor,
         actions: [
+          Tooltip(
+            message: 'Sleep and reset all spells',
+            child: Container(
+              height: 40,
+              width: 40,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: Color.fromARGB(255, 8, 2, 2),
+              ),
+              child: IconButton(
+                  icon: const Icon(Icons.brightness_3),
+                  color: const Color.fromARGB(255, 62, 128, 226),
+                  onPressed: () => {showCheckPopup(context), resetAllSpells()}),
+            ),
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -89,7 +129,7 @@ class _SetDisplayState extends State<SetDisplay> {
                   Visibility(
                     visible: isModify,
                     child: IconButton(
-                      icon: Icon(Icons.add),
+                      icon: const Icon(Icons.add),
                       onPressed: () => {
                         Navigator.push(
                             context,
@@ -120,7 +160,7 @@ class _SetDisplayState extends State<SetDisplay> {
                     ),
                   ),
                   IconButton(
-                    icon: Icon(Icons.arrow_back),
+                    icon: const Icon(Icons.arrow_back),
                     onPressed: _currentPage == selectedSpellSet.length
                         ? null
                         : () {

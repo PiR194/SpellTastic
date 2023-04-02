@@ -113,7 +113,7 @@ class DisplaySetButton extends StatelessWidget {
                     backgroundColor: primaryColor,
                   ),
                   child: Text(
-                    'Modify',
+                    'Edit',
                     style: TextStyle(
                       fontSize: theme.textTheme.bodyMedium!.fontSize,
                       fontFamily: theme.textTheme.bodyMedium!.fontFamily,
