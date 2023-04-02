@@ -8,7 +8,7 @@ class AlertPopup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text('Alert'),
+      title: const Text('Warning'),
       content: Text(message),
       actions: [
         ElevatedButton(
