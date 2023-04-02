@@ -74,7 +74,6 @@ flutter:
   #   - images/a_dot_ham.jpeg
     - assets/
     - assets/images/
-    - assets/class_icons/
     - assets/src/
     - assets/account.json
 
