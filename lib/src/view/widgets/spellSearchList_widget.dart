@@ -1,3 +1,6 @@
+import 'package:code/src/model/character_class.dart';
+import 'package:code/src/view/widgets/pop-ups/alert_popup.dart';
+
 import '../../data/json_account_strategy.dart';
 import '../../model/account_manager.dart';
 import '../../model/spell.dart';
@@ -114,24 +117,59 @@ class SpellSearchList extends StatelessWidget {
           trailing: isAddable
               ? IconButton(
                   icon: Icon(Icons.add_box_outlined),
-                  onPressed: () {
+                  onPressed: () async {
                     if (nameSet == "Known Spells") {
                       addToKnownSpell(context, index);
                     } else {
-                      addToSet(context, index);
+                      if (AccountManager()
+                              .selectedCharacter
+                              .sets
+                              .where((set) => set.name == nameSet)
+                              .first
+                              .spells
+                              .where((spell) =>
+                                  spell.level[AccountManager()
+                                      .selectedCharacter
+                                      .characterClass] ==
+                                  spells[index].level[AccountManager()
+                                      .selectedCharacter
+                                      .characterClass])
+                              .length >=
+                          AccountManager()
+                              .selectedCharacter
+                              .characterClass
+                              .getSpellPerDay()[AccountManager()
+                                      .selectedCharacter
+                                      .characterClass
+                                      .name
+                                      .toLowerCase()]![
+                                  AccountManager().selectedCharacter.level]!
+                              .elementAt(spells[index].level[AccountManager()
+                                  .selectedCharacter
+                                  .characterClass]!)) {
+                        await showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return const AlertPopup(
+                                  message:
+                                      "Your current character level doesn't allow you to add more spells of this level ");
+                            });
+                      } else {
+                        addToSet(context, index);
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Row(
+                              children: [
+                                const Icon(Icons.check, color: Colors.green),
+                                const SizedBox(width: 8),
+                                Text("Spell added to ${nameSet}"),
+                              ],
+                            ),
+                            duration: const Duration(seconds: 1),
+                          ),
+                        );
+                      }
                     }
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Row(
-                          children: [
-                            const Icon(Icons.check, color: Colors.green),
-                            const SizedBox(width: 8),
-                            Text("Spell added to ${nameSet}"),
-                          ],
-                        ),
-                        duration: const Duration(seconds: 1),
-                      ),
-                    );
                   },
                 )
               : null,
