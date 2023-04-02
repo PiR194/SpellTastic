@@ -37,23 +37,48 @@ class SpellDetailsPage extends StatelessWidget {
                 fontWeight: FontWeight.bold),
           ),
           actions: [
-            IconButton(
-              icon: const Icon(Icons.star),
-              onPressed: () {
-                AccountManager().favoriteSpells.addSpell(spell);
-                JsonAccountStrategy()
-                    .saveFavorites(AccountManager().favoriteSpells);
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Row(
-                      children: const [
-                        Icon(Icons.check, color: Colors.green),
-                        SizedBox(width: 8),
-                        Text("Added to favorites!"),
-                      ],
-                    ),
-                    duration: Duration(seconds: 1),
+            StatefulBuilder(
+              builder: (BuildContext context, StateSetter setState) {
+                return IconButton(
+                  icon: Icon(
+                    AccountManager().favoriteSpells.spells.contains(spell)
+                        ? Icons.star
+                        : Icons.star_border,
                   ),
+                  onPressed: () {
+                    final favoriteSpells = AccountManager().favoriteSpells;
+                    if (favoriteSpells.spells.contains(spell)) {
+                      favoriteSpells.spells.remove(spell);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Row(
+                            children: const [
+                              Icon(Icons.remove, color: Colors.red),
+                              SizedBox(width: 8),
+                              Text("Removed from favorites!"),
+                            ],
+                          ),
+                          duration: const Duration(seconds: 1),
+                        ),
+                      );
+                    } else {
+                      favoriteSpells.addSpell(spell);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Row(
+                            children: const [
+                              Icon(Icons.check, color: Colors.green),
+                              SizedBox(width: 8),
+                              Text("Added to favorites!"),
+                            ],
+                          ),
+                          duration: const Duration(seconds: 1),
+                        ),
+                      );
+                    }
+                    JsonAccountStrategy().saveFavorites(favoriteSpells);
+                    setState(() {});
+                  },
                 );
               },
             ),
