@@ -44,12 +44,12 @@ extension GetImage on CharacterClass {
   String getImagePath() {
     var name = toString().toLowerCase().split('.').last;
     name = name[0].toUpperCase() + name.substring(1);
-    var imagePath = "assets/class_icons/$name.png";
+    var imagePath = "assets/images/$name.png";
 
     if (File(imagePath).existsSync()) {
       return imagePath;
     } else {
-      return "assets/images/default_profil.png";
+      return imagePath;
     }
   }
 }

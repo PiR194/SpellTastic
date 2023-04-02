@@ -3,6 +3,7 @@ import 'spell.dart';
 class SpellSet {
   String _name;
   List<Spell> _spells;
+  Map<int, bool> _isCheckedMap = {};
 
   // Constructor
   SpellSet(this._name, {List<Spell>? spells}) : _spells = spells ?? [];
@@ -13,6 +14,9 @@ class SpellSet {
 
   List<Spell> get spells => _spells;
   set spells(List<Spell> l) => _spells = l;
+
+  Map<int, bool> get isCheckedMap => _isCheckedMap;
+  set isCheckedMap(Map<int, bool> map) => _isCheckedMap = map;
 
   void addSpell(Spell spell) {
     spells.add(spell);

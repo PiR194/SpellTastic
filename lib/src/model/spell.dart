@@ -22,6 +22,9 @@ class Spell {
   String _spellResistance;
   String _description;
 
+  // for use
+  List<int> usedSpellPositions = [];
+
   // Constructor
   Spell(
       this._id,
@@ -41,6 +44,7 @@ class Spell {
 
   // Getters and Setters
   int get id => _id;
+  set id(int id) => _id = id;
 
   String get name => _name;
   set name(String name) => _name = name;
@@ -95,15 +99,17 @@ class Spell {
     int min = 0;
     bool flag = false;
     _level.forEach((key, value) {
-      if (!flag) {
-        //* premiere itération
-        max = value;
-        min = value;
-        flag = true;
-      }
+      if (value != null){
+        if (!flag) {
+          //* premiere itération
+          max = value;
+          min = value;
+          flag = true;
+        }
 
-      if (max < value) max = value;
-      if (min > value) min = value;
+        if (max < value) max = value;
+        if (min > value) min = value;
+      }
     });
     return ((max + min) / 2).round();
   }

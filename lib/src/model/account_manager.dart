@@ -9,6 +9,7 @@ class AccountManager {
   Character selectedCharacter = Character("dummy", CharacterClass.wizard, 10);
 
   SpellSet allSpells = SpellSet("All Spells");
+  SpellSet favoriteSpells = SpellSet("Favorite Spells");
 
   factory AccountManager() {
     return _acManager;
