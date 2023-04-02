@@ -67,6 +67,10 @@ class _SpellListPage extends State<SpellListPage> {
     });
   }
 
+  void useless() {
+    print("useless");
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -80,7 +84,8 @@ class _SpellListPage extends State<SpellListPage> {
             onPressed: () {
               //* Appel de la fonction de recherche
               showSearch(
-                  context: context, delegate: SpellSearchDelegate(spells_list));
+                  context: context,
+                  delegate: SpellSearchDelegate(spells_list, useless));
             },
           ),
           PopupMenuButton<OrderOption>(
@@ -188,7 +193,7 @@ class _SpellListPage extends State<SpellListPage> {
                     //? Version avec le maximum description puis ...
                     TextSpan(
                       text:
-                        "${spells_list[index].name} ${spells_list[index].GetLevelByClass(character.characterClass)}",
+                          "${spells_list[index].name} ${spells_list[index].GetLevelByClass(character.characterClass)}",
                     ),
                     TextSpan(
                         text: '     ${spells_list[index].description}',

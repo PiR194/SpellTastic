@@ -93,7 +93,8 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
                           .selectedCharacter
                           .sets
                           .where((set) => set.name == nameSet)
-                          .first)),
+                          .first,
+                      isModify: true)),
             );
           } else {
             Navigator.pop(context);
@@ -113,14 +114,15 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
                   //Appel de la fonction de recherche
                   showSearch(
                       context: context,
-                      delegate: SpellSearchDelegate(spellSet.spells,
+                      delegate: SpellSearchDelegate(
+                          spellSet.spells, searchAdded,
                           isAddable: isAddable, nameSet: nameSet));
                 },
               ),
               Visibility(
                   visible: spellSet.name == 'Known Spells' && !isReadonly,
                   child: IconButton(
-                    icon: const Icon(Icons.edit),
+                    icon: const Icon(Icons.delete),
                     onPressed: () {
                       removeMode = !removeMode;
                       setState(() {
@@ -359,6 +361,10 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
     setState(() {
       // update view
     });
+  }
+
+  void searchAdded() {
+    wasAdded = true;
   }
 
 // ====

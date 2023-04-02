@@ -6,8 +6,10 @@ class SpellSearchDelegate extends SearchDelegate<Map<String, dynamic>> {
   final List<Spell> spells;
   final bool isAddable;
   final String nameSet;
+  final Function added;
 
-  SpellSearchDelegate(this.spells, {this.isAddable = false, this.nameSet = ""});
+  SpellSearchDelegate(this.spells, this.added,
+      {this.isAddable = false, this.nameSet = ""});
 
   @override
   List<Widget> buildActions(BuildContext context) {
@@ -43,6 +45,7 @@ class SpellSearchDelegate extends SearchDelegate<Map<String, dynamic>> {
             )
         .toList();
     return SpellSearchList(
+        added: added,
         spells: filteredSpells,
         query: query,
         isAddable: isAddable,
@@ -57,6 +60,7 @@ class SpellSearchDelegate extends SearchDelegate<Map<String, dynamic>> {
             spell.description.toLowerCase().contains(query.toLowerCase()))
         .toList();
     return SpellSearchList(
+        added: added,
         spells: filteredSpells,
         query: query,
         isAddable: isAddable,

@@ -12,8 +12,10 @@ import 'home.dart';
 
 class SetDisplay extends StatefulWidget {
   final SpellSet fullSet;
+  final bool isModify;
 
-  const SetDisplay({Key? key, required this.fullSet}) : super(key: key);
+  const SetDisplay({Key? key, required this.fullSet, required this.isModify})
+      : super(key: key);
 
   @override
   _SetDisplayState createState() => _SetDisplayState(fullSet);
