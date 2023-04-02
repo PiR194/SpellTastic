@@ -1,59 +1,59 @@
-import 'package:code/src/model/account_manager.dart';
-import 'package:code/src/model/spell_set.dart';
 import 'package:flutter/material.dart';
 
-import '../../model/character_class.dart';
-import 'characterFormWidget.dart';
+class AddCharacterWidget extends StatefulWidget {
+  @override
+  _AddCharacterWidgetState createState() => _AddCharacterWidgetState();
+}
 
-class AddCharacterWidget extends StatelessWidget {
+class _AddCharacterWidgetState extends State<AddCharacterWidget> {
+  bool _isHovering = false;
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    const Color primaryColor = Color(0xFFC2185B);
-
     double buttonWidth = MediaQuery.of(context).size.width / 2;
     final screenHeight = MediaQuery.of(context).size.height;
+
+    const primaryGradient = LinearGradient(
+      colors: [Color(0xFFFF512F), Color(0xFFDD2476)],
+      begin: Alignment.bottomCenter,
+      end: Alignment.topCenter,
+    );
 
     return SizedBox(
       width: buttonWidth,
       height: screenHeight / 14,
-      child: ElevatedButton(
-        onPressed: () {
-          // ?????? :
-          // AccountManager().selectedCharacter.sets.add(SpellSet("All Spells"));
-          // var allSpellForClass = AccountManager()
-          //     .allSpells
-          //     .spells
-          //     .where((spell) =>
-          //         spell.GetLevelByClass(
-          //             AccountManager().selectedCharacter.characterClass) !=
-          //         null)
-          //     .toList();
-          // AccountManager()
-          //     .selectedCharacter
-          //     .addSpellListToSet("All Spells", allSpellForClass);
-          Navigator.pushNamed(context, '/characterform');
-        },
-        style: ElevatedButton.styleFrom(
-          primary: primaryColor,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(50),
-          ),
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          gradient: primaryGradient,
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              " + ",
-              style: TextStyle(
-                fontSize: theme.textTheme.bodyLarge!.fontSize,
-                fontFamily: theme.textTheme.bodyLarge!.fontFamily,
-              ),
-            )
-          ],
+        child: ElevatedButton.icon(
+          onPressed: () {
+            Navigator.pushNamed(context, '/characterform');
+          },
+          style: ElevatedButton.styleFrom(
+            primary: Colors.transparent,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          ),
+          icon: Icon(
+            Icons.add_circle_outline,
+            size: theme.textTheme.bodyLarge!.fontSize,
+            color: Colors.white,
+          ),
+          label: Text(
+            "Add new character",
+            style: TextStyle(
+              fontSize: theme.textTheme.bodyLarge!.fontSize,
+              fontFamily: theme.textTheme.bodyLarge!.fontFamily,
+              color: Colors.white,
+            ),
+          ),
         ),
       ),
     );

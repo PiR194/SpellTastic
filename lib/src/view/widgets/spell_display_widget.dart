@@ -28,6 +28,10 @@ class SpellDisplayWidget extends StatelessWidget {
               : const Icon(Icons.class_outlined),
           clipBehavior: Clip.none,
           label: Text(spellSet.name),
+          style: ButtonStyle(
+            backgroundColor:
+                MaterialStateProperty.all(Color.fromARGB(255, 13, 69, 121)),
+          ),
           onPressed: () {
             Navigator.push(
               context,

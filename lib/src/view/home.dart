@@ -60,7 +60,7 @@ class _HomeState extends State<Home> {
     final AccountManager accountManager = AccountManager();
 
     const Color backgroundColor = Color(0xFFEDE7F6);
-    const Color accentColor = Color(0xFF9C27B0);
+    const Color accentColor = Color.fromARGB(255, 51, 44, 53);
 
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
@@ -101,49 +101,46 @@ class _HomeState extends State<Home> {
               backgroundColor: accentColor,
               padding: const EdgeInsets.all(16),
             ),
-            child: const Icon(Icons.settings),
+            child: const Icon(Icons.settings,
+                color: Color.fromARGB(255, 70, 85, 224)),
           ),
         ],
       ),
       body: Padding(
-          padding: EdgeInsets.only(
-              top: MediaQuery.of(context).padding.top + kToolbarHeight),
-          child: Center(
-            child: Wrap(
-              spacing: screenWidth * 0.05,
-              runSpacing: screenHeight * 0.02,
-              alignment: WrapAlignment.center,
-              children: [
-                AddCharacterWidget(),
-                ...AccountManager().characters.map(
-                      (character) => CharacterButtonWidget(
-                        character: character,
-                      ),
+        padding: EdgeInsets.only(
+            top: MediaQuery.of(context).padding.top + kToolbarHeight),
+        child: Center(
+          child: Wrap(
+            spacing: screenWidth * 0.05,
+            runSpacing: screenHeight * 0.02,
+            alignment: WrapAlignment.center,
+            children: [
+              AddCharacterWidget(),
+              ...AccountManager().characters.map(
+                    (character) => CharacterButtonWidget(
+                      character: character,
                     ),
-                Wrap(
-                    spacing: screenWidth * 0.05,
-                    runSpacing: screenHeight * 0.02,
-                    alignment: WrapAlignment.center,
-                    children: [
-                      Center(
-                        child: SpellDisplayWidget(
-                            spellSet: spells_list, isReadonly: true),
-                      ),
-                    ]),
-                Wrap(
-                    spacing: screenWidth * 0.05,
-                    runSpacing: screenHeight * 0.02,
-                    alignment: WrapAlignment.center,
-                    children: [
-                      Center(
-                        child: SpellDisplayWidget(
-                            spellSet: AccountManager().favoriteSpells,
-                            isReadonly: false),
-                      ),
-                    ]),
-              ],
-            ),
-          )),
+                  ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SpellDisplayWidget(
+                    spellSet: spells_list,
+                    isReadonly: true,
+                  ),
+                  SizedBox(
+                    width: screenWidth * 0.05,
+                  ),
+                  SpellDisplayWidget(
+                    spellSet: AccountManager().favoriteSpells,
+                    isReadonly: false,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

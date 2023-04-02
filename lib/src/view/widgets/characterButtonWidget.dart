@@ -13,7 +13,7 @@ class CharacterButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    const Color accentColor = Color.fromARGB(255, 50, 17, 56);
+    const Color accentColor = Color.fromARGB(255, 31, 31, 36);
 
     double buttonWidth = MediaQuery.of(context).size.width / 2;
     final screenHeight = MediaQuery.of(context).size.height;
@@ -52,6 +52,7 @@ class CharacterButtonWidget extends StatelessWidget {
                 character.name,
                 textAlign: TextAlign.center,
                 style: TextStyle(
+                  color: Color.fromARGB(255, 97, 82, 228),
                   fontWeight: FontWeight.bold,
                   fontSize: theme.textTheme.bodyLarge!.fontSize,
                   fontFamily: theme.textTheme.bodyLarge!.fontFamily,

@@ -24,8 +24,8 @@ class _DetailsCharacterState extends State<DetailsCharacter> {
     final theme = Theme.of(context);
 
     const Color primaryColor = Color(0xFFC2185B);
-    const Color accentColor = Color(0xFF9C27B0);
-    const Color backgroundColor = Color(0xFFEDE7F6);
+    const Color accentColor = Color.fromARGB(255, 53, 46, 145);
+    const Color backgroundColor = Color.fromARGB(255, 229, 217, 247);
 
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
