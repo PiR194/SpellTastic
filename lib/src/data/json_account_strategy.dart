@@ -82,11 +82,15 @@ class JsonAccountStrategy implements IAccountStrategy {
   @override
   Future<SpellSet> loadFavorites() async {
     String jsonString = '';
+    IDataStrategy dataStrategy;
+
     if (Platform.isAndroid) {
+      dataStrategy = DbHelper();
       jsonString = await File(join(
               (await getApplicationDocumentsDirectory()).path, 'account.json'))
           .readAsString();
     } else {
+      dataStrategy = SQLiteDataStrategy();
       File file = File('assets/account.json');
       jsonString = file.readAsStringSync();
     }
@@ -97,8 +101,8 @@ class JsonAccountStrategy implements IAccountStrategy {
     if (decoded.isNotEmpty && decoded[0] is Map) {
       var favoriteSpellsJson = decoded[0]['favoriteSpells'];
       if (favoriteSpellsJson != null) {
-        favoriteSpells = await SpellSetMapper.fromJson(
-            favoriteSpellsJson, SQLiteDataStrategy());
+        favoriteSpells =
+            await SpellSetMapper.fromJson(favoriteSpellsJson, dataStrategy);
       }
     }
 
