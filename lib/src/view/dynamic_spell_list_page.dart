@@ -306,7 +306,7 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
                                     await showDialog(
                                         context: context,
                                         builder: (BuildContext context) {
-                                          return AlertPopup(
+                                          return const AlertPopup(
                                               message:
                                                   "Already too many spells");
                                         });

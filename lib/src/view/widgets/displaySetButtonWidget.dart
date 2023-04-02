@@ -164,6 +164,25 @@ class DisplaySetButton extends StatelessWidget {
                     ),
                   ),
                 ),
+                ElevatedButton(
+                  //* Copy
+                  onPressed: () {
+                    AccountManager().selectedCharacter.addSet(spellSet.clone());
+                    onSetUpdate();
+                    JsonAccountStrategy()
+                        .saveCharacters(AccountManager().characters);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: primaryColor,
+                  ),
+                  child: Text(
+                    'Copy',
+                    style: TextStyle(
+                      fontSize: theme.textTheme.bodyMedium!.fontSize,
+                      fontFamily: theme.textTheme.bodyMedium!.fontFamily,
+                    ),
+                  ),
+                )
               ],
             ),
           ],
