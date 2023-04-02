@@ -20,18 +20,19 @@ class AddCharacterWidget extends StatelessWidget {
       height: screenHeight / 14,
       child: ElevatedButton(
         onPressed: () {
-          AccountManager().selectedCharacter.sets.add(SpellSet("All Spells"));
-          var allSpellForClass = AccountManager()
-              .allSpells
-              .spells
-              .where((spell) =>
-                  spell.GetLevelByClass(
-                      AccountManager().selectedCharacter.characterClass) !=
-                  null)
-              .toList();
-          AccountManager()
-              .selectedCharacter
-              .addSpellListToSet("All Spells", allSpellForClass);
+          // ?????? :
+          // AccountManager().selectedCharacter.sets.add(SpellSet("All Spells"));
+          // var allSpellForClass = AccountManager()
+          //     .allSpells
+          //     .spells
+          //     .where((spell) =>
+          //         spell.GetLevelByClass(
+          //             AccountManager().selectedCharacter.characterClass) !=
+          //         null)
+          //     .toList();
+          // AccountManager()
+          //     .selectedCharacter
+          //     .addSpellListToSet("All Spells", allSpellForClass);
           Navigator.pushNamed(context, '/characterform');
         },
         style: ElevatedButton.styleFrom(

@@ -49,7 +49,7 @@ extension GetImage on CharacterClass {
     if (File(imagePath).existsSync()) {
       return imagePath;
     } else {
-      return "assets/images/default_profil.png";
+      return imagePath;
     }
   }
 }
