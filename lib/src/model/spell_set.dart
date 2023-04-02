@@ -4,13 +4,19 @@ class SpellSet {
   String _name;
   List<Spell> _spells;
   Map<int, bool> _isCheckedMap = {};
+  int _level;
 
   // Constructor
-  SpellSet(this._name, {List<Spell>? spells}) : _spells = spells ?? [];
+  SpellSet(this._name, {List<Spell>? spells, int? level})
+      : _spells = spells ?? [],
+        _level = level ?? 1;
 
   // Getters and Setters
   String get name => _name;
   set name(String n) => _name = n;
+
+  int get level => _level;
+  set level(int value) => _level = value;
 
   List<Spell> get spells => _spells;
   set spells(List<Spell> l) => _spells = l;

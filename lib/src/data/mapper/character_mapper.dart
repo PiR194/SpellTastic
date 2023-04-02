@@ -37,7 +37,7 @@ class CharacterMapper {
         Spell spell = await data.getSpellById(spellIndex);
         spells.add(spell);
       }
-      SpellSet set = SpellSet(setName, spells: spells);
+      SpellSet set = SpellSet(setName, spells: spells, level: json['level']);
       listSet.add(set);
     }
 

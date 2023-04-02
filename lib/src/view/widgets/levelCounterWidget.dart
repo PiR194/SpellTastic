@@ -1,33 +1,45 @@
+import 'package:code/src/data/json_account_strategy.dart';
+import 'package:code/src/model/account_manager.dart';
 import 'package:flutter/material.dart';
 
 class LevelCounterWidget extends StatefulWidget {
   final int characterLevel;
+  final Function? onSetUpdate;
 
-  const LevelCounterWidget({Key? key, required this.characterLevel})
+  const LevelCounterWidget(
+      {Key? key, required this.characterLevel, this.onSetUpdate})
       : super(key: key);
 
   @override
-  _LevelCounter createState() => _LevelCounter(characterLevel);
+  _LevelCounter createState() => _LevelCounter(characterLevel, onSetUpdate);
 }
 
 class _LevelCounter extends State<LevelCounterWidget> {
-  late int count = 1;
   late int maxLevel = widget.characterLevel;
+  final Function? onSetUpdate;
 
-  _LevelCounter(this.maxLevel);
+  _LevelCounter(this.maxLevel, this.onSetUpdate);
 
   void _incrementCount() {
     setState(() {
-      if (count < maxLevel) {
-        count++;
+      if (AccountManager().selectedCharacter.level < maxLevel) {
+        AccountManager().selectedCharacter.level++;
+        JsonAccountStrategy().saveCharacters(AccountManager().characters);
+        if (onSetUpdate != null) {
+          onSetUpdate!();
+        }
       }
     });
   }
 
   void _decrementCount() {
     setState(() {
-      if (count > 1) {
-        count--;
+      if (AccountManager().selectedCharacter.level > 1) {
+        AccountManager().selectedCharacter.level--;
+        JsonAccountStrategy().saveCharacters(AccountManager().characters);
+        if (onSetUpdate != null) {
+          onSetUpdate!();
+        }
       }
     });
   }
@@ -43,7 +55,7 @@ class _LevelCounter extends State<LevelCounterWidget> {
           onPressed: _decrementCount,
         ),
         Text(
-          '$count',
+          "${AccountManager().selectedCharacter.level}",
           style: TextStyle(
             fontSize: theme.textTheme.bodyMedium!.fontSize,
             fontFamily: theme.textTheme.bodyMedium!.fontFamily,
