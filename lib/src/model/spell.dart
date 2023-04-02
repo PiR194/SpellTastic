@@ -99,15 +99,17 @@ class Spell {
     int min = 0;
     bool flag = false;
     _level.forEach((key, value) {
-      if (!flag) {
-        //* premiere itération
-        max = value;
-        min = value;
-        flag = true;
-      }
+      if (value != null){
+        if (!flag) {
+          //* premiere itération
+          max = value;
+          min = value;
+          flag = true;
+        }
 
-      if (max < value) max = value;
-      if (min > value) min = value;
+        if (max < value) max = value;
+        if (min > value) min = value;
+      }
     });
     return ((max + min) / 2).round();
   }

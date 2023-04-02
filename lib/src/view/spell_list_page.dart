@@ -188,7 +188,7 @@ class _SpellListPage extends State<SpellListPage> {
                     //? Version avec le maximum description puis ...
                     TextSpan(
                       text:
-                          "${spells_list[index].name} ${spells_list[index].GetLevelByClass(character.characterClass)}",
+                        "${spells_list[index].name} ${spells_list[index].GetLevelByClass(character.characterClass)}",
                     ),
                     TextSpan(
                         text: '     ${spells_list[index].description}',

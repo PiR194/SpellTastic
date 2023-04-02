@@ -121,9 +121,12 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
                 case OrderOption.Lvlasc:
                   {
                     //tri par niveaux ascendant
+                    // spellSet.spells.sort((spell1, spell2) =>
+                    //     (spell1.GetLevelByClass(characterClass) ?? 0).compareTo(
+                    //         spell2.GetLevelByClass(characterClass) ?? 0));
                     spellSet.spells.sort((spell1, spell2) =>
-                        (spell1.GetLevelByClass(characterClass) ?? 0).compareTo(
-                            spell2.GetLevelByClass(characterClass) ?? 0));
+                        (spell1.GetMedianClassLevel()).compareTo(
+                            spell2.GetMedianClassLevel()));
                   }
                   break;
 
@@ -131,11 +134,12 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
                   {
                     //tri par niveaux descendant
                     spellSet.spells.sort((spell1, spell2) =>
-                        (spell2.GetLevelByClass(characterClass) ?? 0).compareTo(
-                            spell1.GetLevelByClass(characterClass) ?? 0));
+                        (spell2.GetMedianClassLevel()).compareTo(
+                            spell1.GetMedianClassLevel()));
                   }
                   break;
               }
+              setState(() {});
             },
             icon: const Icon(Icons.filter_alt),
             itemBuilder: (context) => [
@@ -172,8 +176,7 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
         itemBuilder: (context, index) {
           //Coloration des lignes de la liste
           Color backgroundColor = Colors.white;
-          if (spellSet.spells[index].GetLevelByClass(characterClass)?.isEven ??
-              false) {
+          if (spellSet.spells[index].GetMedianClassLevel().isEven) {
             if (currentOrder == OrderOption.Lvlasc ||
                 currentOrder == OrderOption.Lvldesc) {
               backgroundColor = const Color.fromARGB(255, 209, 214, 216);
@@ -192,8 +195,9 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
                   ),
                   children: <TextSpan>[
                     TextSpan(
-                      text:
-                          "${spellSet.spells[index].name} ${spellSet.spells[index].GetLevelByClass(characterClass)}",
+                      // text:
+                      //     "${spellSet.spells[index].name} ${spellSet.spells[index].GetLevelByClass(characterClass)}",
+                      text:"${spellSet.spells[index].name} ${spellSet.spells[index].GetMedianClassLevel()}",
                     ),
                     //? Option avec les 7 premiers mots
                     TextSpan(
