@@ -76,17 +76,18 @@ class _SetDisplayState extends State<SetDisplay> {
   //     set.addSpell(spell.copy());
   //     selectedSpellSet = List.of(SpellSetManager.sortByLevel(
   //         set, AccountManager().selectedCharacter.characterClass));
-  void onAddSpell(String name) {
-    setState(() {
-      selectedSpellSet = SpellSetManager.sortByLevel(
-          AccountManager()
-              .selectedCharacter
-              .sets
-              .where((spell) => spell.name == name)
-              .first,
-          AccountManager().selectedCharacter.characterClass);
-    });
-  }
+  // void onAddSpell(String name) {
+  //   print("add");
+  //   setState(() {
+  //     selectedSpellSet = SpellSetManager.sortByLevel(
+  //         AccountManager()
+  //             .selectedCharacter
+  //             .sets
+  //             .where((spell) => spell.name == name)
+  //             .first,
+  //         AccountManager().selectedCharacter.characterClass);
+  //   });
+  // }
 
   @override
   void dispose() {

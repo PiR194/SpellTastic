@@ -6,6 +6,7 @@ import 'package:code/src/model/account_manager.dart';
 import 'package:code/src/model/spell_set.dart';
 import 'package:code/src/view/set_display.dart';
 import 'package:code/src/view/widgets/add_spells_widget.dart';
+import 'package:code/src/view/widgets/pop-ups/alert_popup.dart';
 import 'package:flutter/material.dart';
 import '../data/json_account_strategy.dart';
 import '../model/character_class.dart';
@@ -125,8 +126,8 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
                     //     (spell1.GetLevelByClass(characterClass) ?? 0).compareTo(
                     //         spell2.GetLevelByClass(characterClass) ?? 0));
                     spellSet.spells.sort((spell1, spell2) =>
-                        (spell1.GetMedianClassLevel()).compareTo(
-                            spell2.GetMedianClassLevel()));
+                        (spell1.GetMedianClassLevel())
+                            .compareTo(spell2.GetMedianClassLevel()));
                   }
                   break;
 
@@ -134,8 +135,8 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
                   {
                     //tri par niveaux descendant
                     spellSet.spells.sort((spell1, spell2) =>
-                        (spell2.GetMedianClassLevel()).compareTo(
-                            spell1.GetMedianClassLevel()));
+                        (spell2.GetMedianClassLevel())
+                            .compareTo(spell1.GetMedianClassLevel()));
                   }
                   break;
               }
@@ -197,7 +198,8 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
                     TextSpan(
                       // text:
                       //     "${spellSet.spells[index].name} ${spellSet.spells[index].GetLevelByClass(characterClass)}",
-                      text:"${spellSet.spells[index].name} ${spellSet.spells[index].GetMedianClassLevel()}",
+                      text:
+                          "${spellSet.spells[index].name} ${spellSet.spells[index].GetMedianClassLevel()}",
                     ),
                     //? Option avec les 7 premiers mots
                     TextSpan(
@@ -219,11 +221,48 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
                 isAddable && !removeMode
                     ? IconButton(
                         icon: Icon(Icons.add_box_outlined),
-                        onPressed: () {
+                        onPressed: () async {
                           if (nameSet == "Known Spells") {
                             addToKnownSpell(index);
                           } else {
-                            addToSet(index);
+                            if (AccountManager()
+                                    .selectedCharacter
+                                    .sets
+                                    .where((set) => set.name == nameSet)
+                                    .first
+                                    .spells
+                                    .where((spell) =>
+                                        spell.level[AccountManager()
+                                            .selectedCharacter
+                                            .characterClass] ==
+                                        spellSet.spells[index].level[
+                                            AccountManager()
+                                                .selectedCharacter
+                                                .characterClass])
+                                    .length >=
+                                AccountManager()
+                                    .selectedCharacter
+                                    .characterClass
+                                    .getSpellPerDay()[AccountManager()
+                                            .selectedCharacter
+                                            .characterClass
+                                            .name]![
+                                        AccountManager()
+                                            .selectedCharacter
+                                            .level]!
+                                    .elementAt(spellSet.spells[index].level[
+                                        AccountManager()
+                                            .selectedCharacter
+                                            .characterClass]!)) {
+                              await showDialog<String>(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return const AlertPopup(
+                                        message: "Already too many spells");
+                                  });
+                            } else {
+                              addToSet(index);
+                            }
                           }
                         },
                       )
