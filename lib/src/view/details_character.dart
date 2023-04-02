@@ -106,7 +106,8 @@ class _DetailsCharacterState extends State<DetailsCharacter> {
                               fontFamily: theme.textTheme.bodyLarge!.fontFamily,
                             ),
                           ),
-                          LevelCounterWidget(characterLevel: character.level),
+                          LevelCounterWidget(
+                              characterLevel: 20, onSetUpdate: _addSet),
                         ],
                       ),
                     ],
@@ -123,12 +124,16 @@ class _DetailsCharacterState extends State<DetailsCharacter> {
                       onSetAdded: _addSet,
                     ),
                   ),
-                  ...character.sets.map(
-                    (set) => DisplaySetButton(
-                      spellSet: set,
-                      onSetUpdate: _addSet,
-                    ),
-                  ),
+                  ...character.sets
+                      .where((element) =>
+                          element.level ==
+                          AccountManager().selectedCharacter.level)
+                      .map(
+                        (set) => DisplaySetButton(
+                          spellSet: set,
+                          onSetUpdate: _addSet,
+                        ),
+                      ),
                 ],
               ),
 

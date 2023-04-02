@@ -62,7 +62,7 @@ class DisplaySetButton extends StatelessWidget {
           alignment: WrapAlignment.center,
           children: [
             Text(
-              spellSet.name,
+              "${spellSet.name} ${spellSet.level}",
               style: TextStyle(
                 fontSize: theme.textTheme.bodyLarge!.fontSize,
                 fontFamily: theme.textTheme.bodyLarge!.fontFamily,
@@ -182,7 +182,7 @@ class DisplaySetButton extends StatelessWidget {
                       fontFamily: theme.textTheme.bodyMedium!.fontFamily,
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ],

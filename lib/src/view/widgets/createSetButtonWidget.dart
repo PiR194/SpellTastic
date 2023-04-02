@@ -37,8 +37,9 @@ class CreateSetButton extends StatelessWidget {
 
           if (result != null && result.isNotEmpty) {
             // Do something with the input text, such as creating a new set
-            SpellSet newSet =
-                SpellSet(result, spells: List<Spell>.empty(growable: true));
+            SpellSet newSet = SpellSet(result,
+                spells: List<Spell>.empty(growable: true),
+                level: AccountManager().selectedCharacter.level);
             AccountManager().selectedCharacter.addSet(newSet);
             onSetAdded();
             JsonAccountStrategy().saveCharacters(AccountManager().characters);

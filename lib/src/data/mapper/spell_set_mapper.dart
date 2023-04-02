@@ -7,7 +7,11 @@ class SpellSetMapper {
   static Map<String, dynamic> toJson(SpellSet set) {
     List jsonSpell = [];
     set.spells.map((e) => jsonSpell.add(e.id)).toList();
-    Map<String, dynamic> map = {'name': set.name, 'spells': jsonSpell};
+    Map<String, dynamic> map = {
+      'name': set.name,
+      'spells': jsonSpell,
+      'level': set.level
+    };
     return map;
   }
 
@@ -21,6 +25,8 @@ class SpellSetMapper {
       Spell spell = await data.getSpellById(spellIndex);
       spells.add(spell);
     }
-    return SpellSet(name, spells: spells);
+    print(favoriteSpellsJson['level']);
+
+    return SpellSet(name, spells: spells, level: favoriteSpellsJson['level']);
   }
 }
