@@ -12,16 +12,20 @@ class SpellSearchList extends StatelessWidget {
   final String query;
   final bool isAddable;
   final String nameSet;
+  Function added;
 
   SpellSearchList(
-      {required this.spells,
+      {super.key,
+      required this.spells,
       required this.query,
+      required this.added,
       this.isAddable = false,
       this.nameSet = ""});
 
   /// this is trash but no time for better:
 
   void addToSet(BuildContext context, int index) {
+    added();
     AccountManager()
         .selectedCharacter
         .sets
@@ -29,36 +33,16 @@ class SpellSearchList extends StatelessWidget {
         .first
         .spells
         .add(spells[index].copy());
-    Navigator.pop(context);
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-          builder: (BuildContext context) => SetDisplay(
-              fullSet: AccountManager()
-                  .selectedCharacter
-                  .sets
-                  .where((set) => set.name == nameSet)
-                  .first)),
-    );
     JsonAccountStrategy().saveCharacters(AccountManager().characters);
   }
 
   void addToKnownSpell(BuildContext context, int index) {
+    added();
     AccountManager()
         .selectedCharacter
         .knownSpells
         .spells
         .add(spells[index].copy());
-    Navigator.pop(context);
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-          builder: (BuildContext context) => DynamicSpellListPage(
-              spellSet: AccountManager().selectedCharacter.knownSpells,
-              characterClass: AccountManager().selectedCharacter.characterClass,
-              isReadonly: false,
-              isAddable: false)),
-    );
     JsonAccountStrategy().saveCharacters(AccountManager().characters);
   }
 
@@ -136,6 +120,18 @@ class SpellSearchList extends StatelessWidget {
                     } else {
                       addToSet(context, index);
                     }
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Row(
+                          children: [
+                            const Icon(Icons.check, color: Colors.green),
+                            const SizedBox(width: 8),
+                            Text("Spell added to ${nameSet}"),
+                          ],
+                        ),
+                        duration: const Duration(seconds: 1),
+                      ),
+                    );
                   },
                 )
               : null,

@@ -23,7 +23,9 @@ class SpellDisplayWidget extends StatelessWidget {
       height: 50,
       width: screenWidth / 3,
       child: ElevatedButton.icon(
-          icon: const Icon(Icons.class_outlined),
+          icon: spellSet.name == "Favorite Spells"
+              ? const Icon(Icons.star)
+              : const Icon(Icons.class_outlined),
           clipBehavior: Clip.none,
           label: Text(spellSet.name),
           onPressed: () {

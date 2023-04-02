@@ -67,8 +67,8 @@ class _DetailsCharacterState extends State<DetailsCharacter> {
                 children: [
                   CircleAvatar(
                     radius: 80,
-                    backgroundImage:
-                        AssetImage(character.characterClass.getImagePath()),
+                    backgroundImage: AssetImage(
+                        character.characterClass.getImagePath() as String),
                   ),
                   Text(
                     character.name,

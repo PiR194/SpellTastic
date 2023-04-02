@@ -1,5 +1,5 @@
-import 'package:code/src/model/spell.dart';
 import 'package:code/src/view/dynamic_spell_list_page.dart';
+import 'package:code/src/view/widgets/pop-ups/show_hide.dart';
 import 'package:code/src/view/widgets/spellSetWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,16 +7,16 @@ import '../data/json_account_strategy.dart';
 import '../model/account_manager.dart';
 import '../model/spellSetManager.dart';
 import '../model/spell_set.dart';
-import '../model/spell_set_check_use.dart';
-import 'home.dart';
 
 class SetDisplay extends StatefulWidget {
   final SpellSet fullSet;
+  final bool isModify;
 
-  const SetDisplay({Key? key, required this.fullSet}) : super(key: key);
+  const SetDisplay({Key? key, required this.fullSet, required this.isModify})
+      : super(key: key);
 
   @override
-  _SetDisplayState createState() => _SetDisplayState(fullSet);
+  _SetDisplayState createState() => _SetDisplayState(fullSet, isModify);
 }
 
 class _SetDisplayState extends State<SetDisplay> {
@@ -26,24 +26,90 @@ class _SetDisplayState extends State<SetDisplay> {
   late String setName;
   bool isEditing = false;
   late Map<String, bool> isCheckedList;
+  bool isModify;
 
-  _SetDisplayState(SpellSet fullSet) {
+  _SetDisplayState(SpellSet fullSet, this.isModify) {
     setName = fullSet.name;
     selectedSpellSet = SpellSetManager.sortByLevel(
         fullSet, AccountManager().selectedCharacter.characterClass);
     isCheckedList = {};
   }
 
-  void onAddSpell(String name) {
+  // void onAddSpell(Spell spell, SpellSet set) {
+  //   if (!spell.level
+  //       .containsKey(AccountManager().selectedCharacter.characterClass)) {
+  //     print("spell Not Valid");
+  //     showDialog(
+  //       context: context,
+  //       builder: (BuildContext context) {
+  //         return AlertPopup(
+  //             message: 'Spell not compatible with this character.');
+  //       },
+  //     );
+  //     return;
+  //   }
+  //   if (set.spells
+  //           .where((element) =>
+  //               element
+  //                   .level[AccountManager().selectedCharacter.characterClass] ==
+  //               spell.level[AccountManager().selectedCharacter.characterClass])
+  //           .length >=
+  //       AccountManager()
+  //           .selectedCharacter
+  //           .characterClass
+  //           .getSpellPerDay()[AccountManager()
+  //               .selectedCharacter
+  //               .characterClass
+  //               .name]![AccountManager().selectedCharacter.level]!
+  //           .elementAt(spell
+  //                   .level[AccountManager().selectedCharacter.characterClass]! -
+  //               1)) {
+  //     print(
+  //         "too much spells :${set.spells.where((element) => element.level[AccountManager().selectedCharacter.characterClass] == spell.level[AccountManager().selectedCharacter.characterClass]).length}");
+
+  //     //show a pop-up
+  //     return; // add pop up to say it is not added
+  //   }
+
+  //   setState(() {
+  //     set.addSpell(spell.copy());
+  //     selectedSpellSet = List.of(SpellSetManager.sortByLevel(
+  //         set, AccountManager().selectedCharacter.characterClass));
+  // void onAddSpell(String name) {
+  //   print("add");
+  //   setState(() {
+  //     selectedSpellSet = SpellSetManager.sortByLevel(
+  //         AccountManager()
+  //             .selectedCharacter
+  //             .sets
+  //             .where((spell) => spell.name == name)
+  //             .first,
+  //         AccountManager().selectedCharacter.characterClass);
+  //   });
+  // }
+
+  void resetAllSpells() {
     setState(() {
-      selectedSpellSet = SpellSetManager.sortByLevel(
-          AccountManager()
-              .selectedCharacter
-              .sets
-              .where((spell) => spell.name == name)
-              .first,
-          AccountManager().selectedCharacter.characterClass);
+      isCheckedList.forEach((key, value) {
+        isCheckedList[key] = false;
+      });
+      AccountManager()
+          .selectedCharacter
+          .spellSetPositions
+          .forEach((key, value) {
+        AccountManager().selectedCharacter.spellSetPositions[key] = [];
+      });
+      JsonAccountStrategy().saveCharacters(AccountManager().characters);
     });
+  }
+
+  void showCheckPopup(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return const CheckPopup(message: "You've slept! All spells recovered");
+      },
+    );
   }
 
   @override
@@ -77,41 +143,62 @@ class _SetDisplayState extends State<SetDisplay> {
         ),
         backgroundColor: accentColor,
         actions: [
+          Tooltip(
+            message: 'Sleep and reset all spells',
+            child: Container(
+              height: 40,
+              width: 40,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: Color.fromARGB(255, 8, 2, 2),
+              ),
+              child: IconButton(
+                  icon: const Icon(Icons.brightness_3),
+                  color: const Color.fromARGB(255, 62, 128, 226),
+                  onPressed: () => {showCheckPopup(context), resetAllSpells()}),
+            ),
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  IconButton(
-                    icon: Icon(Icons.add_circle_outline),
-                    onPressed: () => {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => DynamicSpellListPage(
-                                    spellSet: AccountManager()
-                                        .selectedCharacter
-                                        .knownSpells,
-                                    characterClass: AccountManager()
-                                        .selectedCharacter
-                                        .characterClass,
-                                    isReadonly: true,
-                                    isAddable: true,
-                                    nameSet: setName,
-                                  )))
-                    },
+                  Visibility(
+                    visible: isModify,
+                    child: IconButton(
+                      icon: const Icon(Icons.add),
+                      onPressed: () => {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => DynamicSpellListPage(
+                                      spellSet: AccountManager()
+                                          .selectedCharacter
+                                          .knownSpells,
+                                      characterClass: AccountManager()
+                                          .selectedCharacter
+                                          .characterClass,
+                                      isReadonly: true,
+                                      isAddable: true,
+                                      nameSet: setName,
+                                    )))
+                      },
+                    ),
+                  ),
+                  Visibility(
+                    visible: isModify,
+                    child: IconButton(
+                      icon: Icon(isEditing ? Icons.check : Icons.edit),
+                      onPressed: () => {
+                        setState(() {
+                          isEditing = !isEditing;
+                        })
+                      },
+                    ),
                   ),
                   IconButton(
-                    icon: Icon(isEditing ? Icons.check : Icons.edit),
-                    onPressed: () => {
-                      setState(() {
-                        isEditing = !isEditing;
-                      })
-                    },
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.arrow_back),
+                    icon: const Icon(Icons.arrow_back),
                     onPressed: _currentPage == selectedSpellSet.length
                         ? null
                         : () {
