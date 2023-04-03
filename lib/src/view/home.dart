@@ -83,7 +83,7 @@ class _HomeState extends State<Home> {
           'SPELLTASTIC',
           style: TextStyle(
             color: Colors.black,
-            fontSize: 50,
+            fontSize: theme.textTheme.titleLarge!.fontSize! * 1.5,
             fontFamily: theme.textTheme.titleLarge!.fontFamily,
             fontWeight: theme.textTheme.titleLarge!.fontWeight,
           ),

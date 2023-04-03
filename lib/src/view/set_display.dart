@@ -90,20 +90,29 @@ class _SetDisplayState extends State<SetDisplay> {
         ),
         backgroundColor: accentColor,
         actions: [
-          Tooltip(
-            message: 'Sleep and reset all spells',
-            child: Container(
-              height: 40,
-              width: 40,
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                color: Color.fromARGB(255, 8, 2, 2),
-              ),
-              child: IconButton(
-                  icon: const Icon(Icons.brightness_3),
-                  color: const Color.fromARGB(255, 62, 128, 226),
-                  onPressed: () => {showCheckPopup(context), resetAllSpells()}),
-            ),
+          Builder(
+            builder: (BuildContext context) {
+              return Visibility(
+                visible: !isModify,
+                child: Tooltip(
+                  message: 'Sleep and reset all spells',
+                  child: Container(
+                    height: 40,
+                    width: 40,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Color.fromARGB(255, 8, 2, 2),
+                    ),
+                    child: IconButton(
+                      icon: const Icon(Icons.brightness_3),
+                      color: const Color.fromARGB(255, 62, 128, 226),
+                      onPressed: () =>
+                          {showCheckPopup(context), resetAllSpells()},
+                    ),
+                  ),
+                ),
+              );
+            },
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -111,6 +120,26 @@ class _SetDisplayState extends State<SetDisplay> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
+                  Visibility(
+                    visible: isModify,
+                    child: IconButton(
+                      icon: const Icon(Icons.star_half),
+                      onPressed: () => {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => DynamicSpellListPage(
+                                      spellSet: AccountManager().favoriteSpells,
+                                      characterClass: AccountManager()
+                                          .selectedCharacter
+                                          .characterClass,
+                                      isReadonly: true,
+                                      isAddable: true,
+                                      nameSet: setName,
+                                    )))
+                      },
+                    ),
+                  ),
                   Visibility(
                     visible: isModify,
                     child: IconButton(

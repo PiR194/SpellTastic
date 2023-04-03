@@ -271,6 +271,20 @@ class _DynamicSpellListPage extends State<DynamicSpellListPage> {
 
                                 if (widget.nameSet == "Known Spells") {
                                   addToKnownSpell(index);
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Row(
+                                        children: [
+                                          const Icon(Icons.check,
+                                              color: Colors.green),
+                                          const SizedBox(width: 8),
+                                          Text(
+                                              "Spell added to ${widget.nameSet}"),
+                                        ],
+                                      ),
+                                      duration: const Duration(seconds: 1),
+                                    ),
+                                  );
                                 } else {
                                   if (AccountManager()
                                           .selectedCharacter

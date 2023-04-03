@@ -182,7 +182,7 @@ class _SpellSetWidgetState extends State<SpellSetWidget> {
                       }
                     },
                   ),
-                  SizedBox(width: 16.0),
+                  const SizedBox(width: 16.0),
                   Expanded(
                     child: Text(
                       spell.name,
